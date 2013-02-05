@@ -28,6 +28,7 @@ import ro.isdc.auth.repository.AccountRepository;
  * @author Adrian.Ursu
  * 
  */
+
 @Service("AuthentificationService")
 public class AuthentificationService implements UserDetailsService {
 
