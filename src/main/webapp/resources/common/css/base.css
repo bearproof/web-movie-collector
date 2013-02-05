@@ -1,0 +1,38 @@
+/**** Custom Fonts ****/
+@font-face {
+		font-family: 'ComicSansMS';
+		src: url('/resources/common/fonts/comic/comic.eot');
+		src: url('/resources/common/fonts/comic/comic.eot?#iefix') format('embedded-opentype'),
+				 url('/resources/common/fonts/comic/comic.woff') format('woff'),
+				 url('/resources/common/fonts/comic/comic.ttf') format('truetype'),
+				 url('/resources/common/fonts/comic/comic.svg#comic') format('svg');
+		font-weight: normal;
+		font-style: normal;
+} 
+@font-face {
+	font-family: 'SegoeUI-Light';
+	src: url('/resources/common/fonts/segoe-ui/segoeuil.eot');
+	src: url('/resources/common/fonts/segoe-ui/segoeuil.eot?#iefix') format('embedded-opentype'),
+			 url('/resources/common/fonts/segoe-ui/segoeuil.woff') format('woff'),
+			 url('/resources/common/fonts/segoe-ui/segoeuil.ttf') format('truetype'),
+			 url('/resources/common/fonts/segoe-ui/segoeuil.svg#segoeuil') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*** Input Placeholders ****/
+::-webkit-input-placeholder {
+	color:#cbebff;
+}
+:-moz-placeholder {
+	color:#cbebff;
+}
+:-ms-input-placeholder {
+	color:#cbebff;
+}
+.left {
+	float:left;
+}
+.right {
+	float:right;
+}

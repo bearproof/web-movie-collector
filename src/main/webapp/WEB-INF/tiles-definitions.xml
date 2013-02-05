@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<!-- Default Template -->
+	<definition name="generic-template" template="/WEB-INF/views/layouts/default.jsp">
+		<put-attribute name="title-content" value="" />
+		<put-attribute name="navbar-content" value="/WEB-INF/views/sections/navbar.jsp" />
+		<put-attribute name="custom-css" value=""/>
+		<put-attribute name="main-content" value="" />
+		<put-attribute name="footer-content" value="/WEB-INF/views/sections/footer.jsp" />
+		<put-attribute name="custom-js" value=""/>
+	</definition>
+
+	<!-- Login page -->
+	<definition name="loginPage" extends="generic-template">
+		<put-attribute name="title-content" value="Login" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/loginContent.jsp" />
+	</definition>
+
+	<!-- Register page -->
+	<definition name="registerPage" extends="generic-template">
+		<put-attribute name="title-content" value="Register" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Register.jsp" />		
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Register/Register.jsp"/> 
+	</definition>
+
+	<!-- Home page -->
+	<definition name="homePage" extends="generic-template">
+		<put-attribute name="title-content" value="Home" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/homeContent.jsp" />
+	</definition>
+
+	<!-- Exception caught Page -->
+	<definition name="exception-caught" extends="generic-template">
+		<put-attribute name="title-content" value="Exception" />
+		<put-attribute name="main-content" value="/WEB-INF/views/errors/exception-caught.jsp" />
+	</definition>
+	
+	<!-- ~~~~~~~~~~~~~ -->
+	<!-- ACCOUNT PAGES -->
+	<!-- ~~~~~~~~~~~~~ -->
+
+	<!-- Accounts list page -->
+	<definition name="accountsPage" extends="generic-template">
+		<put-attribute name="title-content" value="Accounts" />
+		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/dataTablesStyles.jsp"/>
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Account/List.jsp" />
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Account/List.jsp"/>
+	</definition>
+
+	<!-- New Account page -->
+	<definition name="createAccountPage" extends="generic-template">
+		<put-attribute name="title-content" value="New Account" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Account/Create.jsp" />
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Account/Create.jsp"/>
+	</definition>
+
+	<!-- Update Account page -->
+	<definition name="updateAccountPage" extends="generic-template">
+		<put-attribute name="title-content" value="Edit Account" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Account/Update.jsp" />
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Account/Update.jsp"/>
+	</definition>
+
+	<!-- ~~~~~~~~~~~~~ -->
+	<!-- ROLE PAGES -->
+	<!-- ~~~~~~~~~~~~~ -->
+
+	<!-- Role list page -->
+	<definition name="rolesPage" extends="generic-template">
+		<put-attribute name="title-content" value="Roles" />
+		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/dataTablesStyles.jsp"/>
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Role/List.jsp" />
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Role/List.jsp"/>
+	</definition>
+
+	<!-- New Role page -->
+	<definition name="createRolePage" extends="generic-template">
+		<put-attribute name="title-content" value="New Role" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Role/Create.jsp" />
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Role/Create.jsp"/>
+	</definition>
+
+	<!-- Update Role page -->
+	<definition name="updateRolePage" extends="generic-template">
+		<put-attribute name="title-content" value="Edit Role" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Role/Update.jsp" />
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Role/Update.jsp"/>
+	</definition>
+	<!-- Main Layout -->
+	<!-- <definition name="mainLayout" template="/WEB-INF/views/templates/mainLayout.jsp">
+		<put-attribute name="wroCtx" value="resources/wro" />
+		<put-attribute name="pageName" value="" />
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+	</definition> -->
+
+	<definition name="searchPage" extends="generic-template">
+		<put-attribute name="pageName" value="searchPage" />
+		<put-attribute name="title-content" value="searchPage.title"/>
+		<put-attribute name="main-content" value="/WEB-INF/views/searchPage.jsp" />
+	</definition>
+
+
+</tiles-definitions>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="infoSourceConfigLoader" class="ro.isdc.InfoSourceConfig" init-method="load" scope="singleton">
+		<property name="configPath">
+			<value>sitesConfig.json</value> 
+		</property> 
+	</bean>
+	<bean id="htmlNodePathMapper" class="ro.isdc.model.HtmlNodePathMapper">
+	  <property name="nodePathMap">
+	   <bean class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	    <property name="location" value="classpath:xpath.properties"/>
+	   </bean>
+	  </property>
+	</bean>	
+</beans>

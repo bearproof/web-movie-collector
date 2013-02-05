@@ -1,0 +1,83 @@
+{
+    "configMap": {
+        "imdb": {
+            "usesCookies": false,
+            "searchURLs": {
+                "fetchCookieURL": "notDefined",
+                "briefSearchURL": "http://www.imdb.com/search/title?title={title}/",
+                "fullSearchURL": "http://www.imdb.com/title/{movieId}/"
+            },
+            "searchMethods": {
+                "briefSearchMethod": "get",
+                "fullSearchMethod": "get",
+                "fetchCookieMethod": "get"
+            },
+            "presetHeaders": {
+            				 "User-Agent" : "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
+            				 },
+            "post": {
+                "briefPostData": {
+                    "postDataMap": {
+                        "gyorskeres": "0",
+                        "keres0": "1",
+                        "sbmt": "Keress!",
+                        "szo0": "{title}"
+                    }
+                }
+            }
+        },
+        "themoviedb": {
+        	"usesCookies": false,
+        	"searchURLs": {
+        		"fetchCookieURL": "notDefined",
+        	    "briefSearchURL":"http://www.themoviedb.org/search/movie?query={title}/",
+        	    "fullSearchURL":"http://www.themoviedb.org{movieId}"
+        	},
+        	"searchMethods": {
+        		"briefSearchMethod": "get",
+        		"fullSearchMethod": "get",
+        		"fetchCookieMethod": "get"
+        	},
+        	"presetHeaders": {
+        		"User-Agent" : "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
+        	},
+        	"post": {
+        		"briefPostData": {
+        			"postDataMap": {
+        				"gyorskeres": "0",
+        				"keres0": "1",
+        				"sbmt": "Keress!",
+        				"szo0": "{title}"
+        			}
+        		}
+        	}
+        },
+        "filmkatalogus": {
+    	    "usesCookies": true,
+            "searchURLs" :{
+        	    "fetchCookieURL": "http://www.filmkatalogus.hu",
+        	    "briefSearchURL":"http://www.filmkatalogus.hu/kereses",
+                "fullSearchURL":"http://www.filmkatalogus.hu/{movieId}"
+             },            
+    	    "searchMethods" : {
+    	    	"briefSearchMethod": "post",
+                "fullSearchMethod": "get",
+                "fetchCookieMethod": "get"
+    	    },
+    	    "presetHeaders" : {
+    	    	"User-Agent" : "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11",
+        	    "cookies":" ${xr}; ${PHPSESSID}; ${_sessionid};"
+    	    },
+            "post":{
+        	    "briefPostData": {
+	        	    "postDataMap" : {
+	        	       "gyorskeres":"0",
+	         	       "keres0":"1",
+	         	       "sbmt":"Keress!",
+	         	       "szo0":"{title}"
+	        	    }
+        	    }        	    
+            }        
+        }
+    }
+}
