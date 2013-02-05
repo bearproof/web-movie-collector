@@ -25,42 +25,14 @@
 			this.openChannel("streaming");	
 			this.bindBehavior();
 			this.request.onMessage = $.proxy(this.messageReceived,this);
-		},
+		},				
 		
-		/**Renders the page's dynamic layout*/
-		doLayout : function(e) {
-			var cfgLayout = {
-				spacing_open:3,
-				spacing_closed:3,
-				north : {
-					resizable : false,
-					closable : true
-				},
-				south : {
-					resizable : false,
-					closable : false
-				}
-			};
-			this.$ctx.layout(cfgLayout);
-			$('#header').layout($.extend({},cfgLayout,{
-				east:{
-					size:20 + $('span.locale-changer').width()
-				}
-			}));
-			$('.layout-inner').layout($.extend({},cfgLayout,{
-				east:{
-					size:0.66
-				}
-			}));
-			$('.user-input-zone').layout(cfgLayout);
-		},
-		
+		/**Bind the events on the Add button and on enter keypress when the input is focused*/
 		bindBehavior: function(){
 			var that=this;
 			//bind search page Behavior:
 			this.$addButton.on('click', $.proxy(this.processRequest, this));
-			this.$searchTerm.on('keydown', $.proxy(this.processRequestOnEnter, this));	
-			this.$accordion=this.$contentArea.accordion({heightStyle: "content", collapsible: true, active: false});			
+			this.$searchTerm.on('keydown', $.proxy(this.processRequestOnEnter, this));							
 		},
 		/**Open a bi-directional communication channel between the browser and the specified server.*/
 		openChannel: function (transport,connectionType) {
@@ -109,153 +81,41 @@
         		MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
 				//$.atmosphere.log('info', [MovieData]);
 	        		
-	        	if($.isArray(MovieData)){	
-	        		$(movieDataSourceTmpl.tmpl({
-						"site" : MovieData[0].site						
-					})).appendTo($('.'+movieTitle.replace(/\s+/g, '')));	
-					
-					$.each(MovieData,function(index, value){
-		        		site = value.site;
-		        		$(movieItemTmpl.tmpl({
-							"title" : value.title,
-							"year" : value.year,
-							"director" : value.director,
-							"id" : value.id,
-							"site" : value.site
-						})).appendTo($('.'+site));				    			
-	        		});		        		
-	        	}else{
-	        		/*site = MovieData.site;
+	        	if($.isArray(MovieData)){
+	        		var trimmedMovieTitle = movieTitle.replace(/\s+/g, ''),
+	        			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+MovieData[0].site);	        		
+	        		/*search if a node with the same info already exists in the tree 
+	        		  and if the node doesn't already exist, add it*/
+	        		if(currentNode.length<=0){
+	        			$(movieDataSourceTmpl.tmpl({
+							"site" : MovieData[0].site						
+						})).appendTo($('.'+trimmedMovieTitle));	
+						
+						$.each(MovieData,function(index, value){
+			        		site = value.site;
+			        		$(movieItemTmpl.tmpl({
+								"title" : value.title,
+								"year" : value.year,
+								"director" : value.director,
+								"id" : value.id,
+								"site" : value.site
+							})).appendTo($('.'+site));				    			
+		        		});		        		
+	        		}
+	        		
+	        	}else{// we received an object => Detailed Movie Info	        		
+	        		site = MovieData.site;
 					$(movieDataSourceTmpl.tmpl({
 						"site" : site					
 					})).appendTo($('#accordion').accordion('getPanel',movieTitle));	
 					$(noMovieFoundTmpl.tmpl({
 						"noMovieFound" : this.$msg.data('searchpage.one.result.found')							
-					})).appendTo($('#accordion').accordion('getPanel',movieTitle).find('.'+site));*/
+					})).appendTo($('#accordion').accordion('getPanel',movieTitle).find('.'+site));
 	        	}
-	        		
-	        	/*  $el = $('#accordion').accordion('getPanel',movieTitle);
-					$el.siblings('.panel-header').find('.panel-icon').removeClass('icon-loading').addClass('icon-cancel');
-					
-					$('.icon-cancel').on('click', function(e){					
-						var p = $('#accordion').accordion('getPanel',$(this).prev().html()), index = null;
-						if(p){
-							 index = $('#accordion').accordion('getPanelIndex', p);
-							 $('#accordion').accordion('remove',index);
-						}
-					});		
-        			panelContent = $('#accordion').accordion('getPanel',movieTitle).panel('body');
-        			$('.tree-title', panelContent).each(function(index){
-        				treeTitlesArray.push($(this).html());
-        			});						
-					//only add content if it doesn't exist in the treeTitlesArray
-					if(($.inArray(MovieData[0].site,treeTitlesArray)===-1)){
-						
-						if(MovieData[0].title===undefined){
-							site = MovieData[0].site;
-							$(movieDataSourceTmpl.tmpl({
-								"site" : site					
-							})).appendTo($('#accordion').accordion('getPanel',movieTitle));	
-							$(noMovieFoundTmpl.tmpl({
-								"noMovieFound" : this.$msg.data('searchpage.movie.not.found')							
-							})).appendTo($('#accordion').accordion('getPanel',movieTitle).find('.'+site));
-						}else{
-							$(movieDataSourceTmpl.tmpl({
-								"site" : MovieData[0].site						
-							})).appendTo($('#accordion').accordion('getPanel',movieTitle));	
-							
-							$.each(MovieData,function(index, value){
-				        		site = value.site;
-				        		$(movieItemTmpl.tmpl({
-									"title" : value.title,
-									"year" : value.year,
-									"director" : value.director,
-									"id" : value.id,
-									"site" : value.site
-								})).appendTo($('#accordion').accordion('getPanel',movieTitle).find('.'+site));				    			
-			        		});	
-						}						
-												
-			        	//generate a tree from the content of the accordion
-			        	$('#accordion').accordion('getPanel',movieTitle).find('.'+site).closest('.easyui-tree').tree({animate:true});
-			        	//bind the getDetailedData() function to the elements which have the class "movie-id" only once
-			        	$('.movie-id',this.$ctx).off('click',$.proxy(this.getDetailedData,this));
-		        		$('.movie-id', this.$ctx).on('click',$.proxy(this.getDetailedData,this));
-			        							
-					}        		
-        		}else{ we received the detailed movie info, we need to
-        			   * overwrite the value of movieTitle variable 
-        			   * with the name of the selected movie title from the tree
-        			if(this.selectedMovieTitle!==""){
-        				movieTitle = this.selectedMovieTitle;
-            			Remove the loading icon from the selected movie after the requested data has arrived
-        				$('.tree-loading').each(function(){
-        					var selectedMovie = $(this).closest('ul').siblings('div.tree-node').children('.tree-title');
-        					if(selectedMovie.html()===movieTitle){
-        						$(this).removeClass('tree-loading').addClass('tree-file');
-        					}
-        				});            			
-        			}else{
-        				movieTitle = $('.movie-title',this.$ctx).val();
-        				if($('#tabs').hasClass('display-none')){
-        		 			$('#tabs').removeClass('display-none');	
-        		 		}
-        				site = MovieData.site;
-						$(movieDataSourceTmpl.tmpl({
-							"site" : site					
-						})).appendTo($('#accordion').accordion('getPanel',movieTitle));	
-						$(noMovieFoundTmpl.tmpl({
-							"noMovieFound" : this.$msg.data('searchpage.one.result.found')							
-						})).appendTo($('#accordion').accordion('getPanel',movieTitle).find('.'+site));
-						
-						$el = $('#accordion').accordion('getPanel',movieTitle);
-			        	$el.find('.'+site).closest('.easyui-tree').tree({animate:true});			        	
-						$el.siblings('.panel-header').find('.panel-icon').removeClass('icon-loading').addClass('icon-cancel');
-						
-						$('.icon-cancel').on('click', function(e){					
-							var p = $('#accordion').accordion('getPanel',$(this).prev().html()), index = null;
-							if(p){
-								 index = $('#accordion').accordion('getPanelIndex', p);
-								 $('#accordion').accordion('remove',index);
-							}
-						});														
-        			}        	        			        			
-        			
-        			if($('#tabs').tabs('exists', movieTitle)){	        				  
-        				$('#tabs').tabs('getTab',movieTitle).html($(detailedMovieItemTmpl.tmpl({
-        					"title" : MovieData.title,
-        					"year" : MovieData.year,
-        					"director" : MovieData.director,
-        					"site" : MovieData.site.toUpperCase(),
- 							"description" : MovieData.description,
-							"cast" : MovieData.cast,
-							"genre" : MovieData.genre,
-							"rate" :MovieData.rate,
-							"runtime" : MovieData.runtime
-						})));
-        				$('#tabs').tabs('select',movieTitle);
-        				this.selectedMovieTitle = "";
-        			}else{
-        				$('#tabs').tabs('add',{  
-	        				 title: movieTitle,
-	        				 content: $(detailedMovieItemTmpl.tmpl({
-	        					 "title" : MovieData.title,
-	         					"year" : MovieData.year,
-	         					"director" : MovieData.director,
-	        					"site" : MovieData.site.toUpperCase(),
-	 							"description" : MovieData.description,
-								"cast" : MovieData.cast,
-								"genre" : MovieData.genre,
-								"rate" :MovieData.rate,
-								"runtime" : MovieData.runtime
-							})),
-	        				closable: true,
-	        				selected: true,
-	        				iconCls:'icon-movie'
-	        				});	
-        				this.selectedMovieTitle = "";
-        			}	        			   	        				        				        			
-        		}*/
+	        	
+	        	//bind the getDetailedData() function to the elements which have the class "movie-id" only once
+	        	$('.movie-id',this.$ctx).off('click',$.proxy(this.getDetailedData,this));
+	        	$('.movie-id', this.$ctx).on('click',$.proxy(this.getDetailedData,this));	        		        	
 	        	
 		    }// end if(response.state==="messageReceived")	    
 		},
@@ -285,7 +145,7 @@
 			movieTitle = $('.movie-title',this.$ctx).val(), 
 			contentArea = $('#movieList',this.$ctx), 
 			searchItemTmpl = $('#searchItemTmpl').val(),
-			panelContent = "";						
+			trimmedMovieTitle = '';						
 	
 			// map all the checked checkboxes' values into an array
 			movieData.infoSourceKeys = $('.info-source :checked',this.$ctx).map(function() {
@@ -298,56 +158,26 @@
 			
 			$.atmosphere.log('info', [movieData]);
 	
-			if (movieData.infoSourceKeys.length === 0) {
-				/*$.messager.show({
-						title : '',
-						msg: this.$msg.data('searchpage.no.infosource.selected'),
-						showType: 'slide',
-						timeout:3000,
-						style:{
-							right:'',
-							top:'',
-							bottom:document.body.scrollTop+document.documentElement.scrollTop
-						}
-				});*/
+			if (movieData.infoSourceKeys.length === 0) {				
 				alert('No infosource selected!');
 				return false;
 			}
-			if (movieData.searchTerms.length === 0) {
-				/*$.messager.show({
-					title:'',
-					msg: this.$msg.data('searchpage.movie.required'),
-					showType: 'slide',
-					timeout:3000,
-					style:{
-						right:'',
-						top:document.body.scrollTop+document.documentElement.scrollTop,
-						bottom:''
-					}
-				});*/
+			if (movieData.searchTerms.length === 0) {				
 				alert('Please type a movie title!');
 				return false;
 			}			
 			
-			$(searchItemTmpl.tmpl({
-				"searchTerm" : movieTitle.replace(/\s+/g, ''),
-				"movieTitle" : movieTitle
-			})).appendTo(contentArea.children('ul'));
+			trimmedMovieTitle = movieTitle.replace(/\s+/g, '');
+			//add a tree node with the search term only if it doesn't exist already
+			if($('#'+trimmedMovieTitle).length<=0){
+				$(searchItemTmpl.tmpl({
+					"searchTerm" : trimmedMovieTitle,
+					"movieTitle" : movieTitle
+				})).appendTo(contentArea.children('ul'));
+			}			
 			
-			//add a new panel only if it doesn't exist already
-			/*if(!$('#accordion').accordion('getPanel',movieTitle)){							
-				$('#accordion').accordion('add', {
-					title: movieTitle,
-					content: $(searchItemTmpl.tmpl({
-								"searchTerm" : movieTitle
-							})),
-					selected: true,
-					iconCls: 'icon-loading',
-					width:'100%'
-				});												
-				
-			}else{
-				//open the existing panel
+			//TODO:	open the existing tree node
+			/*}else{
 				$('#accordion').accordion('select',movieTitle);					
 			}	*/
 			
@@ -373,12 +203,7 @@
 				"infoSourceKeys" : []
 			},
 			$el = e.target;
-			$($el).closest("div.tree-node").children("span.tree-icon").removeClass('tree-file').addClass('tree-loading');
 			this.selectedMovieTitle = $($el).closest('ul').siblings('div.tree-node').children('.tree-title').html();
-			
-			if($('#tabs').hasClass('display-none')){
- 			   $('#tabs').removeClass('display-none');	
- 			}	
 			
 			detailedMovieData.infoSourceKeys.push($($el).data('site'));
 			detailedMovieData.searchTerms.push($($el).attr('id'));
@@ -391,7 +216,7 @@
 				
 	});
 	
-	$(function(){  			
+	$(function(){  							
 			
 	    $('.ez-template').bind('click', function(){  
 	    	$('.panel-header').addClass("panel-header-ez");
@@ -442,9 +267,9 @@
 	    });
 	}); 		
 	
-	$(window).on("beforeunload", function() {
+	/*$(window).on("beforeunload", function() {
 	    $(window).trigger("unload.atmosphere");
-	});
+	});*/
 	
 	/* Attach page specific behavior on page load */
 	$(function() {

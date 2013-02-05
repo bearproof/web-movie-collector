@@ -53,12 +53,12 @@
 					varStatus="status">
 					<c:if test="${status.first}">
 						<label class="info-source checkbox inline"><input
-							type="checkbox" checked="checked" id="${infoSource}"
+							type="checkbox" checked="checked" id="${infoSource}_site"
 							value="${infoSource}" /> ${infoSource} </label>
 					</c:if>
 					<c:if test="${not status.first}">
 						<label class="info-source checkbox inline"><input
-							type="checkbox" id="${infoSource}" value="${infoSource}" />
+							type="checkbox" id="${infoSource}_site" value="${infoSource}" />
 							${infoSource} </label>
 					</c:if>
 				</c:forEach>
@@ -68,28 +68,34 @@
 			<div class="container-fluid">
 				<div class="row-fluid">
 
-					<div id="movieList" class="span2 css-treeview">
+					<div id="movieList" class="span4 css-treeview">
 						<ul></ul>
 					</div>
 
-					<div class="span10">
-						<ul class="nav nav-tabs">
-							<li class="active"><a href="#">Home</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">More</a></li>
+					<div class="span6">
+						<ul class="nav nav-tabs" id="myTab">
+							<li class="active"><a href="#home">Home</a></li>
+							<li><a href="#profile">About</a></li>
 						</ul>
-					</div>
+						<div id="myTabContent" class="tab-content">
+			              <div class="tab-pane fade active in" id="home">
+			                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+			              </div>
+			              <div class="tab-pane fade" id="profile">
+			                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+						  </div>
+						</div>  
 				</div>
 			</div>
 		</div>
 		<%--end tag for center region layout --%>
 
-		<div style="height: 40px;">
+<!-- 		<div style="height: 40px;"> -->
 			<footer class="main">
 				<h5 class="page-footer"><%@include
 						file="/WEB-INF/views/footer.jsp"%></h5>
 			</footer>
-		</div>
+		<!-- </div> -->
 	</div>
 	<!-- end of div#WMCcontainer -->
 
@@ -103,7 +109,7 @@
 </textarea>
 	<textarea id="movieDataSourceTmpl" class="ui-helper-hidden">
 		<li>
-			<input type="checkbox" id={site} />
+			<input type="checkbox" id="{site}" />
 			<label for={site}>{site}</label>
 			<ul class={site}></ul>
 		</li>	

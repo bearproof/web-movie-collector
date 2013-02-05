@@ -246,6 +246,17 @@ div.container {
 }
 
 #mainContent {
-	padding-top:40px;
+	padding-top:20px;
 }
+
+#searchPage .container-fluid {
+    padding-left: 10px;
+    padding-right: 2px;
+}
+
+#mainContent .container-fluid,
+#mainContent .span6{
+	border: 1px solid black;
+}
+
 
