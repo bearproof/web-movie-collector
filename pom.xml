@@ -133,18 +133,18 @@
 			<version>${jackson.version}</version>
 		</dependency>
  
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-google</artifactId>
 			<version>1.0.0.M1</version>
 			<exclusions>
-				Exclude Jackson Core and Mapper because of conflicts
+				<!-- Exclude Jackson Core and Mapper because of conflicts -->
 				<exclusion> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-core-asl</artifactId> 
 					</exclusion>
 				<exclusion> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-mapper-asl</artifactId> 
 					</exclusion>
 			</exclusions>
-		</dependency> -->
+		</dependency>
 
 		<!-- ~~~~~~ -->
 		<!-- SPRING -->
