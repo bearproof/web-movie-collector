@@ -11,7 +11,6 @@ import ro.isdc.auth.domain.Account;
 import ro.isdc.auth.repository.AccountRepository;
 import ro.isdc.auth.security.UserContext;
 
-
 /**
  * Utility class to get user informations in a request
  * 
@@ -40,10 +39,23 @@ public class UserContextUtil {
 	 */
 	public String getUserFullName() {
 		String result = "";
-		Account account = accountRepository.findByEmail(UserContext
-				.getUsername());
+		Account account = accountRepository.findByEmail(UserContext.getUsername());
 		if (account != null) {
 			result = account.getFirstName() + " " + account.getLastName();
+		}
+		return result;
+	}
+
+	/**
+	 * Getting the current user id for the account
+	 * 
+	 * @return
+	 */
+	public String getUserId() {
+		String result = "";
+		Account account = accountRepository.findByEmail(UserContext.getUsername());
+		if (account != null) {
+			result = account.getId();
 		}
 		return result;
 	}

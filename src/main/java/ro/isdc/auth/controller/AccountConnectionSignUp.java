@@ -28,8 +28,7 @@ public class AccountConnectionSignUp implements ConnectionSignUp {
 		Role userRole = getRole("ROLE_USER");
 
 		if (connection.getKey().getProviderId().equalsIgnoreCase("facebook")) {
-			// TODO: This is just for test purposes. It really should be changed
-			// later
+			// TODO: Double check this in the flow
 
 			UserProfile profile = connection.fetchUserProfile();
 

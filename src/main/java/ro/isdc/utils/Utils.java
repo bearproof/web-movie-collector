@@ -22,40 +22,39 @@ import ro.isdc.model.InfoSourceModel;
 import ro.isdc.model.MovieInfoPostData;
 import ro.isdc.utils.EncodingUtil;
 
-
 public class Utils {
-	
-	private static  final String REX_TEMPLATE_VALUE = "\\$\\{(\\w+)\\}";
-	
+
+	private static final String REX_TEMPLATE_VALUE = "\\$\\{(\\w+)\\}";
+
 	public static HttpUriRequest getRequestForBriefMovieData(InfoSourceModel infoSource, String movieName) {
-		
+
 		HttpUriRequest request = null;
 		movieName = EncodingUtil.encodeURIComponent(movieName);
 		if (infoSource.getSearchMethods().get("briefSearchMethod").equalsIgnoreCase("get")) {
 			request = new HttpGet(infoSource.getSearchURLs().get("briefSearchURL").replace("{title}", movieName));
-			
-		} else if(infoSource.getSearchMethods().get("briefSearchMethod").equalsIgnoreCase("post")) {
+
+		} else if (infoSource.getSearchMethods().get("briefSearchMethod").equalsIgnoreCase("post")) {
 			request = new HttpPost(infoSource.getSearchURLs().get("briefSearchURL"));
 		}
-		
-		return request;		
+
+		return request;
 	}
-	
+
 	public static HttpUriRequest getRequestForDetailedMovieData(InfoSourceModel infoSource, String movieId) {
-			
-			HttpUriRequest request = null;
-			
-			if (infoSource.getSearchMethods().get("fullSearchMethod").equalsIgnoreCase("get")) {
-				request = new HttpGet(infoSource.getSearchURLs().get("fullSearchURL").replace("{movieId}", movieId));
-				
-			} else if(infoSource.getSearchMethods().containsKey("post")) {
-				request = new HttpPost(infoSource.getSearchURLs().get("fullSearchURL"));
-			}
-			
-			return request;
-			
+
+		HttpUriRequest request = null;
+
+		if (infoSource.getSearchMethods().get("fullSearchMethod").equalsIgnoreCase("get")) {
+			request = new HttpGet(infoSource.getSearchURLs().get("fullSearchURL").replace("{movieId}", movieId));
+
+		} else if (infoSource.getSearchMethods().containsKey("post")) {
+			request = new HttpPost(infoSource.getSearchURLs().get("fullSearchURL"));
+		}
+
+		return request;
+
 	}
-	
+
 	public static boolean isTemplatedValue(final String val) {
 		boolean foundMatch = false;
 		try {
@@ -63,50 +62,54 @@ public class Utils {
 			Matcher fieldNameMatcher = regex.matcher(val);
 			foundMatch = fieldNameMatcher.find();
 		} catch (PatternSyntaxException ex) {
-			
+
 		}
 		return foundMatch;
 	}
-	
-	public static Map<String, String> resolveCookieTokens(final String joinedCookies){
-		Map<String, String> result=new HashMap<String, String>();
-		String[] tokensArray=joinedCookies.split(";");
+
+	public static Map<String, String> resolveCookieTokens(final String joinedCookies) {
+		Map<String, String> result = new HashMap<String, String>();
+		String[] tokensArray = joinedCookies.split(";");
 		for (int i = 0; i < tokensArray.length; i++) {
-			String[] currentTokens=tokensArray[i].split("=");
+			String[] currentTokens = tokensArray[i].split("=");
 			String tokenKey = null;
 			String tokenValue = null;
-			if(currentTokens.length >= 2) {
-			 tokenKey=currentTokens[0].trim();
-			 tokenValue=currentTokens[1].trim();
+			if (currentTokens.length >= 2) {
+				tokenKey = currentTokens[0].trim();
+				tokenValue = currentTokens[1].trim();
 			}
 			result.put(tokenKey, tokenValue);
 		}
 		return result;
 	}
-	//"cookies":"invariant part1 jnk ${xr} bull 2 ; mere  pere ${PHPSESSID}; prune ${_sessionid}; prune2"
-	public static String resolveTemplate(final String tmpl, final Map<String, String> replacements){
-		String result=tmpl;
+
+	// "cookies":"invariant part1 jnk ${xr} bull 2 ; mere  pere ${PHPSESSID}; prune ${_sessionid}; prune2"
+	public static String resolveTemplate(final String tmpl, final Map<String, String> replacements) {
+		String result = tmpl;
 		try {
 			Pattern regex = Pattern.compile(REX_TEMPLATE_VALUE);
 			Matcher fieldNameMatcher = regex.matcher(tmpl);
 			while (fieldNameMatcher.find()) {
 				try {
-					// You can vary the replacement text for each match on-the-fly
-					String replacementKey=fieldNameMatcher.group(1);
-					String replacementToken=replacements.get(replacementKey);
-					String replacement=replacementKey+'='+replacementToken+"; ";
-					result = result.replaceAll("\\$\\{"+ replacementKey +"\\}", replacement);
+					// You can vary the replacement text for each match
+					// on-the-fly
+					String replacementKey = fieldNameMatcher.group(1);
+					String replacementToken = replacements.get(replacementKey);
+					String replacement = replacementKey + '=' + replacementToken + "; ";
+					result = result.replaceAll("\\$\\{" + replacementKey + "\\}", replacement);
 				} catch (IllegalStateException ex) {
 				} catch (IllegalArgumentException ex) {
 				} catch (IndexOutOfBoundsException ex) {
-				} 
+				}
 			}
 		} catch (PatternSyntaxException ex) {
 		}
 		return result;
 	}
+
 	/**
 	 * Generic method for transforming a json to an object.
+	 * 
 	 * @param <T>
 	 * @param jsonString
 	 * @param objectType
@@ -118,54 +121,48 @@ public class Utils {
 		try {
 			jsonAsObject = mapper.readValue(jsonString, objectType);
 		} catch (JsonParseException e2) {
-			// TODO Auto-generated catch block
+
 			e2.printStackTrace();
 		} catch (JsonMappingException e2) {
-			// TODO Auto-generated catch block
+
 			e2.printStackTrace();
 		} catch (IOException e2) {
-			// TODO Auto-generated catch block
+
 			e2.printStackTrace();
 		}
 		return objectType.cast(jsonAsObject);
 	}
-	
-	
-
-
 
 	public static HttpParams getPostHttpParams(MovieInfoPostData postConfig) {
-		
+
 		HttpParams postParams = new BasicHttpParams();
-		
+
 		return null;
-		
+
 	}
 
-	public static void setHeaders(Map<String, String> briefPostHeaders,
-			HttpUriRequest syncRequest) {
+	public static void setHeaders(Map<String, String> briefPostHeaders, HttpUriRequest syncRequest) {
 		Iterator it = briefPostHeaders.entrySet().iterator();
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			Map.Entry<String, String> pairs = (Entry<String, String>) it.next();
-			if(!isTemplatedValue(pairs.getValue())) {
+			if (!isTemplatedValue(pairs.getValue())) {
 				syncRequest.addHeader(pairs.getKey(), pairs.getValue());
 			}
 		}
-		
+
 	}
 
-	public static void setHeaders(Map<String, String> briefPostBody,
-			HttpUriRequest postRequest, String movieName) {
-		
+	public static void setHeaders(Map<String, String> briefPostBody, HttpUriRequest postRequest, String movieName) {
+
 		Iterator it = briefPostBody.entrySet().iterator();
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			Map.Entry<String, String> pairs = (Entry<String, String>) it.next();
-			if(pairs.getValue().contains("{title}")) {
-				//pairs.setValue(pairs.getValue().replace("{title}", movieName));
+			if (pairs.getValue().contains("{title}")) {
+				// pairs.setValue(pairs.getValue().replace("{title}",
+				// movieName));
 				postRequest.addHeader(pairs.getKey(), pairs.getValue().replace("{title}", movieName));
-			}
-			else
-				postRequest.addHeader(pairs.getKey(),pairs.getValue());
+			} else
+				postRequest.addHeader(pairs.getKey(), pairs.getValue());
 		}
 	}
 }

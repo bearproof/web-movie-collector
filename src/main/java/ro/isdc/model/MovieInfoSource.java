@@ -6,51 +6,49 @@ import java.util.Map;
  * Object containing the common data for each site.
  * 
  * @author Ioana.Mocan
- *
+ * 
  */
-//TODO: RENAME TO MovieInfoSource
 public class MovieInfoSource {
-	
+
 	/**
 	 * The url for the site.
 	 */
 	private String briefSearchURL;
-	
+
 	/**
 	 * The url for full movie details.
 	 */
 	private String fullSearchURL;
-	
+
 	/**
 	 * The HTTP method to be used.
 	 */
 	private String briefSearchMethod;
-	
+
 	/**
 	 * The HTTP method to be used for full movie details.
 	 */
 	private String fullSearchMethod;
-	
+
 	/**
 	 * Film sheet identifier.
 	 */
 	private String filmSheetPageIdentifier;
-	
+
 	/**
 	 * Film list identifier.
 	 */
 	private String filmListPageIdentifier;
-	
-	
+
 	private MovieInfoPostData post;
-	
+
 	/**
 	 * Map containing the data for the POST method for full movie details.
 	 */
-	//TODO: change this to be like post data for brief. See above Map<String, ConfigInfoSrcPostTO> post 
+	// TODO: change this to be like post data for brief. See above Map<String,
+	// ConfigInfoSrcPostTO> post
 	private Map<String, String> fullPostData;
 
-	
 	/**
 	 * @return the filmSheetPageIdentifier
 	 */
@@ -59,7 +57,8 @@ public class MovieInfoSource {
 	}
 
 	/**
-	 * @param filmSheetPageIdentifier the filmSheetPageIdentifier to set
+	 * @param filmSheetPageIdentifier
+	 *            the filmSheetPageIdentifier to set
 	 */
 	public void setFilmSheetPageIdentifier(String filmSheetPageIdentifier) {
 		this.filmSheetPageIdentifier = filmSheetPageIdentifier;
@@ -73,13 +72,13 @@ public class MovieInfoSource {
 	}
 
 	/**
-	 * @param filmListPageIdentifier the filmListPageIdentifier to set
+	 * @param filmListPageIdentifier
+	 *            the filmListPageIdentifier to set
 	 */
 	public void setFilmListPageIdentifier(String filmListPageIdentifier) {
 		this.filmListPageIdentifier = filmListPageIdentifier;
 	}
 
-	
 	/**
 	 * @return the fullSearchURL
 	 */
@@ -88,7 +87,8 @@ public class MovieInfoSource {
 	}
 
 	/**
-	 * @param fullSearchURL the fullSearchURL to set
+	 * @param fullSearchURL
+	 *            the fullSearchURL to set
 	 */
 	public void setFullSearchURL(String fullSearchURL) {
 		this.fullSearchURL = fullSearchURL;
@@ -102,7 +102,8 @@ public class MovieInfoSource {
 	}
 
 	/**
-	 * @param fullSearchMethod the fullSearchMethod to set
+	 * @param fullSearchMethod
+	 *            the fullSearchMethod to set
 	 */
 	public void setFullSearchMethod(String fullSearchMethod) {
 		this.fullSearchMethod = fullSearchMethod;
@@ -116,12 +117,13 @@ public class MovieInfoSource {
 	}
 
 	/**
-	 * @param fullPostData the fullPostData to set
+	 * @param fullPostData
+	 *            the fullPostData to set
 	 */
 	public void setFullPostData(Map<String, String> fullPostData) {
 		this.fullPostData = fullPostData;
 	}
-	
+
 	/**
 	 * @return the briefSearchURL
 	 */
@@ -130,7 +132,8 @@ public class MovieInfoSource {
 	}
 
 	/**
-	 * @param briefSearchURL the briefSearchURL to set
+	 * @param briefSearchURL
+	 *            the briefSearchURL to set
 	 */
 	public void setBriefSearchURL(String briefSearchURL) {
 		this.briefSearchURL = briefSearchURL;
@@ -144,7 +147,8 @@ public class MovieInfoSource {
 	}
 
 	/**
-	 * @param briefSearchMethod the briefSearchMethod to set
+	 * @param briefSearchMethod
+	 *            the briefSearchMethod to set
 	 */
 	public void setBriefSearchMethod(String briefSearchMethod) {
 		this.briefSearchMethod = briefSearchMethod;
@@ -158,12 +162,11 @@ public class MovieInfoSource {
 	}
 
 	/**
-	 * @param post the post to set
+	 * @param post
+	 *            the post to set
 	 */
 	public void setPost(MovieInfoPostData post) {
 		this.post = post;
 	}
-
-	
 
 }
