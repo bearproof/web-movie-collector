@@ -12,7 +12,7 @@
 		request: null,
 		socket: $.atmosphere,
 		subSocket: null,
-		selectedMovieTitle : "",
+		selectedMovieId : '',
 		/*Test socket*/
 		requestTest: null,
 		socketTest: $.atmosphere,
@@ -64,7 +64,8 @@
 			movieDataSourceTmpl = $('#movieDataSourceTmpl').val(),
 			movieItemTmpl = $('#movieItemTmpl').val(),
 			noMovieFoundTmpl = $('#noMovieFoundTmpl').val(),
-			detailedMovieItemTmpl = $('#detailedMovieItemTmpl').val(),
+			detailedMovieItemTabHeader = $('#detailedMovieItemTabHeader').val(),
+			detailedMovieItemTabContent = $('#detailedMovieItemTabContent').val(),
 			movieTitle = $('.movie-title',this.$ctx).val(), 
 			MovieData = null,
 			site = null,
@@ -105,12 +106,26 @@
 	        		
 	        	}else{// we received an object => Detailed Movie Info	        		
 	        		site = MovieData.site;
-					$(movieDataSourceTmpl.tmpl({
-						"site" : site					
-					})).appendTo($('#accordion').accordion('getPanel',movieTitle));	
-					$(noMovieFoundTmpl.tmpl({
-						"noMovieFound" : this.$msg.data('searchpage.one.result.found')							
-					})).appendTo($('#accordion').accordion('getPanel',movieTitle).find('.'+site));
+	        		$(detailedMovieItemTabHeader.tmpl({
+	        			"movieTitle" : MovieData.title,
+	        			/*"site" : MovieData.site.toUpperCase(),*/
+	        			"movieId" : '#'+that.selectedMovieId
+	        		})).appendTo($('#movieTabHeader'));
+	        		
+	        		$(detailedMovieItemTabContent.tmpl({
+    					"title" : MovieData.title,
+    					"year" : MovieData.year,
+    					"director" : MovieData.director,
+    					"site" : MovieData.site.toUpperCase(),
+						"description" : MovieData.description,
+						"cast" : MovieData.cast,
+						"genre" : MovieData.genre,
+						"rate" :MovieData.rate,
+						"runtime" : MovieData.runtime,
+	        			"movieId" : that.selectedMovieId
+					})).appendTo($('#movieTabContent'));
+	        		
+	        		$('#movieTabHeader a[href="#'+that.selectedMovieId+'"]').tab('show');
 	        	}
 	        	
 	        	//bind the getDetailedData() function to the elements which have the class "movie-id" only once
@@ -203,10 +218,11 @@
 				"infoSourceKeys" : []
 			},
 			$el = e.target;
-			this.selectedMovieTitle = $($el).closest('ul').siblings('div.tree-node').children('.tree-title').html();
 			
+			this.selectedMovieId = $($el).attr('id');
 			detailedMovieData.infoSourceKeys.push($($el).data('site'));
-			detailedMovieData.searchTerms.push($($el).attr('id'));
+			detailedMovieData.searchTerms.push(this.selectedMovieId);
+			
 			$.atmosphere.log('info', [detailedMovieData]);
 				
 			this.subSocket.response.request.method='POST';

@@ -95,8 +95,8 @@ body {
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 	<%-- <script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script>
-	<tiles:insertAttribute name="custom-js" /> --%>
+		src="${pageContext.request.contextPath}/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> --%>
+	<tiles:insertAttribute name="custom-js" />
 
 </body>
 </html>

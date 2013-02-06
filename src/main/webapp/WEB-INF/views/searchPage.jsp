@@ -73,18 +73,9 @@
 					</div>
 
 					<div class="span6">
-						<ul class="nav nav-tabs" id="myTab">
-							<li class="active"><a href="#home">Home</a></li>
-							<li><a href="#profile">About</a></li>
-						</ul>
-						<div id="myTabContent" class="tab-content">
-			              <div class="tab-pane fade active in" id="home">
-			                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-			              </div>
-			              <div class="tab-pane fade" id="profile">
-			                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-						  </div>
-						</div>  
+						<ul id="movieTabHeader" class="nav nav-tabs"></ul>
+						<div id="movieTabContent" class="tab-content">
+			            </div>  
 				</div>
 			</div>
 		</div>
@@ -127,11 +118,16 @@
 		</ul>
 	</li>
 </textarea>
-
-	<textarea id="noMovieFoundTmpl" class="ui-helper-hidden">
+<textarea id="noMovieFoundTmpl" class="ui-helper-hidden">
 	<li><span>{noMovieFound}</span></li>
 </textarea>
-	<textarea id="detailedMovieItemTmpl" class="ui-helper-hidden">
+
+<textarea id="detailedMovieItemTabHeader" class="ui-helper-hidden">
+	 <li><a href="{movieId}">{movieTitle}</a></li>
+</textarea>
+
+<textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
+	<div class="tab-pane" id={movieId}>
 			<ul>
 				<li class="centered"><span class="bold"><spring:message
 						code="searchPage.movie.site" />:&nbsp;</span><span>{site}</span></li>	
@@ -174,6 +170,7 @@
 				<li>{runtime}</li>
 			</ul></li>				
 			</ul>
+	</div>			
 </textarea>
 	<%--Messages Component--%>
 	<input type="hidden" class="messages"
@@ -188,14 +185,14 @@
 	<script type="text/javascript"
 		src="/resources/inheritance/js/inheritance-1.0.min.js"></script>
 	<script type="text/javascript"
-		src="/resources/jquery/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript"
-		src="/resources/jquery/easyui/jquery.easyui-1.3.1.min.js"></script>
+		src="/resources/jquery/jquery-1.8.3.min.js"></script>	
 	<script type="text/javascript"
 		src="/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
 	<script type="text/javascript" src="/resources/common/js/base.js"></script>
 	<script type="text/javascript"
 		src="/resources/localeChanger/js/localeChanger.js"></script>
+	<script type="text/javascript"
+		src="/resources/js/bootstrap.js"></script>
 	<script type="text/javascript"
 		src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script>
 	<script type="text/javascript"
