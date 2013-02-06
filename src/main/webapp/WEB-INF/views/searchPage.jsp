@@ -72,10 +72,9 @@
 						<ul></ul>
 					</div>
 
-					<div class="span6">
+					<div class="span7">
 						<ul id="movieTabHeader" class="nav nav-tabs"></ul>
-						<div id="movieTabContent" class="tab-content">
-			            </div>  
+						<div id="movieTabContent" class="tab-content"></div>  
 				</div>
 			</div>
 		</div>
@@ -112,7 +111,7 @@
 		<ul>
 		<li><span><spring:message code="searchPage.movie.year" />:&nbsp;{year}</span></li>
 		<li><span><spring:message code="searchPage.movie.director" />:&nbsp;{director}</span></li>
-		<li><a class="movie-id" href="#" id={id} title={id}
+		<li><a class="movie-id" href="#" data-uniqueId={uniqueid} title={uniqueid}
 					data-site={site}><spring:message
 							code="searchPage.movie.detaileddata" /></a></li>
 		</ul>
@@ -123,52 +122,52 @@
 </textarea>
 
 <textarea id="detailedMovieItemTabHeader" class="ui-helper-hidden">
-	 <li><a href="{movieId}">{movieTitle}</a></li>
+	 <li><a data-toggle="tab" href="{movieId}">{movieTitle}</a></li>
 </textarea>
 
 <textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
-	<div class="tab-pane" id={movieId}>
+	<div class="tab-pane" id={movieId}>			
 			<ul>
-				<li class="centered"><span class="bold"><spring:message
-						code="searchPage.movie.site" />:&nbsp;</span><span>{site}</span></li>	
+				<li class="centered"><span class="bold"><spring:message code="searchPage.movie.site" />:&nbsp;</span><span>{site}</span></li>	
 				<li><ul>
-				<li class="centered">{title}</li>
-			</ul></li>
-				<li><span class="bold"><spring:message
-						code="searchPage.movie.year" /></span>
-		<ul>
-				<li>{year}</li>
-			</ul></li>
-				<li><span class="bold"><spring:message
-						code="searchPage.movie.director" /></span>
-		<ul>
-				<li>{director}</li>
-			</ul></li>
-				<li><span class="bold"><spring:message
-						code="searchPage.movie.description" /></span>
-		<ul>
-				<li>{description}</li>
-			</ul></li>
-				<li><span class="bold"><spring:message
-						code="searchPage.movie.cast" /></span>
-		<ul>
-				<li>{cast}</li>
-			</ul></li>
-				<li><span class="bold"><spring:message
-						code="searchPage.movie.genre" /></span>
-		<ul>
-				<li>{genre}</li>
-			</ul></li>
-				<li><span class="bold"><spring:message
-						code="searchPage.movie.rate" /></span>
-		<ul>
-				<li>{rate}</li>
-			</ul></li>
-				<li><span class="bold"><spring:message
-						code="searchPage.movie.runtime" /></span>
-		<ul>
-				<li>{runtime}</li>
-			</ul></li>				
+						<li class="centered">{title}</li>
+					</ul>
+				</li>
+				<li><span class="bold"><spring:message code="searchPage.movie.year" /></span>
+					<ul>
+						<li>{year}</li>
+					</ul>
+				</li>
+				<li><span class="bold"><spring:message code="searchPage.movie.director" /></span>
+					<ul>
+						<li>{director}</li>
+					</ul>
+				</li>
+				<li><span class="bold"><spring:message code="searchPage.movie.description" /></span>
+					<ul>
+						<li>{description}</li>
+					</ul>
+				</li>
+				<li><span class="bold"><spring:message code="searchPage.movie.cast" /></span>
+					<ul>
+						<li>{cast}</li>
+					</ul>
+				</li>
+				<li><span class="bold"><spring:message code="searchPage.movie.genre" /></span>
+					<ul>
+						<li>{genre}</li>
+					</ul>
+				</li>
+				<li><span class="bold"><spring:message code="searchPage.movie.rate" /></span>
+					<ul>
+						<li>{rate}</li>
+					</ul>
+				</li>
+				<li><span class="bold"><spring:message code="searchPage.movie.runtime" /></span>
+					<ul>
+						<li>{runtime}</li>
+					</ul>
+				</li>				
 			</ul>
 	</div>			
 </textarea>
@@ -186,14 +185,15 @@
 		src="/resources/inheritance/js/inheritance-1.0.min.js"></script>
 	<script type="text/javascript"
 		src="/resources/jquery/jquery-1.8.3.min.js"></script>	
+	<!-- <script type="text/javascript"
+		src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> -->
+	<script type="text/javascript"
+		src="/resources/js/bootstrap-tab.js"></script>
 	<script type="text/javascript"
 		src="/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
-	<script type="text/javascript" src="/resources/common/js/base.js"></script>
+	<script type="text/javascript" 
+		src="/resources/common/js/base.js"></script>
 	<script type="text/javascript"
 		src="/resources/localeChanger/js/localeChanger.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/bootstrap.js"></script>
-	<script type="text/javascript"
-		src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script>
 	<script type="text/javascript"
 		src="/resources/searchPage/js/searchPage.js"></script>

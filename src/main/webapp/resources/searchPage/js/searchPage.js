@@ -98,7 +98,7 @@
 								"title" : value.title,
 								"year" : value.year,
 								"director" : value.director,
-								"id" : value.id,
+								"uniqueid" : value.id,
 								"site" : value.site
 							})).appendTo($('.'+site));				    			
 		        		});		        		
@@ -124,8 +124,14 @@
 						"runtime" : MovieData.runtime,
 	        			"movieId" : that.selectedMovieId
 					})).appendTo($('#movieTabContent'));
+	        			        		
 	        		
 	        		$('#movieTabHeader a[href="#'+that.selectedMovieId+'"]').tab('show');
+	        		
+	        	    /*$('#movieTabHeader a').click(function (e) {
+	        	        e.preventDefault();
+	        	        $(this).tab('show');
+	        	    });*/
 	        	}
 	        	
 	        	//bind the getDetailedData() function to the elements which have the class "movie-id" only once
@@ -219,7 +225,7 @@
 			},
 			$el = e.target;
 			
-			this.selectedMovieId = $($el).attr('id');
+			this.selectedMovieId = $($el).data('uniqueid');
 			detailedMovieData.infoSourceKeys.push($($el).data('site'));
 			detailedMovieData.searchTerms.push(this.selectedMovieId);
 			
@@ -232,7 +238,7 @@
 				
 	});
 	
-	$(function(){  							
+	$(function(){		
 			
 	    $('.ez-template').bind('click', function(){  
 	    	$('.panel-header').addClass("panel-header-ez");

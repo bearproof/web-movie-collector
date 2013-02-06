@@ -259,4 +259,6 @@ div.container {
 	border: 1px solid black;
 }
 
-
+#movieTabHeader a{
+	font-size: 80%;
+}
