@@ -254,11 +254,16 @@ div.container {
     padding-right: 2px;
 }
 
-#mainContent .container-fluid,
-#mainContent .span6{
-	border: 1px solid black;
-}
 
 #movieTabHeader a{
 	font-size: 80%;
 }
+
+#mainContent .divider{
+	border-bottom: 1px solid black;
+}
+
+#mainContent .closeTab{
+	cursor: pointer;
+}
+

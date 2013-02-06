@@ -98,40 +98,43 @@
 								"title" : value.title,
 								"year" : value.year,
 								"director" : value.director,
-								"uniqueid" : value.id,
-								"site" : value.site
+								"uniqueid" : value.id.replace(/\//g, ''),
+								"site" : value.site,
+								"siteid" : value.id
 							})).appendTo($('.'+site));				    			
 		        		});		        		
 	        		}
 	        		
 	        	}else{// we received an object => Detailed Movie Info	        		
 	        		site = MovieData.site;
-	        		$(detailedMovieItemTabHeader.tmpl({
-	        			"movieTitle" : MovieData.title,
-	        			/*"site" : MovieData.site.toUpperCase(),*/
-	        			"movieId" : '#'+that.selectedMovieId
-	        		})).appendTo($('#movieTabHeader'));
-	        		
-	        		$(detailedMovieItemTabContent.tmpl({
-    					"title" : MovieData.title,
-    					"year" : MovieData.year,
-    					"director" : MovieData.director,
-    					"site" : MovieData.site.toUpperCase(),
-						"description" : MovieData.description,
-						"cast" : MovieData.cast,
-						"genre" : MovieData.genre,
-						"rate" :MovieData.rate,
-						"runtime" : MovieData.runtime,
-	        			"movieId" : that.selectedMovieId
-					})).appendTo($('#movieTabContent'));
-	        			        		
+	        		//only add a new tab with a certain id if it doesn't exist already
+	        		if($('#'+that.selectedMovieId).length<=0){
+	        			$(detailedMovieItemTabHeader.tmpl({	        			
+		        			"movieTitle" : MovieData.title,
+		        			/*"site" : MovieData.site.toUpperCase(),*/
+		        			"movieId" : '#'+that.selectedMovieId
+		        		})).appendTo($('#movieTabHeader'));
+		        		
+		        		$(detailedMovieItemTabContent.tmpl({
+	    					"title" : MovieData.title,
+	    					"year" : MovieData.year,
+	    					"director" : MovieData.director,
+	    					"site" : MovieData.site.toUpperCase(),
+							"description" : MovieData.description,
+							"cast" : MovieData.cast,
+							"genre" : MovieData.genre,
+							"rate" :MovieData.rate,
+							"runtime" : MovieData.runtime,
+		        			"movieId" : that.selectedMovieId
+						})).appendTo($('#movieTabContent'));
+	        		}	        			        			        		
 	        		
 	        		$('#movieTabHeader a[href="#'+that.selectedMovieId+'"]').tab('show');
-	        		
-	        	    /*$('#movieTabHeader a').click(function (e) {
-	        	        e.preventDefault();
-	        	        $(this).tab('show');
-	        	    });*/
+	        			        		
+	        		//bind the removeTab() function to the elements which have the class ".closeTab" only once
+	        		$('.closeTab',this.$ctx).off('click',$.proxy(this.removeTab,this));
+		        	$('.closeTab', this.$ctx).on('click',$.proxy(this.removeTab,this));	 
+	        			        	
 	        	}
 	        	
 	        	//bind the getDetailedData() function to the elements which have the class "movie-id" only once
@@ -227,13 +230,23 @@
 			
 			this.selectedMovieId = $($el).data('uniqueid');
 			detailedMovieData.infoSourceKeys.push($($el).data('site'));
-			detailedMovieData.searchTerms.push(this.selectedMovieId);
+			detailedMovieData.searchTerms.push($($el).data('siteid'));
 			
 			$.atmosphere.log('info', [detailedMovieData]);
 				
 			this.subSocket.response.request.method='POST';
 			this.subSocket.response.request.url=this.$msg.data('detailedsearchUrl');
         	this.subSocket.push(JSON.stringify(detailedMovieData));	
+		},
+		
+		removeTab : function(e){
+			$el = e.target;			
+			$prevEl = e.relatedTarget;
+			var correspondingContentDiv = $($el).parents('a').attr('href'),
+				previousTab = $($el).closest('li').prev().children('a').attr('href');			
+			$(correspondingContentDiv).remove();
+			$($el).parents('li.active').remove();
+    		$('#movieTabHeader a[href="'+previousTab+'"]').tab('show');
 		}
 				
 	});

@@ -48,7 +48,7 @@
 					</button>
 				</header>
 			</div>
-			<div class="row-fluid">
+			<div class="row-fluid divider">
 				<c:forEach var="infoSource" items="${infoSources}"
 					varStatus="status">
 					<c:if test="${status.first}">
@@ -68,7 +68,7 @@
 			<div class="container-fluid">
 				<div class="row-fluid">
 
-					<div id="movieList" class="span4 css-treeview">
+					<div id="movieList" class="span3 css-treeview">
 						<ul></ul>
 					</div>
 
@@ -112,7 +112,7 @@
 		<li><span><spring:message code="searchPage.movie.year" />:&nbsp;{year}</span></li>
 		<li><span><spring:message code="searchPage.movie.director" />:&nbsp;{director}</span></li>
 		<li><a class="movie-id" href="#" data-uniqueId={uniqueid} title={uniqueid}
-					data-site={site}><spring:message
+					data-site={site} data-siteid={siteid}><spring:message
 							code="searchPage.movie.detaileddata" /></a></li>
 		</ul>
 	</li>
@@ -122,7 +122,7 @@
 </textarea>
 
 <textarea id="detailedMovieItemTabHeader" class="ui-helper-hidden">
-	 <li><a data-toggle="tab" href="{movieId}">{movieTitle}</a></li>
+	 <li><a data-toggle="tab" href="{movieId}">{movieTitle}&nbsp;<span class="closeTab">x</span></a></li>
 </textarea>
 
 <textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
