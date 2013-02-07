@@ -1,6 +1,13 @@
 var oTable;
 var selected_id;
 $(document).ready(function() {
+	
+	/*Make the link to the corresponding page in the navbar active*/
+	$('ul.nav li').each(function(){
+		$(this).removeClass('active');
+	});
+	$('#domainPageLink').addClass('active');
+	
 	oTable = $('#roletable').dataTable({
 		"sDom": 'l<"toolbar">frtip',
 		"bFilter" : false,

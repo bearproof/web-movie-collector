@@ -21,15 +21,17 @@
 			<security:authorize access="isAuthenticated()">
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li class="active"><a
+						<li id="homePageLink" class="active"><a
 							href="${pageContext.request.contextPath}/"><fmt:message key="navbar.menu.home"/></a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.domain"/><b class="caret"></b></a>
+						<li id="domainPageLink" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.domain"/><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="${pageContext.request.contextPath}/domain/accounts/list"><fmt:message key="navbar.menu.domain.account"/></a></li>
 								<li><a href="${pageContext.request.contextPath}/domain/roles/list"><fmt:message key="navbar.menu.domain.role"/></a></li>
 							</ul>
 						</li>
-						</ul>	
+						<li id="searchPageLink"><a
+							href="${pageContext.request.contextPath}/movieLand"><fmt:message key="navbar.menu.wmc"/></a></li>
+					</ul>	
 				</div>
 			</security:authorize>
 		</div>

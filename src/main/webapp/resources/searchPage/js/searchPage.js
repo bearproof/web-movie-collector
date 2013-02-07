@@ -289,6 +289,12 @@
 	});
 	
 	$(function(){		
+		
+		/*Make the link to the corresponding page in the navbar active*/
+		$('ul.nav li').each(function(){
+			$(this).removeClass('active');
+		});
+		$('#searchPageLink').addClass('active');
 			
 	    $('.ez-template').bind('click', function(){  
 	    	$('.panel-header').addClass("panel-header-ez");
