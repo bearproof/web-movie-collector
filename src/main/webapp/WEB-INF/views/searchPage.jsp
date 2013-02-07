@@ -1,19 +1,23 @@
 <%@include file="/WEB-INF/views/includes/taglibs.jsp"%>
+
+<script type="text/javascript"
+	src="/resources/js/css_browser_selector-4.0.min.js"></script>
 <link rel="stylesheet"
 	href="/resources/common/css/reset.meyer-2.0.min.css" media="all" />
-<link rel="stylesheet" href="/resources/common/css/base.css" media="all" />
+<link rel="stylesheet" 
+	href="/resources/common/css/base.css" media="all" />
 <link rel="stylesheet"
 	href="/resources/localeChanger/css/localeChanger.css" media="all" />
 <link rel="stylesheet" href="/resources/common/css/easyui.css"
 	media="all" />
-<link rel="stylesheet" href="/resources/common/css/icon.css" media="all" />
-<link
-	href="/resources/jquery/jqueryUI-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css"
-	rel="stylesheet">
-<link rel="stylesheet" href="/resources/searchPage/css/searchPage.css"
-	media="all" />
-<link rel="stylesheet" href="/resources/css/css3treeview.css"
-	media="all" />
+<link rel="stylesheet" 
+	href="/resources/common/css/icon.css" media="all" />
+<link rel="stylesheet"
+	href="/resources/jquery/jqueryUI-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css">
+<link rel="stylesheet" 
+	href="/resources/searchPage/css/searchPage.css" media="all" />
+<link rel="stylesheet" 
+	href="/resources/css/css3treeview.css" media="all" />
 
 <div id="WMCcontainer">
 	<header id="header">
@@ -92,22 +96,22 @@
 	<%-- MovieItemTemplates --%>
 	<textarea id="searchItemTmpl" class="ui-helper-hidden">
 	<li>
-		<input id={searchTerm} type="checkbox" />
+		<input id={searchTerm} type="checkbox">
 		<label for={searchTerm}>{movieTitle}</label>
 		<ul class={searchTerm}></ul>
 	</li>
 </textarea>
 	<textarea id="movieDataSourceTmpl" class="ui-helper-hidden">
 		<li>
-			<input type="checkbox" id="{site}" />
+			<input type="checkbox" id="{site}">
 			<label for={site}>{site}</label>
 			<ul class={site}></ul>
 		</li>	
 </textarea>
 	<textarea id="movieItemTmpl" class="ui-helper-hidden">
 	<li>
-		<input type="checkbox" />
-		<label for={title}>{title}</label>
+		<input type="checkbox" id={uniqueid}>
+		<label for={uniqueid}>{title}</label>
 		<ul>
 		<li><span><spring:message code="searchPage.movie.year" />:&nbsp;{year}</span></li>
 		<li><span><spring:message code="searchPage.movie.director" />:&nbsp;{director}</span></li>
@@ -122,59 +126,67 @@
 </textarea>
 
 <textarea id="detailedMovieItemTabHeader" class="ui-helper-hidden">
-	 <li><a data-toggle="tab" href="{movieId}">{movieTitle}&nbsp;<span class="closeTab">x</span></a></li>
+	 <li><a data-toggle="tab" href="{uniqueid}">{movieTitle}&nbsp;<span class="closeTab">x</span></a></li>
 </textarea>
 
 <textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
-	<div class="tab-pane" id={movieId}>			
+	<div class="tab-pane" id={uniqueid}>			
 			<ul>
-				<li class="centered"><span class="bold"><spring:message code="searchPage.movie.site" />:&nbsp;</span><span>{site}</span></li>	
+				<li class="centered">
+					<span class="bold"><spring:message code="searchPage.movie.site" />:&nbsp;</span>
+					<span class="movieSite">{site}</span>
+				</li>	
 				<li><ul>
-						<li class="centered">{title}</li>
+						<li class="title centered">{title}</li>
 					</ul>
 				</li>
 				<li><span class="bold"><spring:message code="searchPage.movie.year" /></span>
 					<ul>
-						<li>{year}</li>
+						<li class="year">{year}</li>
 					</ul>
 				</li>
 				<li><span class="bold"><spring:message code="searchPage.movie.director" /></span>
 					<ul>
-						<li>{director}</li>
+						<li class="director">{director}</li>
 					</ul>
 				</li>
 				<li><span class="bold"><spring:message code="searchPage.movie.description" /></span>
 					<ul>
-						<li>{description}</li>
+						<li class="description">{description}</li>
 					</ul>
 				</li>
 				<li><span class="bold"><spring:message code="searchPage.movie.cast" /></span>
 					<ul>
-						<li>{cast}</li>
+						<li class="cast">{cast}</li>
 					</ul>
 				</li>
 				<li><span class="bold"><spring:message code="searchPage.movie.genre" /></span>
 					<ul>
-						<li>{genre}</li>
+						<li class="genre">{genre}</li>
 					</ul>
 				</li>
 				<li><span class="bold"><spring:message code="searchPage.movie.rate" /></span>
 					<ul>
-						<li>{rate}</li>
+						<li class="rate">{rate}</li>
 					</ul>
 				</li>
 				<li><span class="bold"><spring:message code="searchPage.movie.runtime" /></span>
 					<ul>
-						<li>{runtime}</li>
+						<li class="runtime">{runtime}</li>
 					</ul>
 				</li>				
 			</ul>
+			
+			<button class="btn btn-primary addToDB">
+				<spring:message code="searchPage.movie.addToDB" />
+			</button>
 	</div>			
 </textarea>
 	<%--Messages Component--%>
 	<input type="hidden" class="messages"
 		data-search-url='${pageContext.request.contextPath}/searchMovies/'
 		data-detailedSearch-url='${pageContext.request.contextPath}/searchDetailedData/'
+		data-saveMovie-url = '${pageContext.request.contextPath}/domain/movies'
 		data-searchPage.no.infosource.selected='<spring:message code="searchPage.no.infosource.selected"/>'
 		data-searchpage.movie.required='<spring:message code="searchPage.movie.required"/>'
 		data-searchPage.server.error='<spring:message code="searchPage.server.error"/>'

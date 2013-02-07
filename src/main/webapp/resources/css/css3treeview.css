@@ -29,7 +29,8 @@
 	margin: 0 0 0 22px;
 }
 
-.css-treeview input + label + ul {
+.css-treeview input + label + ul,
+.css-treeview input ~ ul {
 	display: none;
 }
 
@@ -42,7 +43,8 @@
 	opacity: .6;
 }
 
-.css-treeview input:checked:not(:disabled ) + label + ul {
+.css-treeview input:checked:not(:disabled ) + label + ul, 
+.css-treeview input:checked:not(:disabled ) ~ ul {
 	display: block;
 }
 

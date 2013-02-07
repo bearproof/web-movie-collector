@@ -98,7 +98,7 @@
 								"title" : value.title,
 								"year" : value.year,
 								"director" : value.director,
-								"uniqueid" : value.id.replace(/\//g, ''),
+								"uniqueid" : value.id.replace(/\//g, ''),								
 								"site" : value.site,
 								"siteid" : value.id
 							})).appendTo($('.'+site));				    			
@@ -108,11 +108,11 @@
 	        	}else{// we received an object => Detailed Movie Info	        		
 	        		site = MovieData.site;
 	        		//only add a new tab with a certain id if it doesn't exist already
-	        		if($('#'+that.selectedMovieId).length<=0){
+	        		if($('#tab'+that.selectedMovieId).length<=0){
 	        			$(detailedMovieItemTabHeader.tmpl({	        			
 		        			"movieTitle" : MovieData.title,
 		        			/*"site" : MovieData.site.toUpperCase(),*/
-		        			"movieId" : '#'+that.selectedMovieId
+		        			"uniqueid" : '#tab'+that.selectedMovieId
 		        		})).appendTo($('#movieTabHeader'));
 		        		
 		        		$(detailedMovieItemTabContent.tmpl({
@@ -125,15 +125,18 @@
 							"genre" : MovieData.genre,
 							"rate" :MovieData.rate,
 							"runtime" : MovieData.runtime,
-		        			"movieId" : that.selectedMovieId
+		        			"uniqueid" : 'tab'+that.selectedMovieId
 						})).appendTo($('#movieTabContent'));
 	        		}	        			        			        		
 	        		
-	        		$('#movieTabHeader a[href="#'+that.selectedMovieId+'"]').tab('show');
+	        		$('#movieTabHeader a[href="#tab'+that.selectedMovieId+'"]').tab('show');
 	        			        		
 	        		//bind the removeTab() function to the elements which have the class ".closeTab" only once
 	        		$('.closeTab',this.$ctx).off('click',$.proxy(this.removeTab,this));
 		        	$('.closeTab', this.$ctx).on('click',$.proxy(this.removeTab,this));	 
+		        	
+		        	$('.addToDB', this.$ctx).off('click', $.proxy(this.saveMovieInDb,this));
+		        	$('.addToDB', this.$ctx).on('click', $.proxy(this.saveMovieInDb,this));
 	        			        	
 	        	}
 	        	
@@ -239,14 +242,48 @@
         	this.subSocket.push(JSON.stringify(detailedMovieData));	
 		},
 		
+		/**Sends Movie Information to the server to be saved into the DB*/
+		saveMovieInDb : function(e){
+			var $el = e.target,
+				MovieData = {};
+			
+			MovieData.title = $($el).siblings('ul').find('li.title').html();
+			MovieData.year = $($el).siblings('ul').find('li.year').html();
+			MovieData.director = $($el).siblings('ul').find('li.director').html();
+			MovieData.site = $($el).siblings('ul').find('span.movieSite').html();
+			MovieData.description = $($el).siblings('ul').find('li.description').html();
+			MovieData.cast = $($el).siblings('ul').find('li.cast').html();
+			MovieData.genre = $($el).siblings('ul').find('li.genre').html();
+			MovieData.rate = $($el).siblings('ul').find('li.rate').html();
+			MovieData.runtime = $($el).siblings('ul').find('li.runtime').html();
+			MovieData.userId = '';
+    		MovieData.userRating = '';
+    		MovieData.movieStatus = '';
+    		MovieData.shelfLocation = '';
+    		MovieData.loanDate = '';
+    		MovieData.returnData = '';
+    		MovieData.lentTo = '';
+    		MovieData.ownMovieNotes = '';
+    		
+    		this.subSocket.response.request.method='POST';
+			this.subSocket.response.request.url=this.$msg.data('savemovieUrl');
+        	this.subSocket.push(JSON.stringify(MovieData));	
+		},
+		
+		/**Removes the selected tab from the DetailedMovieInfo section*/
 		removeTab : function(e){
 			$el = e.target;			
 			$prevEl = e.relatedTarget;
 			var correspondingContentDiv = $($el).parents('a').attr('href'),
-				previousTab = $($el).closest('li').prev().children('a').attr('href');			
+				previousTab = $($el).closest('li').prev().children('a').attr('href'),
+				nextTab = $($el).closest('li').next().children('a').attr('href');
 			$(correspondingContentDiv).remove();
 			$($el).parents('li.active').remove();
-    		$('#movieTabHeader a[href="'+previousTab+'"]').tab('show');
+			if((previousTab!==null)&&(previousTab!==undefined)){
+				$('#movieTabHeader a[href="'+previousTab+'"]').tab('show');				
+			}else if((nextTab!==null)&&(nextTab!==undefined)){
+				$('#movieTabHeader a[href="'+nextTab+'"]').tab('show');
+			}
 		}
 				
 	});
