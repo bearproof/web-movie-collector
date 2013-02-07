@@ -1,10 +1,12 @@
 package ro.isdc.auth.helper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import ro.isdc.auth.domain.Movie;
 import ro.isdc.auth.support.UserContextUtil;
 
+@Component
 public class MovieHelper implements EntityHelper<Movie> {
 
 	@Autowired

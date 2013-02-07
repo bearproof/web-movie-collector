@@ -12,6 +12,8 @@ import javax.validation.constraints.Size;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import ro.isdc.model.MovieInfo;
+
 /**
  * <p>
  * Movie entity class
@@ -20,13 +22,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author Adrian.Ursu
  */
 @Document
-public class Movie {
+public class Movie extends MovieInfo {
 
 	@Id
 	private String id;
 
 	@NotNull
-	@Size(min = 1, max = 100)
 	private String userId;
 
 	private String userRating;
@@ -99,21 +100,6 @@ public class Movie {
 		this.returnDate = returnDate;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		return reflectionEquals(this, obj);
-	}
-
-	@Override
-	public int hashCode() {
-		return reflectionHashCode(this);
-	}
-
-	@Override
-	public String toString() {
-		return reflectionToString(this);
-	}
-
 	public String getUserRating() {
 		return userRating;
 	}
@@ -129,4 +115,20 @@ public class Movie {
 	public void setMovieStatus(String movieStatus) {
 		this.movieStatus = movieStatus;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return reflectionEquals(this, obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return reflectionHashCode(this);
+	}
+
+	@Override
+	public String toString() {
+		return reflectionToString(this);
+	}
+
 }

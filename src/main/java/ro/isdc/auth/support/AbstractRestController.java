@@ -15,6 +15,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.apache.log4j.Logger;
+import org.atmosphere.cpr.AtmosphereResource;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,7 +50,7 @@ public abstract class AbstractRestController<T> {
 	 */
 	@RequestMapping(value = "/", method = POST, consumes = "application/json")
 	public @ResponseBody
-	Map<String, ? extends Object> create(@RequestBody T entity, HttpServletResponse response) {
+	Map<String, ? extends Object> create(AtmosphereResource atmosphereResource, @RequestBody T entity, HttpServletResponse response) {
 		logger.debug("Creating entity: " + entity.toString());
 		Set<ConstraintViolation<T>> failures = getValidator().validate(entity);
 		if (!failures.isEmpty()) {
