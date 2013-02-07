@@ -69,6 +69,7 @@
 			movieTitle = $('.movie-title',this.$ctx).val(), 
 			MovieData = null,
 			site = null,
+			movieandsite = null,
 			that=this,
 			treeTitlesArray = [],
 			panelContent = "",
@@ -79,28 +80,29 @@
 
 			if(response.state === "messageReceived"){								
 					
-				if(response.responseBody==="201"){
+				if((response.responseBody==="201")||((response.responseBody==="")&&(response.status===200))){
 					alert('Movie saved successfully in DB');
-					return false;
-				}else if (response.responseBody==="400"){
+					return;
+				}else if((response.responseBody==="400")||(response.status===400)){
 					alert('Could not save movie into DB');
-					return false;
+					return;
 				}
         		MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
 				//$.atmosphere.log('info', [MovieData]);								
 	        		
-	        	if($.isArray(MovieData)){
+	        	if($.isArray(MovieData)&&(MovieData[0].title!==undefined)){
 	        		var trimmedMovieTitle = movieTitle.replace(/\s+/g, ''),
 	        			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+MovieData[0].site);	        		
 	        		/*search if a node with the same info already exists in the tree 
 	        		  and if the node doesn't already exist, add it*/
 	        		if(currentNode.length<=0){
+	        			movieandsite = trimmedMovieTitle+MovieData[0].site;
 	        			$(movieDataSourceTmpl.tmpl({
-							"site" : MovieData[0].site						
+							"site" : MovieData[0].site,
+							"movieandsite" : movieandsite
 						})).appendTo($('.'+trimmedMovieTitle));	
 						
 						$.each(MovieData,function(index, value){
-			        		site = value.site;
 			        		$(movieItemTmpl.tmpl({
 								"title" : value.title,
 								"year" : value.year,
@@ -108,11 +110,14 @@
 								"uniqueid" : value.id.replace(/\//g, ''),								
 								"site" : value.site,
 								"siteid" : value.id
-							})).appendTo($('.'+site));				    			
+							})).appendTo($('.'+movieandsite));				    			
 		        		});		        		
 	        		}
 	        		
-	        	}else{// we received an object => Detailed Movie Info	        		
+	        		$('.removeTreeNode',that.$ctx).off('click',$.proxy(that.removeTreeNode,that));
+		        	$('.removeTreeNode', that.$ctx).on('click',$.proxy(that.removeTreeNode,that));
+	        		
+	        	}else if((MovieData!==null)&&(MovieData.title!==undefined)){// we received an object => Detailed Movie Info	   	        		
 	        		site = MovieData.site;
 	        		//only add a new tab with a certain id if it doesn't exist already
 	        		if($('#tab'+that.selectedMovieId).length<=0){
@@ -207,13 +212,11 @@
 				$(searchItemTmpl.tmpl({
 					"searchTerm" : trimmedMovieTitle,
 					"movieTitle" : movieTitle
-				})).appendTo(contentArea.children('ul'));
+				})).appendTo(contentArea.children('ul'));								
 			}			
 			
 			//TODO:	open the existing tree node
-			/*}else{
-				$('#accordion').accordion('select',movieTitle);					
-			}	*/
+			
 			
 			this.subSocket.response.request.method='POST';
 			this.subSocket.response.request.url=this.$ctx.data('search-url');
@@ -268,6 +271,7 @@
     		MovieData.shelfLocation = $($el).siblings('input.shelfLocation').val();    		
     		MovieData.lentTo = $($el).siblings('input.lentTo').val();
     		MovieData.ownMovieNotes = $($el).siblings('input.ownMovieNotes').val();
+    		MovieData.idOnSite = $($el).parents('div.tab-pane').attr('id');
     		MovieData.userId = '';
     		MovieData.loanDate = '';
     		MovieData.returnDate = '';
@@ -280,7 +284,6 @@
 		/**Removes the selected tab from the DetailedMovieInfo section*/
 		removeTab : function(e){
 			$el = e.target;			
-			$prevEl = e.relatedTarget;
 			var correspondingContentDiv = $($el).parents('a').attr('href'),
 				previousTab = $($el).closest('li').prev().children('a').attr('href'),
 				nextTab = $($el).closest('li').next().children('a').attr('href');
@@ -291,7 +294,19 @@
 			}else if((nextTab!==null)&&(nextTab!==undefined)){
 				$('#movieTabHeader a[href="'+nextTab+'"]').tab('show');
 			}
+		},
+		
+		/**Removes the selected node from the BriefMovieInfo tree*/
+		removeTreeNode : function(e){
+			$el = e.target;		
+			var correspondingTree = $($el).closest('li');			
+			$(correspondingTree).remove();
 		}
+		
+		/*createAutoClosingAlert : function(selector,delay){
+			var alert = $(selector).alert();
+			   window.setTimeout(function() { alert.alert('close'); }, delay);
+		}*/
 				
 	});
 	

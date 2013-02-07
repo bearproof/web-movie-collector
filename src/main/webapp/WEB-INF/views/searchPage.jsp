@@ -89,16 +89,16 @@
 <textarea id="searchItemTmpl" class="ui-helper-hidden">
 	<li>
 		<input id={searchTerm} type="checkbox">
-		<label for={searchTerm}>{movieTitle}</label>
+		<label for={searchTerm}>{movieTitle}&nbsp;<span class="removeTreeNode">x</span></label>
 		<ul class={searchTerm}></ul>
 	</li>
 </textarea>
 
 <textarea id="movieDataSourceTmpl" class="ui-helper-hidden">
 	<li>
-		<input type="checkbox" id="{site}">
-		<label for={site}>{site}</label>
-		<ul class={site}></ul>
+		<input type="checkbox" id="{movieandsite}">
+		<label for={movieandsite}>{site}</label>
+		<ul class={movieandsite}></ul>
 	</li>	
 </textarea>
 
@@ -208,19 +208,11 @@
 	data-searchPage.movie.not.found='<spring:message code="searchPage.movie.not.found"/>'
 	data-searchPage.one.result.found='<spring:message code="searchPage.one.result.found"/>'>
 
-<script type="text/javascript"
-	src="/resources/inheritance/js/inheritance-1.0.min.js"></script>
-<script type="text/javascript"
-	src="/resources/jquery/jquery-1.8.3.min.js"></script>	
-<!-- <script type="text/javascript"
-	src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> -->
-<script type="text/javascript"
-	src="/resources/js/bootstrap-tab.js"></script>
-<script type="text/javascript"
-	src="/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
-<script type="text/javascript" 
-	src="/resources/common/js/base.js"></script>
-<script type="text/javascript"
-	src="/resources/localeChanger/js/localeChanger.js"></script>
-<script type="text/javascript"
-	src="/resources/searchPage/js/searchPage.js"></script>
+<script type="text/javascript" src="/resources/inheritance/js/inheritance-1.0.min.js"></script>
+<script type="text/javascript" src="/resources/jquery/jquery-1.8.3.min.js"></script>	
+<!-- <script type="text/javascript"	src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> -->
+<script type="text/javascript" src="/resources/js/bootstrap-tab.js"></script>
+<script type="text/javascript" src="/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
+<script type="text/javascript" src="/resources/common/js/base.js"></script>
+<script type="text/javascript" src="/resources/localeChanger/js/localeChanger.js"></script>
+<script type="text/javascript" src="/resources/searchPage/js/searchPage.js"></script>

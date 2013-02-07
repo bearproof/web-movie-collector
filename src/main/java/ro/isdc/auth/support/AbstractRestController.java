@@ -60,9 +60,10 @@ public abstract class AbstractRestController<T> {
 			bc.broadcast(HttpServletResponse.SC_BAD_REQUEST);
 			return getFailureMessages(failures);
 		} else {
-			getService().create(entity);
-			bc.broadcast(HttpServletResponse.SC_CREATED);
-			response.setStatus(HttpServletResponse.SC_CREATED);
+			if(getService().create(entity)!= null) {
+				bc.broadcast(HttpServletResponse.SC_CREATED);
+				response.setStatus(HttpServletResponse.SC_CREATED);
+			}
 			return null;
 		}
 	}

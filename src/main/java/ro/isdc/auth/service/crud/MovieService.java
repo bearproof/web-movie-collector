@@ -36,8 +36,16 @@ public class MovieService extends AbstractCrudService<Movie> {
 
 	@Override
 	public Movie create(Movie entity) {
-		entity.setUserId(userContext.getUserId());
-		return repository.save(entity);
+		
+		String uId= userContext.getUserId();
+		
+		if(repository.findByIdOnSiteAndUserId(entity.getIdOnSite(), uId) != null) {
+			return null;
+		}
+		else {
+			entity.setUserId(uId);
+			return repository.save(entity);
+		}
 	}
 	// TODO: Override more methods as I see fit.
 

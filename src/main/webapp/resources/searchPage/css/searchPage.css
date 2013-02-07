@@ -267,6 +267,10 @@ div.container {
 	cursor: pointer;
 }
 
+#mainContent input[type="text"]:focus{
+	color: #000;
+}
+
 #movieList label{
 	overflow:hidden;
 }
@@ -284,3 +288,5 @@ div.container {
 .tab-content {
 	background-color: #F1F1F1;
 }
+
+

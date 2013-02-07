@@ -29,6 +29,9 @@ public class Movie extends MovieInfo {
 
 	@NotNull
 	private String userId;
+	
+	@NotNull
+	private String idOnSite;
 
 	private String userRating;
 
@@ -129,6 +132,14 @@ public class Movie extends MovieInfo {
 	@Override
 	public String toString() {
 		return reflectionToString(this);
+	}
+
+	public String getIdOnSite() {
+		return idOnSite;
+	}
+
+	public void setIdOnSite(String idOnSite) {
+		this.idOnSite = idOnSite;
 	}
 
 }

@@ -13,5 +13,7 @@ import ro.isdc.auth.domain.Movie;
 public interface MovieRepository extends PagingAndSortingRepository<Movie, String> {
 
 	// TODO Create different queries by requested functionality
+	
+	Movie findByIdOnSiteAndUserId(String idOnSite, String userId);
 
 }
