@@ -186,7 +186,7 @@
 	<input type="hidden" class="messages"
 		data-search-url='${pageContext.request.contextPath}/searchMovies/'
 		data-detailedSearch-url='${pageContext.request.contextPath}/searchDetailedData/'
-		data-saveMovie-url = '${pageContext.request.contextPath}/domain/movies'
+		data-saveMovie-url = '${pageContext.request.contextPath}/domain/movies/'
 		data-searchPage.no.infosource.selected='<spring:message code="searchPage.no.infosource.selected"/>'
 		data-searchpage.movie.required='<spring:message code="searchPage.movie.required"/>'
 		data-searchPage.server.error='<spring:message code="searchPage.server.error"/>'

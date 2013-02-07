@@ -261,7 +261,7 @@
     		MovieData.movieStatus = '';
     		MovieData.shelfLocation = '';
     		MovieData.loanDate = '';
-    		MovieData.returnData = '';
+    		MovieData.returnDate = '';
     		MovieData.lentTo = '';
     		MovieData.ownMovieNotes = '';
     		
