@@ -85,7 +85,7 @@
 		<%-- MovieItemTemplates --%>
 		<textarea id="searchItemTmpl" class="ui-helper-hidden">
 			<li>
-				<input id={searchTerm} type="checkbox" />
+				<input id={searchTerm} type="checkbox">
 				<label for={searchTerm}>{movieTitle}</label>
 				<ul class={searchTerm}></ul>
 			</li>
@@ -93,7 +93,7 @@
 		
 		<textarea id="movieDataSourceTmpl" class="ui-helper-hidden">
 			<li>
-				<input type="checkbox" id="{site}" />
+				<input type="checkbox" id="{site}">
 				<label for={site}>{site}</label>
 				<ul class={site}></ul>
 			</li>	
@@ -101,8 +101,8 @@
 		
 		<textarea id="movieItemTmpl" class="ui-helper-hidden">
 			<li>
-				<input type="checkbox" />
-				<label for={title}>{title}</label>
+				<input type="checkbox" id={uniqueid}>
+				<label for={uniqueid}>{title}</label>
 				<ul>
 					<li><span><spring:message code="searchPage.movie.year" />:&nbsp;{year}</span></li>
 					<li><span><spring:message code="searchPage.movie.director" />:&nbsp;{director}</span></li>
@@ -116,7 +116,7 @@
 		</textarea>
 
 		<textarea id="detailedMovieItemTabHeader" class="ui-helper-hidden">
-	 		<li><a data-toggle="tab" href="{movieId}">{movieTitle}&nbsp;<span class="closeTab">x</span></a></li>
+	 		<li><a data-toggle="tab" href="{uniqueid}">{movieTitle}&nbsp;<span class="closeTab">x</span></a></li>
 		</textarea>
 
 		<textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
