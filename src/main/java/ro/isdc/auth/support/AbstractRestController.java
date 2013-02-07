@@ -16,6 +16,7 @@ import javax.validation.Validator;
 
 import org.apache.log4j.Logger;
 import org.atmosphere.cpr.AtmosphereResource;
+import org.atmosphere.cpr.Broadcaster;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,11 +54,14 @@ public abstract class AbstractRestController<T> {
 	Map<String, ? extends Object> create(AtmosphereResource atmosphereResource, @RequestBody T entity, HttpServletResponse response) {
 		logger.debug("Creating entity: " + entity.toString());
 		Set<ConstraintViolation<T>> failures = getValidator().validate(entity);
+		final Broadcaster bc = atmosphereResource.getBroadcaster();
 		if (!failures.isEmpty()) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+			bc.broadcast(HttpServletResponse.SC_BAD_REQUEST);
 			return getFailureMessages(failures);
 		} else {
 			getService().create(entity);
+			bc.broadcast(HttpServletResponse.SC_CREATED);
 			response.setStatus(HttpServletResponse.SC_CREATED);
 			return null;
 		}

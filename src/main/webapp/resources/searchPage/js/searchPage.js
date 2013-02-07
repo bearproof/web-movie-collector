@@ -77,10 +77,17 @@
 			
 			$.atmosphere.log('info', ['onMessageReceived']);	
 
-			if(response.state === "messageReceived"){
+			if(response.state === "messageReceived"){								
 					
+				if(response.responseBody==="201"){
+					alert('Movie saved successfully in DB');
+					return false;
+				}else if (response.responseBody==="400"){
+					alert('Could not save movie into DB');
+					return false;
+				}
         		MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
-				//$.atmosphere.log('info', [MovieData]);
+				//$.atmosphere.log('info', [MovieData]);								
 	        		
 	        	if($.isArray(MovieData)){
 	        		var trimmedMovieTitle = movieTitle.replace(/\s+/g, ''),
@@ -256,14 +263,14 @@
 			MovieData.genre = $($el).siblings('ul').find('li.genre').html();
 			MovieData.rate = $($el).siblings('ul').find('li.rate').html();
 			MovieData.runtime = $($el).siblings('ul').find('li.runtime').html();
-			MovieData.userId = '';
-    		MovieData.userRating = '';
-    		MovieData.movieStatus = '';
-    		MovieData.shelfLocation = '';
+    		MovieData.userRating = $($el).siblings('select.userRating').find(":selected").text();
+    		MovieData.movieStatus = $($el).siblings('select.movieStatus').find(":selected").text();
+    		MovieData.shelfLocation = $($el).siblings('input.shelfLocation').val();    		
+    		MovieData.lentTo = $($el).siblings('input.lentTo').val();
+    		MovieData.ownMovieNotes = $($el).siblings('input.ownMovieNotes').val();
+    		MovieData.userId = '';
     		MovieData.loanDate = '';
     		MovieData.returnDate = '';
-    		MovieData.lentTo = '';
-    		MovieData.ownMovieNotes = '';
     		
     		this.subSocket.response.request.method='POST';
 			this.subSocket.response.request.url=this.$msg.data('savemovieUrl');
