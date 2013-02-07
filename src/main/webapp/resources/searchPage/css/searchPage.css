@@ -256,7 +256,7 @@ div.container {
 
 
 #movieTabHeader a{
-	font-size: 80%;
+	font-size: 85%;
 }
 
 #mainContent .divider{
@@ -269,4 +269,18 @@ div.container {
 
 #movieList label{
 	overflow:hidden;
+}
+
+#movieTabHeader li a {
+	background-color: black;
+	color: #FFF;
+}
+
+/* Adding a red color to the "x" character on the tab. */
+#movieTabHeader li a .closeTab {
+		color: #FF4D4D;
+	}
+	
+.tab-content {
+	background-color: #F1F1F1;
 }
