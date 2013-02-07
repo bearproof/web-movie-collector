@@ -16,4 +16,6 @@ public interface MovieRepository extends PagingAndSortingRepository<Movie, Strin
 	
 	Movie findByIdOnSiteAndUserId(String idOnSite, String userId);
 
+	Movie findByDescription(String description);
+
 }

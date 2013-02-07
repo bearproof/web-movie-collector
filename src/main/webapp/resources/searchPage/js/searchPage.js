@@ -88,7 +88,7 @@
 					return;
 				}
         		MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
-				//$.atmosphere.log('info', [MovieData]);								
+				$.atmosphere.log('info', [MovieData]);								
 	        		
 	        	if($.isArray(MovieData)&&(MovieData[0].title!==undefined)){
 	        		var trimmedMovieTitle = movieTitle.replace(/\s+/g, ''),
