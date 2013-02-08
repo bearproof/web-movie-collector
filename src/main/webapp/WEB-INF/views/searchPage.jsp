@@ -137,181 +137,114 @@
 </textarea>
 
 <textarea id="detailedMovieItemTabHeader" class="ui-helper-hidden">
-	<li><a data-toggle="tab" href="{uniqueid}">{movieTitle}&nbsp;<span class="closeTab">x</span></a></li>
+		<li><a data-toggle="tab" href="{uniqueid}">{movieTitle}&nbsp;<span
+			class="closeTab">x</span></a></li>
 </textarea>
-			
+
 <textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
 	<div class="tab-pane" id={uniqueid}>			
 		<ul>
 			<li class="centered">
-				<span class="bold"><spring:message code="searchPage.movie.site" />:&nbsp;</span>
+				<span class="bold"><spring:message
+						code="searchPage.movie.site" />:&nbsp;</span>
 				<span class="movieSite">{site}</span>
 			</li>	
-			<li><ul>
-					<li class="title centered">{title}</li>
-				</ul>
-			</li>
-			<li><span class="bold"><spring:message code="searchPage.movie.year" /></span>
-				<ul>
-					<li class="year">{year}</li>
-				</ul>
-			</li>
-			<li><span class="bold"><spring:message code="searchPage.movie.director" /></span>
-				<ul>
-					<li class="director">{director}</li>
-				</ul>
-			</li>
-			<li><span class="bold"><spring:message code="searchPage.movie.description" /></span>
-				<ul>
-					<li class="description">{description}</li>
-				</ul>
-			</li>
-			<li><span class="bold"><spring:message code="searchPage.movie.cast" /></span>
-				<ul>
-					<li class="cast">{cast}</li>
-				</ul>
-			</li>
-			<li><span class="bold"><spring:message code="searchPage.movie.genre" /></span>
-				<ul>
-					<li class="genre">{genre}</li>
-				</ul>
->>>>>>> Added different icons for the different levels in the tree
-			</li>
-		</textarea>
-
-		<textarea id="movieDataSourceTmpl" class="ui-helper-hidden">
-			<li>
-				<input type="checkbox" id="{movieandsite}">
-				<label for={movieandsite}>{site}</label>
-				<ul class={movieandsite}></ul>
-			</li>	
-		</textarea>
-
-		<textarea id="movieItemTmpl" class="ui-helper-hidden">
-			<li>
-				<input type="checkbox" id={uniqueid}>
-				<label for={uniqueid}>{title}</label>
-				<ul>
-					<li><span><spring:message code="searchPage.movie.year" />:&nbsp;{year}</span></li>
-					<li><span><spring:message
-								code="searchPage.movie.director" />:&nbsp;{director}</span></li>
-					<li><a class="movie-id" href="#" data-uniqueId={uniqueid}
-						title={uniqueid} data-site={site} data-siteid={siteid}><spring:message
-								code="searchPage.movie.detaileddata" /></a></li>
-				</ul>
-			</li>
-		</textarea>
-
-		<textarea id="noMovieFoundTmpl" class="ui-helper-hidden">
-			<li><span>{noMovieFound}</span></li>
-		</textarea>
-
-		<textarea id="detailedMovieItemTabHeader" class="ui-helper-hidden">
-	 		<li><a data-toggle="tab" href="{uniqueid}">{movieTitle}&nbsp;<span
-					class="closeTab">x</span></a></li>
-		</textarea>
-
-		<textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
-			<div class="tab-pane" id={uniqueid}>			
-				<ul>
-					<li class="centered">
-						<span class="bold"><spring:message
-								code="searchPage.movie.site" />:&nbsp;</span>
-						<span class="movieSite">{site}</span>
-					</li>	
-					
-					<li>
-						<ul>
-							<li class="centered">{title}</li>
-						</ul>
-					</li>		
-				</ul>
 			
-				<table summary="This table shows the details for the selected movie" class="movieDetailsTable">
-					<tr>
-						<th><spring:message code="searchPage.movie.year" />:</th>
-						<td>{year}</td>
-					</tr>
-					
-					<tr>
-						<th><spring:message code="searchPage.movie.director" />:</th>
-						<td>{director}</td>
-					</tr>
-					
-					<tr>
-						<th><spring:message code="searchPage.movie.description" />:</th>
-						<td>{description}</td>
-					</tr>
-					
-					<tr>
-						<th><spring:message code="searchPage.movie.cast" />:</th>
-						<td>{cast}</td>
-					</tr>
-					
-					<tr>
-						<th><spring:message code="searchPage.movie.genre" />:</th>
-						<td>{genre}</td>
-					</tr>
-					
-					<tr>
-						<th><spring:message code="searchPage.movie.rate" />:</th>
-						<td>{rate}</td>
-					</tr>
-					
-					<tr>
-						<th><spring:message code="searchPage.movie.runtime" />:</th>
-						<td>{runtime}</td>
-					</tr>
-				</table>
-				
-				<button class="btn btn-primary addToDB">
-					<spring:message code="searchPage.movie.addToDB" />
-				</button>
-				
-				<select class="userRating">
-					<option value="Unrated" selected="selected">Unrated</option>
-					<option value="Don't bother seeing">Don't bother seeing</option>
-					<option value="Pretty good">Pretty good</option>
-					<option value="Very good">Very good</option>
-					<option value="Excellent">Excellent</option>
-				</select> 
+			<li>
+				<ul>
+					<li class="centered">{title}</li>
+				</ul>
+			</li>		
+		</ul>
+	
+		<table summary="This table shows the details for the selected movie" class="movieDetailsTable">
+			<tr>
+				<th><spring:message code="searchPage.movie.year" />:</th>
+				<td>{year}</td>
+			</tr>
+			
+			<tr>
+				<th><spring:message code="searchPage.movie.director" />:</th>
+				<td>{director}</td>
+			</tr>
+			
+			<tr>
+				<th><spring:message code="searchPage.movie.description" />:</th>
+				<td>{description}</td>
+			</tr>
+			
+			<tr>
+				<th><spring:message code="searchPage.movie.cast" />:</th>
+				<td>{cast}</td>
+			</tr>
+			
+			<tr>
+				<th><spring:message code="searchPage.movie.genre" />:</th>
+				<td>{genre}</td>
+			</tr>
+			
+			<tr>
+				<th><spring:message code="searchPage.movie.rate" />:</th>
+				<td>{rate}</td>
+			</tr>
+			
+			<tr>
+				<th><spring:message code="searchPage.movie.runtime" />:</th>
+				<td>{runtime}</td>
+			</tr>
+		</table>
 		
-				<select class="movieStatus">
-					<option value="Want to see" >Want to see</option>
-					<option value="Seen already">Seen already</option>
-					<option value="Not specified" selected="selected">Not specified</option>						
-				</select> 
+		<button class="btn btn-primary addToDB">
+			<spring:message code="searchPage.movie.addToDB" />
+		</button>
 		
-				<input type="text" class="shelfLocation" value="" placeholder="Shelf Location">
-				<input type="text" class="lentTo" value="" placeholder="Lent To">
-				<input type="text" class="ownMovieNotes" value="" placeholder="My Movie Review">
-			</div>			
-		</textarea>
+		<select class="userRating">
+			<option value="Unrated" selected="selected">Unrated</option>
+			<option value="Don't bother seeing">Don't bother seeing</option>
+			<option value="Pretty good">Pretty good</option>
+			<option value="Very good">Very good</option>
+			<option value="Excellent">Excellent</option>
+		</select> 
 
-		<%--Messages Component--%>
-		<input type="hidden" class="messages"
-			data-search-url='${pageContext.request.contextPath}/searchMovies/'
-			data-detailedSearch-url='${pageContext.request.contextPath}/searchDetailedData/'
-			data-saveMovie-url='${pageContext.request.contextPath}/domain/movies/'
-			data-searchPage.no.infosource.selected='<spring:message code="searchPage.no.infosource.selected"/>'
-			data-searchpage.movie.required='<spring:message code="searchPage.movie.required"/>'
-			data-searchPage.server.error='<spring:message code="searchPage.server.error"/>'
-			data-searchPage.movie.not.found='<spring:message code="searchPage.movie.not.found"/>'
-			data-searchPage.one.result.found='<spring:message code="searchPage.one.result.found"/>'>
+		<select class="movieStatus">
+			<option value="Want to see" >Want to see</option>
+			<option value="Seen already">Seen already</option>
+			<option value="Not specified" selected="selected">Not specified</option>						
+		</select> 
+
+		<input type="text" class="shelfLocation" value="" placeholder="Shelf Location">
+		<input type="text" class="lentTo" value="" placeholder="Lent To">
+		<input type="text" class="ownMovieNotes" value="" placeholder="My Movie Review">
+	</div>			
+</textarea>
+
+	<%--Messages Component--%>
+	<input type="hidden" class="messages"
+		data-search-url='${pageContext.request.contextPath}/searchMovies/'
+		data-detailedSearch-url='${pageContext.request.contextPath}/searchDetailedData/'
+		data-saveMovie-url='${pageContext.request.contextPath}/domain/movies/'
+		data-searchPage.no.infosource.selected='<spring:message code="searchPage.no.infosource.selected"/>'
+		data-searchpage.movie.required='<spring:message code="searchPage.movie.required"/>'
+		data-searchPage.server.error='<spring:message code="searchPage.server.error"/>'
+		data-searchPage.movie.not.found='<spring:message code="searchPage.movie.not.found"/>'
+		data-searchPage.one.result.found='<spring:message code="searchPage.one.result.found"/>'>
 
 
-		<script type="text/javascript"
-			src="/resources/inheritance/js/inheritance-1.0.min.js"></script>
-		<script type="text/javascript"
-			src="/resources/jquery/jquery-1.8.3.min.js"></script>
-		<!-- <script type="text/javascript" src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> -->
-		<script type="text/javascript" src="/resources/js/bootstrap-tab.js"></script>
-		<script type="text/javascript"
-			src="/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
-		<script type="text/javascript" src="/resources/common/js/base.js"></script>
-		<script type="text/javascript"
-			src="/resources/localeChanger/js/localeChanger.js"></script>
-		<script type="text/javascript"
+	<script type="text/javascript"
+		src="/resources/inheritance/js/inheritance-1.0.min.js"></script>
+	<script type="text/javascript"
+		src="/resources/jquery/jquery-1.8.3.min.js"></script>
+	<!-- <script type="text/javascript" 
+		src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> -->
+	<script type="text/javascript" 
+		src="/resources/js/bootstrap-tab.js"></script>
+	<script type="text/javascript"
+		src="/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
+	<script type="text/javascript" 
+		src="/resources/common/js/base.js"></script>
+	<script type="text/javascript"
+		src="/resources/localeChanger/js/localeChanger.js"></script>
+	<script type="text/javascript"
 			src="/resources/searchPage/js/searchPage.js"></script>
 	</div>
 </div>
