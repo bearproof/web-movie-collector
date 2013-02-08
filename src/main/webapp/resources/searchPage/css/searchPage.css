@@ -291,10 +291,6 @@ div.container {
 	background-color: #F1F1F1;
 }
 
-#movieList .loading{
-	background: url("../../img/tree_loading.gif") no-repeat scroll 18px 0 transparent !important;
-}
-
 #movieTabHeader li a {
 	font-weight: bold;
 	background-color: #000;
@@ -343,3 +339,16 @@ div.container {
   	padding-left: 12px;
   	padding-right: 12px;
 }
+
+#movieList .loading{
+	background: url("../../img/tree_loading.gif") no-repeat scroll 18px 0 transparent !important;
+}
+
+#movieList .searchTermTreeIcon {
+	background: url("../../img/icons_movieSource.png") no-repeat scroll 18px 0 transparent;
+}
+
+#movieList .infosourceTreeIcon {
+	background: url("../../img/icons_searchTerm.png") no-repeat scroll 18px 0 transparent;
+}
+

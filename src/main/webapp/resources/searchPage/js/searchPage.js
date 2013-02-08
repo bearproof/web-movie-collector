@@ -126,6 +126,7 @@
 	        	}else if((MovieData!==null)&&(MovieData.title!==undefined)){// we received an object => Detailed Movie Info	   	        		
 	        		site = MovieData.site;
 	        		
+	        		//remove the loading icon after the detailed movie info has been retrieved
 	        		$('#'+that.selectedMovieId).siblings('label').removeClass('loading');
 	        		//only add a new tab with a certain id if it doesn't exist already
 	        		if($('#tab'+that.selectedMovieId).length<=0){

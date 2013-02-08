@@ -89,23 +89,93 @@
 					</div>
 				</div>
 			</div>
-			<%--end tag for center region layout --%>
+	<%--end tag for center region layout --%>
 
-			<!-- 		<div style="height: 40px;"> -->
-			<footer class="main">
-				<h5 class="page-footer"><%@include
-						file="/WEB-INF/views/footer.jsp"%></h5>
-			</footer>
-			<!-- </div> -->
-		</div>
-		<!-- end of div#WMCcontainer -->
+	<!--	<div style="height: 40px;"> -->
+				<footer class="main">
+					<h5 class="page-footer"><%@include file="/WEB-INF/views/footer.jsp"%></h5>
+				</footer>
+		<!-- </div> -->
+	</div>
+<!-- end of div#WMCcontainer -->
 
-		<%-- MovieItemTemplates --%>
-		<textarea id="searchItemTmpl" class="ui-helper-hidden">
-			<li>
-				<input id={searchTerm} type="checkbox">
-				<label for={searchTerm}>{movieTitle}&nbsp;<span class="removeTreeNode">x</span></label>
-				<ul class={searchTerm}></ul>
+
+
+<%-- MovieItemTemplates --%>
+<textarea id="searchItemTmpl" class="ui-helper-hidden">
+	<li>
+		<input id={searchTerm} type="checkbox">
+		<label class="searchTermTreeIcon" for={searchTerm}>{movieTitle}&nbsp;<span class="removeTreeNode">x</span></label>
+		<ul class={searchTerm}></ul>
+	</li>
+</textarea>
+
+<textarea id="movieDataSourceTmpl" class="ui-helper-hidden">
+	<li>
+		<input type="checkbox" id="{movieandsite}">
+		<label class="infosourceTreeIcon" for={movieandsite}>{site}</label>
+		<ul class={movieandsite}></ul>
+	</li>	
+</textarea>
+
+<textarea id="movieItemTmpl" class="ui-helper-hidden">
+	<li>
+		<input type="checkbox" id={uniqueid}>
+		<label for={uniqueid}>{title}</label>
+		<ul>
+		<li><span><spring:message code="searchPage.movie.year" />:&nbsp;{year}</span></li>
+		<li><span><spring:message code="searchPage.movie.director" />:&nbsp;{director}</span></li>
+		<li><a class="movie-id" href="#" data-uniqueId={uniqueid} title={uniqueid}
+					data-site={site} data-siteid={siteid}><spring:message
+							code="searchPage.movie.detaileddata" /></a></li>
+		</ul>
+	</li>
+</textarea>
+
+<textarea id="noMovieFoundTmpl" class="ui-helper-hidden">
+	<li><span>{noMovieFound}</span></li>
+</textarea>
+
+<textarea id="detailedMovieItemTabHeader" class="ui-helper-hidden">
+	<li><a data-toggle="tab" href="{uniqueid}">{movieTitle}&nbsp;<span class="closeTab">x</span></a></li>
+</textarea>
+			
+<textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
+	<div class="tab-pane" id={uniqueid}>			
+		<ul>
+			<li class="centered">
+				<span class="bold"><spring:message code="searchPage.movie.site" />:&nbsp;</span>
+				<span class="movieSite">{site}</span>
+			</li>	
+			<li><ul>
+					<li class="title centered">{title}</li>
+				</ul>
+			</li>
+			<li><span class="bold"><spring:message code="searchPage.movie.year" /></span>
+				<ul>
+					<li class="year">{year}</li>
+				</ul>
+			</li>
+			<li><span class="bold"><spring:message code="searchPage.movie.director" /></span>
+				<ul>
+					<li class="director">{director}</li>
+				</ul>
+			</li>
+			<li><span class="bold"><spring:message code="searchPage.movie.description" /></span>
+				<ul>
+					<li class="description">{description}</li>
+				</ul>
+			</li>
+			<li><span class="bold"><spring:message code="searchPage.movie.cast" /></span>
+				<ul>
+					<li class="cast">{cast}</li>
+				</ul>
+			</li>
+			<li><span class="bold"><spring:message code="searchPage.movie.genre" /></span>
+				<ul>
+					<li class="genre">{genre}</li>
+				</ul>
+>>>>>>> Added different icons for the different levels in the tree
 			</li>
 		</textarea>
 
