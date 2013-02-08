@@ -66,6 +66,31 @@
 	</definition>
 
 	<!-- ~~~~~~~~~~~~~ -->
+	<!-- MOVIES PAGES -->
+	<!-- ~~~~~~~~~~~~~ -->
+
+	<!-- Movies list page -->
+	<definition name="moviesPage" extends="generic-template">
+		<put-attribute name="title-content" value="Movies" />
+		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/dataTablesStyles.jsp"/>
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Movie/List.jsp" />
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Movie/List.jsp"/>
+	</definition>
+
+	<!-- New Movie page -->
+	<definition name="createMoviePage" extends="generic-template">
+		<put-attribute name="title-content" value="New Movie" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Movie/Create.jsp" />
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Movie/Create.jsp"/>
+	</definition>
+
+	<!-- Update Movie page -->
+	<definition name="updateMoviePage" extends="generic-template">
+		<put-attribute name="title-content" value="Edit Movie" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Movie/Update.jsp" />
+		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Movie/Update.jsp"/>
+	</definition>
+	<!-- ~~~~~~~~~~~~~ -->
 	<!-- ROLE PAGES -->
 	<!-- ~~~~~~~~~~~~~ -->
 

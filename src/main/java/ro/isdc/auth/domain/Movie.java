@@ -7,7 +7,6 @@ import static org.apache.commons.lang.builder.ToStringBuilder.reflectionToString
 import java.sql.Date;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -29,7 +28,7 @@ public class Movie extends MovieInfo {
 
 	@NotNull
 	private String userId;
-	
+
 	@NotNull
 	private String idOnSite;
 

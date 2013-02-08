@@ -25,6 +25,15 @@ public class MovieHelper implements EntityHelper<Movie> {
 		copy.setShelfLocation(entity.getShelfLocation());
 		copy.setUserId(entity.getUserId());
 		copy.setUserRating(entity.getUserRating());
+		copy.setRate(entity.getRate());
+		copy.setDescription(entity.getDescription());
+		copy.setCast(entity.getCast());
+		copy.setGenre(entity.getGenre());
+		copy.setRuntime(entity.getRuntime());
+		copy.setSite(entity.getSite());
+		copy.setTitle(entity.getTitle());
+		copy.setYear(entity.getYear());
+		copy.setDirector(entity.getDirector());
 		return copy;
 	}
 
@@ -41,6 +50,15 @@ public class MovieHelper implements EntityHelper<Movie> {
 		copy.setShelfLocation(entity.getShelfLocation());
 		copy.setUserId(entity.getUserId());
 		copy.setUserRating(entity.getUserRating());
+		copy.setRate(entity.getRate());
+		copy.setDescription(entity.getDescription());
+		copy.setCast(entity.getCast());
+		copy.setGenre(entity.getGenre());
+		copy.setRuntime(entity.getRuntime());
+		copy.setSite(entity.getSite());
+		copy.setTitle(entity.getTitle());
+		copy.setYear(entity.getYear());
+		copy.setDirector(entity.getDirector());
 		return copy;
 	}
 

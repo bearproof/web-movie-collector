@@ -27,6 +27,8 @@
 							<ul class="dropdown-menu">
 								<li><a href="${pageContext.request.contextPath}/domain/accounts/list"><fmt:message key="navbar.menu.domain.account"/></a></li>
 								<li><a href="${pageContext.request.contextPath}/domain/roles/list"><fmt:message key="navbar.menu.domain.role"/></a></li>
+								<li><a href="${pageContext.request.contextPath}/domain/movies/list"><fmt:message key="navbar.menu.domain.movie"/></a></li>
+								
 							</ul>
 						</li>
 						<li id="searchPageLink"><a

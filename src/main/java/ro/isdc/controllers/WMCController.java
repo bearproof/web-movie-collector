@@ -110,10 +110,11 @@ public class WMCController extends LocaleAwareController {
 	@ResponseBody
 	public void searchDetailedData(AtmosphereResource atmosphereResource, @RequestBody String searchModelAsJson) throws JsonGenerationException, JsonMappingException, IOException,
 			InterruptedException {
-		SearchInputModel requestDetailedData = Utils.getJsonAsObject(searchModelAsJson, SearchInputModel.class);
-		InfoSourceModel infoSourceModel = infoSourceConfig.getInfoSourceDetailedSearch(requestDetailedData);
-		movieRetriever.retrieveMovieData(atmosphereResource, requestDetailedData.getSearchTerms().get(0), infoSourceModel, htmlNodePathMapper, true);
-
+		if (!searchModelAsJson.isEmpty() && searchModelAsJson != null) {
+			SearchInputModel requestDetailedData = Utils.getJsonAsObject(searchModelAsJson, SearchInputModel.class);
+			InfoSourceModel infoSourceModel = infoSourceConfig.getInfoSourceDetailedSearch(requestDetailedData);
+			movieRetriever.retrieveMovieData(atmosphereResource, requestDetailedData.getSearchTerms().get(0), infoSourceModel, htmlNodePathMapper, true);
+		}
 	}
 
 	private void suspend(final AtmosphereResource resource) {
