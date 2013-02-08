@@ -289,4 +289,6 @@ div.container {
 	background-color: #F1F1F1;
 }
 
-
+#movieList .loading{
+	background: url("../../img/tree_loading.gif") no-repeat scroll 18px 0 transparent !important;
+}

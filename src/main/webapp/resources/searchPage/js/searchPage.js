@@ -92,15 +92,20 @@
 	        		
 	        	if($.isArray(MovieData)&&(MovieData[0].title!==undefined)){
 	        		var trimmedMovieTitle = movieTitle.replace(/\s+/g, ''),
-	        			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+MovieData[0].site);	        		
+	        			movieandsite = trimmedMovieTitle+MovieData[0].site,
+	        			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
+
+	        		//remove the loading icon
+	        		$('.'+trimmedMovieTitle).siblings('label').removeClass('loading');
+	        		
 	        		/*search if a node with the same info already exists in the tree 
 	        		  and if the node doesn't already exist, add it*/
 	        		if(currentNode.length<=0){
-	        			movieandsite = trimmedMovieTitle+MovieData[0].site;
 	        			$(movieDataSourceTmpl.tmpl({
 							"site" : MovieData[0].site,
 							"movieandsite" : movieandsite
 						})).appendTo($('.'+trimmedMovieTitle));	
+	        			
 						
 						$.each(MovieData,function(index, value){
 			        		$(movieItemTmpl.tmpl({
@@ -114,11 +119,14 @@
 		        		});		        		
 	        		}
 	        		
-	        		$('.removeTreeNode',that.$ctx).off('click',$.proxy(that.removeTreeNode,that));
-		        	$('.removeTreeNode', that.$ctx).on('click',$.proxy(that.removeTreeNode,that));
+	        		//bind the getDetailedData() function to the elements which have the class "movie-id" only once
+		        	$('.movie-id',this.$ctx).off('click',$.proxy(this.getDetailedData,this));
+		        	$('.movie-id', this.$ctx).on('click',$.proxy(this.getDetailedData,this));	 
 	        		
 	        	}else if((MovieData!==null)&&(MovieData.title!==undefined)){// we received an object => Detailed Movie Info	   	        		
 	        		site = MovieData.site;
+	        		
+	        		$('#'+that.selectedMovieId).siblings('label').removeClass('loading');
 	        		//only add a new tab with a certain id if it doesn't exist already
 	        		if($('#tab'+that.selectedMovieId).length<=0){
 	        			$(detailedMovieItemTabHeader.tmpl({	        			
@@ -150,11 +158,7 @@
 		        	$('.addToDB', this.$ctx).off('click', $.proxy(this.saveMovieInDb,this));
 		        	$('.addToDB', this.$ctx).on('click', $.proxy(this.saveMovieInDb,this));
 	        			        	
-	        	}
-	        	
-	        	//bind the getDetailedData() function to the elements which have the class "movie-id" only once
-	        	$('.movie-id',this.$ctx).off('click',$.proxy(this.getDetailedData,this));
-	        	$('.movie-id', this.$ctx).on('click',$.proxy(this.getDetailedData,this));	        		        	
+	        	}	        		        		        	       		        	
 	        	
 		    }// end if(response.state==="messageReceived")	    
 		},
@@ -213,10 +217,15 @@
 					"searchTerm" : trimmedMovieTitle,
 					"movieTitle" : movieTitle
 				})).appendTo(contentArea.children('ul'));								
-			}			
+			}
+			
+			$('#'+trimmedMovieTitle).siblings('label').addClass('loading');
 			
 			//TODO:	open the existing tree node
 			
+			//bind the removeTreeNode() function to the spans having the class "removeTreeNode" only once
+        	$('.removeTreeNode',that.$ctx).off('click',$.proxy(that.removeTreeNode,that));
+        	$('.removeTreeNode', that.$ctx).on('click',$.proxy(that.removeTreeNode,that));
 			
 			this.subSocket.response.request.method='POST';
 			this.subSocket.response.request.url=this.$ctx.data('search-url');
@@ -242,6 +251,7 @@
 			$el = e.target;
 			
 			this.selectedMovieId = $($el).data('uniqueid');
+			$('#'+this.selectedMovieId).siblings('label').addClass('loading');
 			detailedMovieData.infoSourceKeys.push($($el).data('site'));
 			detailedMovieData.searchTerms.push($($el).data('siteid'));
 			
