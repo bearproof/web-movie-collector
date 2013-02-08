@@ -9,11 +9,14 @@
 .bold{
 	font-weight: bold;
 }
+
 .centered {
 	display: inline-block;
+	color: #5C7A99;
 	width: 100%;
 	text-align: center;
-	font: 2em/100% 'Arial',sans-serif;	
+	font: 2em/100% Verdana, Arial, Helvetica, sans-serif;
+	
 }
 .ui-layout-pane {
 	background:#666;
@@ -256,7 +259,7 @@ div.container {
 
 
 #movieTabHeader a{
-	font-size: 85%;
+	font-size: 90%;
 }
 
 #mainContent .divider{
@@ -275,9 +278,8 @@ div.container {
 	overflow:hidden;
 }
 
-#movieTabHeader li a {
-	background-color: black;
-	color: #FFF;
+#movieList {
+	padding-top: 4px;
 }
 
 /* Adding a red color to the "x" character on the tab. */
@@ -291,4 +293,53 @@ div.container {
 
 #movieList .loading{
 	background: url("../../img/tree_loading.gif") no-repeat scroll 18px 0 transparent !important;
+}
+
+#movieTabHeader li a {
+	font-weight: bold;
+	background-color: #000;
+	color: #FFF;
+}
+
+#movieTabHeader li a:hover {
+	background-color: #006DCC;
+	color: #FFFFFF;
+}
+
+#movieTabHeader li a:active {
+	background-color: #006DCC;
+}
+
+#movieTabHeader {
+	background: black url("/resources/img/black2.jpg") no-repeat;
+}
+
+/*Table*/
+
+.movieDetailsTable td {
+	background-color: white;
+	color: #006DCC;
+	padding-left: 13px;
+	padding-right: 13px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+
+.movieDetailsTable {
+	border: 1px solid #828282;
+	border-collapse: collapse;
+	
+}
+
+.movieDetailsTable td, .movieDetailsTable th {
+  border: 1px solid #828282;
+}
+
+.movieDetailsTable th {
+  	background-color: #BCBCBC;
+  	font-weight: bold;
+  	text-align: left;
+  	padding-left: 12px;
+  	padding-right: 12px;
 }
