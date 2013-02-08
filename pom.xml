@@ -133,7 +133,7 @@
 			<version>${jackson.version}</version>
 		</dependency>
  
- 		<!-- <dependency>
+ 		<dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-google</artifactId>
 			<version>1.0.0.M1</version>
@@ -143,7 +143,7 @@
 				<exclusion> <groupId>org.codehaus.jackson</groupId> <artifactId>jackson-mapper-asl</artifactId> 
 					</exclusion>
 			</exclusions>
-		</dependency> -->
+		</dependency>
 
 		<!-- ~~~~~~ -->
 		<!-- SPRING -->
