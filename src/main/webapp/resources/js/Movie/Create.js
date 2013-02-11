@@ -26,7 +26,7 @@ $(document).ready(function() {
 				runtime : $('input#runtime').val(),
 				userRating : $('select#userRating option:selected').val(),
 				movieStatus : $('select#movieStatus option:selected').val(),
-				ownMovieNotes : $('textarea#ownMovieNotes').val(),
+				ownMovieNotes : $('textarea#ownMovieNotes').val()
 			};
 			$.ajax({  
 				  type: "POST",  

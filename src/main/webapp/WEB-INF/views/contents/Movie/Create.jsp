@@ -20,14 +20,14 @@
 		<div class="control-group">
 			<label class="control-label" for="genre"><fmt:message key="domain.movie.column.genre"/></label>
 			<div class="controls">
-				<input type="text" id="year" name="genre" value="" maxlength="100" placeholder="The genre of the movie">
+				<input type="text" id="genre" name="genre" value="" maxlength="100" placeholder="The genre of the movie">
 				<!-- <span class="help-inline"></span> -->
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="director"><fmt:message key="domain.movie.column.director"/></label>
 			<div class="controls">
-				<input type="text" id="year" name="director" value="" maxlength="100" placeholder="The director">
+				<input type="text" id="director" name="director" value="" maxlength="100" placeholder="The director">
 				<!-- <span class="help-inline"></span> -->
 			</div>
 		</div>
