@@ -202,12 +202,18 @@
 			
 			$.atmosphere.log('info', [movieData]);
 	
-			if (movieData.infoSourceKeys.length === 0) {				
-				alert('No infosource selected!');
+			if (movieData.infoSourceKeys.length === 0) {		
+				$('#errorModalLabel').html('Warning:');
+		    	$('#errorModalMsg').html('No infosource selected!');
+		    	$('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+		    	$('#errorModal').modal();				
 				return false;
 			}
-			if (movieData.searchTerms.length === 0) {				
-				alert('Please type a movie title!');
+			if (movieData.searchTerms.length === 0) {	
+				$('#errorModalLabel').html('Warning:');
+		    	$('#errorModalMsg').html('Please type a movie title!');
+		    	$('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+		    	$('#errorModal').modal();					
 				return false;
 			}			
 			

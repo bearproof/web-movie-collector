@@ -266,6 +266,10 @@
 	<script type="text/javascript"
 		src="/resources/localeChanger/js/localeChanger.js"></script>
 	<script type="text/javascript"
+		src="/resources/js/bootstrap-modal.js"></script>
+	<script type="text/javascript"
 			src="/resources/searchPage/js/searchPage.js"></script>
 	</div>
 </div>
+
+<jsp:include page="sections/modal.jsp" />

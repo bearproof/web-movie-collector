@@ -10,7 +10,7 @@ $(document).ready(function() {
 	
 	oTable = $('#movietable').dataTable({
 		"sDom": 'l<"toolbar">frtip',
-		"bFilter" : false,
+		"bFilter" : true,
 		"bStateSave" : false,
 		"aaSorting" : [ [ 1, "asc" ] ],
 		"sPaginationType" : "bootstrap",
