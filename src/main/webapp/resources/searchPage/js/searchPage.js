@@ -327,7 +327,7 @@
 		$('ul.nav li').each(function(){
 			$(this).removeClass('active');
 		});
-		$('#searchPageLink').addClass('active');
+		$('#wmcPageLink').addClass('active');
 			
 	    $('.ez-template').bind('click', function(){  
 	    	$('.panel-header').addClass("panel-header-ez");

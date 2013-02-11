@@ -6,7 +6,7 @@ $(document).ready(function() {
 	$('ul.nav li').each(function(){
 		$(this).removeClass('active');
 	});
-	$('#domainPageLink').addClass('active');
+	$('#wmcPageLink').addClass('active');
 	
 	oTable = $('#movietable').dataTable({
 		"sDom": 'l<"toolbar">frtip',

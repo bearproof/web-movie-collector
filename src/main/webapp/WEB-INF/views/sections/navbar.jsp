@@ -26,13 +26,15 @@
 						<li id="domainPageLink" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.domain"/><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="${pageContext.request.contextPath}/domain/accounts/list"><fmt:message key="navbar.menu.domain.account"/></a></li>
-								<li><a href="${pageContext.request.contextPath}/domain/roles/list"><fmt:message key="navbar.menu.domain.role"/></a></li>
-								<li><a href="${pageContext.request.contextPath}/domain/movies/list"><fmt:message key="navbar.menu.domain.movie"/></a></li>
-								
+								<li><a href="${pageContext.request.contextPath}/domain/roles/list"><fmt:message key="navbar.menu.domain.role"/></a></li>								
 							</ul>
 						</li>
-						<li id="searchPageLink"><a
-							href="${pageContext.request.contextPath}/movieLand"><fmt:message key="navbar.menu.wmc"/></a></li>
+						<li id="wmcPageLink" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.wmc"/><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="${pageContext.request.contextPath}/movieLand"><fmt:message key="navbar.menu.wmc.searchMovies"/></a></li>								
+								<li><a href="${pageContext.request.contextPath}/domain/movies/list"><fmt:message key="navbar.menu.wmc.myMovies"/></a></li>								
+							</ul>
+						</li>
 					</ul>	
 				</div>
 			</security:authorize>

@@ -352,3 +352,6 @@ div.container {
 	background: url("../../img/icons_searchTerm.png") no-repeat scroll 18px 0 transparent;
 }
 
+ul.nav li{
+	font-size: 14px;
+}
