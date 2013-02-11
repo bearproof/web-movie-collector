@@ -1,13 +1,16 @@
 /**UI Layout plugin customizations*/
 
-#searchPage{
-	font:1em/100% 'Arial',sans-serif;	
+/* =======================================
+			Styles for the body
+   ======================================= */
+#searchPage {
 	width: 100%;
 	height: 100%;
-}
-
-.bold{
-	font-weight: bold;
+	background-color: #E9E9EB !important;
+	color: #333333;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	font-size: 1em;
+	line-height: 100%;	
 }
 
 .centered {
@@ -253,13 +256,10 @@ div.container {
 }
 
 #searchPage .container-fluid {
+/* 	background-color: #151412; */
+/* 	height: 50px; */
     padding-left: 10px;
     padding-right: 2px;
-}
-
-
-#movieTabHeader a{
-	font-size: 90%;
 }
 
 #mainContent .divider{
@@ -293,17 +293,16 @@ div.container {
 
 #movieTabHeader li a {
 	font-weight: bold;
-	background-color: #000;
+	font-size: 90%;
 	color: #FFF;
 }
 
 #movieTabHeader li a:hover {
-	background-color: #006DCC;
-	color: #FFFFFF;
+	background-color: #659CEF;
 }
 
 #movieTabHeader li a:active {
-	background-color: #006DCC;
+	background-color: #659CEF;
 }
 
 #movieTabHeader {
@@ -311,6 +310,10 @@ div.container {
 }
 
 /*Table*/
+
+.movieDetailsTable tr th{
+	vertical-align: middle;
+}
 
 .movieDetailsTable td {
 	background-color: white;
@@ -339,6 +342,22 @@ div.container {
   	padding-left: 12px;
   	padding-right: 12px;
 }
+
+/*TABS*/
+.nav-tabs > li > a {
+	border-radius: 10px 10px 0 0;
+}
+
+#movieTabHeader li:active a {
+	background-color: #006DCC;
+}
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover {
+	border-color: #659CEF;
+	background-color: #006DCC;
+}
+
+
 
 #movieList .loading{
 	background: url("../../img/tree_loading.gif") no-repeat scroll 18px 0 transparent !important;

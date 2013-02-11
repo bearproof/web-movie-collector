@@ -152,7 +152,7 @@
 			
 			<li>
 				<ul>
-					<li class="centered">{title}</li>
+					<li class="title">{title}</li>
 				</ul>
 			</li>		
 		</ul>
@@ -160,61 +160,82 @@
 		<table summary="This table shows the details for the selected movie" class="movieDetailsTable">
 			<tr>
 				<th><spring:message code="searchPage.movie.year" />:</th>
-				<td>{year}</td>
+				<td class="year">{year}</td>
 			</tr>
 			
 			<tr>
 				<th><spring:message code="searchPage.movie.director" />:</th>
-				<td>{director}</td>
+				<td class="director">{director}</td>
 			</tr>
 			
 			<tr>
 				<th><spring:message code="searchPage.movie.description" />:</th>
-				<td>{description}</td>
+				<td class="description">{description}</td>
 			</tr>
 			
 			<tr>
 				<th><spring:message code="searchPage.movie.cast" />:</th>
-				<td>{cast}</td>
+				<td class="cast">{cast}</td>
 			</tr>
 			
 			<tr>
 				<th><spring:message code="searchPage.movie.genre" />:</th>
-				<td>{genre}</td>
+				<td class="genre">{genre}</td>
 			</tr>
 			
 			<tr>
 				<th><spring:message code="searchPage.movie.rate" />:</th>
-				<td>{rate}</td>
+				<td class="rate">{rate}</td>
 			</tr>
 			
 			<tr>
 				<th><spring:message code="searchPage.movie.runtime" />:</th>
-				<td>{runtime}</td>
+				<td class="runtime">{runtime}</td>
 			</tr>
-		</table>
-		
-		<button class="btn btn-primary addToDB">
-			<spring:message code="searchPage.movie.addToDB" />
-		</button>
-		
-		<select class="userRating">
-			<option value="Unrated" selected="selected">Unrated</option>
-			<option value="Don't bother seeing">Don't bother seeing</option>
-			<option value="Pretty good">Pretty good</option>
-			<option value="Very good">Very good</option>
-			<option value="Excellent">Excellent</option>
-		</select> 
-
-		<select class="movieStatus">
-			<option value="Want to see" >Want to see</option>
-			<option value="Seen already">Seen already</option>
-			<option value="Not specified" selected="selected">Not specified</option>						
-		</select> 
-
-		<input type="text" class="shelfLocation" value="" placeholder="Shelf Location">
-		<input type="text" class="lentTo" value="" placeholder="Lent To">
-		<input type="text" class="ownMovieNotes" value="" placeholder="My Movie Review">
+			
+			<tr>
+				<th></th>
+				<td>
+					<select class="userRating">
+						<option value="Unrated" selected="selected">Unrated</option>
+						<option value="Don't bother seeing">Don't bother seeing</option>
+						<option value="Pretty good">Pretty good</option>
+						<option value="Very good">Very good</option>
+						<option value="Excellent">Excellent</option>
+					</select> 
+					
+					<select class="movieStatus">
+						<option value="Want to see" >Want to see</option>
+						<option value="Seen already">Seen already</option>
+						<option value="Not specified" selected="selected">Not specified</option>						
+					</select> 
+				</td>
+			</tr>
+			
+			<tr>
+				<th></th>
+				<td>
+					<input type="text" class="shelfLocation" value="" placeholder="Shelf Location">
+					<input type="text" class="lentTo" value="" placeholder="Lent To">
+				</td>	
+			</tr>
+			
+			<tr>
+				<th></th>
+				<td>
+					<input type="text" class="ownMovieNotes" value="" placeholder="My Movie Review">
+				</td>	
+			</tr>
+			
+			<tr>
+				<th></th>
+				<td>
+					<button class="btn btn-primary addToDB">
+						<spring:message code="searchPage.movie.addToDB" />
+					</button>
+				</td>
+			</tr>
+		</table>	
 	</div>			
 </textarea>
 

@@ -269,14 +269,14 @@
 				MovieData = {};
 			
 			MovieData.title = $($el).siblings('ul').find('li.title').html();
-			MovieData.year = $($el).siblings('ul').find('li.year').html();
-			MovieData.director = $($el).siblings('ul').find('li.director').html();
+			MovieData.year = $($el).siblings('tr').find('td.year').html();
+			MovieData.director = $($el).siblings('tr').find('td.director').html();
 			MovieData.site = $($el).siblings('ul').find('span.movieSite').html();
-			MovieData.description = $($el).siblings('ul').find('li.description').html();
-			MovieData.cast = $($el).siblings('ul').find('li.cast').html();
-			MovieData.genre = $($el).siblings('ul').find('li.genre').html();
-			MovieData.rate = $($el).siblings('ul').find('li.rate').html();
-			MovieData.runtime = $($el).siblings('ul').find('li.runtime').html();
+			MovieData.description = $($el).siblings('tr').find('td.description').html();
+			MovieData.cast = $($el).siblings('tr').find('td.cast').html();
+			MovieData.genre = $($el).siblings('tr').find('td.genre').html();
+			MovieData.rate = $($el).siblings('tr').find('td.rate').html();
+			MovieData.runtime = $($el).siblings('tr').find('td.runtime').html();
     		MovieData.userRating = $($el).siblings('select.userRating').find(":selected").text();
     		MovieData.movieStatus = $($el).siblings('select.movieStatus').find(":selected").text();
     		MovieData.shelfLocation = $($el).siblings('input.shelfLocation').val();    		
