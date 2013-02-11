@@ -51,7 +51,7 @@ $(document).ready(function() {
  */
 function cancelButtonHandler(){
 	$("#cancelButton").click(function() {
-		document.location.href='/domain/accounts/list';
+		document.location.href='/domain/movies/list';
 	});	
 }
 
