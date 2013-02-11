@@ -27,16 +27,6 @@ public class CommonPagesController {
 		logger.debug("Calling Login page.");
 		return "loginPage";
 	}
-	/**
-	 * Register page
-	 * 
-	 * @return register page id
-	 */
-	@RequestMapping(value = { "/register" })
-	public String getSignUpPage() {
-		logger.debug("Calling Register page.");
-		return "registerPage";
-	}
 
 	/**
 	 * Home Page

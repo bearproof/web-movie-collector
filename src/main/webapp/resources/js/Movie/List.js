@@ -28,7 +28,7 @@ $(document).ready(function() {
 		                {"mData" : "year"}, 
 		                {"mData" : "genre"},
 		                {"mData" : "director"},
-		                {"mData" : "cast"}
+		                {"mData" : "runtime"}
 		               ],
 		"aoColumnDefs": [
 		                 { "sName": "id",   "aTargets": [ 0 ] },
@@ -36,7 +36,7 @@ $(document).ready(function() {
 		                 { "sName": "year", "aTargets": [ 2 ] },
 		                 { "sName": "genre",  "aTargets": [ 3 ] },
 		                 { "sName": "director",    "aTargets": [ 4 ] },
-		                 { "sName": "cast",    "aTargets": [ 5 ] },
+		                 { "sName": "runtime",    "aTargets": [ 5 ] },
 		                 { "sClass" : "hide",   "aTargets" : [ 0 ]}
 		               ],           
 	  "fnDrawCallback": function ( oSettings ) {

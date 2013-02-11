@@ -62,8 +62,8 @@ $(document).ready(function() {
 			},
 			email: {
 				required: true,
-				email: true
-				,remote: "/validator/checkemail"
+				email: true,
+				remote: "/validator/checkemail"
 			}
 		},
 		messages: {

@@ -68,7 +68,7 @@
 					<fmt:message key="page.register.form.signUp" />
 				</h2>
 				<form id="account_register" action="<c:url value="/register"/>"
-					method="POST">
+					method="GET">
 					<button type="submit" class="btn btn-primary">
 						<fmt:message key="page.register.form.signUp" />
 					</button>

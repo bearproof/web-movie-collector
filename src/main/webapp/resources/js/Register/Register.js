@@ -17,7 +17,8 @@ $(document).ready(function() {
 			},
 			email: {
 				required: true,
-				email: true
+				email: true,
+				remote: "/validator/checkemail"
 			}
 		},
 		messages: {
@@ -51,11 +52,11 @@ $(document).ready(function() {
 			};
 			$.ajax({  
 				  type: "POST",  
-				  url: "/domain/accounts/",  
+				  url: "/register",  
 				  data: JSON.stringify(jsonData),
 				  contentType: "application/json; charset=utf-8",
 				  success: function(response,status,xhr) {
-					  document.location.href='/domain/accounts/list';
+					  document.location.href='/';
 				  }
 				});  
 			return false; 

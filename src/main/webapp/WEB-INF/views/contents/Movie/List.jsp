@@ -8,7 +8,7 @@
 			<th><fmt:message key="domain.movie.column.year"/></th>
 			<th><fmt:message key="domain.movie.column.genre"/></th>
 			<th><fmt:message key="domain.movie.column.director"/></th>
-			<th><fmt:message key="domain.movie.column.cast"/></th>
+			<th><fmt:message key="domain.movie.column.runtime"/></th>
 		</tr>
 	</thead>
 	<tbody>

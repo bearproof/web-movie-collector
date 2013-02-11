@@ -2,7 +2,6 @@ package ro.isdc.auth.controller;
 
 import static com.google.common.collect.Lists.newArrayList;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -13,8 +12,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -32,9 +29,6 @@ public class SignInAdapterImpl implements SignInAdapter {
 	 */
 	private @Autowired
 	AccountRepository userRepository;
-
-	private @Autowired
-	AuthentificationService authenticationManager;
 
 	private @Autowired
 	AccountHelper accountHelper;
