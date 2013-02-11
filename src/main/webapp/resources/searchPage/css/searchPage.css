@@ -168,8 +168,7 @@
 	font-family:Comic Sans MS;
 	
 	letter-spacing: 1px;	
-	text-decoration:none;
-	
+	text-decoration:none;	
 	background: -moz-linear-gradient(top,  #2989d8 0%, #207cca 41%, #1e5799 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#2989d8), color-stop(41%,#207cca), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top,  #2989d8 0%,#207cca 41%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
@@ -326,7 +325,7 @@ div.container {
 
 
 .movieDetailsTable {
-	border: 1px solid #828282;
+	border: none solid #828282;
 	border-collapse: collapse;
 	
 }
@@ -357,8 +356,6 @@ div.container {
 	background-color: #006DCC;
 }
 
-
-
 #movieList .loading{
 	background: url("../../img/tree_loading.gif") no-repeat scroll 18px 0 transparent !important;
 }
@@ -374,3 +371,4 @@ div.container {
 ul.nav li{
 	font-size: 14px;
 }
+
