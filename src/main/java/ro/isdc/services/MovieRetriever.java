@@ -126,13 +126,13 @@ public class MovieRetriever{
 
 					MovieInfo movieInfo = (MovieInfo) parser.getMovieDetails(responseAsString, uriRequested, htmlNodePathMapper);
 					String movieAsJson = "";
-					if(movieInfo!=null){
+					if(movieInfo!=null){																		
 						final ObjectMapper mapper = new ObjectMapper();
-						movieAsJson = mapper.writeValueAsString(movieInfo);
+						movieAsJson = mapper.writeValueAsString(movieInfo);						
 						System.out.println(movieAsJson);								
 					}else {
 							System.out.println("The parser didn't retrieve any detailed movie information");									
-					}
+					}										
 					
 					if (atmosphereResource != null) {
 						Broadcaster broadcaster = atmosphereResource.getBroadcaster();
@@ -202,7 +202,8 @@ public class MovieRetriever{
 	}
 
 		
-	private void executePostRequest(final InfoSourceModel infoSourceModel, final AtmosphereResource atmosphereResource, final HttpUriRequest uri, final HtmlNodePathMapper htmlNodePathMapper, final boolean detailedMovieData, HttpContext httpContext, final String searchTerm) throws InterruptedException, IOReactorException{
+	private void executePostRequest(final InfoSourceModel infoSourceModel, final AtmosphereResource atmosphereResource, final HttpUriRequest uri, final HtmlNodePathMapper htmlNodePathMapper, final boolean detailedMovieData, HttpContext httpContext, final String searchTerm) 
+					throws InterruptedException, IOReactorException{
 		final HttpAsyncClient httpClient = new DefaultHttpAsyncClient();
 		initParams(httpClient);		
 		httpClient.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);

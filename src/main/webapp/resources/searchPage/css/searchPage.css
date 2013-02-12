@@ -326,8 +326,8 @@ div.container {
 
 .movieDetailsTable {
 	border: none solid #828282;
-	border-collapse: collapse;
-	
+	border-collapse: collapse;	
+	width: 100%;
 }
 
 .movieDetailsTable td, .movieDetailsTable th {
@@ -361,11 +361,16 @@ div.container {
 }
 
 #movieList .searchTermTreeIcon {
-	background: url("../../img/icons_movieSource.png") no-repeat scroll 18px 0 transparent;
+	background: url("../../img/icons_searchTerm.png") no-repeat scroll 18px 0 transparent;
 }
 
 #movieList .infosourceTreeIcon {
-	background: url("../../img/icons_searchTerm.png") no-repeat scroll 18px 0 transparent;
+	background: url("../../img/icons_movieSource.png") no-repeat scroll 18px 0 transparent;
+}
+
+#movieList .removeTreeNode{
+	color: #f00;
+	font-size:14px;
 }
 
 ul.nav li{

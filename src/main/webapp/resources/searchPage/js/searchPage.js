@@ -64,6 +64,7 @@
 			movieDataSourceTmpl = $('#movieDataSourceTmpl').val(),
 			movieItemTmpl = $('#movieItemTmpl').val(),
 			noMovieFoundTmpl = $('#noMovieFoundTmpl').val(),
+			oneMovieFoundTmpl = $('#oneMovieFoundTmpl').val(),
 			detailedMovieItemTabHeader = $('#detailedMovieItemTabHeader').val(),
 			detailedMovieItemTabContent = $('#detailedMovieItemTabContent').val(),
 			movieTitle = $('.movie-title',this.$ctx).val(), 
@@ -81,10 +82,16 @@
 			if(response.state === "messageReceived"){								
 					
 				if((response.responseBody==="201")||((response.responseBody==="")&&(response.status===200))){
-					alert('Movie saved successfully in DB');
+					$('#errorModalLabel').html('Info:');
+			    	$('#errorModalMsg').html('Movie saved successfully in DB!');
+			    	$('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+			    	$('#errorModal').modal();			
 					return;
 				}else if((response.responseBody==="400")||(response.status===400)){
-					alert('Could not save movie into DB');
+					$('#errorModalLabel').html('Info:');
+			    	$('#errorModalMsg').html('Could not save movie into DB!');
+			    	$('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+			    	$('#errorModal').modal();	
 					return;
 				}
         		MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
@@ -126,8 +133,23 @@
 	        	}else if((MovieData!==null)&&(MovieData.title!==undefined)){// we received an object => Detailed Movie Info	   	        		
 	        		site = MovieData.site;
 	        		
-	        		//remove the loading icon after the detailed movie info has been retrieved
-	        		$('#'+that.selectedMovieId).siblings('label').removeClass('loading');
+	        		//if the result came via Redirect(e.g.: one result found on Filmkatalogus)
+	        		if(that.selectedMovieId===''){
+	        			var trimmedMovieTitle = movieTitle.replace(/\s+/g, ''),
+	        				movieandsite = trimmedMovieTitle+MovieData.site;	        			
+	        			//add the node in the tree only if it doesn't exist already
+	        			if($('#'+movieandsite).length<=0){
+	        				$(oneMovieFoundTmpl.tmpl({
+								"site" : MovieData.site,
+								"movieandsite" : movieandsite
+							})).appendTo($('.'+trimmedMovieTitle));	
+	        			}	        				
+	        			that.selectedMovieId = trimmedMovieTitle;
+	        		}
+	        		
+        			//remove the loading icon after the detailed movie info has been retrieved		        		
+	        		$('#'+that.selectedMovieId).siblings('label').removeClass('loading');	
+	        		
 	        		//only add a new tab with a certain id if it doesn't exist already
 	        		if($('#tab'+that.selectedMovieId).length<=0){
 	        			$(detailedMovieItemTabHeader.tmpl({	        			
@@ -158,10 +180,26 @@
 		        	
 		        	$('.addToDB', this.$ctx).off('click', $.proxy(this.saveMovieInDb,this));
 		        	$('.addToDB', this.$ctx).on('click', $.proxy(this.saveMovieInDb,this));
+		        	
+		        	that.selectedMovieId = '';
 	        			        	
-	        	}	        		        		        	       		        	
-	        	
-		    }// end if(response.state==="messageReceived")	    
+	        	}else if((MovieData!==null)&&(MovieData.title===undefined)){//->We didn't receive any movie info from the selected infosource
+	        		var trimmedMovieTitle = movieTitle.replace(/\s+/g, ''),
+        			movieandsite = trimmedMovieTitle+MovieData[0].site,
+        			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
+
+	        		//remove the loading icon
+	        		$('.'+trimmedMovieTitle).siblings('label').removeClass('loading');	        		
+	        		/* search if a node with the same info already exists in the tree 
+	        		 * and if the node doesn't already exist, add it */
+	        		if(currentNode.length<=0){
+	        			$(noMovieFoundTmpl.tmpl({
+							"site" : MovieData[0].site,
+							"movieandsite" : movieandsite
+						})).appendTo($('.'+trimmedMovieTitle));	
+	        		}	        		        		        	       		        	
+	        	}
+			}// end if(response.state==="messageReceived")	    
 		},
 		
 		/**On Message Published*/

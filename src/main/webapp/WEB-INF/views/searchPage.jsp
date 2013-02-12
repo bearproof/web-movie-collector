@@ -2,21 +2,20 @@
 
 <link rel="stylesheet"
 	href="/resources/common/css/reset.meyer-2.0.min.css" media="all" />
-<link rel="stylesheet" href="/resources/common/css/base.css" media="all" />
+<link rel="stylesheet" 
+	href="/resources/common/css/base.css" media="all" />
 <link rel="stylesheet"
 	href="/resources/localeChanger/css/localeChanger.css" media="all" />
 <link rel="stylesheet" href="/resources/common/css/easyui.css"
 	media="all" />
-<link rel="stylesheet" href="/resources/common/css/icon.css" media="all" />
-<link
-	href="/resources/jquery/jqueryUI-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css"
-	rel="stylesheet">
+<link rel="stylesheet" 
+	href="/resources/common/css/icon.css" media="all" />
+<link rel="stylesheet"
+	href="/resources/jquery/jqueryUI-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css">
 <link rel="stylesheet" href="/resources/searchPage/css/searchPage.css"
 	media="all" />
 <link rel="stylesheet" href="/resources/css/css3treeview.css"
 	media="all" />
-<script type="text/javascript"
-	src="/resources/js/css_browser_selector-4.0.min.js"></script>
 
 <div id="WMCcontainer">
 
@@ -123,22 +122,35 @@
 		<input type="checkbox" id={uniqueid}>
 		<label for={uniqueid}>{title}</label>
 		<ul>
-		<li><span><spring:message code="searchPage.movie.year" />:&nbsp;{year}</span></li>
-		<li><span><spring:message code="searchPage.movie.director" />:&nbsp;{director}</span></li>
-		<li><a class="movie-id" href="#" data-uniqueId={uniqueid} title={uniqueid}
-					data-site={site} data-siteid={siteid}><spring:message
-							code="searchPage.movie.detaileddata" /></a></li>
+			<li><span><spring:message code="searchPage.movie.year" />:&nbsp;{year}</span></li>
+			<li><span><spring:message code="searchPage.movie.director" />:&nbsp;{director}</span></li>
+			<li>
+				<a class="movie-id" href="#" data-uniqueId={uniqueid} title={uniqueid} data-site={site} data-siteid={siteid}>
+				<spring:message	code="searchPage.movie.detaileddata" />
+				</a>
+			</li>
 		</ul>
 	</li>
 </textarea>
 
 <textarea id="noMovieFoundTmpl" class="ui-helper-hidden">
-	<li><span>{noMovieFound}</span></li>
+	<li>
+		<input type="checkbox" id="{movieandsite}">
+		<label class="infosourceTreeIcon" for={movieandsite}>{site}</label>
+		<ul class={movieandsite}><li><span><spring:message code="searchPage.movie.not.found" /></span></li></ul>
+	</li>		
+</textarea>
+
+<textarea id="oneMovieFoundTmpl" class="ui-helper-hidden">
+	<li>
+		<input type="checkbox" id="{movieandsite}">
+		<label class="infosourceTreeIcon" for={movieandsite}>{site}</label>
+		<ul class={movieandsite}><li><span><spring:message code="searchPage.one.result.found" /></span></li></ul>
+	</li>		
 </textarea>
 
 <textarea id="detailedMovieItemTabHeader" class="ui-helper-hidden">
-		<li><a data-toggle="tab" href="{uniqueid}">{movieTitle}&nbsp;<span
-			class="closeTab">x</span></a></li>
+		<li><a data-toggle="tab" href="{uniqueid}">{movieTitle}&nbsp;<span class="closeTab">x</span></a></li>
 </textarea>
 
 <textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
@@ -233,7 +245,7 @@
 			<tr>
 				<th><spring:message code="domain.movie.column.ownMovieNotes" />:</th>
 				<td>
-					&lt;textarea class="ownMovieNotes" placeholder="My Movie Review"&gt;&lt;/textarea&gt;
+					&lt;textarea class="ownMovieNotes" maxlength="300" placeholder="My Movie Review"&gt;&lt;/textarea&gt;
 				</td>					
 			</tr>		
 			<tr>
@@ -248,26 +260,27 @@
 	</div>			
 </textarea>
 
-	<%--Messages Component--%>
-	<input type="hidden" class="messages"
-		data-search-url='${pageContext.request.contextPath}/searchMovies/'
-		data-detailedSearch-url='${pageContext.request.contextPath}/searchDetailedData/'
-		data-saveMovie-url='${pageContext.request.contextPath}/domain/movies/'
-		data-searchPage.no.infosource.selected='<spring:message code="searchPage.no.infosource.selected"/>'
-		data-searchpage.movie.required='<spring:message code="searchPage.movie.required"/>'
-		data-searchPage.server.error='<spring:message code="searchPage.server.error"/>'
-		data-searchPage.movie.not.found='<spring:message code="searchPage.movie.not.found"/>'
-		data-searchPage.one.result.found='<spring:message code="searchPage.one.result.found"/>'>
+<%--Messages Component--%>
+<input type="hidden" class="messages"
+	data-search-url='${pageContext.request.contextPath}/searchMovies/'
+	data-detailedSearch-url='${pageContext.request.contextPath}/searchDetailedData/'
+	data-saveMovie-url='${pageContext.request.contextPath}/domain/movies/'
+	data-searchPage.no.infosource.selected='<spring:message code="searchPage.no.infosource.selected"/>'
+	data-searchpage.movie.required='<spring:message code="searchPage.movie.required"/>'
+	data-searchPage.server.error='<spring:message code="searchPage.server.error"/>'
+	data-searchPage.movie.not.found='<spring:message code="searchPage.movie.not.found"/>'
+	data-searchPage.one.result.found='<spring:message code="searchPage.one.result.found"/>'>	
+	</div>
+</div>
 
-
-	<script type="text/javascript"
+<script type="text/javascript"
 		src="/resources/inheritance/js/inheritance-1.0.min.js"></script>
 	<script type="text/javascript"
 		src="/resources/jquery/jquery-1.8.3.min.js"></script>
-	<!-- <script type="text/javascript" 
-		src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> -->
 	<script type="text/javascript" 
 		src="/resources/js/bootstrap-tab.js"></script>
+	<script type="text/javascript"
+		src="/resources/js/bootstrap-modal.js"></script>
 	<script type="text/javascript"
 		src="/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
 	<script type="text/javascript" 
@@ -275,10 +288,8 @@
 	<script type="text/javascript"
 		src="/resources/localeChanger/js/localeChanger.js"></script>
 	<script type="text/javascript"
-		src="/resources/js/bootstrap-modal.js"></script>
-	<script type="text/javascript"
 			src="/resources/searchPage/js/searchPage.js"></script>
-	</div>
-</div>
+	<!-- <script type="text/javascript" 
+		src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> -->
 
 <jsp:include page="sections/modal.jsp" />
