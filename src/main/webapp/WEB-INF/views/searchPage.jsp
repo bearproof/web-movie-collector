@@ -194,39 +194,48 @@
 			</tr>
 			
 			<tr>
-				<th></th>
+				<th><spring:message code="domain.movie.column.userRating" />:</th>
 				<td>
 					<select class="userRating">
-						<option value="Unrated" selected="selected">Unrated</option>
-						<option value="Don't bother seeing">Don't bother seeing</option>
-						<option value="Pretty good">Pretty good</option>
-						<option value="Very good">Very good</option>
-						<option value="Excellent">Excellent</option>
-					</select> 
-					
+						<option value="0" selected="selected"><spring:message code="domain.movie.column.userRating.unrated" /></option>
+						<option value="1"><spring:message code="domain.movie.column.userRating.dontbother" /></option>
+						<option value="2"><spring:message code="domain.movie.column.userRating.prettygood" /></option>
+						<option value="3"><spring:message code="domain.movie.column.userRating.verygood" /></option>
+						<option value="4"><spring:message code="domain.movie.column.userRating.excellent" /></option>
+					</select> 					
+				</td>
+			</tr>
+			<tr>
+				<th><spring:message code="domain.movie.column.movieStatus" />:</th>
+				<td>
 					<select class="movieStatus">
-						<option value="Want to see" >Want to see</option>
-						<option value="Seen already">Seen already</option>
-						<option value="Not specified" selected="selected">Not specified</option>						
+						<option value="0" selected="selected"><spring:message code="domain.movie.column.movieStatus.notspecified" /></option>												
+						<option value="1"><spring:message code="domain.movie.column.movieStatus.dontwannasee" /></option>	
+						<option value="2" ><spring:message code="domain.movie.column.movieStatus.wannasee" /></option>
+						<option value="3"><spring:message code="domain.movie.column.movieStatus.seenalready" /></option>
 					</select> 
 				</td>
 			</tr>
 			
 			<tr>
-				<th></th>
+				<th><spring:message code="domain.movie.column.shelfLocation" />:</th>
 				<td>
 					<input type="text" class="shelfLocation" value="" placeholder="Shelf Location">
+				</td>	
+			</tr>
+			<tr>
+				<th><spring:message code="domain.movie.column.lentTo" />:</th>
+				<td>
 					<input type="text" class="lentTo" value="" placeholder="Lent To">
 				</td>	
-			</tr>
+			</tr>						
 			
 			<tr>
-				<th></th>
+				<th><spring:message code="domain.movie.column.ownMovieNotes" />:</th>
 				<td>
-					<input type="text" class="ownMovieNotes" value="" placeholder="My Movie Review">
-				</td>	
-			</tr>
-			
+					&lt;textarea class="ownMovieNotes" placeholder="My Movie Review"&gt;&lt;/textarea&gt;
+				</td>					
+			</tr>		
 			<tr>
 				<th></th>
 				<td>
@@ -234,7 +243,7 @@
 						<spring:message code="searchPage.movie.addToDB" />
 					</button>
 				</td>
-			</tr>
+			</tr>				
 		</table>	
 	</div>			
 </textarea>
