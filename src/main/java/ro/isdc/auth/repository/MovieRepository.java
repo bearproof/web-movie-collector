@@ -1,5 +1,7 @@
 package ro.isdc.auth.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 import ro.isdc.auth.domain.Movie;
@@ -13,9 +15,10 @@ import ro.isdc.auth.domain.Movie;
 public interface MovieRepository extends PagingAndSortingRepository<Movie, String> {
 
 	// TODO Create different queries by requested functionality
-	
+
 	Movie findByIdOnSiteAndUserId(String idOnSite, String userId);
 
 	Movie findByDescription(String description);
 
+	List<Movie> findByUserId(String userId);
 }

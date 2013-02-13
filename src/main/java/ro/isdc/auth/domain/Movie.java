@@ -4,9 +4,7 @@ import static org.apache.commons.lang.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang.builder.ToStringBuilder.reflectionToString;
 
-import java.sql.Date;
-
-import javax.validation.constraints.NotNull;
+import java.util.Calendar;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -42,9 +40,9 @@ public class Movie extends MovieInfo {
 
 	private String ownMovieNotes;
 
-	private Date loanDate;
+	private String loanDate;
 
-	private Date returnDate;
+	private String returnDate;
 
 	public String getId() {
 		return id;
@@ -86,19 +84,19 @@ public class Movie extends MovieInfo {
 		this.ownMovieNotes = ownMovieNotes;
 	}
 
-	public Date getLoanDate() {
+	public String getLoanDate() {
 		return loanDate;
 	}
 
-	public void setLoanDate(Date loanDate) {
+	public void setLoanDate(String loanDate) {
 		this.loanDate = loanDate;
 	}
 
-	public Date getReturnDate() {
+	public String getReturnDate() {
 		return returnDate;
 	}
 
-	public void setReturnDate(Date returnDate) {
+	public void setReturnDate(String returnDate) {
 		this.returnDate = returnDate;
 	}
 
