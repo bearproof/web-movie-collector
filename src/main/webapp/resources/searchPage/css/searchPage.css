@@ -236,10 +236,6 @@
 #header .btn-group{
 	padding:2px;
 }
-div.container {
-	padding-top: 40px;
-	width: 100%;
-}
 
 #WMCcontainer .userInputZone header,
 #WMCcontainer .infoSourceCheckboxes{
@@ -248,10 +244,6 @@ div.container {
 
 #WMCcontainer input{
 	margin-bottom:0;	
-}
-
-#mainContent {
-	padding-top:20px;
 }
 
 #searchPage .container-fluid {
@@ -377,3 +369,33 @@ ul.nav li{
 	font-size: 14px;
 }
 
+
+#mainContent {
+	padding-top:20px;
+	/* padding-top:0; */
+}
+
+/* #mainContent .userInputZone{
+	position:fixed;
+	background:#fff;
+	width:100%;
+} */
+
+/* .content{
+	padding-top:40px;
+} */
+
+
+#searchPage div.container {
+	padding-top: 20px;
+	width: 100%;
+}
+
+#pageFooter{
+ 	height:20px;
+}
+#pageFooter .navbar-inner{
+	font-size:14px;
+	padding-top:1px;
+	padding-left:0px;
+}

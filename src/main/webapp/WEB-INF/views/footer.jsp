@@ -1,1 +1,5 @@
-<spring:message code="footer.text"/>
+<div id="pageFooter" class="navbar navbar-inverse navbar-fixed-bottom">
+	<div class="navbar-inner">
+			<spring:message code="footer.text"/>
+	</div>
+</div>

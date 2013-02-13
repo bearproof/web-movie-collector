@@ -32,3 +32,12 @@
 #socialSignInMessage{
 	padding-bottom:10px;
 }
+
+#pageFooter{
+ 	height:20px;
+}
+#pageFooter .navbar-inner{
+	font-size:14px;
+	padding-top:1px;
+	padding-left:0px;
+}

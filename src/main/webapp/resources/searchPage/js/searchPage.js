@@ -12,13 +12,7 @@
 		request: null,
 		socket: $.atmosphere,
 		subSocket: null,
-		selectedMovieId : '',
-		/*Test socket*/
-		requestTest: null,
-		socketTest: $.atmosphere,
-		subSocketTest: null,
-		isSending:false,
-		stopSignaled:false,
+		selectedMovieId : '',		
 				
 		/** Constructor. */
 		init : function(cfg) {
@@ -72,10 +66,7 @@
 			site = null,
 			movieandsite = null,
 			that=this,
-			treeTitlesArray = [],
-			panelContent = "",
-			$el = null,
-			decodedResponse  = null;			
+			treeTitlesArray = [];			
 			
 			$.atmosphere.log('info', ['onMessageReceived']);	
 
@@ -88,7 +79,7 @@
 			    	$('#errorModal').modal();			
 					return;
 				}else if((response.responseBody==="400")||(response.status===400)){
-					$('#errorModalLabel').html('Info:');
+					$('#errorModalLabel').html('Warning:');
 			    	$('#errorModalMsg').html('Could not save movie into DB!');
 			    	$('#errorModelBody').attr('class', 'modal-body alert alert-warning');
 			    	$('#errorModal').modal();	
@@ -96,8 +87,9 @@
 				}
         		MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
 				$.atmosphere.log('info', [MovieData]);								
-	        		
-	        	if($.isArray(MovieData)&&(MovieData[0].title!==undefined)){
+	        	
+				
+	        	if($.isArray(MovieData)&&(MovieData[0].title!==undefined)){//->we received Brief Movie Info for multiple movies from the selected infosources
 	        		var trimmedMovieTitle = movieTitle.replace(/\s+/g, ''),
 	        			movieandsite = trimmedMovieTitle+MovieData[0].site,
 	        			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
@@ -133,7 +125,7 @@
 	        	}else if((MovieData!==null)&&(MovieData.title!==undefined)){// we received an object => Detailed Movie Info	   	        		
 	        		site = MovieData.site;
 	        		
-	        		//if the result came via Redirect(e.g.: one result found on Filmkatalogus)
+	        		//if the result came after a server Redirect(e.g.: one result found on Filmkatalogus when searching for a movie)
 	        		if(that.selectedMovieId===''){
 	        			var trimmedMovieTitle = movieTitle.replace(/\s+/g, ''),
 	        				movieandsite = trimmedMovieTitle+MovieData.site;	        			
@@ -172,15 +164,17 @@
 						})).appendTo($('#movieTabContent'));
 	        		}	        			        			        		
 	        		
+	        		//open the tab corresponding to the movie received from the server
 	        		$('#movieTabHeader a[href="#tab'+that.selectedMovieId+'"]').tab('show');
 	        			        		
 	        		//bind the removeTab() function to the elements which have the class ".closeTab" only once
 	        		$('.closeTab',this.$ctx).off('click',$.proxy(this.removeTab,this));
 		        	$('.closeTab', this.$ctx).on('click',$.proxy(this.removeTab,this));	 
 		        	
+	        		//bind the saveMovieInDb() function to the elements which have the class ".addToDB" only once
 		        	$('.addToDB', this.$ctx).off('click', $.proxy(this.saveMovieInDb,this));
 		        	$('.addToDB', this.$ctx).on('click', $.proxy(this.saveMovieInDb,this));
-		        	
+		        			        	
 		        	that.selectedMovieId = '';
 	        			        	
 	        	}else if((MovieData!==null)&&(MovieData.title===undefined)){//->We didn't receive any movie info from the selected infosource
@@ -372,6 +366,8 @@
 			$(this).removeClass('active');
 		});
 		$('#wmcPageLink').addClass('active');
+		
+		$('.userInputZone').css('top', $('.navbar').outerHeight());
 			
 	    $('.ez-template').bind('click', function(){  
 	    	$('.panel-header').addClass("panel-header-ez");
