@@ -89,7 +89,7 @@ body {
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/jquery/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript"
-		src="/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
 	<%-- <script type="text/javascript"

@@ -84,48 +84,7 @@
 				<!-- <span class="help-inline"></span> -->
 			</div>
 		</div>
-		
-		
-		
-		
-		
-	<%-- 	<div class="control-group">
-			<label class="control-label" for="password"><fmt:message key="domain.account.column.password"/><em>*</em></label>
-			<div class="controls">
-				<input type="password" id="password" name="password" maxlength="50" value=""  placeholder="Password">
-				<span class="help-inline"></span>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label" for="password_confirm"><fmt:message key="domain.account.column.passwordConfirmation"/><em>*</em></label>
-			<div class="controls">
-				<input type="password" id="password_confirm" name="password_confirm" maxlength="50" value=""  placeholder="Confirm Password">
-				<span class="help-inline"></span>
-			</div>
-		</div> 
-		<div class="control-group">
-			<label class="control-label" for="email"><fmt:message key="domain.account.column.email"/><em>*</em></label>
-			<div class="controls">
-				<input type="text" id="email" name="email" placeholder="Email" value="" maxlength="100">
-				<span class="help-inline"></span>
-			</div>
-		</div>
-		
-		<div class="control-group">
-			<label class="control-label" for="isEnabled">Is enabled?</label>
-			<div class="controls">
-				<input type="checkbox" id="isEnabled" name="isEnabled"  checked>
-				<span class="help-inline"></span>
-			</div>
-		</div>		
-		<div class="control-group">
-			<label class="control-label" for="roles">Roles<em>*</em></label>
-			<div class="controls">
-				 <select id="rolesList" class="multiselect" multiple="multiple"></select>	                    
-            </div>          
-		</div> 
-		--%>
-		
+				
 		<div class="form-actions">
 			<button id="saveButton" type="submit" class="btn btn-primary"><fmt:message key="searchPage.movie.addToDB"/></button>
 			<button id="cancelButton" type="button" class="btn"><fmt:message key="button.operation.cancel"/></button>

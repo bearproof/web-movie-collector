@@ -63,9 +63,18 @@ public class MovieHelper implements EntityHelper<Movie> {
 	}
 
 	@Override
-	public Movie updateFrom(Movie fromentity, Movie toEntity) {
-		// TODO Not sure this is needed here anymore. Test before removing!!!
-		return null;
+	public Movie updateFrom(Movie fromEntity, Movie toEntity) {
+		toEntity.setTitle(fromEntity.getTitle());
+		toEntity.setYear(fromEntity.getYear());
+		toEntity.setGenre(fromEntity.getGenre());
+		toEntity.setDirector(fromEntity.getDirector());
+		toEntity.setCast(fromEntity.getCast());
+		toEntity.setDescription(fromEntity.getDescription());
+		toEntity.setRuntime(fromEntity.getRuntime());
+		toEntity.setUserRating(fromEntity.getUserRating());
+		toEntity.setMovieStatus(fromEntity.getMovieStatus());
+		toEntity.setOwnMovieNotes(fromEntity.getOwnMovieNotes());
+		return toEntity;
 	}
 
 	@Override

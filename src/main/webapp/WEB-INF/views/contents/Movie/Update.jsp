@@ -2,71 +2,101 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="formsContent">
 	<!-- Form container -->
-	<form id="accountEditForm" class="form-horizontal" autocomplete="off" method="POST" action="">
-	<legend><fmt:message key="domain.account.edit.legend"/></legend>
+	<form id="movieEditForm" class="form-horizontal" autocomplete="off" method="POST" action="">
+	<legend><fmt:message key="domain.movie.edit.legend"/></legend>
 		<div class="control-group">
-			<label class="control-label" for="id"><fmt:message key="domain.account.column.id"/><em>*</em></label>
+			<label class="control-label" for="id"><fmt:message key="domain.movie.column.id"/><em>*</em></label>
 			<div class="controls">
 				<input type="text" id="id" name="id" readOnly="true" value="${crudObj.id}" maxlength="100" data-reset="${crudObj.id}">
 				<span class="help-inline"></span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="firstName"><fmt:message key="domain.account.column.firstName"/><em>*</em></label>
+			<label class="control-label" for="title"><fmt:message key="domain.movie.column.title"/><em>*</em></label>
 			<div class="controls">
-				<input type="text" id="firstName" name="firstName" value="${crudObj.firstName}" maxlength="100" placeholder="First Name"  data-reset="${crudObj.firstName}">
+				<input type="text" id="title" name="title" value="${crudObj.title}" maxlength="100" placeholder="Movie Title" data-reset="${crudObj.title}">
 				<span class="help-inline"></span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="lastName"><fmt:message key="domain.account.column.lastName"/><em>*</em></label>
+			<label class="control-label" for="year"><fmt:message key="domain.movie.column.year"/><em>*</em></label>
 			<div class="controls">
-				<input type="text" id="lastName" name="lastName" value="${crudObj.lastName}" maxlength="100" placeholder="Last Name" data-reset="${crudObj.lastName}">
+				<input type="text" id="year" name="year" value="${crudObj.year}" maxlength="100" placeholder="Year" data-reset="${crudObj.year}">
 				<span class="help-inline"></span>
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="password"><fmt:message key="domain.account.column.password"/><em>*</em></label>
+			<label class="control-label" for="genre"><fmt:message key="domain.movie.column.genre"/></label>
 			<div class="controls">
-				<input type="password" id="password" name="password" maxlength="50" value="${crudObj.password}"  placeholder="Password" data-reset="${crudObj.password}">
-				<span class="help-inline"></span>
+				<input type="text" id="genre" name="genre" value="${crudObj.genre}" maxlength="100" placeholder="The genre of the movie" data-reset="${crudObj.genre}">
+				<!-- <span class="help-inline"></span> -->
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="password_confirm"><fmt:message key="domain.account.column.passwordConfirmation"/><em>*</em></label>
+			<label class="control-label" for="director"><fmt:message key="domain.movie.column.director"/></label>
 			<div class="controls">
-				<input type="password" id="password_confirm" name="password_confirm" maxlength="50" value="${crudObj.password}"  placeholder="Confirm Password" data-reset="">
-				<span class="help-inline"></span>
+				<input type="text" id="director" name="director" value="${crudObj.director}" maxlength="100" placeholder="The director" data-reset="${crudObj.genre}">
+				<!-- <span class="help-inline"></span> -->
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="email"><fmt:message key="domain.account.column.email"/><em>*</em></label>
+			<label class="control-label" for="cast"><fmt:message key="domain.movie.column.cast"/></label>
 			<div class="controls">
-				<input type="text" id="email" readOnly="true" name="email" value="${crudObj.email}" maxlength="100" data-reset="${crudObj.email}">
-				<span class="help-inline"></span>
+				<textarea id="cast" name="cast" maxlength="200" placeholder="<fmt:message key="domain.movie.column.cast"/>">${crudObj.cast}</textarea>
+				<!-- <span class="help-inline"></span> -->
 			</div>
 		</div>
 		<div class="control-group">
-			<label class="control-label" for="isEnabled">Is enabled?</label>
+			<label class="control-label" for="description"><fmt:message key="domain.movie.column.description"/></label>
 			<div class="controls">
-				<input type="checkbox" id="isEnabled" name="isEnabled" <c:if test="${crudObj.isEnabled=='true'}">checked</c:if>>
-				<span class="help-inline"></span>
+				<textarea id="description" name="description" maxlength="500" placeholder="Description">${crudObj.description}</textarea>
+				<!-- <span class="help-inline"></span> -->
 			</div>
-		</div>		
+		</div>
 		<div class="control-group">
-			<label class="control-label" for="roles">Roles<em>*</em></label>
+			<label class="control-label" for="runtime"><fmt:message key="domain.movie.column.runtime"/></label>
 			<div class="controls">
-				 <select id="rolesList" class="multiselect" multiple="multiple">
-				 	<c:forEach var="role" items="${crudObj.roles}">
-				 		<option value="${role.id}"  selected="selected">${role.roleName}</option>
-					</c:forEach>
-				 </select>	                    
-            </div>          
-		</div> 		
+				<input type="text" id="runtime" name="runtime" value="${crudObj.runtime}" maxlength="100" placeholder="Runtime (min)" data-reset="${crudObj.director}">
+				<!-- <span class="help-inline"></span> -->
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="userRating"><fmt:message key="domain.movie.column.userRating"/></label>
+			<div class="controls">				
+				<select id="userRating" class="userRating">
+					<option value="0" <c:if test="${crudObj.userRating=='0'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.userRating.unrated"/></option>
+					<option value="1" <c:if test="${crudObj.userRating=='1'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.userRating.dontbother"/></option>
+					<option value="2" <c:if test="${crudObj.userRating=='2'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.userRating.prettygood"/></option>
+					<option value="3" <c:if test="${crudObj.userRating=='3'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.userRating.verygood"/></option>
+					<option value="4" <c:if test="${crudObj.userRating=='4'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.userRating.excellent"/></option>
+				</select> 
+				<!-- <span class="help-inline"></span> -->
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="movieStatus"><fmt:message key="domain.movie.column.movieStatus"/></label>
+			<div class="controls">				
+				<select id="movieStatus" class="movieStatus">
+					<option value="0" <c:if test="${crudObj.movieStatus=='0'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.notspecified"/></option>						
+					<option value="1" <c:if test="${crudObj.movieStatus=='1'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.wannasee"/></option>
+					<option value="2" <c:if test="${crudObj.movieStatus=='2'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.seenalready"/></option>
+					<option value="3" <c:if test="${crudObj.movieStatus=='3'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.dontwannasee"/></option>
+				</select> 
+				<!-- <span class="help-inline"></span> -->
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="ownMovieNotes"><fmt:message key="domain.movie.column.ownMovieNotes"/></label>
+			<div class="controls">
+				<textarea id="ownMovieNotes" name="ownMovieNotes" maxlength="500" placeholder="<fmt:message key="domain.movie.column.ownMovieNotes"/>">${crudObj.ownMovieNotes}</textarea>
+				<!-- <span class="help-inline"></span> -->
+			</div>
+		</div>
+						
 		<div class="form-actions">
-			<button id="saveButton" type="submit" class="btn btn-primary"><fmt:message key="button.operation.save"/> <fmt:message key="domain.account"/></button>
-			<a href="${pageContext.request.contextPath}/domain/account/update/${crudObj.id}" id="resetButton" class="btn"><fmt:message key="button.operation.reset"/></a>
-			<a href="${pageContext.request.contextPath}/domain/accounts/list" id="cancelButton" class="btn"><fmt:message key="button.operation.cancel"/></a>
-		</div>		
+			<button id="saveButton" type="submit" class="btn btn-primary"><fmt:message key="button.operation.save"/> <fmt:message key="domain.movie"/></button>
+			<a href="${pageContext.request.contextPath}/domain/movies/update/${crudObj.id}" id="resetButton" class="btn"><fmt:message key="button.operation.reset"/></a>
+			<a href="${pageContext.request.contextPath}/domain/movies/list" id="cancelButton" class="btn"><fmt:message key="button.operation.cancel"/></a>
+		</div>	
 	</form>
 </div>

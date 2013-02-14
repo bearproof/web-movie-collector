@@ -1,20 +1,20 @@
 <%@include file="/WEB-INF/views/includes/taglibs.jsp"%>
 
 <link rel="stylesheet"
-	href="/resources/common/css/reset.meyer-2.0.min.css" media="all" />
+	href="${pageContext.request.contextPath}/resources/common/css/reset.meyer-2.0.min.css" media="all" />
 <link rel="stylesheet" 
-	href="/resources/common/css/base.css" media="all" />
+	href="${pageContext.request.contextPath}/resources/common/css/base.css" media="all" />
 <link rel="stylesheet"
-	href="/resources/localeChanger/css/localeChanger.css" media="all" />
+	href="${pageContext.request.contextPath}/resources/localeChanger/css/localeChanger.css" media="all" />
 <link rel="stylesheet" 
-	href="/resources/common/css/easyui.css"	media="all" />
+	href="${pageContext.request.contextPath}/resources/common/css/easyui.css"	media="all" />
 <link rel="stylesheet" 
-	href="/resources/common/css/icon.css" media="all" />
+	href="${pageContext.request.contextPath}/resources/common/css/icon.css" media="all" />
 <link rel="stylesheet"
-	href="/resources/jquery/jqueryUI-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css">
-<link rel="stylesheet" href="/resources/searchPage/css/searchPage.css"
+	href="${pageContext.request.contextPath}/resources/jquery/jqueryUI-bootstrap/css/custom-theme/jquery-ui-1.10.0.custom.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/searchPage/css/searchPage.css"
 	media="all" />
-<link rel="stylesheet" href="/resources/css/css3treeview.css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/css3treeview.css"
 	media="all" />
 
 <div id="WMCcontainer">	
@@ -261,22 +261,23 @@
 </div>
 
 <script type="text/javascript"
-	src="/resources/inheritance/js/inheritance-1.0.min.js"></script>
+	src="${pageContext.request.contextPath}/resources/inheritance/js/inheritance-1.0.min.js"></script>
 <script type="text/javascript"
-	src="/resources/jquery/jquery-1.8.3.min.js"></script>
+	src="${pageContext.request.contextPath}/resources/jquery/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" 
-	src="/resources/js/bootstrap-tab.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/bootstrap-tab.js"></script>
 <script type="text/javascript"
-	src="/resources/js/bootstrap-modal.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/bootstrap-modal.js"></script>
 <script type="text/javascript"
-	src="/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
+	src="${pageContext.request.contextPath}/resources/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
 <script type="text/javascript" 
-	src="/resources/common/js/base.js"></script>
+	src="${pageContext.request.contextPath}/resources/common/js/base.js"></script>
 <script type="text/javascript"
-	src="/resources/localeChanger/js/localeChanger.js"></script>
+	src="${pageContext.request.contextPath}/resources/localeChanger/js/localeChanger.js"></script>
 <script type="text/javascript"
-		src="/resources/searchPage/js/searchPage.js"></script>
+		src="${pageContext.request.contextPath}/resources/searchPage/js/searchPage.js"></script>
 <!-- <script type="text/javascript" 
-	src="/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> -->
+	src="${pageContext.request.contextPath}/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> -->
 
-<jsp:include page="sections/modal.jsp" />
+<%-- <jsp:include page="sections/modal.jsp" /> --%>
+<%@include file="/WEB-INF/views/sections/modal.jsp"%>
