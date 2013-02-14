@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.BasicQuery;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,12 +29,14 @@ public class MovieService extends AbstractCrudService<Movie> {
 	private UserContextUtil userContext;
 	private MovieRepository repository;
 	private MovieHelper helper;
+	private MongoOperations mongoOps;
 
 	@Autowired
-	public MovieService(MovieRepository repository, MovieHelper helper, UserContextUtil userContext) {
+	public MovieService(MovieRepository repository, MovieHelper helper, UserContextUtil userContext, MongoOperations mongoOps) {
 		this.repository = repository;
 		this.helper = helper;
 		this.userContext = userContext;
+		this.mongoOps = mongoOps;
 	}
 
 	@Override
@@ -82,7 +86,6 @@ public class MovieService extends AbstractCrudService<Movie> {
 		result.setiTotalRecords(page.getTotalElements());
 		result.setAaData(uiDate);
 		return result;
-
 	}
 
 	@Override
@@ -90,6 +93,14 @@ public class MovieService extends AbstractCrudService<Movie> {
 		String uId = userContext.getUserId();
 
 		return Lists.newArrayList(repository.findByUserId(uId));
+	}
+
+	// TODO: We have to check so that the user cannot execute CRUD queries (only
+	// find ones)
+	public List<Movie> executeCustomQuery(String jsonQuery) {
+		BasicQuery query = new BasicQuery(jsonQuery);
+		return mongoOps.find(query, Movie.class);
+
 	}
 	// TODO: Override more methods as I see fit.
 

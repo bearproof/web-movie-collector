@@ -55,5 +55,6 @@ public class MoviesController extends AbstractCrudController<Movie> {
 	protected Validator getValidator() {
 		return this.validator;
 	}
-
+	// TODO: Add a request maping for the execute custom query functionality
+	// without polluting AbstractRestController or AbstractCrudController
 }

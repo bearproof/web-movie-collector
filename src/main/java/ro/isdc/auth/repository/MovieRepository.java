@@ -3,6 +3,7 @@ package ro.isdc.auth.repository;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
@@ -24,5 +25,6 @@ public interface MovieRepository extends PagingAndSortingRepository<Movie, Strin
 
 	List<Movie> findByUserId(String userId);
 
-	Page<Movie> findByUserId(String userId, Pageable pageable);
+	Page<Movie> findByUserId(String userId, Pageable request);
+
 }
