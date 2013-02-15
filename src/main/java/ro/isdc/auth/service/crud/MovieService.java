@@ -10,6 +10,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.BasicQuery;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+
+import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Query.query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
@@ -75,15 +80,29 @@ public class MovieService extends AbstractCrudService<Movie> {
 		String sortColName = params.getsColumns().split(",")[params.getiSortCol_0()];
 		Sort sort = new Sort(sortDir, sortColName);
 		int pageNumber = (int) Math.ceil(params.getiDisplayStart() / params.getiDisplayLength());
-		Page<Movie> page = repository.findByUserId(uId, new PageRequest(pageNumber, params.getiDisplayLength(), sort));
-		List<Movie> data = page.getContent();
+
+		PageRequest pageReq = new PageRequest(pageNumber, params.getiDisplayLength(), sort);
+
+		List<Movie> data;
+		Page<Movie> page;
+		// TODO: To change that
+		if (!params.getsSearch().isEmpty()) {
+
+			page = repository.findAllBySearchTerm(params.getsSearch(), uId, pageReq);
+
+		} else {
+			page = repository.findByUserId(uId, pageReq);
+
+		}
+		data = page.getContent();
+		result.setiTotalDisplayRecords(page.getTotalElements());
+		result.setiTotalRecords(page.getTotalElements());
+		result.setsEcho(params.getsEcho());
 		List<Movie> uiDate = new ArrayList<Movie>();
 		for (Movie entity : data) {
 			uiDate.add(getHelper().copyFrom(entity));
 		}
-		result.setsEcho(params.getsEcho());
-		result.setiTotalDisplayRecords(page.getTotalElements());
-		result.setiTotalRecords(page.getTotalElements());
+
 		result.setAaData(uiDate);
 		return result;
 	}

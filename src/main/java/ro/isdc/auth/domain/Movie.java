@@ -4,8 +4,6 @@ import static org.apache.commons.lang.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang.builder.ToStringBuilder.reflectionToString;
 
-import java.util.Calendar;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

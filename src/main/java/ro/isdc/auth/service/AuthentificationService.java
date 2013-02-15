@@ -39,12 +39,10 @@ public class AuthentificationService implements UserDetailsService {
 	private AccountHelper accountHelper;
 
 	@Autowired
-	public AuthentificationService(AccountRepository userRepository, AccountHelper accountHelper/*,																							 ,
-																								 InitDataService
-																								 initDataService
-																								 ,
-																								 InitMovieService
-																								 initMovieService
+	public AuthentificationService(AccountRepository userRepository, AccountHelper accountHelper/*
+																								 * ,
+																								 * InitDataService
+																								 * initDataServices
 																								 */) {
 		this.userRepository = userRepository;
 		this.accountHelper = accountHelper;

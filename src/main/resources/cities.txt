@@ -1,0 +1,591 @@
+New York City
+Los Angeles
+Chicago
+Houston
+Phoenix
+Philadelphia
+San Antonio
+San Diego
+Dallas
+San Jose
+Detroit
+Jacksonville
+Indianapolisa
+San Francisco
+Columbus
+Austin
+Fort Worth
+Memphis
+Charlotte
+Baltimored
+El Paso
+Milwaukee
+Boston
+Seattle
+Nashvillea
+Denver
+Washington
+Las Vegas
+Louisvillea
+Portland
+Oklahoma City
+Tucson
+Atlanta
+Albuquerque
+Fresno
+Long Beach
+Sacramento
+Mesa
+Kansas City
+Cleveland
+Virginia Beachd
+Omaha
+Miami
+Oakland
+Tulsa
+Minneapolis
+Colorado Springs
+Raleigh
+Honolulub
+Arlington
+Wichita
+St. Louis
+Santa Ana
+Tampa
+Anaheim
+Cincinnati
+Bakersfield
+Aurora
+Pittsburgh
+Toledo
+Riverside
+Stockton
+Corpus Christi
+Newark
+Anchorage
+Lexington
+St. Paul
+Buffalo
+Plano
+Glendale
+Fort Wayne
+Henderson
+Lincoln
+Greensboro
+St. Petersburg
+Chandler
+Jersey City
+New Orleans
+Norfolkd
+Scottsdale
+Birmingham
+Madison
+Orlando
+Baton Rouge
+Chesapeaked
+Garland
+Durham
+Laredo
+Chula Vista
+Lubbock
+Winston-Salem
+Reno
+Hialeah
+North Las Vegas
+Akron
+Gilbert
+Rochester
+Arlingtonc
+Montgomery
+Modesto
+Boise City
+Fremont
+Irvine
+Spokane
+Richmondd
+Shreveport
+Irving
+San Bernardino
+Yonkers
+Des Moines
+Glendale
+Tacoma
+Grand Rapids
+Huntington Beach
+Augustaa
+Mobile
+Moreno Valley
+Little Rock
+Columbus
+Amarillo
+Oxnard
+Fort Lauderdale
+Knoxville
+Fontana
+Salt Lake City
+Newport Newsd
+Jackson
+Tempe
+Worcester
+Brownsville
+Providence
+Fayetteville
+Huntsville
+Ontario
+Aurora
+Rancho Cucamonga
+Santa Clarita
+Chattanooga
+Overland Park
+Tallahassee
+Oceanside
+Garden Grove
+Vancouver
+Grand Prairie
+Cape Coral
+Rockford
+Dayton
+Springfield
+Santa Rosa
+Pomona
+Salem
+Sioux Falls
+Port St. Lucie
+Corona
+Springfield
+Eugene
+Pembroke Pines
+Peoria
+Paterson
+Pasadena
+Hamptond
+Joliet
+Lancaster
+Salinas
+Pasadena
+Naperville
+Hollywood
+Kansas City
+Torrance
+Hayward
+Palmdale
+Lakewood
+Alexandriad
+Syracuse
+Bridgeport
+Escondido
+Orange
+Warren
+Fort Collins
+Fullerton
+Mesquite
+Elk Grove
+Sunnyvale
+Savannah
+Sterling Heights
+McAllen
+Coral Springs
+Cedar Rapids
+Elizabeth
+Columbia
+Hartford
+New Haven
+Carrollton
+Thousand Oaks
+Topeka
+West Valley City
+El Monte
+Waco
+Cary
+Bellevue
+Concord
+Simi Valley
+Clarksville
+Visalia
+Stamford
+Olathe
+Provo
+Springfield
+Evansville
+Abilene
+McKinney
+Vallejo
+Denton
+Ann Arbor
+Lansing
+Flint
+Gainesville
+Peoria
+Lafayette
+Inglewood
+Athensa
+Killeen
+Thornton
+Independence
+Charleston
+Santa Clara
+Beaumont
+Costa Mesa
+Manchester
+Roseville
+Miramar
+Downey
+Victorville
+Waterbury
+Allentown
+Norman
+Clearwater
+West Covina
+Arvada
+Westminster
+Elgin
+South Bend
+Fairfield
+Midland
+Pueblo
+Norwalk
+Erie
+Lowell
+Burbank
+San Buenaventura
+Pompano Beach
+West Jordan
+Portsmouthd
+Billings
+Wichita Falls
+Richmond
+Cambridge
+Berkeley
+Daly City
+Green Bay
+High Point
+Palm Bay
+Amsterdam
+Rotterdam
+The Hague
+Utrecht
+Eindhoven
+Tilburg
+Groningen
+Nijmegen
+Haarlem
+Arnhem
+Breda
+Apeldoorn
+Enschede
+Amersfoort
+Dordrecht
+Zoetermeer
+Leiden
+Maastricht
+Zwolle
+Almere
+Hertogenbosch
+Abrud
+Adjud
+Agnita
+Aiud
+Alba
+Alba Iulia
+Alesd
+Alexandria
+Amara
+Anina
+Aninoasa
+Arad
+Arges
+Avrig
+Azuga
+Babadag
+Babeni
+Bacau
+Baia de Arama
+Baia de Aries
+Baia Mare
+Baia Sprie
+Baicoi
+Baile Govora
+Baile Herculane
+Baile Olanesti
+Baile Tusnad
+Bailesti
+Balan
+Balcesti
+Balt
+Baneasa
+Baraolt
+Bârlad
+Basarabi
+Beclean
+Beius
+Berbesti
+Beresti
+Bicaz
+Bihor
+Bistrita
+Bistrita-Nasaud
+Blaj
+Bocsa
+Boldesti-Scaeni
+Bolintin-Vale
+Borsa
+Borsec
+Botosani
+Brad
+Braila
+Brasov
+Breaza
+Brezoi
+Brosteni
+Bucharest
+Budesti
+Buftea
+Buhusi
+Bumbesti-Jiu
+Busteni
+Buzau
+Buzias
+Cajvana
+Calafat
+Calan
+Calarasi
+Calimanesti-Caciulata
+Câmpeni
+Câmpia Turzii
+Câmpina
+Câmpulung
+Câmpulung Moldovenesc
+Caracal
+Caransebes
+Caras-Severin
+Carei
+Cavnic
+Cazanesti
+Cehu Silvaniei
+Cernavoda
+Chisineu-Cris
+Cisnadie
+Cluj
+Cluj-Napoca
+Codlea
+Comanesti
+Comarnic
+Constanta
+Copsa Mica
+Corabia
+Costesti
+Covasna
+Craiova
+Cristuru Secuiesc
+Cugir
+Curtea de Arges
+Curtici
+Dâmbovita
+Darabani
+Darmanesti
+Dealu
+Dej
+Deta
+Deva
+Dolhasca
+Dolj
+Dorohoi
+Draganesti-Olt
+Dragasani
+Drobeta-Turnu Severin
+Dumbraveni
+Eforie
+Fagaras
+Faget
+Falticeni
+Faurei
+Fetesti
+Fieni
+Fierbinti-Târg
+Filiasi
+Focsani
+Frasin
+Fundulea
+Gaesti
+Galati
+Geoagiu
+Gheorgheni
+Gherla
+Giurgiu
+Gorj
+Gura Humorului
+Harghita
+Hârlau
+Hârsova
+Hateg
+Horezu
+Huedin
+Hunedoara
+Husi
+Ialomita
+Ianca
+Iasi
+Iernut
+Ilfov
+Ineu
+Însurasei
+Întorsura Buzaului
+Isaccea
+Jibou
+Jimbolia
+Lehliu Gara
+Lipova
+Liteni
+Ludus
+Lugoj
+Lupeni
+Macin
+Mangalia
+Maramures
+Marasesti
+Marghita
+Medgidia
+Medias
+Mehedinti
+Miercurea Ciuc
+Mihailesti
+Milisauti
+Mioveni
+Mizil
+Moinesti
+Moldova Noua
+Moreni
+Motru
+Mures
+Murgeni
+Nadlac
+Nasaud
+Navodari
+Neamt
+Negresti
+Negru Voda
+Nehoiu
+Novaci
+Nucet
+Ocna Mures
+Ocna Sibiului
+Ocnele Mari
+Odobesti
+Odorheiu Secuiesc
+Olt
+Oltenita
+Onesti
+Oradea
+Orastie
+Oravita
+Orsova
+Otelu Rosu
+Otopeni
+Ovidiu
+Panciu
+Pâncota
+Pascani
+Petrila
+Petrosani
+Piatra Neamt
+Piatra Olt
+Pitesti
+Ploiesti
+Plopeni
+Podu Iloaiei
+Pogoanele
+Prahova
+Predeal
+Pucioasa
+Radauti
+Râmnicu Sarat
+Râmnicu Vâlcea
+Râsnov
+Reghin
+Resita
+Roman
+Rosiorii de Vede
+Rovinari
+Roznov
+Rupea
+Sacele
+Salaj
+Salcea
+Saliste
+Salonta
+Sângeorz-Bai
+Sânnicolau Mare
+Satu Mare
+Saveni
+Scornicesti
+Sebea
+Sebis
+Segarcea
+Seini
+Sfântu Gheorghe
+Sibiu
+Sighetu Marmatiei
+Sighisoara
+Simeria
+Simleu Silvaniei
+Sinaia
+Siret
+Slanic
+Slanic Moldova
+Slatina
+Slobozia
+Solca
+Sovata
+Stei
+Strehaia
+Suceava
+Sulina
+Talmaciu
+Tandarei
+Târgoviste
+Târgu Bujor
+Târgu Carbunesti
+Târgu Frumos
+Târgu Jiu
+Târgu Lapus
+Târgu Mures
+Târgu Neamt
+Târgu Ocna
+Târgu Secuiesc
+Târnaveni
+Tasnad
+Techirghiol
+Tecuci
+Teius
+Teleorman
+Ticleni
+Timis
+Timisoara
+Tismana
+Titu
+Toplita
+Topoloveni
+Tulcea
+Turda
+Turnu Magurele
+Uricani
+Urlati
+Urziceni
+Vâlcea
+Valea lui Mihai
+Valenii de Munte
+Vânju Mare
+Vascau
+Vaslui
+Vatra Dornei
+Vicovu de Sus
+Victoria
+Videle
+Viseu de Sus
+Vlahita
+Vrancea
+Vulcan
+Zalau
+Zarnesti
+Zimnicea
+Zlatna

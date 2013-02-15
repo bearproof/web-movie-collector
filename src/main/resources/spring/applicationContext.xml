@@ -34,10 +34,5 @@
 		<bean id="initDataService" class="ro.isdc.auth.service.InitDataService"
 			init-method="init" />
 	</beans>
-<!-- initializing data to realize some test -->
-	<beans>
-		<bean id="initMovieService" class="ro.isdc.auth.service.InitMovieService"
-			init-method="init" />
-	</beans>
 
 </beans>

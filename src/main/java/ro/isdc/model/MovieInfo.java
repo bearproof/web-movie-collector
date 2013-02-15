@@ -1,7 +1,5 @@
 package ro.isdc.model;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
 /**
  * @author Dan Cirja
  */

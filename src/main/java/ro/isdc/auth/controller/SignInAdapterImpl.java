@@ -19,7 +19,6 @@ import org.springframework.web.context.request.NativeWebRequest;
 import ro.isdc.auth.domain.Account;
 import ro.isdc.auth.helper.AccountHelper;
 import ro.isdc.auth.repository.AccountRepository;
-import ro.isdc.auth.service.AuthentificationService;
 
 public class SignInAdapterImpl implements SignInAdapter {
 
