@@ -40,9 +40,9 @@ public class AuthentificationService implements UserDetailsService {
 
 	@Autowired
 	public AuthentificationService(AccountRepository userRepository, AccountHelper accountHelper
-																								 ,
+																								 /*,
 																								 InitDataService
-																								 initDataServices
+																								 initDataServices*/
 																								 ) {
 
 		this.userRepository = userRepository;
