@@ -1,0 +1,2 @@
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/custom/localeChanger/js/localeChanger.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/custom/searchPage/js/searchPage.js"></script>

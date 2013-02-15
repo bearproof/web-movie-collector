@@ -38,7 +38,7 @@
 	});
 	/**
 	 * Client-side templating method. Useful when generationg dynamic markup based on JSON objects received by Ajax. Eg.: '<span>{firstName}, {lastName}</span>'.tmpl({"firstName":
-	 * "Elemér", "lastName" : "Zágoni"}) = '<span>Elemér, Zágoni</span>';
+	 * "Elemï¿½r", "lastName" : "Zï¿½goni"}) = '<span>Elemï¿½r, Zï¿½goni</span>';
 	 */
 	String.method('tmpl', function(obj) {
 		var prop, result = this;
@@ -72,7 +72,8 @@
 		 */
 		init : function() {
 		},
-
+		bindBehavior: function(){
+		},
 		/**
 		 * Should be overridden for debugging purposes.
 		 */

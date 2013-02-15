@@ -78,9 +78,9 @@
 			<div class="controls">				
 				<select id="movieStatus" class="movieStatus">
 					<option value="0" <c:if test="${crudObj.movieStatus=='0'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.notspecified"/></option>						
-					<option value="1" <c:if test="${crudObj.movieStatus=='1'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.wannasee"/></option>
-					<option value="2" <c:if test="${crudObj.movieStatus=='2'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.seenalready"/></option>
-					<option value="3" <c:if test="${crudObj.movieStatus=='3'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.dontwannasee"/></option>
+					<option value="3" <c:if test="${crudObj.movieStatus=='1'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.dontwannasee"/></option>
+					<option value="1" <c:if test="${crudObj.movieStatus=='2'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.wannasee"/></option>
+					<option value="2" <c:if test="${crudObj.movieStatus=='3'}">selected="selected"</c:if>><fmt:message key="domain.movie.column.movieStatus.seenalready"/></option>
 				</select> 
 				<!-- <span class="help-inline"></span> -->
 			</div>

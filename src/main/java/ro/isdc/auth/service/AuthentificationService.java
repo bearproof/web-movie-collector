@@ -44,6 +44,7 @@ public class AuthentificationService implements UserDetailsService {
 																								 * InitDataService
 																								 * initDataServices
 																								 */) {
+
 		this.userRepository = userRepository;
 		this.accountHelper = accountHelper;
 	}
