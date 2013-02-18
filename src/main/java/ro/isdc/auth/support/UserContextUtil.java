@@ -24,7 +24,7 @@ public class UserContextUtil {
 	AccountRepository accountRepository;
 
 	/**
-	 * Getting the user Email address used in the authentification process
+	 * Getting the user Email address used in the authentication process
 	 * 
 	 * @return
 	 */

@@ -1,9 +1,7 @@
-package ro.isdc.controllers;
+package ro.isdc.auth.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
-import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 
 import org.atmosphere.cpr.AtmosphereResource;
@@ -17,7 +15,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,18 +42,8 @@ public class WMCController extends LocaleAwareController {
 	@Autowired
 	@Qualifier("movieRetriever")
 	MovieRetriever movieRetriever;
-	private static final Logger logger = LoggerFactory.getLogger(WMCController.class);
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/movieLand", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		Set<String> infoSources = infoSourceConfig.getSiteConfig().getConfigMap().keySet();
-		model.addAttribute("infoSources", infoSources);
-		model.addAttribute("currentTemplate", "Basic Template");
-		return "searchPage";
-	}
+	private static final Logger logger = LoggerFactory.getLogger(WMCController.class);
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	@ResponseBody

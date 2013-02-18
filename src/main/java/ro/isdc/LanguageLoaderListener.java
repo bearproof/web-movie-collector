@@ -4,7 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import ro.isdc.controllers.LocaleAwareController;
+import ro.isdc.auth.controller.LocaleAwareController;
 
 public class LanguageLoaderListener implements ServletContextListener {
 

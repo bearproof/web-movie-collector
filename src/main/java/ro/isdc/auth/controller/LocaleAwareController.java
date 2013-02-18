@@ -1,4 +1,4 @@
-package ro.isdc.controllers;
+package ro.isdc.auth.controller;
 
 import java.io.File;
 import java.io.FilenameFilter;

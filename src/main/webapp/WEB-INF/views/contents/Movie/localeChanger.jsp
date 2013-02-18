@@ -1,3 +1,4 @@
+<%@include file="/WEB-INF/views/includes/taglibs.jsp"%>
 <div class="btn-group">
 	<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"
 		href="#"> <spring:message code="localeChanger.${currentLanguage}" />
