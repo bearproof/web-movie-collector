@@ -78,7 +78,7 @@
     		if (that.selected_id == null) {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
-    	    	  $('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+    	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');
     	    	  $('#errorModal').modal();
     		} else {
     			$("#bt_update").attr("href", "/domain/movies/update/" + that.selected_id);
@@ -89,7 +89,7 @@
     		if (that.selected_id == null) {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
-    	    	  $('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+    	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');
     	    	  $('#errorModal').modal();
     		} else {
     			  /**Open a modal dialog to confirm the movie delete operation*/	
@@ -115,7 +115,7 @@
     	    error: function (xhr, ajaxOptions, thrownError) {
     	  	  $('#errorModalLabel').html("Error Server "+xhr.status+":");
     	  	  $('#errorModalMsg').html(xhr.responseText);
-    	  	  $('#errorModelBody').attr('class', 'modal-body error alert-error');
+    	  	  $('#errorModalBody').attr('class', 'modal-body error alert-error');
     	  	  $('#errorModal').modal();
     	    }
        });

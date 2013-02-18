@@ -77,13 +77,13 @@
 				if((response.responseBody==="201")/*||((response.responseBody==="")&&(response.status===200))*/){
 					$('#errorModalLabel').html('Info:');
 			    	$('#errorModalMsg').html('Movie saved successfully in DB!');
-			    	$('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+			    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
 			    	$('#errorModal').modal();			
 					return;
 				}else if((response.responseBody==="400")||(response.status===400)){
 					$('#errorModalLabel').html('Warning:');
 			    	$('#errorModalMsg').html('Could not save movie into DB!');
-			    	$('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+			    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
 			    	$('#errorModal').modal();	
 					return;
 				}
@@ -239,14 +239,14 @@
 			if (movieData.infoSourceKeys.length === 0) {		
 				$('#errorModalLabel').html('Warning:');
 		    	$('#errorModalMsg').html('No infosource selected!');
-		    	$('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+		    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
 		    	$('#errorModal').modal();				
 				return false;
 			}
 			if (movieData.searchTerms.length === 0) {	
 				$('#errorModalLabel').html('Warning:');
 		    	$('#errorModalMsg').html('Please type a movie title!');
-		    	$('#errorModelBody').attr('class', 'modal-body alert alert-warning');
+		    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
 		    	$('#errorModal').modal();					
 				return false;
 			}			
