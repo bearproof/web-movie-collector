@@ -42,7 +42,7 @@ public abstract class AbstractCrudService<T> {
 	public abstract EntityHelper<T> getHelper();
 
 	/**
-	 * Create opeation
+	 * Create operation
 	 * 
 	 * @param entity
 	 * @return created entity

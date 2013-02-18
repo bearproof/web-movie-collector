@@ -4,14 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ro.isdc.auth.domain.Account;
 import ro.isdc.auth.domain.Role;
-import ro.isdc.auth.repository.AccountRepository;
-import ro.isdc.auth.security.UserContext;
-import ro.isdc.auth.support.UserContextUtil;
 import ro.isdc.auth.support.ValueGenerator;
 
 /**
@@ -25,8 +21,6 @@ import ro.isdc.auth.support.ValueGenerator;
 public class AccountHelper implements EntityHelper<Account> {
 
 	private static final String PASSWORD_UI = "**********";
-	private @Autowired
-	AccountRepository userRepository;
 
 	@Override
 	public Account copyFrom(final Account entity) {
@@ -72,18 +66,10 @@ public class AccountHelper implements EntityHelper<Account> {
 	public Account updateFrom(final Account fromEntity, Account toEntity) {
 		toEntity.setFirstName(fromEntity.getFirstName());
 		toEntity.setLastName(fromEntity.getLastName());
+		toEntity.setIsEnabled(fromEntity.getIsEnabled());
+		toEntity.setRoles(fromEntity.getRoles());
 		if (!fromEntity.getPassword().equals(PASSWORD_UI)) {
 			toEntity.setPassword(DigestUtils.md5Hex(fromEntity.getPassword()));
-		}
-		if (UserContextUtil.getRoles().contains("ROLE_ADMIN")) {
-			toEntity.setIsEnabled(fromEntity.getIsEnabled());
-			toEntity.setRoles(fromEntity.getRoles());
-		} else {
-
-			// TODO: see if we can do this better
-			Account user = userRepository.findOne(UserContext.getUsername());
-			toEntity.setIsEnabled(user.getIsEnabled());
-			toEntity.setRoles(user.getRoles());
 		}
 		return toEntity;
 	}

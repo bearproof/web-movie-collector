@@ -9,6 +9,7 @@ import ro.isdc.auth.domain.Account;
 import ro.isdc.auth.helper.AccountHelper;
 import ro.isdc.auth.helper.EntityHelper;
 import ro.isdc.auth.repository.AccountRepository;
+import ro.isdc.auth.support.UserContextUtil;
 
 /**
  * Account service
@@ -23,10 +24,13 @@ public class AccountService extends AbstractCrudService<Account> {
 
 	private AccountHelper helper;
 
+	private UserContextUtil userContext;
+
 	@Autowired
-	public AccountService(AccountRepository accountRepository, AccountHelper helper) {
+	public AccountService(AccountRepository accountRepository, AccountHelper helper, UserContextUtil userContext) {
 		this.repository = accountRepository;
 		this.helper = helper;
+		this.userContext = userContext;
 	}
 
 	@Override
@@ -43,5 +47,12 @@ public class AccountService extends AbstractCrudService<Account> {
 	@Override
 	public EntityHelper<Account> getHelper() {
 		return this.helper;
+	}
+
+	public Account updateUserAccount(Account userAccountToUpdate) {
+		Account accountToSave = repository.findOne(userContext.getUserId());
+		accountToSave.setFirstName(userAccountToUpdate.getFirstName());
+		accountToSave.setLastName(userAccountToUpdate.getLastName());
+		return repository.save(accountToSave);
 	}
 }

@@ -60,7 +60,7 @@ public abstract class AbstractRestController<T> {
 			bc.broadcast(HttpServletResponse.SC_BAD_REQUEST);
 			return getFailureMessages(failures);
 		} else {
-			if(getService().create(entity)!= null) {
+			if (getService().create(entity) != null) {
 				bc.broadcast(HttpServletResponse.SC_CREATED);
 				response.setStatus(HttpServletResponse.SC_CREATED);
 			}
@@ -154,7 +154,7 @@ public abstract class AbstractRestController<T> {
 	 * @param failures
 	 * @return
 	 */
-	private Map<String, String> getFailureMessages(final Set<ConstraintViolation<T>> failures) {
+	protected Map<String, String> getFailureMessages(final Set<ConstraintViolation<T>> failures) {
 		Map<String, String> failureMessages = new HashMap<String, String>();
 		for (ConstraintViolation<T> failure : failures) {
 			failureMessages.put(failure.getPropertyPath().toString(), failure.getMessage());
