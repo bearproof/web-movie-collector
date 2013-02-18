@@ -20,8 +20,10 @@
 		<intercept-url pattern="/signin/**" access="permitAll()" />
 		<intercept-url pattern="/signup/**" access="permitAll()" />
 		<intercept-url pattern="/register/**" access="permitAll()" />
-		<intercept-url pattern="/getAll/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/domain/accounts/create/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/domain/accounts/list/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/domain/roles/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/getAll/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 	</http>
 

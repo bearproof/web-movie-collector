@@ -1,5 +1,4 @@
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@include file="/WEB-INF/views/includes/taglibs.jsp"%>
 <div class="navbar navbar-inverse navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container-fluid">
@@ -14,6 +13,7 @@
 						class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
+						<li><a href="${pageContext.request.contextPath}/domain/accounts/update/${userContext.userId}"><fmt:message key="domain.account.edit.legend"/></a></li>
 						<li><a href="${pageContext.request.contextPath}/resources/j_spring_security_logout"><fmt:message key="navbar.menu.logout"/></a></li>
 					</ul>
 				</div>
@@ -23,12 +23,14 @@
 					<ul class="nav">
 						<li id="homePageLink"><a
 							href="${pageContext.request.contextPath}/"><fmt:message key="navbar.menu.home"/></a></li>
-						<li id="domainPageLink" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.domain"/><b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="${pageContext.request.contextPath}/domain/accounts/list"><fmt:message key="navbar.menu.domain.account"/></a></li>
-								<li><a href="${pageContext.request.contextPath}/domain/roles/list"><fmt:message key="navbar.menu.domain.role"/></a></li>								
-							</ul>
-						</li>
+						<c:if test="${fn:contains(userContext.getRoles(), 'ROLE_ADMIN')}">
+							<li id="domainPageLink" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.domain"/><b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<li><a href="${pageContext.request.contextPath}/domain/accounts/list"><fmt:message key="navbar.menu.domain.account"/></a></li>
+									<li><a href="${pageContext.request.contextPath}/domain/roles/list"><fmt:message key="navbar.menu.domain.role"/></a></li>								
+								</ul>
+							</li>
+						</c:if>
 						<li id="wmcPageLink" class="dropdown movieListPage"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.wmc"/><b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li><a href="${pageContext.request.contextPath}/movieLand"><fmt:message key="navbar.menu.wmc.searchMovies"/></a></li>								
