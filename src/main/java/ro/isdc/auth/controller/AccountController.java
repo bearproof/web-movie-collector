@@ -39,6 +39,7 @@ import ro.isdc.auth.support.UserContextUtil;
 public class AccountController extends AbstractCrudController<Account> {
 
 	private static final String MODEL_BEAN_ID = "crudObj";
+	private static final String PASSWORD_UI = "**********";
 
 	@Autowired
 	private UserContextUtil userContext;
@@ -92,7 +93,7 @@ public class AccountController extends AbstractCrudController<Account> {
 	@RequestMapping(value = "updateUserAccount/{id}", method = GET)
 	public String updateUserAccount(@PathVariable("id") String id, Model model) {
 		Account userAccount = service.getById(userContext.getUserId());
-
+		userAccount.setPassword(PASSWORD_UI);
 		model.addAttribute(MODEL_BEAN_ID, userAccount);
 		return getUpdatePageName();
 	}

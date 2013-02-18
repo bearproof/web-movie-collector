@@ -9,6 +9,7 @@
 		$accordion : null,
 		$addButton : $("button.add",'#searchPage'),
 		$searchTerm : $("input.movie-title",'#searchPage'),
+		$signOutButton : $('#sign_out_button','#searchPage'),
 		request: null,
 		socket: $.atmosphere,
 		subSocket: null,
@@ -26,7 +27,9 @@
 			var that=this;
 			//bind search page Behavior:
 			this.$addButton.on('click', $.proxy(this.processRequest, this));
-			this.$searchTerm.on('keydown', $.proxy(this.processRequestOnEnter, this));							
+			this.$searchTerm.on('keydown', $.proxy(this.processRequestOnEnter, this));
+			this.$signOutButton.on('click',$.proxy(this.onDisconnect,this));
+			
 		},
 		/**Open a bi-directional communication channel between the browser and the specified server.*/
 		openChannel: function (transport,connectionType) {
@@ -41,7 +44,8 @@
 				onMessage:$.proxy(that.onMessageReceived,that),
 				onMessagePublished: that.onMessagePublished,
 				onError:that.onError,
-				onReconnect: that.onReconnect
+				onReconnect: that.onReconnect,
+				onDisconnect: that.onDisconnect,
 			});
 			this.subSocket = this.socket.subscribe(this.request);
 		},				
@@ -212,7 +216,11 @@
 		onReconnect: function(){
 			$.atmosphere.log('info', ['onReconnect']);
 		},
-		
+		/**On Channel Disconnect*/
+		onDisconnect: function(){
+			$.atmosphere.log('info', ['onDisconnect']);
+			this.socket.unsubscribe();
+		},
 		/**Sends a request to server with the search term and the movie infosources*/
 		processRequest: function(e){
 			var that= this,

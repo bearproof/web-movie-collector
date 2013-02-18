@@ -13,8 +13,8 @@
 						class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="${pageContext.request.contextPath}/domain/accounts/update/${userContext.userId}"><fmt:message key="domain.account.edit.legend"/></a></li>
-						<li><a href="${pageContext.request.contextPath}/resources/j_spring_security_logout"><fmt:message key="navbar.menu.logout"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/domain/accounts/updateUserAccount/${userContext.userId}"><fmt:message key="domain.account.edit.legend"/></a></li>
+						<li><a id="sign_out_button" href="${pageContext.request.contextPath}/resources/j_spring_security_logout"><fmt:message key="navbar.menu.logout"/></a></li>
 					</ul>
 				</div>
 			</security:authorize>
