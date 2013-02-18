@@ -126,7 +126,6 @@
 			<artifactId>jackson-core-asl</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.social</groupId>
 			<artifactId>spring-social-google</artifactId>
@@ -141,7 +140,7 @@
 					<artifactId>jackson-mapper-asl</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
+		</dependency> 
 
 		<!-- ~~~~~~ -->
 		<!-- SPRING -->

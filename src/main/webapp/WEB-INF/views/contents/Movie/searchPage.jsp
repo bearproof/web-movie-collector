@@ -16,8 +16,12 @@
 					</a>
 	
 					<ul class="dropdown-menu">
-						<li><a href="#"	onClick="<c:set var='currentTemplate' value='Basic Template' />">Basic Template</a></li>
-						<li><a href="#"	onClick="<c:set var='currentTemplate' value='EZ Studios Template' />">EZ Studios Template</a></li>
+						<li><a  id="boostrap-basic" href="#"
+							onClick="<c:set var='currentTemplate' value='Basic Template'/>">Basic
+								Template</a></li>
+						<li><a  id="boostrap-ez" href="#"
+							onClick="<c:set var='currentTemplate' value='EZ Studios Template'/>">EZ
+								Studios Template</a></li>
 					</ul>
 				</div>
 			</div>
@@ -121,16 +125,21 @@
 <textarea id="detailedMovieItemTabContent" class="ui-helper-hidden">
 	<div class="tab-pane" id={uniqueid}>			
 		<ul>
-			<li class="centered">
+			<li class="centered website-label-container">
 				<span class="bold"><spring:message
 						code="searchPage.movie.site" />:&nbsp;</span>
 				<span class="movieSite">{site}</span>
 			</li>	
 			
 			<li>
-				<ul>
-					<li class="title">{title}</li>
-				</ul>
+				<div class="title-container">
+					<span class="title">{title}</span>
+				</div>
+				<div class="submit-container">
+					<button class="btn btn-primary addToDB">
+						<spring:message code="searchPage.movie.addToDB" />
+					</button>
+				</div>	
 			</li>		
 		</ul>
 	
@@ -139,37 +148,30 @@
 				<th><spring:message code="searchPage.movie.year" />:</th>
 				<td class="year">{year}</td>
 			</tr>
-			
 			<tr>
 				<th><spring:message code="searchPage.movie.director" />:</th>
 				<td class="director">{director}</td>
 			</tr>
-			
 			<tr>
 				<th><spring:message code="searchPage.movie.description" />:</th>
 				<td class="description">{description}</td>
 			</tr>
-			
 			<tr>
 				<th><spring:message code="searchPage.movie.cast" />:</th>
 				<td class="cast">{cast}</td>
 			</tr>
-			
 			<tr>
 				<th><spring:message code="searchPage.movie.genre" />:</th>
 				<td class="genre">{genre}</td>
 			</tr>
-			
 			<tr>
 				<th><spring:message code="searchPage.movie.rate" />:</th>
 				<td class="rate">{rate}</td>
 			</tr>
-			
 			<tr>
 				<th><spring:message code="searchPage.movie.runtime" />:</th>
 				<td class="runtime">{runtime}</td>
 			</tr>
-			
 			<tr>
 				<th><spring:message code="domain.movie.column.userRating" />:</th>
 				<td>
@@ -193,7 +195,6 @@
 					</select> 
 				</td>
 			</tr>
-			
 			<tr>
 				<th><spring:message code="domain.movie.column.shelfLocation" />:</th>
 				<td>
@@ -206,7 +207,6 @@
 					<input type="text" class="lentTo" value="" placeholder="Lent To">
 				</td>	
 			</tr>						
-			
 			<tr>
 				<th><spring:message code="domain.movie.column.ownMovieNotes" />:</th>
 				<td>
@@ -214,8 +214,8 @@
 				</td>					
 			</tr>		
 			<tr>
-				<th></th>
-				<td>
+				<th class="submit-blank-label"></th>
+				<td class="submit-container">
 					<button class="btn btn-primary addToDB">
 						<spring:message code="searchPage.movie.addToDB" />
 					</button>
