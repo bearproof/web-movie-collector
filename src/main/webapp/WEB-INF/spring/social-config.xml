@@ -42,7 +42,7 @@
 		<constructor-arg ref="connectionFactoryLocator" />
 		<constructor-arg ref="textEncryptor" />
 	</bean>
-
+ 
 	<bean id="dataSource" class="ro.isdc.auth.social.connect.MongoConnectionService">
 	</bean>
 

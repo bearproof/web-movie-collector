@@ -10,15 +10,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.BasicQuery;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-
-import static org.springframework.data.mongodb.core.query.Criteria.where;
-import static org.springframework.data.mongodb.core.query.Query.query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
-
-import com.google.common.collect.Lists;
 
 import ro.isdc.auth.domain.Movie;
 import ro.isdc.auth.helper.EntityHelper;
@@ -111,7 +104,7 @@ public class MovieService extends AbstractCrudService<Movie> {
 	public List<Movie> readAll() {
 		String uId = userContext.getUserId();
 
-		return Lists.newArrayList(repository.findByUserId(uId));
+		return new ArrayList<Movie>(repository.findByUserId(uId));
 	}
 
 	// TODO: We have to check so that the user cannot execute CRUD queries (only

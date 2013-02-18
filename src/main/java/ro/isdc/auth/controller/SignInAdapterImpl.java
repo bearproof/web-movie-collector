@@ -1,7 +1,6 @@
 package ro.isdc.auth.controller;
 
-import static com.google.common.collect.Lists.newArrayList;
-
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class SignInAdapterImpl implements SignInAdapter {
 	}
 
 	public static Collection<GrantedAuthority> toGrantedAuthorities(List<String> roles) {
-		List<GrantedAuthority> result = newArrayList();
+		List<GrantedAuthority> result = new ArrayList<GrantedAuthority>();
 
 		for (String role : roles) {
 			result.add(new SimpleGrantedAuthority(role));

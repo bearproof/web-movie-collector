@@ -1,7 +1,6 @@
 package ro.isdc.auth.security;
 
-import static com.google.common.collect.Lists.newArrayList;
-
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
@@ -71,7 +70,7 @@ public class UserContext {
 	public static List<String> getRoles() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null) {
-			List<String> result = newArrayList();
+			List<String> result = new ArrayList<String>();
 
 			for (GrantedAuthority grantedAuthority : auth.getAuthorities()) {
 				result.add(grantedAuthority.getAuthority());
