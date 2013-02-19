@@ -28,7 +28,9 @@
 			//bind search page Behavior:
 			this.$addButton.on('click', $.proxy(this.processRequest, this));
 			this.$searchTerm.on('keydown', $.proxy(this.processRequestOnEnter, this));
-			this.$signOutButton.on('click',$.proxy(this.onDisconnect,this));
+			window.onbeforeunload = function() { 
+				that.onDisconnect();
+			};
 			
 		},
 		/**Open a bi-directional communication channel between the browser and the specified server.*/
@@ -316,15 +318,15 @@
 			var $el = e.target,
 				MovieData = {};
 			
-			MovieData.title = $($el).parents('div.tab-pane.active').children('ul').find('span.title').html();
-			MovieData.site = $($el).parents('div.tab-pane.active').children('ul').find('span.movieSite').html().toLowerCase();
-			MovieData.year = $($el).parents('div.tab-pane.active').children('table').find('td.year').html();
-			MovieData.director = $($el).parents('div.tab-pane.active').children('table').find('td.director').html();
-			MovieData.description = $($el).parents('div.tab-pane.active').children('table').find('td.description').html();
-			MovieData.cast = $($el).parents('div.tab-pane.active').children('table').find('td.cast').html();
-			MovieData.genre = $($el).parents('div.tab-pane.active').children('table').find('td.genre').html();
-			MovieData.rate = $($el).parents('div.tab-pane.active').children('table').find('td.rate').html();
-			MovieData.runtime = $($el).parents('div.tab-pane.active').children('table').find('td.runtime').html();
+			MovieData.title = $.trim($($el).parents('div.tab-pane.active').children('ul').find('span.title').html());
+			MovieData.site = $.trim($($el).parents('div.tab-pane.active').children('ul').find('span.movieSite').html().toLowerCase());
+			MovieData.year = $($el).parents('div.tab-pane.active').children('table').find('td.year').html().replace(/\D+/gi,'');
+			MovieData.director = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.director').html());
+			MovieData.description = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.description').html());
+			MovieData.cast = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.cast').html());
+			MovieData.genre = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.genre').html());
+			MovieData.rate = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.rate').html());
+			MovieData.runtime = $($el).parents('div.tab-pane.active').children('table').find('td.runtime').html().replace(/\D+/gi,'');
     		MovieData.userRating = $($el).parents('div.tab-pane.active').children('table').find('select.userRating :selected').val();
     		MovieData.movieStatus = $($el).parents('div.tab-pane.active').children('table').find('select.movieStatus :selected').val();
     		MovieData.shelfLocation = $($el).parents('div.tab-pane.active').children('table').find('input.shelfLocation').val();    		
@@ -365,14 +367,8 @@
 				
 	});
 	
-	$(function(){		
-		
-		$('.userInputZone').css('top', $('.navbar').outerHeight());				
-
-	}); 
-	
 	/* Attach page specific behavior on page load */
-	$(function() {
+	$(function() {		
 		return new window[NS][SubClass]();
 	});
 }(window.jQuery, "WMC", "Base", "SearchPage"));

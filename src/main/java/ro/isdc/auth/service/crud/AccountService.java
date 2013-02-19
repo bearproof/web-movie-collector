@@ -1,7 +1,14 @@
 package ro.isdc.auth.service.crud;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +16,8 @@ import ro.isdc.auth.domain.Account;
 import ro.isdc.auth.helper.AccountHelper;
 import ro.isdc.auth.helper.EntityHelper;
 import ro.isdc.auth.repository.AccountRepository;
+import ro.isdc.auth.support.ReadOperationParams;
+import ro.isdc.auth.support.ReadOperationResults;
 import ro.isdc.auth.support.UserContextUtil;
 
 /**
@@ -44,6 +53,42 @@ public class AccountService extends AbstractCrudService<Account> {
 	@Override
 	public PagingAndSortingRepository<Account, String> getRepository() {
 		return this.repository;
+	}
+	
+	@Override
+	public ReadOperationResults read(ReadOperationParams params) {
+
+
+		ReadOperationResults result = new ReadOperationResults();
+		Direction sortDir = params.getsSortDir_0().equals("asc") ? Direction.ASC : Direction.DESC;
+		String sortColName = params.getsColumns().split(",")[params.getiSortCol_0()];
+		Sort sort = new Sort(sortDir, sortColName);
+		int pageNumber = (int) Math.ceil(params.getiDisplayStart() / params.getiDisplayLength());
+
+		PageRequest pageReq = new PageRequest(pageNumber, params.getiDisplayLength(), sort);
+
+		List<Account> data;
+		Page<Account> page;
+		// TODO: To change that
+		if (!params.getsSearch().isEmpty()) {
+
+			page = repository.findAllBySearchTerm(params.getsSearch(), pageReq);
+
+		} else {
+			page = repository.findAll(pageReq);
+
+		}
+		data = page.getContent();
+		result.setiTotalDisplayRecords(page.getTotalElements());
+		result.setiTotalRecords(page.getTotalElements());
+		result.setsEcho(params.getsEcho());
+		List<Account> uiDate = new ArrayList<Account>();
+		for (Account entity : data) {
+			uiDate.add(getHelper().copyFrom(entity));
+		}
+
+		result.setAaData(uiDate);
+		return result;
 	}
 
 	@Override
