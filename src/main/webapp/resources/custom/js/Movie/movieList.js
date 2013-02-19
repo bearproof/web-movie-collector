@@ -57,6 +57,7 @@
 	    		                    	   that.oTable.$('tr.row_selected').removeClass('row_selected');
 	    		                           $(this).addClass('row_selected');
 	    		                           that.selected_id =  $(this).children(":first").html();
+	    		                           $('#bt_update, #bt_delete').removeAttr('disabled');
 	    		                       });
 	    		                       $(this).hover( function () {
 	    		                    	   $(this).addClass( 'row_highlighted' );
@@ -73,19 +74,25 @@
      * */
     initCrudButtons : function (){
     	var that=this;
-    	$("div.toolbar").html('<a href="/domain/movies/create" id="bt_add" class="btn btn-primary">Create</a> <a href="#" id="bt_update" class="btn btn-success">Edit</a> <button id="bt_delete" type="button" class="btn btn-danger">Delete</button>');    	
-    	$("#bt_update").click(function() {
+    	$("div.toolbar").html('<button id="bt_add" class="btn btn-primary">Create</button> <button id="bt_update" class="btn btn-success" disabled="disabled">Edit</button> <button id="bt_delete" type="button" class="btn btn-danger" disabled="disabled">Delete</button>');    	
+    	$("#bt_add").click(function(){
+    		document.location.href = '/domain/movies/create';
+    	});
+    	$("#bt_update").click(function() {    		
+    		if($(this).attr('disabled')==="disabled") return false;
     		if (that.selected_id === null || that.selected_id==="Nothing found - sorry") {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
     	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');
     	    	  $('#errorModal').modal();
     		} else {
-    			$("#bt_update").attr("href", "/domain/movies/update/" + that.selected_id);
+    			document.location.href='/domain/movies/update/'+that.selected_id;
+    			//$("#bt_update").attr("href", "/domain/movies/update/" + that.selected_id);
     		}
     	});
     	
     	$("#bt_delete").click(function() {
+    		if($(this).attr('disabled')==="disabled") return false;
     		if (that.selected_id == null) {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');

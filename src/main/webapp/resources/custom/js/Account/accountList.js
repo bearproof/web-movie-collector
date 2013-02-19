@@ -71,8 +71,11 @@
      * */
     initCrudButtons : function (){
     	var that=this;
-    	$("div.toolbar").html('<a href="/domain/accounts/create" id="bt_add" class="btn btn-primary">Create</a> <a href="#" id="bt_update" class="btn btn-success" disabled="disabled">Edit</a> <button id="bt_delete" type="button" class="btn btn-danger" disabled="disabled">Delete</button>');
+    	$("div.toolbar").html('<button id="bt_add" class="btn btn-primary">Create</button> <button id="bt_update" class="btn btn-success" disabled="disabled">Edit</button> <button id="bt_delete" type="button" class="btn btn-danger" disabled="disabled">Delete</button>');
     	
+    	$("#bt_add").click(function(){
+    		document.location.href = '/domain/accounts/create';
+    	});
     	$("#bt_update").click(function() {
     		if($(this).attr('disabled')==="disabled") return false;
     		if (that.selected_id == null) {
@@ -81,7 +84,8 @@
     	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');
     	    	  $('#errorModal').modal();
     		} else {
-    			  $("#bt_update").attr("href", "/domain/accounts/update/" + that.selected_id);    			
+    			  document.location.href='/domain/accounts/update/'+that.selected_id;
+    			  //$("#bt_update").attr("href", "/domain/accounts/update/" + that.selected_id);    			
     		}
     	});
     	
