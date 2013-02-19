@@ -8,6 +8,7 @@ import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.cpr.AtmosphereResourceEventListenerAdapter;
 import org.atmosphere.cpr.Broadcaster;
+import org.atmosphere.cpr.BroadcasterFactory;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ro.isdc.InfoSourceConfig;
+import ro.isdc.auth.support.UserContextUtil;
 import ro.isdc.model.HtmlNodePathMapper;
 import ro.isdc.model.InfoSourceModel;
 import ro.isdc.model.SearchInputModel;
@@ -32,6 +34,9 @@ import ro.isdc.utils.Utils;
  */
 @Controller
 public class WMCController extends LocaleAwareController {
+
+	@Autowired
+	private UserContextUtil userContext;
 
 	@Autowired
 	private InfoSourceConfig infoSourceConfig;
@@ -72,7 +77,7 @@ public class WMCController extends LocaleAwareController {
 	public void search(AtmosphereResource atmosphereResource, @RequestBody String searchModelAsJson) throws JsonGenerationException, JsonMappingException, IOException,
 			InterruptedException {
 		// AtmosphereUtil.suspend(atmosphereResource);
-
+		atmosphereResource.setBroadcaster(BroadcasterFactory.getDefault().lookup(userContext.getUserId(), true));
 		if (!searchModelAsJson.isEmpty()) {
 			SearchInputModel reqSearch = Utils.getJsonAsObject(searchModelAsJson, SearchInputModel.class);
 			List<InfoSourceModel> infoSourcesList = infoSourceConfig.getInfoSourcesBriefSearch(reqSearch);
@@ -96,6 +101,7 @@ public class WMCController extends LocaleAwareController {
 	@ResponseBody
 	public void searchDetailedData(AtmosphereResource atmosphereResource, @RequestBody String searchModelAsJson) throws JsonGenerationException, JsonMappingException, IOException,
 			InterruptedException {
+		atmosphereResource.setBroadcaster(BroadcasterFactory.getDefault().lookup(userContext.getUserId(), true));
 		if (!searchModelAsJson.isEmpty() && searchModelAsJson != null) {
 			SearchInputModel requestDetailedData = Utils.getJsonAsObject(searchModelAsJson, SearchInputModel.class);
 			InfoSourceModel infoSourceModel = infoSourceConfig.getInfoSourceDetailedSearch(requestDetailedData);
@@ -104,7 +110,10 @@ public class WMCController extends LocaleAwareController {
 	}
 
 	private void suspend(final AtmosphereResource resource) {
+
 		final CountDownLatch countDownLatch = new CountDownLatch(1);
+
+		resource.setBroadcaster(BroadcasterFactory.getDefault().lookup(userContext.getUserId(), true));
 		resource.addEventListener(new AtmosphereResourceEventListenerAdapter() {
 			@Override
 			public void onSuspend(AtmosphereResourceEvent event) {

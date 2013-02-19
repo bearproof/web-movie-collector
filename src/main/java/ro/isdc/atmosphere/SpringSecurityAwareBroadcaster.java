@@ -17,26 +17,20 @@ public class SpringSecurityAwareBroadcaster extends DefaultBroadcaster {
 		super(name, config);
 	}
 
-	@Override
-	protected void broadcast(AtmosphereResource r, AtmosphereResourceEvent e) {
-		SecurityContext oldContext = SecurityContextHolder.getContext();
-		try {
-			HttpSession session = r.getRequest().getSession(false);
-			if (session == null) {
-				throw new InsufficientAuthenticationException("No session");
-			}
-			SecurityContext context = (SecurityContext) session
-					.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
-			if (context == null) {
-				throw new InsufficientAuthenticationException("No context");
-			}
-			if (!context.getAuthentication().isAuthenticated()) {
-				throw new InsufficientAuthenticationException("Not authenticated");
-			}
-			SecurityContextHolder.setContext(context);
-			super.broadcast(r, e);
-		} finally {
-			SecurityContextHolder.setContext(oldContext);
-		}
-	}
+	/*
+	 * @Override protected void broadcast(AtmosphereResource r,
+	 * AtmosphereResourceEvent e) { SecurityContext oldContext =
+	 * SecurityContextHolder.getContext(); try { HttpSession session =
+	 * r.getRequest().getSession(false); if (session == null) { throw new
+	 * InsufficientAuthenticationException("No session"); } SecurityContext
+	 * context = (SecurityContext)
+	 * session.getAttribute(HttpSessionSecurityContextRepository
+	 * .SPRING_SECURITY_CONTEXT_KEY); if (context == null) { throw new
+	 * InsufficientAuthenticationException("No context"); } if
+	 * (!context.getAuthentication().isAuthenticated()) { throw new
+	 * InsufficientAuthenticationException("Not authenticated"); }
+	 * SecurityContextHolder.setContext(context); super.broadcast(r, e); }
+	 * finally { SecurityContextHolder.setContext(oldContext); } }
+	 */
+
 }

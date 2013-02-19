@@ -88,13 +88,14 @@ public class AccountController extends AbstractCrudController<Account> {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "updateUserAccount/{id}", method = RequestMethod.GET)
-	public String updateUserAccount(@PathVariable("id") String id, Model model) {
-		Account userAccount = service.getById(userContext.getUserId());
-		userAccount.setPassword(PASSWORD_UI);
-		model.addAttribute(MODEL_BEAN_ID, userAccount);
-		return getUpdatePageName();
-	}
+
+	/*
+	 * @RequestMapping(value = "updateUserAccount/{id}", method = GET) public
+	 * String updateUserAccount(@PathVariable("id") String id, Model model) {
+	 * Account userAccount = service.getById(userContext.getUserId());
+	 * userAccount.setPassword(PASSWORD_UI); model.addAttribute(MODEL_BEAN_ID,
+	 * userAccount); return getUpdatePageName(); }
+	 */
 
 	/**
 	 * UPDATE Account Operation
@@ -103,28 +104,27 @@ public class AccountController extends AbstractCrudController<Account> {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "updateUserAccount/{id}", method = RequestMethod.PUT, consumes = "application/json")
-	public @ResponseBody
-	Map<String, ? extends Object> update(@PathVariable String id, @RequestBody Account updatedAccount, HttpServletResponse response) {
-		Set<ConstraintViolation<Account>> failures = getValidator().validate(updatedAccount);
-		if (!failures.isEmpty()) {
-			// An error message here for validation
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			return getFailureMessages(failures);
-		} else {
-			// Everything is OK, we should save the account
-			service.updateUserAccount(updatedAccount);
-			response.setStatus(HttpServletResponse.SC_OK);
 
-			return null;
-			/*
-			 * if (entityToUpdate != null) { entityToUpdate =
-			 * getService().getHelper().updateFrom(entity, entityToUpdate);
-			 * getService().update(entityToUpdate);
-			 * response.setStatus(HttpServletResponse.SC_OK); return null; }
-			 * else { response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-			 * return null; }
-			 */
-		}
-	}
+	/*
+	 * @RequestMapping(value = "updateUserAccount/{id}", method = PUT, consumes
+	 * = "application/json") public @ResponseBody Map<String, ? extends Object>
+	 * update(@PathVariable String id, @RequestBody Account updatedAccount,
+	 * HttpServletResponse response) { Set<ConstraintViolation<Account>>
+	 * failures = getValidator().validate(updatedAccount); if
+	 * (!failures.isEmpty()) { // An error message here for validation
+	 * response.setStatus(HttpServletResponse.SC_BAD_REQUEST); return
+	 * getFailureMessages(failures); } else { // Everything is OK, we should
+	 * save the account service.updateUserAccount(updatedAccount);
+	 * response.setStatus(HttpServletResponse.SC_OK);
+	 * 
+	 * return null;
+	 * 
+	 * if (entityToUpdate != null) { entityToUpdate =
+	 * getService().getHelper().updateFrom(entity, entityToUpdate);
+	 * getService().update(entityToUpdate);
+	 * response.setStatus(HttpServletResponse.SC_OK); return null; } else {
+	 * response.setStatus(HttpServletResponse.SC_NOT_FOUND); return null; }
+	 * 
+	 * } }
+	 */
 }

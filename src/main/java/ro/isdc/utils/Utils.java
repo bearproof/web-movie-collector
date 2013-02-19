@@ -20,7 +20,6 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import ro.isdc.model.InfoSourceModel;
 import ro.isdc.model.MovieInfoPostData;
-import ro.isdc.utils.EncodingUtil;
 
 public class Utils {
 

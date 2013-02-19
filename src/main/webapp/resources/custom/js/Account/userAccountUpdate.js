@@ -67,7 +67,7 @@
     			};
     			$.ajax({  
     				  type: "PUT",  
-    				  url: "/domain/accounts/updateUserAccount/"+$("input#id").val(),  
+    				  url: "/changeDetails/updateUserAccount/",  
     				  data: JSON.stringify(jsonData),
     				  contentType: "application/json; charset=utf-8",
     				  success: function(response,status,xhr) { 

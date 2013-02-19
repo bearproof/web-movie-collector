@@ -45,7 +45,7 @@
 				onMessagePublished: that.onMessagePublished,
 				onError:that.onError,
 				onReconnect: that.onReconnect,
-				onDisconnect: that.onDisconnect,
+				onDisconnect: that.onDisconnect
 			});
 			this.subSocket = this.socket.subscribe(this.request);
 		},				

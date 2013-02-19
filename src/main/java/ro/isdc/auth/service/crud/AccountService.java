@@ -19,7 +19,7 @@ import ro.isdc.auth.support.UserContextUtil;
  */
 @Service
 public class AccountService extends AbstractCrudService<Account> {
-	
+
 	private static final String PASSWORD_UI = "**********";
 
 	private AccountRepository repository;
@@ -58,7 +58,10 @@ public class AccountService extends AbstractCrudService<Account> {
 		if (!userAccountToUpdate.getPassword().equals(PASSWORD_UI)) {
 			accountToSave.setPassword(DigestUtils.md5Hex(userAccountToUpdate.getPassword()));
 		}
-		
+		if (UserContextUtil.getRoles().contains("ROLE_ADMIN")) {
+			accountToSave.setRoles(userAccountToUpdate.getRoles());
+		}
+
 		return repository.save(accountToSave);
 	}
 }
