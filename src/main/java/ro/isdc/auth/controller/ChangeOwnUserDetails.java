@@ -100,11 +100,13 @@ public class ChangeOwnUserDetails {
 	 * @param e
 	 * @param out
 	 */
-	@ExceptionHandler()
-	@ResponseStatus(value = INTERNAL_SERVER_ERROR)
-	@ResponseBody
-	public String exception(Exception e) {
-		return e.getMessage();
-	}
+	/*
+	 * @ExceptionHandler()
+	 * 
+	 * @ResponseStatus(value = INTERNAL_SERVER_ERROR)
+	 * 
+	 * @ResponseBody public String exception(Exception e) { return
+	 * e.getMessage(); }
+	 */
 
 }

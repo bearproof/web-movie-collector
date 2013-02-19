@@ -83,15 +83,7 @@ public class WMCController extends LocaleAwareController {
 			List<InfoSourceModel> infoSourcesList = infoSourceConfig.getInfoSourcesBriefSearch(reqSearch);
 			for (String searchTerm : reqSearch.getSearchTerms()) {
 				for (InfoSourceModel infoSourceModel : infoSourcesList) {
-					movieRetriever.retrieveMovieData(atmosphereResource, searchTerm, infoSourceModel, htmlNodePathMapper, false); // the
-																																	// boolean
-																																	// param
-																																	// is
-																																	// true
-																																	// for
-																																	// detailed
-																																	// data
-																																	// request
+					movieRetriever.retrieveMovieData(atmosphereResource, searchTerm, infoSourceModel, htmlNodePathMapper, false);
 				}
 			}
 		}
