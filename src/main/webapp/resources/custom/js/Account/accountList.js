@@ -55,6 +55,7 @@
     		                    	   that.oTable.$('tr.row_selected').removeClass('row_selected');
     		                           $(this).addClass('row_selected');
     		                           that.selected_id =  $(this).children(":first").html();
+    		                           $('#bt_update, #bt_delete').removeAttr('disabled');
     		                       });
     		                       $(this).hover( function () {
     		                    	   $(this).addClass( 'row_highlighted' );
@@ -70,9 +71,10 @@
      * */
     initCrudButtons : function (){
     	var that=this;
-    	$("div.toolbar").html('<a href="/domain/accounts/create" id="bt_add" class="btn btn-primary">Create</a> <a href="#" id="bt_update" class="btn btn-success">Edit</a> <button id="bt_delete" type="button" class="btn btn-danger">Delete</button>');
+    	$("div.toolbar").html('<a href="/domain/accounts/create" id="bt_add" class="btn btn-primary">Create</a> <a href="#" id="bt_update" class="btn btn-success" disabled="disabled">Edit</a> <button id="bt_delete" type="button" class="btn btn-danger" disabled="disabled">Delete</button>');
     	
     	$("#bt_update").click(function() {
+    		if($(this).attr('disabled')==="disabled") return false;
     		if (that.selected_id == null) {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
@@ -84,12 +86,13 @@
     	});
     	
     	$("#bt_delete").click(function() {
+    		if($(this).attr('disabled')==="disabled") return false;
     		if (that.selected_id == null) {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
     	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');
     	    	  $('#errorModal').modal();
-    		} else {
+    		} else {    			
     			/**Open a modal dialog to confirm the account delete operation*/		
   			  	$('#confirmModalBody').attr('class', 'modal-body alert alert-warning');
   			  	$('#confirmModal').modal();

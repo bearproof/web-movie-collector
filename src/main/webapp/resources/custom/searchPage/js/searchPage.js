@@ -316,21 +316,21 @@
 			var $el = e.target,
 				MovieData = {};
 			
-			MovieData.title = $($el).parents('table.movieDetailsTable').siblings('ul').find('li.title').html();
-			MovieData.site = $($el).parents('table.movieDetailsTable').siblings('ul').find('span.movieSite').html().toLowerCase();
-			MovieData.year = $($el).parents('table.movieDetailsTable').find('td.year').html();
-			MovieData.director = $($el).parents('table.movieDetailsTable').find('td.director').html();
-			MovieData.description = $($el).parents('table.movieDetailsTable').find('td.description').html();
-			MovieData.cast = $($el).parents('table.movieDetailsTable').find('td.cast').html();
-			MovieData.genre = $($el).parents('table.movieDetailsTable').find('td.genre').html();
-			MovieData.rate = $($el).parents('table.movieDetailsTable').find('td.rate').html();
-			MovieData.runtime = $($el).parents('table.movieDetailsTable').find('td.runtime').html();
-    		MovieData.userRating = $($el).parents('table.movieDetailsTable').find('select.userRating :selected').val();
-    		MovieData.movieStatus = $($el).parents('table.movieDetailsTable').find('select.movieStatus :selected').val();
-    		MovieData.shelfLocation = $($el).parents('table.movieDetailsTable').find('input.shelfLocation').val();    		
-    		MovieData.lentTo = $($el).parents('table.movieDetailsTable').find('input.lentTo').val();
-    		MovieData.ownMovieNotes = $($el).parents('table.movieDetailsTable').find('textarea.ownMovieNotes').val();
-    		MovieData.idOnSite = $($el).parents('div.tab-pane').attr('id');
+			MovieData.title = $($el).parents('div.tab-pane.active').children('ul').find('span.title').html();
+			MovieData.site = $($el).parents('div.tab-pane.active').children('ul').find('span.movieSite').html().toLowerCase();
+			MovieData.year = $($el).parents('div.tab-pane.active').children('table').find('td.year').html();
+			MovieData.director = $($el).parents('div.tab-pane.active').children('table').find('td.director').html();
+			MovieData.description = $($el).parents('div.tab-pane.active').children('table').find('td.description').html();
+			MovieData.cast = $($el).parents('div.tab-pane.active').children('table').find('td.cast').html();
+			MovieData.genre = $($el).parents('div.tab-pane.active').children('table').find('td.genre').html();
+			MovieData.rate = $($el).parents('div.tab-pane.active').children('table').find('td.rate').html();
+			MovieData.runtime = $($el).parents('div.tab-pane.active').children('table').find('td.runtime').html();
+    		MovieData.userRating = $($el).parents('div.tab-pane.active').children('table').find('select.userRating :selected').val();
+    		MovieData.movieStatus = $($el).parents('div.tab-pane.active').children('table').find('select.movieStatus :selected').val();
+    		MovieData.shelfLocation = $($el).parents('div.tab-pane.active').children('table').find('input.shelfLocation').val();    		
+    		MovieData.lentTo = $($el).parents('div.tab-pane.active').children('table').find('input.lentTo').val();
+    		MovieData.ownMovieNotes = $($el).parents('div.tab-pane.active').children('table').find('textarea.ownMovieNotes').val();
+    		MovieData.idOnSite = $($el).parents('div.tab-pane.active').attr('id');
     		MovieData.userId = '';
     		MovieData.loanDate = '';
     		MovieData.returnDate = '';
@@ -361,32 +361,13 @@
 				correspondingTree = $($el).closest('li');
 			
 			$(correspondingTree).remove();
-		}
-		
-		/*createAutoClosingAlert : function(selector,delay){
-			var alert = $(selector).alert();
-			   window.setTimeout(function() { alert.alert('close'); }, delay);
-		}*/
+		}				
 				
 	});
 	
 	$(function(){		
 		
-		$('.userInputZone').css('top', $('.navbar').outerHeight());
-			
-		$("#boostrap-ez").bind("click", function() {
-//			$("#template-css").attr("href", "${pageContext.request.contextPath}/resources/css/bootstrap_ez.css");
-//			$(document).html(document.documentElement.innerHTML);
-//			location.reload(true);
-//			$('body').html($(document).find('body'));
-		});		
-		
-		$("#boostrap-basic").bind("click", function() {
-//			$("#template-css").attr("href", "${pageContext.request.contextPath}/resources/css/bootstrap_base.css");
-//			$(document).html(document.documentElement.innerHTML);
-//			location.reload(true);
-//			$('body').html($(document).find('body'));
-		});
+		$('.userInputZone').css('top', $('.navbar').outerHeight());				
 
 	}); 
 	
