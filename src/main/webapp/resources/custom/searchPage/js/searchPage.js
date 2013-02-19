@@ -207,6 +207,7 @@
 		/**On Message Published*/
 		onMessagePublished: function(response){
 			$.atmosphere.log('info', ['onMessagePublished.', response]);
+			//TODO: add handler here and include jQuery message plugin
 		},
 		
 		/**On Channel Error*/
@@ -360,9 +361,8 @@
 		/**Removes the selected node from the BriefMovieInfo tree*/
 		removeTreeNode : function(e){
 			var $el = e.target,		
-				correspondingTree = $($el).closest('li');
-			
-			$(correspondingTree).remove();
+				correspondingTree = $($el).closest('li');			
+				$(correspondingTree).remove();
 		}				
 				
 	});

@@ -4,9 +4,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import ro.isdc.auth.service.crud.AbstractCrudService;
+import ro.isdc.utils.BasicAjaxResponse;
 
 /**
  * Abstract Rest Controller
@@ -48,20 +47,18 @@ public abstract class AbstractRestController<T> {
 	 */
 	@RequestMapping(value = "/", method = POST, consumes = "application/json")
 	public @ResponseBody
-	Map<String, ? extends Object> create(@RequestBody T entity, HttpServletResponse response) {
+	BasicAjaxResponse create(@RequestBody T entity, HttpServletResponse response) {
 		logger.debug("Creating entity: " + entity.toString());
 		Set<ConstraintViolation<T>> failures = getValidator().validate(entity);
 
 		if (!failures.isEmpty()) {
-			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-
 			return getFailureMessages(failures);
 		} else {
 			if (getService().create(entity) != null) {
 
-				response.setStatus(HttpServletResponse.SC_CREATED);
+				return new BasicAjaxResponse(false, "CREATED");
 			}
-			return null;
+			return new BasicAjaxResponse(true, "CREATE_FAILED");
 		}
 	}
 
@@ -98,7 +95,7 @@ public abstract class AbstractRestController<T> {
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = "application/json")
 	public @ResponseBody
-	Map<String, ? extends Object> update(@PathVariable String id, @RequestBody T entity, HttpServletResponse response) {
+	BasicAjaxResponse update(@PathVariable String id, @RequestBody T entity, HttpServletResponse response) {
 		logger.debug("Updating entity: " + entity.toString());
 		Set<ConstraintViolation<T>> failures = getValidator().validate(entity);
 		if (!failures.isEmpty()) {
@@ -151,12 +148,15 @@ public abstract class AbstractRestController<T> {
 	 * @param failures
 	 * @return
 	 */
-	protected Map<String, String> getFailureMessages(final Set<ConstraintViolation<T>> failures) {
-		Map<String, String> failureMessages = new HashMap<String, String>();
+	protected BasicAjaxResponse getFailureMessages(final Set<ConstraintViolation<T>> failures) {
+		BasicAjaxResponse ajaxResponse = new BasicAjaxResponse();
+		String errorMessage = "";
 		for (ConstraintViolation<T> failure : failures) {
-			failureMessages.put(failure.getPropertyPath().toString(), failure.getMessage());
+			errorMessage += failure.getMessage();
 		}
-		return failureMessages;
+		ajaxResponse.setMessage(errorMessage);
+		ajaxResponse.setError(true);
+		return ajaxResponse;
 	}
 
 	/**
