@@ -294,7 +294,7 @@
 	margin-bottom: 30px;
 }
 
-#movieTabHeader li a:hover, #movieTabHeader li a:active, #movieTabHeader li .active-tab {
+#movieTabHeader li a:hover, #movieTabHeader .active a, #movieTabHeader li .active-tab {
 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
     background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
     background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
@@ -458,4 +458,7 @@ table tr .submit-container {
 .title-container {
 	display: inline-block;
 }
-
+#movieList ul li label {
+	font-size: 102%;
+	color: #5C7A99;
+} 
