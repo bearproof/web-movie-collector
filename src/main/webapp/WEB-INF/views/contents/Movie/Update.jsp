@@ -35,7 +35,7 @@
 		<div class="control-group">
 			<label class="control-label" for="director"><fmt:message key="domain.movie.column.director"/></label>
 			<div class="controls">
-				<input type="text" id="director" name="director" value="${crudObj.director}" maxlength="100" placeholder="The director" data-reset="${crudObj.genre}">
+				<input type="text" id="director" name="director" value="${crudObj.director}" maxlength="100" placeholder="The director" data-reset="${crudObj.director}">
 				<!-- <span class="help-inline"></span> -->
 			</div>
 		</div>
@@ -56,7 +56,7 @@
 		<div class="control-group">
 			<label class="control-label" for="runtime"><fmt:message key="domain.movie.column.runtime"/></label>
 			<div class="controls">
-				<input type="text" id="runtime" name="runtime" value="${crudObj.runtime}" maxlength="100" placeholder="Runtime (min)" data-reset="${crudObj.director}">
+				<input type="text" id="runtime" name="runtime" value="${crudObj.runtime}" maxlength="100" placeholder="Runtime (min)" data-reset="${crudObj.runtime}">
 				<!-- <span class="help-inline"></span> -->
 			</div>
 		</div>

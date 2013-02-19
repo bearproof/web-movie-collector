@@ -75,7 +75,7 @@
     	var that=this;
     	$("div.toolbar").html('<a href="/domain/movies/create" id="bt_add" class="btn btn-primary">Create</a> <a href="#" id="bt_update" class="btn btn-success">Edit</a> <button id="bt_delete" type="button" class="btn btn-danger">Delete</button>');    	
     	$("#bt_update").click(function() {
-    		if (that.selected_id == null) {
+    		if (that.selected_id === null || that.selected_id==="Nothing found - sorry") {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
     	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');

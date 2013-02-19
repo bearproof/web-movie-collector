@@ -1,8 +1,5 @@
 package ro.isdc.auth.controller;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
-
 import java.util.Map;
 import java.util.Set;
 
@@ -16,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import ro.isdc.auth.domain.Account;
@@ -90,7 +88,7 @@ public class AccountController extends AbstractCrudController<Account> {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "updateUserAccount/{id}", method = GET)
+	@RequestMapping(value = "updateUserAccount/{id}", method = RequestMethod.GET)
 	public String updateUserAccount(@PathVariable("id") String id, Model model) {
 		Account userAccount = service.getById(userContext.getUserId());
 		userAccount.setPassword(PASSWORD_UI);
@@ -105,7 +103,7 @@ public class AccountController extends AbstractCrudController<Account> {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "updateUserAccount/{id}", method = PUT, consumes = "application/json")
+	@RequestMapping(value = "updateUserAccount/{id}", method = RequestMethod.PUT, consumes = "application/json")
 	public @ResponseBody
 	Map<String, ? extends Object> update(@PathVariable String id, @RequestBody Account updatedAccount, HttpServletResponse response) {
 		Set<ConstraintViolation<Account>> failures = getValidator().validate(updatedAccount);

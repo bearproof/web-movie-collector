@@ -79,21 +79,7 @@
     	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');
     	    	  $('#errorModal').modal();
     		} else {
-    			//$("#bt_update").attr("href", "/domain/accounts/update/" + that.selected_id);
-    			$.ajax({
-    	            type: "GET",
-    	            url: '/domain/accounts/update/'+that.selected_id,
-    	            success: function(response,status,xhr){
-    	            	alert('success');
-    	    			$('#updateAccountModal').modal();
-    	            },
-    	    	    error: function (xhr, ajaxOptions, thrownError) {
-    	    	  	  $('#errorModalLabel').html("Error Server "+xhr.status+":");
-    	    	  	  $('#errorModalMsg').html(xhr.responseText);
-    	    	  	  $('#errorModalBody').attr('class', 'modal-body error alert-error');
-    	    	  	  $('#errorModal').modal();
-    	    	    }
-    	       });
+    			  $("#bt_update").attr("href", "/domain/accounts/update/" + that.selected_id);    			
     		}
     	});
     	

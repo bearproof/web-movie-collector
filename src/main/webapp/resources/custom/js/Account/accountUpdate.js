@@ -127,7 +127,7 @@
     				  data: JSON.stringify(jsonData),
     				  contentType: "application/json; charset=utf-8",
     				  success: function(response,status,xhr) { 
-    					  document.location.href='/';
+    					  document.location.href='/domain/accounts/list/';
     				  }
     				});  
     			return false; 

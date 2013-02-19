@@ -3,8 +3,6 @@ package ro.isdc.auth.support;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -99,7 +97,7 @@ public abstract class AbstractRestController<T> {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/{id}", method = PUT, consumes = "application/json")
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT, consumes = "application/json")
 	public @ResponseBody
 	Map<String, ? extends Object> update(@PathVariable String id, @RequestBody T entity, HttpServletResponse response) {
 		logger.debug("Updating entity: " + entity.toString());
