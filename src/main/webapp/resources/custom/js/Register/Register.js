@@ -52,8 +52,8 @@
     			},
     			email: {
     				required: "Please enter a valid email address",
-    				minlength: "Please enter a valid email address"
-    				,remote: jQuery.format("{0} is already in use")
+    				minlength: "Please enter a valid email address",
+    				remote: jQuery.format("{0} is already in use")
     			}
     		},
     		errorPlacement: function(error, element) {
