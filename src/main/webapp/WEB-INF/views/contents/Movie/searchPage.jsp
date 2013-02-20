@@ -7,9 +7,7 @@
 				<h2 id="title">
 					<spring:message code="searchPage.title" />
 				</h2>
-	
-				<%@include file="/WEB-INF/views/contents/Movie/localeChanger.jsp"%>
-	
+		
 				<div class="btn-group">
 					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"
 						href="#"> Choose Template <span class="caret"></span>

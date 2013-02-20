@@ -27,6 +27,7 @@
 		<intercept-url pattern="/domain/roles/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/getAll/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
+		<intercept-url pattern="/doChangeLocale**" access= "hasAnyRole('ROLE_ANONYMOUS','ROLE_ADMIN','ROLE_USER')"/>
 	</http>
 
 	<authentication-manager>

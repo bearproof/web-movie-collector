@@ -1,8 +1,6 @@
 package ro.isdc.auth.service;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -15,7 +13,7 @@ import ro.isdc.auth.repository.MovieRepository;
 @Service("initMovieService")
 public class InitMovieService {
 
-	private static final Logger log = Logger.getLogger(InitMovieService.class);
+	private static final Logger logger = Logger.getLogger(InitMovieService.class);
 
 	@Autowired
 	MovieRepository movieRepository;
@@ -29,40 +27,31 @@ public class InitMovieService {
 
 	public void init() {
 
+		logger.debug("Initiating dtabase with bulk data");
+
 		List<Movie> movieList = new ArrayList<Movie>();
 		Movie aMovie;
-		/*
-		 * Calendar loanDateCal; Calendar returnDateCal;
-		 */
 
 		for (int i = 0; i < 100; i++) {
 
-			/*
-			 * loanDateCal = new GregorianCalendar(randomNumGenerator(2006,
-			 * 2013), randomNumGenerator(1, 12), randomNumGenerator(1, 28));
-			 * returnDateCal = new
-			 * GregorianCalendar(loanDateCal.get(Calendar.YEAR) + i,
-			 * randomNumGenerator(1, 12), randomNumGenerator(1, 28));
-			 */
 			aMovie = new Movie();
 			aMovie.setTitle("MovieTitle" + i);
 			aMovie.setCast(castList[randomNumGenerator(0, castList.length - 1)] + ", " + castList[randomNumGenerator(0, castList.length - 1)]);
-			aMovie.setDescription("This is a test movie description..."); // the
-																			// same
-			aMovie.setDirector(directorList[randomNumGenerator(0, directorList.length - 1)]); // random
-			aMovie.setGenre(genreList[randomNumGenerator(0, genreList.length - 1)]); // random
-			aMovie.setIdOnSite("testIdOnSite"); // the same
-			aMovie.setLentTo(peopleList[randomNumGenerator(0, peopleList.length - 1)]); // random
-			aMovie.setLoanDate(String.valueOf(System.currentTimeMillis())); // the
-																			// //
-																			// same
-			aMovie.setMovieStatus(String.valueOf(randomNumGenerator(0, 3))); // random
+			aMovie.setDescription("This is a test movie description...");
+
+			aMovie.setDirector(directorList[randomNumGenerator(0, directorList.length - 1)]);
+			aMovie.setGenre(genreList[randomNumGenerator(0, genreList.length - 1)]);
+			aMovie.setIdOnSite("testIdOnSite");
+			aMovie.setLentTo(peopleList[randomNumGenerator(0, peopleList.length - 1)]);
+			aMovie.setLoanDate(String.valueOf(System.currentTimeMillis()));
+
+			aMovie.setMovieStatus(String.valueOf(randomNumGenerator(0, 3)));
 			aMovie.setOwnMovieNotes("This is a test note for the movie " + i);
 			aMovie.setRate(String.valueOf(randomNumGenerator(1, 10)));
 			aMovie.setReturnDate(String.valueOf(Long.parseLong(aMovie.getLoanDate()) + randomLongNumGenerator(604800000l, 7889000000l))); // the
-			// same
+
 			aMovie.setRuntime(String.valueOf(randomNumGenerator(100, 120)));
-			aMovie.setShelfLocation(String.valueOf(i)); // the iteration value
+			aMovie.setShelfLocation(String.valueOf(i));
 			aMovie.setSite("testSite");
 			aMovie.setUserId("511ce424f163142c2408c275");
 			aMovie.setUserRating(String.valueOf(randomNumGenerator(0, 4)));

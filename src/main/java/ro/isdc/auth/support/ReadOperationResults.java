@@ -17,7 +17,7 @@ public class ReadOperationResults implements Serializable {
     private String sEcho;
     private long iTotalRecords;
     private long iTotalDisplayRecords;
-    private List aaData;
+    private List<?> aaData;
 
     public String getsEcho() {
         return sEcho;
@@ -43,11 +43,11 @@ public class ReadOperationResults implements Serializable {
         this.iTotalDisplayRecords = iTotalDisplayRecords;
     }
 
-    public List getAaData() {
+    public List<?> getAaData() {
         return aaData;
     }
 
-    public void setAaData(List aaData) {
+    public void setAaData(List<?> aaData) {
         this.aaData = aaData;
     }
 

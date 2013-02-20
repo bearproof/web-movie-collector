@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,7 +34,8 @@ public class CommonPagesController extends LocaleAwareController {
 	 * @return login page id
 	 */
 	@RequestMapping(value = { "/login" })
-	public String getLoginPage() {
+	public String getLoginPage(Locale locale) {
+		LocaleContextHolder.getLocale();
 		logger.debug("Calling Login page.");
 		return "loginPage";
 	}
@@ -44,7 +46,7 @@ public class CommonPagesController extends LocaleAwareController {
 	 * @return home page id
 	 */
 	@RequestMapping(value = { "/index" }, method = RequestMethod.GET)
-	public String getHomePage() {
+	public String getHomePage(Locale locale) {
 		logger.debug("Calling home page.");
 		return "homePage";
 	}

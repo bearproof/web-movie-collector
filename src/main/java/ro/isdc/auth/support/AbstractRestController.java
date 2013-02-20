@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import ro.isdc.auth.controller.LocaleAwareController;
 import ro.isdc.auth.service.crud.AbstractCrudService;
 import ro.isdc.utils.BasicAjaxResponse;
 import ro.isdc.utils.StatusCodes;
@@ -31,7 +32,7 @@ import ro.isdc.utils.StatusCodes;
  * 
  * @param <T>
  */
-public abstract class AbstractRestController<T> {
+public abstract class AbstractRestController<T> extends LocaleAwareController {
 
 	private static final Logger logger = Logger.getLogger(AbstractRestController.class);
 

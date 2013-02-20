@@ -33,7 +33,7 @@ import ro.isdc.utils.Utils;
  * Handles requests for the application home page.
  */
 @Controller
-public class WMCController extends LocaleAwareController {
+public class WMCController /* extends LocaleAwareController */{
 
 	@Autowired
 	private UserContextUtil userContext;

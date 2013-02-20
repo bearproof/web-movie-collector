@@ -6,6 +6,7 @@
 				data-target=".nav-collapse"> <span class="icon-bar"></span> <span
 				class="icon-bar"></span> <span class="icon-bar"></span>
 			</a> <a class="brand" href="${pageContext.request.contextPath}/"><fmt:message key="header.webapp.name"/>&nbsp;<span class="label label-info"><fmt:message key="header.webapp.version"/></span></a>
+						
 			<security:authorize access="isAuthenticated()">
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
@@ -40,6 +41,9 @@
 					</ul>	
 				</div>
 			</security:authorize>
+			
+			<%@include file="/WEB-INF/views/contents/Movie/localeChanger.jsp"%>
+			
 		</div>
 	</div>
 </div>

@@ -177,7 +177,6 @@ public class Generator {
 		// ".size():"+theList.size());
 	}
 
-	@SuppressWarnings("unused")
 	private static void loadLanguages(String fileName, Map<String, Language> theMap) {
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(Generator.class.getClassLoader().getResourceAsStream(fileName)));
@@ -196,7 +195,6 @@ public class Generator {
 		// ".size():"+theList.size());
 	}
 
-	@SuppressWarnings("unused")
 	private static void loadCountries(String fileName, Map<String, Country> theMap) {
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(Generator.class.getClassLoader().getResourceAsStream(fileName)));

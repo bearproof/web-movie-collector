@@ -45,3 +45,10 @@
 	padding-top:1px;
 	padding-left:0px;
 }
+
+#languageChanger{
+	float:right;
+}
+#languageChanger .dropdown-menu{
+	min-width: 100px;
+}

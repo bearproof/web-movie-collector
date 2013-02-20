@@ -30,7 +30,8 @@ public class LocaleAwareController {
 		}
 		Locale locale = new Locale(userLang.trim().toUpperCase());
 		System.out.println("The new locale is: " + userLang);
-		request.setAttribute(CookieLocaleResolver.LOCALE_REQUEST_ATTRIBUTE_NAME, locale);
+		// request.setAttribute(CookieLocaleResolver.LOCALE_REQUEST_ATTRIBUTE_NAME,
+		// locale);
 		model.addAttribute("currentLanguage", userLang);
 		return LocaleAwareController.supportedLanguages;
 	}
