@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import ro.isdc.auth.service.crud.AbstractCrudService;
 import ro.isdc.utils.BasicAjaxResponse;
+import ro.isdc.utils.StatusCodes;
 
 /**
  * Abstract Rest Controller
@@ -56,9 +57,9 @@ public abstract class AbstractRestController<T> {
 		} else {
 			if (getService().create(entity) != null) {
 
-				return new BasicAjaxResponse(false, "CREATED");
+				return new BasicAjaxResponse(false, StatusCodes.created);
 			}
-			return new BasicAjaxResponse(true, "CREATE_FAILED");
+			return new BasicAjaxResponse(true, StatusCodes.create_failed);
 		}
 	}
 
@@ -107,10 +108,10 @@ public abstract class AbstractRestController<T> {
 				entityToUpdate = getService().getHelper().updateFrom(entity, entityToUpdate);
 				getService().update(entityToUpdate);
 				response.setStatus(HttpServletResponse.SC_OK);
-				return null;
+				return new BasicAjaxResponse(false, StatusCodes.updated);
 			} else {
 				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-				return null;
+				return new BasicAjaxResponse(true, StatusCodes.not_found);
 			}
 		}
 	}
@@ -123,10 +124,10 @@ public abstract class AbstractRestController<T> {
 	 */
 	@RequestMapping(value = "/{pk}", method = DELETE)
 	@ResponseBody
-	public boolean delete(@PathVariable("pk") String id, HttpServletResponse response) {
+	public BasicAjaxResponse delete(@PathVariable("pk") String id, HttpServletResponse response) {
 		getService().delete(id);
 		response.setStatus(HttpServletResponse.SC_OK);
-		return true;
+		return new BasicAjaxResponse(false, StatusCodes.deleted);
 	}
 
 	/**

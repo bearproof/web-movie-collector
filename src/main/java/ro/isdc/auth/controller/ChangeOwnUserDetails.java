@@ -1,11 +1,8 @@
 package ro.isdc.auth.controller;
 
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,15 +13,15 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import ro.isdc.auth.domain.Account;
 import ro.isdc.auth.service.crud.AccountService;
 import ro.isdc.auth.support.UserContextUtil;
+import ro.isdc.utils.BasicAjaxResponse;
+import ro.isdc.utils.StatusCodes;
 
 @Controller
 public class ChangeOwnUserDetails {
@@ -67,7 +64,7 @@ public class ChangeOwnUserDetails {
 	 */
 	@RequestMapping(value = "/changeDetails/updateUserAccount", method = PUT, consumes = "application/json")
 	public @ResponseBody
-	Map<String, ? extends Object> updateUserAccount(@RequestBody Account updatedAccount, HttpServletResponse response) {
+	BasicAjaxResponse updateUserAccount(@RequestBody Account updatedAccount, HttpServletResponse response) {
 		Set<ConstraintViolation<Account>> failures = validator.validate(updatedAccount);
 		if (!failures.isEmpty()) {
 			response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -76,7 +73,7 @@ public class ChangeOwnUserDetails {
 			service.updateUserAccount(updatedAccount);
 			response.setStatus(HttpServletResponse.SC_OK);
 
-			return null;
+			return new BasicAjaxResponse(false, StatusCodes.updated);
 		}
 	}
 
@@ -86,27 +83,15 @@ public class ChangeOwnUserDetails {
 	 * @param failures
 	 * @return
 	 */
-	protected Map<String, String> getFailureMessages(final Set<ConstraintViolation<Account>> failures) {
-		Map<String, String> failureMessages = new HashMap<String, String>();
+	protected BasicAjaxResponse getFailureMessages(final Set<ConstraintViolation<Account>> failures) {
+		BasicAjaxResponse ajaxResponse = new BasicAjaxResponse();
+		String errorMessage = "";
 		for (ConstraintViolation<Account> failure : failures) {
-			failureMessages.put(failure.getPropertyPath().toString(), failure.getMessage());
+			errorMessage += failure.getMessage();
 		}
-		return failureMessages;
+		ajaxResponse.setMessage(errorMessage);
+		ajaxResponse.setError(true);
+		return ajaxResponse;
 	}
-
-	/**
-	 * Exception handler
-	 * 
-	 * @param e
-	 * @param out
-	 */
-	/*
-	 * @ExceptionHandler()
-	 * 
-	 * @ResponseStatus(value = INTERNAL_SERVER_ERROR)
-	 * 
-	 * @ResponseBody public String exception(Exception e) { return
-	 * e.getMessage(); }
-	 */
 
 }
