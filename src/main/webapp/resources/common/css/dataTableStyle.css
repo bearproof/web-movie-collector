@@ -9,6 +9,7 @@ div.dataTables_length select {
 
 div.dataTables_filter label {
 	float: right;
+	padding-right: 20px;
 }
 
 div.dataTables_info {
@@ -47,13 +48,22 @@ table.dataTable th:active {
 
 .row_selected
         {
-            background-color:  #E6FF99;
+	background: #E3E3E5;
         }
  .row_highlighted       
        {
-            background-color: #FFE9A8;
+			background: #f6f6f7;
        }
        
 .toolbar {
 	float: right;
-}     
+}
+.dataTables_wrapper {
+	padding-top: 20px;
+}
+.dataTable {
+	margin-top: 25px;
+	border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 3px #888888;
+    cursor: pointer;
+} 
