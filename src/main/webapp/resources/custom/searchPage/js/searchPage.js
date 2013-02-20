@@ -206,8 +206,11 @@
 		
 		/**On Message Published*/
 		onMessagePublished: function(response){
+			var responseObj = null;
 			$.atmosphere.log('info', ['onMessagePublished.', response]);
-			//TODO: add handler here and include jQuery message plugin
+			responseObj = $.parseJSON(response.responseBody);
+			//shows the message in a RED div if isError===true, else shows it in a BLACK div
+			$().message(responseObj.message,responseObj.error);
 		},
 		
 		/**On Channel Error*/
