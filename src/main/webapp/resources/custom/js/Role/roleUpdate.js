@@ -22,7 +22,7 @@
     			roleName: "required"
     		},
     		messages: {
-    			roleName: "Enter a role name"
+    			roleName: $('body').data('enterrolename')
     		},
     		errorPlacement: function(error, element) {
     			error.appendTo( element.next() );

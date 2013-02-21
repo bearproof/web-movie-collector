@@ -87,20 +87,24 @@
     			},
     			password_confirm: {
     				required: true,
+    				minlength: 5,
+    				maxlength: 10,
     				equalTo: "#password"
     			}
     		},
     		messages: {
-    			firstName: "Enter your firstname",
-    			lastName: "Enter your lastname",
-    			password: {
-    				required: "Provide a password",
-    				minlength: jQuery.format("Enter at least {0} characters"),
-    				maxlength: jQuery.format("Enter a maximum of {0} characters")
+    			firstName: {required : $('body').data('firstname')},
+    			lastName:  {required  : $('body').data('lastname')},
+    			password:  {
+    				required: $('body').data('password'),
+    				minlength: $.format($('body').data('minlength')),
+    				maxlength: $.format($('body').data('maxlength'))
     			},
     			password_confirm: {
-    				required: "Repeat your password",
-    				equalTo: "Enter the same password as above"
+    				required: $('body').data('passwordconfirm'),
+    				minlength: $.format($('body').data('minlength')),
+    				maxlength: $.format($('body').data('maxlength')),
+    				equalTo: $('body').data('equalto')
     			}
     		},
     		errorPlacement: function(error, element) {

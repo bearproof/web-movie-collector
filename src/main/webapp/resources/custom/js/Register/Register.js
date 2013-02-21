@@ -39,21 +39,23 @@
     			}
     		},
     		messages: {
-    			firstName: {required : "Enter your firstname"},
-    			lastName:  {required  : "Enter your lastname"},
+    			firstName: {required : $('body').data('firstname')},
+    			lastName:  {required  : $('body').data('lastname')},
     			password:  {
-    				required: "Provide a password",
-    				minlength: jQuery.format("Enter at least {0} characters"),
-    				maxlength: jQuery.format("Enter a maximum of {0} characters")
+    				required: $('body').data('password'),
+    				minlength: $.format($('body').data('minlength')),
+    				maxlength: $.format($('body').data('maxlength'))
     			},
     			password_confirm: {
-    				required: "Repeat your password",
-    				equalTo: "Enter the same password as above"
+    				required: $('body').data('passwordconfirm'),
+    				minlength: $.format($('body').data('minlength')),
+    				maxlength: $.format($('body').data('maxlength')),
+    				equalTo: $('body').data('equalto')
     			},
     			email: {
-    				required: "Please enter a valid email address",
-    				minlength: "Please enter a valid email address",
-    				remote: jQuery.format("{0} is already in use")
+    				required: $('body').data('email'),
+    				email: $('body').data('email'),
+    				remote: $.format($('body').data('remote'))
     			}
     		},
     		errorPlacement: function(error, element) {

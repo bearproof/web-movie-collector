@@ -42,7 +42,27 @@
 <link rel="apple-touch-icon-precomposed"
 	href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
 </head>
-<body id="${pageName}" data-search-url='<c:url value='/search'/>'>
+<body id="${pageName}" 
+	data-search-url='<c:url value='/search'/>' 
+	data-required='<spring:message code="required"/>'
+	data-email='<spring:message code="email"/>'
+	data-remote='<spring:message code="remote"/>'
+	data-equalto='<spring:message code="equalto"/>'
+	data-minlength='<spring:message code="minlength"/>'
+	data-maxlength='<spring:message code="maxlength"/>'	
+	data-firstname='<spring:message code="firstname"/>'
+	data-lastname='<spring:message code="lastname"/>'		
+	data-password='<spring:message code="password"/>'
+	data-passwordconfirm='<spring:message code="passwordconfirm"/>'
+	data-noneselected='<spring:message code="domain.account.column.roles.noneselected"/>'	
+	data-selected='<spring:message code="domain.account.column.roles.selected"/>'	
+	data-movietitle='<spring:message code="domain.movie.column.title.validation"/>'	
+	data-movieyear='<spring:message code="domain.movie.column.year.validation"/>'	
+	data-movieyear='<spring:message code="domain.movie.column.year.validation"/>'	
+	data-enterrolename='<spring:message code="domain.role.column.enterrolename"/>'			
+	>
+	
+	
 	<tiles:insertAttribute name="navbar-content" />
 	<div class="container">
 		<tiles:insertAttribute name="main-content" />

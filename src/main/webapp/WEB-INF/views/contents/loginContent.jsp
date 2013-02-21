@@ -21,11 +21,11 @@
 					<fieldset>
 						<div class="clearfix">
 							<input id="j_username" name="j_username" type="text"
-								placeholder="Email">
+								placeholder="<fmt:message key="domain.account.column.email"/>">
 						</div>
 						<div class="clearfix">
 							<input id="j_password" name="j_password" type="password"
-								placeholder="Password">
+								placeholder="<fmt:message key="domain.account.column.password"/>">
 						</div>
 						<button class="btn btn-primary" type="submit">
 							<fmt:message key="page.login.form.signIn" />

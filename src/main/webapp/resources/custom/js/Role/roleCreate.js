@@ -27,10 +27,9 @@
     		},
     		messages: {
     			roleName: {
-    				required : "Enter a role name"
-    					,
-    				remote: jQuery.format("{0} is already in use")
-    					}
+    				required : $('body').data('enterrolename'),
+    				remote: jQuery.format($('body').data('remote'))
+    			}
     		},
     		errorPlacement: function(error, element) {
     			error.appendTo(element.next());

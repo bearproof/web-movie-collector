@@ -23,8 +23,8 @@
     			year: "required"			
     		},
     		messages: {
-    			title: {required : "Enter a movie title"},
-    			year:  {required  : "Enter the release year"}
+    			title: {required : $('body').data('movietitle')},
+    			year:  {required  : $('body').data('movieyear')}	
     		},
     		errorPlacement: function(error, element) {
     			error.appendTo( element.next() );
