@@ -42,7 +42,7 @@ import ro.isdc.auth.service.crud.AccountService;
  * 
  */
 @Controller
-public class Register {
+public class Register extends LocaleAwareController {
 	private static final Logger logger = Logger.getLogger(Register.class);
 
 	@Autowired

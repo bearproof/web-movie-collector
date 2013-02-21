@@ -24,7 +24,7 @@ import ro.isdc.utils.BasicAjaxResponse;
 import ro.isdc.utils.StatusCodes;
 
 @Controller
-public class ChangeOwnUserDetails {
+public class ChangeOwnUserDetails extends LocaleAwareController {
 
 	private static final Logger logger = Logger.getLogger(ChangeOwnUserDetails.class);
 
