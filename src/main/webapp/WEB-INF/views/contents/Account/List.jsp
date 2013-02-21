@@ -1,5 +1,4 @@
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@include file="/WEB-INF/views/includes/taglibs.jsp"%>
 <table class="table table-bordered"
 	id="accountable">
 	<thead>

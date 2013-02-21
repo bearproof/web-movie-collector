@@ -60,9 +60,17 @@
 	data-movieyear='<spring:message code="domain.movie.column.year.validation"/>'	
 	data-movieyear='<spring:message code="domain.movie.column.year.validation"/>'	
 	data-enterrolename='<spring:message code="domain.role.column.enterrolename"/>'			
+	data-accountcreate='<spring:message code="domain.account.create.legend"/>'
+	data-accountedit='<spring:message code="domain.account.edit.legend"/>'
+	data-accountdelete='<spring:message code="domain.account.delete.legend"/>'	
+	data-moviecreate='<spring:message code="domain.movie.create.legend"/>'
+	data-movieedit='<spring:message code="domain.movie.edit.legend"/>'
+	data-moviedelete='<spring:message code="domain.movie.delete.legend"/>'	
+	data-rolecreate='<spring:message code="domain.role.create.legend"/>'
+	data-roleedit='<spring:message code="domain.role.edit.legend"/>'
+	data-roledelete='<spring:message code="domain.role.delete.legend"/>'	
 	>
-	
-	
+
 	<tiles:insertAttribute name="navbar-content" />
 	<div class="container">
 		<tiles:insertAttribute name="main-content" />

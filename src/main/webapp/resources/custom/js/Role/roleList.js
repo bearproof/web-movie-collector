@@ -66,7 +66,11 @@
      * */
     initCrudButtons : function (){
     	var that=this;
-    	$("div.toolbar").html('<button id="bt_add" class="btn btn-primary">Create</button> <button id="bt_update" class="btn btn-success" disabled="disabled">Edit</button> <button id="bt_delete" type="button" class="btn btn-danger" disabled="disabled">Delete</button>');
+    	$("div.toolbar").html('<button id="bt_add" class="btn btn-primary"></button> <button id="bt_update" class="btn btn-success" disabled="disabled"></button> <button id="bt_delete" type="button" class="btn btn-danger" disabled="disabled"></button>');
+    	
+    	$('#bt_add').html($('body').data('rolecreate'));
+    	$('#bt_update').html($('body').data('roleedit'));
+    	$('#bt_delete').html($('body').data('roledelete'));
     	
     	$("#bt_add").click(function(){
     		document.location.href = '/domain/roles/create';

@@ -12,9 +12,9 @@ import java.util.regex.PatternSyntaxException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
 public class LocaleAwareController {
 	private static List<String> supportedLanguages = new ArrayList<String>();
@@ -24,15 +24,17 @@ public class LocaleAwareController {
 
 	@ModelAttribute("supportedLanguages")
 	public List<String> getCurrentLocale(final HttpServletRequest request, final String lang, final Model model) {
+
+		Locale locale = LocaleContextHolder.getLocale();
 		String userLang = lang;
 		if (userLang == null || userLang.trim().length() == 0) {
 			userLang = Locale.getDefault().getLanguage();
 		}
-		Locale locale = new Locale(userLang.trim().toUpperCase());
+		/* locale = new Locale(userLang.trim().toUpperCase()); */
 		System.out.println("The new locale is: " + userLang);
 		// request.setAttribute(CookieLocaleResolver.LOCALE_REQUEST_ATTRIBUTE_NAME,
 		// locale);
-		model.addAttribute("currentLanguage", userLang);
+		model.addAttribute("currentLanguage", locale);
 		return LocaleAwareController.supportedLanguages;
 	}
 
