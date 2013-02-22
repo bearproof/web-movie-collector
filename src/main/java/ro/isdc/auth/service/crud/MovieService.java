@@ -86,7 +86,7 @@ public class MovieService extends AbstractCrudService<Movie> {
 		// TODO: To change that
 		if (!params.getsSearch().isEmpty()) {
 
-			page = repository.findAllBySearchTerm(params.getsSearch(), Utils.removeAccents(params.getsSearch()), uId, pageReq);
+			page = repository.findAllBySearchTerm(Utils.accentToRegex(params.getsSearch()), uId, pageReq);
 
 		} else {
 			page = repository.findByUserId(uId, pageReq);
