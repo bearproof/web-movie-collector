@@ -104,6 +104,9 @@
 
 	        		//remove the loading icon
 	        		$('.'+trimmedMovieTitle).siblings('label').removeClass('loading');
+	        		  	
+	        		//open the tree node of the current search term
+	        		$('#'+trimmedMovieTitle).attr('checked',true);
 	        		
 	        		/*search if a node with the same info already exists in the tree 
 	        		  and if the node doesn't already exist, add it*/
@@ -113,6 +116,8 @@
 							"movieandsite" : movieandsite
 						})).appendTo($('.'+trimmedMovieTitle));	
 	        			
+	        			//open the tree node of the current infosource
+		        		$('#'+movieandsite).attr('checked',true);	
 						
 						$.each(MovieData,function(index, value){
 			        		$(movieItemTmpl.tmpl({
@@ -143,6 +148,9 @@
 								"site" : MovieData.site,
 								"movieandsite" : movieandsite
 							})).appendTo($('.'+trimmedMovieTitle));	
+	        				
+	        				//open the tree node of the current infosource
+			        		$('#'+movieandsite).attr('checked',true);	
 	        			}	        				
 	        			that.selectedMovieId = trimmedMovieTitle;
 	        		}
@@ -191,7 +199,9 @@
         			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
 
 	        		//remove the loading icon
-	        		$('.'+trimmedMovieTitle).siblings('label').removeClass('loading');	        		
+	        		$('.'+trimmedMovieTitle).siblings('label').removeClass('loading');	       
+	        		//open the tree node of the current search term
+	        		$('#'+trimmedMovieTitle).attr('checked',true);
 	        		/* search if a node with the same info already exists in the tree 
 	        		 * and if the node doesn't already exist, add it */
 	        		if(currentNode.length<=0){
@@ -199,6 +209,9 @@
 							"site" : MovieData[0].site,
 							"movieandsite" : movieandsite
 						})).appendTo($('.'+trimmedMovieTitle));	
+	        			
+	        			//open the tree node of the current infosource
+		        		$('#'+movieandsite).attr('checked',true);	
 	        		}	        		        		        	       		        	
 	        	}
 			}// end if(response.state==="messageReceived")	    
@@ -274,10 +287,12 @@
 				})).appendTo(contentArea.children('ul'));								
 			}
 			
+			//close the tree nodes of the existing items in the tree
+    		$('#movieList').find('.searchTermTreeIcon').siblings('input[type=checkbox]').removeAttr('checked');	      
+    		
+    		//add a loading icon to the corresponding tree node
 			$('#'+trimmedMovieTitle).siblings('label').addClass('loading');
-			
-			//TODO:	open the existing tree node
-			
+					
 			//bind the removeTreeNode() function to the spans having the class "removeTreeNode" only once
         	$('.removeTreeNode',that.$ctx).off('click',$.proxy(that.removeTreeNode,that));
         	$('.removeTreeNode', that.$ctx).on('click',$.proxy(that.removeTreeNode,that));
