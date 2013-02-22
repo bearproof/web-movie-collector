@@ -23,6 +23,7 @@ import ro.isdc.auth.repository.MovieRepository;
 import ro.isdc.auth.support.ReadOperationParams;
 import ro.isdc.auth.support.ReadOperationResults;
 import ro.isdc.auth.support.UserContextUtil;
+import ro.isdc.utils.Utils;
 
 @Service
 public class MovieService extends AbstractCrudService<Movie> {
@@ -67,11 +68,11 @@ public class MovieService extends AbstractCrudService<Movie> {
 	}
 
 	@Override
-	public ReadOperationResults read(ReadOperationParams params) throws UnsupportedEncodingException{
+	public ReadOperationResults read(ReadOperationParams params) throws UnsupportedEncodingException {
 
 		String uId = userContext.getUserId();
 
-		params.setsSearch(URLDecoder.decode(URLEncoder.encode(params.getsSearch(), "ISO-8859-1"),"UTF-8"));
+		params.setsSearch(URLDecoder.decode(URLEncoder.encode(params.getsSearch(), "ISO-8859-1"), "UTF-8"));
 		ReadOperationResults result = new ReadOperationResults();
 		Direction sortDir = params.getsSortDir_0().equals("asc") ? Direction.ASC : Direction.DESC;
 		String sortColName = params.getsColumns().split(",")[params.getiSortCol_0()];
@@ -84,7 +85,9 @@ public class MovieService extends AbstractCrudService<Movie> {
 		Page<Movie> page;
 		// TODO: To change that
 		if (!params.getsSearch().isEmpty()) {
-			page = repository.findAllBySearchTerm(params.getsSearch(), uId, pageReq);
+
+			page = repository.findAllBySearchTerm(params.getsSearch(), Utils.removeAccents(params.getsSearch()), uId, pageReq);
+
 		} else {
 			page = repository.findByUserId(uId, pageReq);
 		}

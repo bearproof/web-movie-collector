@@ -27,6 +27,6 @@ public interface MovieRepository extends PagingAndSortingRepository<Movie, Strin
 
 	Page<Movie> findByUserId(String userId, Pageable request);
 
-	@Query("{$and: [{userId : ?1},{ $or : [ { title : { $regex : ?0, $options : 'i'}} , { year : { $regex : ?0, $options : 'i'}} , { genre : { $regex : ?0, $options : 'i'}} , { director : { $regex : ?0, $options : 'i'}} , { runtime : { $regex : ?0, $options : 'i'}} , { cast : { $regex : ?0, $options : 'i'}}]}]}")
-	Page<Movie> findAllBySearchTerm(String searchTerm, String userId, Pageable request);
+	@Query("{$and: [{userId : ?2},{ $or : [ { title : { $regex : ?0, $options : 'i'}},{ title : { $regex : ?1, $options : 'i'}} , { year : { $regex : ?0, $options : 'i'}} , { genre : { $regex : ?0, $options : 'i'}} , { director : { $regex : ?0, $options : 'i'}} , { runtime : { $regex : ?0, $options : 'i'}} , { cast : { $regex : ?0, $options : 'i'}}]}]}")
+	Page<Movie> findAllBySearchTerm(String searchTerm, String searchTermNoDiacritics, String userId, Pageable request);
 }

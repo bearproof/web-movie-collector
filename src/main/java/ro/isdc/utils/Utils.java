@@ -1,6 +1,8 @@
 package ro.isdc.utils;
 
 import java.io.IOException;
+import java.text.Normalizer;
+import java.text.Normalizer.Form;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -24,6 +26,11 @@ import ro.isdc.model.MovieInfoPostData;
 public class Utils {
 
 	private static final String REX_TEMPLATE_VALUE = "\\$\\{(\\w+)\\}";
+
+	public static String removeAccents(String text) {
+
+		return text == null ? null : Normalizer.normalize(text, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
+	}
 
 	public static HttpUriRequest getRequestForBriefMovieData(InfoSourceModel infoSource, String movieName) {
 
