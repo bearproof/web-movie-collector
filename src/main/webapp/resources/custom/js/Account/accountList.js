@@ -128,6 +128,7 @@
     	  	  $('#errorModal').modal();
     	    }
        });
+   	   $('#bt_update, #bt_delete').attr('disabled',true);		
     }
   });
 

@@ -1,5 +1,8 @@
 package ro.isdc.auth.service.crud;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,8 +59,10 @@ public abstract class AbstractCrudService<T> {
 	 * 
 	 * @param params
 	 * @return dataTable response pojo
+	 * @throws UnsupportedEncodingException 
 	 */
-	public ReadOperationResults read(ReadOperationParams params) {
+	public ReadOperationResults read(ReadOperationParams params) throws UnsupportedEncodingException {
+		params.setsSearch(URLDecoder.decode(URLEncoder.encode(params.getsSearch(), "ISO-8859-1"),"UTF-8"));
 		ReadOperationResults result = new ReadOperationResults();
 		Direction sortDir = params.getsSortDir_0().equals("asc") ? Direction.ASC : Direction.DESC;
 		String sortColName = params.getsColumns().split(",")[params.getiSortCol_0()];

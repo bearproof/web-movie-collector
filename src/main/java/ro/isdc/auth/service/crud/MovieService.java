@@ -1,5 +1,8 @@
 package ro.isdc.auth.service.crud;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,10 +67,11 @@ public class MovieService extends AbstractCrudService<Movie> {
 	}
 
 	@Override
-	public ReadOperationResults read(ReadOperationParams params) {
+	public ReadOperationResults read(ReadOperationParams params) throws UnsupportedEncodingException{
 
 		String uId = userContext.getUserId();
 
+		params.setsSearch(URLDecoder.decode(URLEncoder.encode(params.getsSearch(), "ISO-8859-1"),"UTF-8"));
 		ReadOperationResults result = new ReadOperationResults();
 		Direction sortDir = params.getsSortDir_0().equals("asc") ? Direction.ASC : Direction.DESC;
 		String sortColName = params.getsColumns().split(",")[params.getiSortCol_0()];
@@ -80,12 +84,9 @@ public class MovieService extends AbstractCrudService<Movie> {
 		Page<Movie> page;
 		// TODO: To change that
 		if (!params.getsSearch().isEmpty()) {
-
 			page = repository.findAllBySearchTerm(params.getsSearch(), uId, pageReq);
-
 		} else {
 			page = repository.findByUserId(uId, pageReq);
-
 		}
 		data = page.getContent();
 		result.setiTotalDisplayRecords(page.getTotalElements());

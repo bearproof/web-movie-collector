@@ -4,6 +4,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Set;
 
@@ -81,10 +82,11 @@ public abstract class AbstractRestController<T> extends LocaleAwareController {
 	 * 
 	 * @param params
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET, produces = "application/json")
 	public @ResponseBody
-	ReadOperationResults list(ReadOperationParams params) {
+	ReadOperationResults list(ReadOperationParams params) throws UnsupportedEncodingException {
 		return getService().read(params);
 	}
 
