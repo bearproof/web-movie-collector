@@ -337,21 +337,21 @@
 			var $el = e.target,
 				MovieData = {};
 			
-			MovieData.title = $.trim($($el).parents('div.tab-pane.active').children('ul').find('span.title').html());
-			MovieData.site = $.trim($($el).parents('div.tab-pane.active').children('ul').find('span.movieSite').html().toLowerCase());
-			MovieData.year = $($el).parents('div.tab-pane.active').children('table').find('td.year').html().replace(/\D+/gi,'');
-			MovieData.director = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.director').html());
-			MovieData.description = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.description').html());
-			MovieData.cast = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.cast').html());
-			MovieData.genre = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.genre').html());
-			MovieData.rate = $.trim($($el).parents('div.tab-pane.active').children('table').find('td.rate').html());
-			MovieData.runtime = $($el).parents('div.tab-pane.active').children('table').find('td.runtime').html().replace(/\D+/gi,'');
-    		MovieData.userRating = $($el).parents('div.tab-pane.active').children('table').find('select.userRating :selected').val();
-    		MovieData.movieStatus = $($el).parents('div.tab-pane.active').children('table').find('select.movieStatus :selected').val();
-    		MovieData.shelfLocation = $($el).parents('div.tab-pane.active').children('table').find('input.shelfLocation').val();    		
-    		MovieData.lentTo = $($el).parents('div.tab-pane.active').children('table').find('input.lentTo').val();
-    		MovieData.ownMovieNotes = $($el).parents('div.tab-pane.active').children('table').find('textarea.ownMovieNotes').val();
-    		MovieData.idOnSite = $($el).parents('div.tab-pane.active').attr('id');
+			MovieData.title = this.unesco($.trim($($el).parents('div.tab-pane.active').children('ul').find('span.title').html()));
+			MovieData.site = this.unesco($.trim($($el).parents('div.tab-pane.active').children('ul').find('span.movieSite').html().toLowerCase()));
+			MovieData.year = this.unesco($($el).parents('div.tab-pane.active').children('table').find('td.year').html().replace(/\D+/gi,''));
+			MovieData.director = this.unesco($.trim($($el).parents('div.tab-pane.active').children('table').find('td.director').html()));
+			MovieData.description = this.unesco($.trim($($el).parents('div.tab-pane.active').children('table').find('td.description').html()));
+			MovieData.cast = this.unesco($.trim($($el).parents('div.tab-pane.active').children('table').find('td.cast').html()));
+			MovieData.genre = this.unesco($.trim($($el).parents('div.tab-pane.active').children('table').find('td.genre').html()));
+			MovieData.rate = this.unesco($.trim($($el).parents('div.tab-pane.active').children('table').find('td.rate').html()));
+			MovieData.runtime = this.unesco($($el).parents('div.tab-pane.active').children('table').find('td.runtime').html().replace(/\D+/gi,''));
+    		MovieData.userRating = this.unesco($($el).parents('div.tab-pane.active').children('table').find('select.userRating :selected').val());
+    		MovieData.movieStatus = this.unesco($($el).parents('div.tab-pane.active').children('table').find('select.movieStatus :selected').val());
+    		MovieData.shelfLocation = this.unesco($($el).parents('div.tab-pane.active').children('table').find('input.shelfLocation').val());    		
+    		MovieData.lentTo = this.unesco($($el).parents('div.tab-pane.active').children('table').find('input.lentTo').val());
+    		MovieData.ownMovieNotes = this.unesco($($el).parents('div.tab-pane.active').children('table').find('textarea.ownMovieNotes').val());
+    		MovieData.idOnSite = this.unesco($($el).parents('div.tab-pane.active').attr('id'));
     		MovieData.userId = '';
     		MovieData.loanDate = '';
     		MovieData.returnDate = '';
@@ -381,7 +381,11 @@
 			var $el = e.target,		
 				correspondingTree = $($el).closest('li');			
 				$(correspondingTree).remove();
-		}				
+		},
+		
+		unesco : function (htmlString){
+			  return $('<div/>').html(htmlString).text();
+		}
 				
 	});
 	

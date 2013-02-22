@@ -57,9 +57,12 @@ public class MovieService extends AbstractCrudService<Movie> {
 		String uId = userContext.getUserId();
 		if (movieToSave.getIdOnSite() == null)
 			movieToSave.setIdOnSite("mymovie");
+		movieToSave.setUserId(uId);
 
-		if (repository.findByIdOnSiteAndUserId(movieToSave.getIdOnSite(), uId) != null && !movieToSave.getIdOnSite().equalsIgnoreCase("mymovie")) {
-			return null;
+		Movie existingMovie = repository.findByIdOnSiteAndUserId(movieToSave.getIdOnSite(), uId);
+		if (existingMovie != null && !movieToSave.getIdOnSite().equalsIgnoreCase("mymovie")) {
+			helper.updateFrom(movieToSave, existingMovie);
+			return repository.save(existingMovie);
 		} else {
 			movieToSave.setUserId(uId);
 			return repository.save(movieToSave);

@@ -64,16 +64,23 @@ public class MovieHelper implements EntityHelper<Movie> {
 
 	@Override
 	public Movie updateFrom(Movie fromEntity, Movie toEntity) {
-		toEntity.setTitle(fromEntity.getTitle());
-		toEntity.setYear(fromEntity.getYear());
-		toEntity.setGenre(fromEntity.getGenre());
-		toEntity.setDirector(fromEntity.getDirector());
-		toEntity.setCast(fromEntity.getCast());
-		toEntity.setDescription(fromEntity.getDescription());
-		toEntity.setRuntime(fromEntity.getRuntime());
-		toEntity.setUserRating(fromEntity.getUserRating());
+		toEntity.setLentTo(fromEntity.getLentTo());
+		toEntity.setLoanDate(fromEntity.getLoanDate());
 		toEntity.setMovieStatus(fromEntity.getMovieStatus());
 		toEntity.setOwnMovieNotes(fromEntity.getOwnMovieNotes());
+		toEntity.setReturnDate(fromEntity.getReturnDate());
+		toEntity.setShelfLocation(fromEntity.getShelfLocation());
+		toEntity.setUserRating(fromEntity.getUserRating());
+		toEntity.setRate(fromEntity.getRate());
+		toEntity.setDescription(fromEntity.getDescription());
+		toEntity.setCast(fromEntity.getCast());
+		toEntity.setGenre(fromEntity.getGenre());
+		toEntity.setRuntime(fromEntity.getRuntime());
+		toEntity.setSite(fromEntity.getSite());
+		toEntity.setTitle(fromEntity.getTitle());
+		toEntity.setYear(fromEntity.getYear());
+		toEntity.setDirector(fromEntity.getDirector());
+
 		return toEntity;
 	}
 

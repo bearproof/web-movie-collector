@@ -26,8 +26,6 @@ import ro.isdc.model.MovieInfoPostData;
 public class Utils {
 
 	private static final String REX_TEMPLATE_VALUE = "\\$\\{(\\w+)\\}";
-	private static final String ACCENT_STRINGS = "ŠŒŽšœžŸ¥ÝµÀÁÂÃÄÅÆÇÈÉÊËẼÌÍÎÏĨÐÑÒÓÔÕÖØÙÚÛÜßàáâãäåæçèéêëẽìíîïĩðñòóôõöøùúûüýÿ";
-	private static final String NO_ACCENT_STRINGS = "SOZsozYYYuAAAAAAACEEEEEIIIIIDNOOOOOOUUUUsaaaaaaaceeeeeiiiiionoooooouuuuyy";
 
 	public static String removeAccents(String text) {
 
