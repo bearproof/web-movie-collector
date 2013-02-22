@@ -23,6 +23,11 @@
 				<input type="password" id="password" name="password" maxlength="50" value=""  placeholder="<fmt:message key="domain.account.column.password"/>">
 				<span class="help-inline"></span>
 			</div>
+			<div class="password-meter hide">
+				<div class="meter-wrapper">
+					<div class="meter-content state-0"></div>
+				</div>
+			</div>			
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="password_confirm"><fmt:message key="domain.account.column.passwordConfirmation"/><em>*</em></label>

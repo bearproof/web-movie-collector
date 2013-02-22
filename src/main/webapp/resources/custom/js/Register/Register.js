@@ -24,12 +24,12 @@
     			password: {
     				required: true,
     				minlength: 5,
-    				maxlength:10
+    				maxlength:15
     			},
     			password_confirm: {
     				required: true,
     				minlength: 5,
-    				maxlength: 10,
+    				maxlength: 15,
     				equalTo: "#password"
     			},
     			email: {
@@ -95,6 +95,38 @@
     }
   });
 
+	$('#password').bind("click", function () {
+		$(this).stop()
+		.animate({ left: "-10px" }, 100).animate({ left: "10px" }, 100)
+		.animate({ left: "-10px" }, 100).animate({ left: "10px" }, 100)
+		.animate({ left: "0px" }, 100);		
+		$(".password-meter").removeClass("hide").hide().slideDown('slow');
+	});
+	
+	$('#password').bind("blur", function () {
+		$(".password-meter").slideUp('slow').addClass("hide");
+	});	
+	
+	/* Attach the password meter to the appropriate input*/
+	$('#password').bind("keyup", function () {
+		var nScore = $(this).chkPass();
+		var sComplexity = "state-0";
+		if (nScore > 100) { nScore = "state-7"; } else if (nScore <= 0) { nScore = "state-0"; }
+		if (nScore > 0 && nScore < 10) { sComplexity = "state-1"; }
+		else if (nScore >= 10 && nScore < 20) { sComplexity = "state-2"; }
+		else if (nScore >= 20 && nScore < 30) { sComplexity = "state-3"; }
+		else if (nScore >= 30 && nScore < 40) { sComplexity = "state-4"; }
+		else if (nScore >= 40 && nScore <= 50) { sComplexity = "state-5"; }
+		else if (nScore >= 50 && nScore <= 60) { sComplexity = "state-6"; }
+		else if (nScore >= 60 && nScore <= 100) { sComplexity = "state-7"; }
+		
+		var $mc = $(".meter-content");
+		for(var i=0; i<=7; i++) {
+			$mc.removeClass("state-"+i);
+		}
+		$mc.addClass(sComplexity);
+	});
+	
   /* Attach page specific behavior on page load */
   $(function() {
 	  return new window[NS][SubClass]();

@@ -25,6 +25,7 @@
 	<!-- Register page -->
 	<definition name="registerPage" extends="generic-template">
 		<put-attribute name="title-content" value="Register" />
+		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/Register/registerPageSpecificCss.jsp"/>
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Register.jsp" />		
 		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Register/Register.jsp"/> 
 	</definition>
