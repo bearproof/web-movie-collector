@@ -22,10 +22,8 @@ public class Movie extends MovieInfo {
 	@Id
 	private String id;
 
-	/* @NotNull */
 	private String userId;
 
-	/* @NotNull */
 	private String idOnSite;
 
 	private String userRating;
