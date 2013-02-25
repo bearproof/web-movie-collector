@@ -20,13 +20,12 @@
 		init : function(cfg) {
 			this.openChannel("streaming");	
 			this.bindBehavior();
-			this.request.onMessage = $.proxy(this.messageReceived,this);
 		},				
 		
 		/**Bind the events on the Add button and on enter keypress when the input is focused*/
 		bindBehavior: function(){
 			var that=this;
-			//bind search page Behavior:
+			//bind search page Behavior
 			this.$addButton.on('click', $.proxy(this.processRequest, this));
 			this.$searchTerm.on('keydown', $.proxy(this.processRequestOnEnter, this));
 			$('.locale').on('click',$.proxy(this.confirmLanguageChange,this));

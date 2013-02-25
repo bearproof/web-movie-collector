@@ -86,6 +86,18 @@
 			</div>
 		</div>
 		<div class="control-group">
+			<label class="control-label" for="shelfLocation"><fmt:message key="domain.movie.column.shelfLocation"/></label>
+			<div class="controls">
+				<input type="text" id="shelfLocation" name="shelfLocation" value="${crudObj.shelfLocation}" maxlength="100" placeholder="<fmt:message key="domain.movie.column.shelfLocation"/>" data-reset="${crudObj.shelfLocation}">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="lentTo"><fmt:message key="domain.movie.column.lentTo"/></label>
+			<div class="controls">
+				<input type="text" id="lentTo" name="lentTo" value="${crudObj.lentTo}" maxlength="100" placeholder="<fmt:message key="domain.movie.column.lentTo"/>" data-reset="${crudObj.lentTo}">
+			</div>
+		</div>
+		<div class="control-group">
 			<label class="control-label" for="ownMovieNotes"><fmt:message key="domain.movie.column.ownMovieNotes"/></label>
 			<div class="controls">
 				<textarea id="ownMovieNotes" name="ownMovieNotes" maxlength="500" placeholder="<fmt:message key="domain.movie.column.ownMovieNotes"/>">${crudObj.ownMovieNotes}</textarea>

@@ -40,6 +40,8 @@
     				runtime : $('input#runtime').val(),
     				userRating : $('select#userRating option:selected').val(),
     				movieStatus : $('select#movieStatus option:selected').val(),
+    				shelfLocation : $('input#shelfLocation').val(),
+    				lentTo : $('input#lentTo').val(),
     				ownMovieNotes : $('textarea#ownMovieNotes').val()
     			};
     			$.ajax({  
