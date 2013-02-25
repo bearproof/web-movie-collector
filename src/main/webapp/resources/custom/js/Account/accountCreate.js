@@ -35,7 +35,7 @@
   			      buttonClass: 'btn',
   			      buttonWidth: 'auto',
   			      buttonText: function(options) {
-  			        if (options.length == 0) {
+  			        if (options.length === 0) {
   			          return $('body').data('noneselected')+' <b class="caret"></b>';
   			        }
   			        else if (options.length > 4) {
@@ -115,11 +115,15 @@
     			error.appendTo(element.next());
     		},
     		submitHandler: function() {
+    			var jsonData = null, index = null;
     			
-    			for(var index in that.selectedRoles){
-    				that.rolesToUpdate.push(that.selectedRoles[index]);	
+    			for(index in that.selectedRoles){
+    				if (that.selectedRoles.hasOwnProperty(index)) {
+    					that.rolesToUpdate.push(that.selectedRoles[index]);
+    				}
     			}
-    			var jsonData = {
+    			
+    			jsonData = {
     				firstName : $("input#firstName").val(),
     				lastName : $("input#lastName").val(),
     				password : $("input#password").val(),
@@ -133,6 +137,8 @@
     				  data: JSON.stringify(jsonData),
     				  contentType: "application/json; charset=utf-8",
     				  success: function(response,status,xhr) {
+    						//shows a confirmation message in a RED div if error===true, else shows it in a BLACK div
+    						$().message(response.message,response.error);
     					  document.location.href='/domain/accounts/list';
     				  }
     				});  

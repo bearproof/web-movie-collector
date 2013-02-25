@@ -38,6 +38,8 @@
     				  data: JSON.stringify(jsonData),
     				  contentType: "application/json; charset=utf-8",
     				  success: function(response,status,xhr) { 
+    				 	  //shows a confirmation message in a RED div if error===true, else shows it in a BLACK div
+    					  $().message(response.message,response.error);
     					  document.location.href='/domain/roles/list';
     				  }
     				});  

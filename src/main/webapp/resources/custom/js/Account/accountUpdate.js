@@ -42,7 +42,7 @@
   		      buttonClass: 'btn',
   		      buttonWidth: 'auto',
   		      buttonText: function(options) {
-  		        if (options.length == 0) {
+  		        if (options.length === 0) {
   		          return 'None selected <b class="caret"></b>';
   		        }
   		        else if (options.length > 4) {
@@ -111,12 +111,15 @@
     			error.appendTo( element.next() );
     		},
     		submitHandler: function() {
+    			var jsonData = null, index = null;
     			
-    			for(var index in that.existingRoles){
-    				that.rolesToUpdate.push(that.existingRoles[index]);	
+    			for(index in that.existingRoles){
+    				if(that.existingRoles.hasOwnProperty(index)){
+    					that.rolesToUpdate.push(that.existingRoles[index]);	
+    				}    					
     			}
     			
-    			var jsonData = {
+    			jsonData = {
     				id : $("input#id").val(),
     				firstName : $("input#firstName").val(),
     				lastName : $("input#lastName").val(),
@@ -131,6 +134,8 @@
     				  data: JSON.stringify(jsonData),
     				  contentType: "application/json; charset=utf-8",
     				  success: function(response,status,xhr) { 
+    					  //shows a confirmation message in a RED div if error===true, else shows it in a BLACK div
+    					  $().message(response.message,response.error);
     					  document.location.href='/domain/accounts/list/';
     				  }
     				});  

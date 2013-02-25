@@ -33,6 +33,7 @@
 			};
 			
 		},
+		
 		/**Open a bi-directional communication channel between the browser and the specified server.*/
 		openChannel: function (transport,connectionType) {
 			var that=this;		
@@ -80,20 +81,7 @@
 
 			if(response.state === "messageReceived"){								
 					
-				if((response.responseBody==="201")/*||((response.responseBody==="")&&(response.status===200))*/){
-					$('#errorModalLabel').html('Info:');
-			    	$('#errorModalMsg').html('Movie saved successfully in DB!');
-			    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
-			    	$('#errorModal').modal();			
-					return;
-				}else if((response.responseBody==="400")||(response.status===400)){
-					$('#errorModalLabel').html('Warning:');
-			    	$('#errorModalMsg').html('Could not save movie into DB!');
-			    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
-			    	$('#errorModal').modal();	
-					return;
-				}
-        		MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
+				MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
 				$.atmosphere.log('info', [MovieData]);								
 	        	
 				
@@ -231,15 +219,18 @@
 			$.atmosphere.log('info', ['onError']);
 
 		},
+		
 		/**On Channel Reconnected*/
 		onReconnect: function(){
 			$.atmosphere.log('info', ['onReconnect']);
 		},
+		
 		/**On Channel Disconnect*/
 		onDisconnect: function(){
 			$.atmosphere.log('info', ['onDisconnect']);
 			this.socket.unsubscribe();
 		},
+		
 		/**Sends a request to server with the search term and the movie infosources*/
 		processRequest: function(e){
 			var that= this,
@@ -383,6 +374,7 @@
 				$(correspondingTree).remove();
 		},
 		
+		/**Unescapes the HTML encoded characters from the HTML string given as a parameter*/
 		unesco : function (htmlString){
 			  return $('<div/>').html(htmlString).text();
 		}

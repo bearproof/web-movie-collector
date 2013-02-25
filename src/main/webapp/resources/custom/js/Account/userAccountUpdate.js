@@ -51,12 +51,15 @@
     			error.appendTo( element.next() );
     		},
     		submitHandler: function() {
+    			var jsonData = null, index = null;
     			
-    			for(var index in that.existingRoles){
-    				that.rolesToUpdate.push(that.existingRoles[index]);	
+    			for(index in that.existingRoles){
+    				if(that.existingRoles.hasOwnProperty(index)){
+    					that.rolesToUpdate.push(that.existingRoles[index]);	   					
+    				}
     			}
     			
-    			var jsonData = {
+    			jsonData = {
     				id : $("input#id").val(),
     				firstName : $("input#firstName").val(),
     				lastName : $("input#lastName").val(),

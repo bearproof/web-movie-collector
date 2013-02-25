@@ -29,7 +29,7 @@
     			"sLengthMenu" : "Display _MENU_ records per page",
     			"sZeroRecords" : "Nothing found - sorry",
     			"sInfo" : "Showing _START_ to _END_ of _TOTAL_ records",
-    			"sInfoEmpty" : "Showing 0 to 0 of 0 records",
+    			"sInfoEmpty" : "Showing 0 to 0 of 0 records"
     		},
     		"bProcessing" : true,
     		"bServerSide" : true,
@@ -76,8 +76,8 @@
     		document.location.href = '/domain/roles/create';
     	});
     	$("#bt_update").click(function() {
-    		if($(this).attr('disabled')==="disabled") return false;
-    		if (that.selected_id == null) {
+    		if($(this).attr('disabled')==="disabled") {return false;}
+    		if (that.selected_id === null) {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
     	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');
@@ -89,8 +89,8 @@
     	});
     	
     	$("#bt_delete").click(function() {
-    		if($(this).attr('disabled')==="disabled") return false;
-    		if (that.selected_id == null) {
+    		if($(this).attr('disabled')==="disabled") {return false;}
+    		if (that.selected_id === null) {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
     	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');
@@ -113,6 +113,8 @@
             type: "DELETE",
             url: '/domain/roles/'+that.selected_id,
             success: function(response,status,xhr){
+            		//shows a confirmation message in a RED div if error===true, else shows it in a BLACK div
+				  	$().message(response.message,response.error);
                 	that.oTable.$('tr.row_selected').remove();
                 	that.selected_id = null;
             },

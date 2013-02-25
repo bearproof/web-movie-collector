@@ -82,7 +82,7 @@
     		document.location.href = '/domain/movies/create';
     	});
     	$("#bt_update").click(function() {    		
-    		if($(this).attr('disabled')==="disabled") return false;
+    		if($(this).attr('disabled')==="disabled") {return false;}
     		if (that.selected_id === null || that.selected_id==="Nothing found - sorry") {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
@@ -95,8 +95,8 @@
     	});
     	
     	$("#bt_delete").click(function() {
-    		if($(this).attr('disabled')==="disabled") return false;
-    		if (that.selected_id == null) {
+    		if($(this).attr('disabled')==="disabled") {return false;}
+    		if (that.selected_id === null) {
     	    	  $('#errorModalLabel').html('Warning:');
     	    	  $('#errorModalMsg').html('Please select a record first.');
     	    	  $('#errorModalBody').attr('class', 'modal-body alert alert-warning');
@@ -119,6 +119,8 @@
             type: "DELETE",
             url: '/domain/movies/'+that.selected_id,
             success: function(response,status,xhr){
+            		//shows a confirmation message in a RED div if error===true, else shows it in a BLACK div
+				  	$().message(response.message,response.error);
                 	that.oTable.$('tr.row_selected').remove();
                 	that.selected_id = null;
             },
