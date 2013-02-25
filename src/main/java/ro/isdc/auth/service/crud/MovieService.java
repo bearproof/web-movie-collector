@@ -119,7 +119,9 @@ public class MovieService extends AbstractCrudService<Movie> {
 	@Override
 	public void delete(String id) {
 		Movie toDelete = getById(id);
-		repository.delete(toDelete);
+		if (toDelete != null) {
+			repository.delete(toDelete);
+		}
 	}
 
 	@Override
