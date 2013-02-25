@@ -41,19 +41,19 @@
 			<div class="span3 offset1">						
 					<div>
 						<!-- Login with Facebook account -->
-						<form id="fb_signin" class="social" action="<c:url value="/signin/facebook"/>"
+						<form id="fb_signin" class="social tiptip" action="<c:url value="/signin/facebook"/>"
 							method="POST">
 							<input type="hidden" name="scope"
 								value="publish_stream,user_photos,offline_access,email" />
-							<button type="submit" title="Facebook">
+							<button type="submit" title="<fmt:message key="page.login.form.tooltip.facebook" />">
 							</button>
 						</form>
 						<!-- Login with Google account -->
-						<form id="go_signin" class="social" action="<c:url value="/signin/google"/>"
+						<form id="go_signin" class="social tiptip" action="<c:url value="/signin/google"/>"
 							method="POST">
 							<input type="hidden" name="scope"
 								value="https://www.googleapis.com/auth/calendar  https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo#email"/>
-							<button type="submit" title="Google">			
+							<button type="submit" title="<fmt:message key="page.login.form.tooltip.google" />">			
 							</button>
 						</form>
 					</div>								

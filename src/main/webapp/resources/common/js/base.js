@@ -96,5 +96,6 @@
 	 * DON'T ATTACH ONLOAD BEHAVIOUR, this is an ABSTRACT CLASS, extenders should bind their behaviour, constructor of Base class is AUTOMATICALLY called when the EXTENDER class is
 	 * INSTANTIATED.
 	 */
+	$('.tiptip button').tipTip();
 
 }(jQuery, "WMC"));

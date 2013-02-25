@@ -16,9 +16,12 @@
 <link rel="shortcut icon" href="resources/img/favicon.png" type="image/png" />
 
 <!-- Le styles -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-base.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-ez.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/commons.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-responsive.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/tiptip.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/js/jquery/message/css/jquery.message-1.0.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/js/jquery/message/css/jquery.message-1.0.customizations.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/custom/localeChanger/css/localeChanger.css" media="all" />
@@ -43,7 +46,7 @@
 <link rel="apple-touch-icon-precomposed"
 	href="http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png">
 </head>
-<body id="${pageName}" 
+<body id="${pageName}" class="ez"
 	data-search-url='<c:url value='/search'/>' 
 	data-required='<spring:message code="required"/>'
 	data-email='<spring:message code="email"/>'
@@ -86,6 +89,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/bootstrap.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery.tiptip.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/base.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery/message/js/jquery.message-1.0.min.js"></script>	
 	<%-- <script type="text/javascript"	src="${pageContext.request.contextPath}/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> --%>
