@@ -62,7 +62,9 @@ public abstract class AbstractCrudService<T> {
 	 * @throws UnsupportedEncodingException 
 	 */
 	public ReadOperationResults read(ReadOperationParams params) throws UnsupportedEncodingException {
-		params.setsSearch(URLDecoder.decode(URLEncoder.encode(params.getsSearch(), "ISO-8859-1"),"UTF-8"));
+		if(params.getsSearch()!=null){			
+			params.setsSearch(URLDecoder.decode(URLEncoder.encode(params.getsSearch(), "ISO-8859-1"),"UTF-8"));
+		}
 		ReadOperationResults result = new ReadOperationResults();
 		Direction sortDir = params.getsSortDir_0().equals("asc") ? Direction.ASC : Direction.DESC;
 		String sortColName = params.getsColumns().split(",")[params.getiSortCol_0()];
