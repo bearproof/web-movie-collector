@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/commons.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/js/jquery/message/css/jquery.message-1.0.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/js/jquery/message/css/jquery.message-1.0.customizations.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/custom/localeChanger/css/localeChanger.css" media="all" />
 
 

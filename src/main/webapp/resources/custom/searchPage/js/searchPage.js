@@ -14,6 +14,7 @@
 		socket: $.atmosphere,
 		subSocket: null,
 		selectedMovieId : '',		
+		targetLanguage : null,
 				
 		/** Constructor. */
 		init : function(cfg) {
@@ -28,10 +29,11 @@
 			//bind search page Behavior:
 			this.$addButton.on('click', $.proxy(this.processRequest, this));
 			this.$searchTerm.on('keydown', $.proxy(this.processRequestOnEnter, this));
-			window.onbeforeunload = function() { 
+			$('.locale').on('click',$.proxy(this.confirmLanguageChange,this));
+			$('#confirmLanguageChangeModal button.btn-danger').on('click',$.proxy(this.changeLanguage,this));	
+			window.onbeforeunload = function() {
 				that.onDisconnect();
 			};
-			
 		},
 		
 		/**Open a bi-directional communication channel between the browser and the specified server.*/
@@ -377,6 +379,26 @@
 		/**Unescapes the HTML encoded characters from the HTML string given as a parameter*/
 		unesco : function (htmlString){
 			  return $('<div/>').html(htmlString).text();
+		},
+		
+		/**Lets the user choose if he wants to change the language, because the current content will be lost */
+		confirmLanguageChange : function(e){
+			var $el = e.target, 
+				that=this;
+			//show a warning dialog box only if there is movie information on the page
+			if(($('#movieList ul').html()!=='')||($('#movieTabHeader').html()!=='')){
+				$('#confirmLanguageChangeModalBody').attr('class', 'modal-body alert alert-warning');
+		    	$('#confirmLanguageChangeModal').modal();
+				//Set the URL for the target language that the user wants to see
+		    	that.targetLanguage = $($el).attr('href');
+				return false;	
+			}
+			
+		},
+		
+		/**Reloads the page having the newly selected language*/
+		changeLanguage : function(){			
+			document.location.href = this.targetLanguage;
 		}
 				
 	});
