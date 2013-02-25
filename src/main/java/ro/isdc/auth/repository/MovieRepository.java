@@ -23,6 +23,8 @@ public interface MovieRepository extends PagingAndSortingRepository<Movie, Strin
 
 	Movie findByDescription(String description);
 
+	Movie findByUserIdAndId(String userId, String id);
+
 	List<Movie> findByUserId(String userId);
 
 	Page<Movie> findByUserId(String userId, Pageable request);

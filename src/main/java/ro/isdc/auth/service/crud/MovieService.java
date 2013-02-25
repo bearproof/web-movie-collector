@@ -57,6 +57,7 @@ public class MovieService extends AbstractCrudService<Movie> {
 		String uId = userContext.getUserId();
 		if (movieToSave.getIdOnSite() == null)
 			movieToSave.setIdOnSite("mymovie");
+
 		movieToSave.setUserId(uId);
 
 		Movie existingMovie = repository.findByIdOnSiteAndUserId(movieToSave.getIdOnSite(), uId);
@@ -64,7 +65,6 @@ public class MovieService extends AbstractCrudService<Movie> {
 			helper.updateFrom(movieToSave, existingMovie);
 			return repository.save(existingMovie);
 		} else {
-			movieToSave.setUserId(uId);
 			return repository.save(movieToSave);
 		}
 
@@ -86,7 +86,6 @@ public class MovieService extends AbstractCrudService<Movie> {
 
 		List<Movie> data;
 		Page<Movie> page;
-		// TODO: To change that
 		if (!params.getsSearch().isEmpty()) {
 
 			page = repository.findAllBySearchTerm(Utils.accentToRegex(params.getsSearch()), uId, pageReq);
@@ -108,19 +107,43 @@ public class MovieService extends AbstractCrudService<Movie> {
 	}
 
 	@Override
+	public Movie update(Movie movieToUpdate) {
+
+		if (movieToUpdate.getIdOnSite() == null)
+			movieToUpdate.setIdOnSite("mymovie");
+
+		return repository.save(movieToUpdate);
+
+	}
+
+	@Override
+	public void delete(String id) {
+		Movie toDelete = getById(id);
+		repository.delete(toDelete);
+	}
+
+	@Override
 	public List<Movie> readAll() {
 		String uId = userContext.getUserId();
 
 		return new ArrayList<Movie>(repository.findByUserId(uId));
 	}
 
-	// TODO: We have to check so that the user cannot execute CRUD queries (only
-	// find ones)
+	// TODO: We have to check so that the user cannot execute CRUD operations
+	// (only
+	// queries to find ones that are his )
 	public List<Movie> executeCustomQuery(String jsonQuery) {
 		BasicQuery query = new BasicQuery(jsonQuery);
 		return mongoOps.find(query, Movie.class);
 
 	}
+
+	@Override
+	public Movie getById(String id) {
+		String userId = userContext.getUserId();
+		return repository.findByUserIdAndId(userId, id);
+	}
+
 	// TODO: Override more methods as I see fit.
 
 }
