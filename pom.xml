@@ -87,6 +87,12 @@
 			<groupId>org.atmosphere</groupId>
 			<artifactId>atmosphere-runtime</artifactId>
 			<version>1.0.10</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>atmosphere-compat-tomcat7</artifactId>
+					<groupId>org.atmosphere</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- ~~~~~~ -->
 		<!-- MongoDB Dependencies -->
@@ -140,7 +146,7 @@
 					<artifactId>jackson-mapper-asl</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency> 
+		</dependency>
 
 		<!-- ~~~~~~ -->
 		<!-- SPRING -->
