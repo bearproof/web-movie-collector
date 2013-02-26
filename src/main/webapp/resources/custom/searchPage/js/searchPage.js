@@ -259,14 +259,20 @@
 				$('#errorModalLabel').html('Warning:');
 		    	$('#errorModalMsg').html('No infosource selected!');
 		    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
-		    	$('#errorModal').modal();				
+		    	$('#errorModal').modal().css({'margin-top': function () {
+		                        			return -($(this).height() / 2);
+		                    				}
+		    						});				
 				return false;
 			}
 			if (movieData.searchTerms.length === 0) {	
 				$('#errorModalLabel').html('Warning:');
 		    	$('#errorModalMsg').html('Please type a movie title!');
 		    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
-		    	$('#errorModal').modal();					
+		    	$('#errorModal').modal().css({'margin-top': function () {
+        										return -($(this).height() / 2);
+    											}
+		    							});						
 				return false;
 			}			
 			
