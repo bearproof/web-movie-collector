@@ -22,15 +22,16 @@
 			<security:authorize access="isAuthenticated()">
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li id="homePageLink"><a
-							href="${pageContext.request.contextPath}/"><fmt:message key="navbar.menu.home"/></a></li>
+						<li id="homePageLink">
+							<a href="${pageContext.request.contextPath}/"><fmt:message key="navbar.menu.home"/></a>
+						</li>
 						<c:if test="${fn:contains(userContext.getRoles(), 'ROLE_ADMIN')}">
-							<li id="domainPageLink" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.domain"/><b class="caret"></b></a>
-								<ul class="dropdown-menu">
-									<li><a href="${pageContext.request.contextPath}/domain/accounts/list"><fmt:message key="navbar.menu.domain.account"/></a></li>
-									<li><a href="${pageContext.request.contextPath}/domain/roles/list"><fmt:message key="navbar.menu.domain.role"/></a></li>								
-								</ul>
-							</li>
+						<li id="domainPageLink" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.domain"/><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="${pageContext.request.contextPath}/domain/accounts/list"><fmt:message key="navbar.menu.domain.account"/></a></li>
+								<li><a href="${pageContext.request.contextPath}/domain/roles/list"><fmt:message key="navbar.menu.domain.role"/></a></li>								
+							</ul>
+						</li>
 						</c:if>
 						<li id="wmcPageLink" class="dropdown movieListPage"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.wmc"/><b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -42,6 +43,19 @@
 				</div>
 			</security:authorize>
 			
+			<%-- <security:authorize access="isAuthenticated()"> --%>
+			<div class="nav-collapse">
+					<ul id="themeChanger" style="float:right;" class="nav">
+						<li id="themeChangerLink" class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.menu.choosetemplate"/><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a id="baseTheme" href="#">Basic Theme</a></li>
+								<li><a id="ezTheme" href="#">EZ Studios Theme</a></li>								
+							</ul>
+						</li>
+					</ul>
+			</div>	
+			<%-- </security:authorize> --%>
 			<%@include file="/WEB-INF/views/contents/Movie/localeChanger.jsp"%>
 			
 		</div>
