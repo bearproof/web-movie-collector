@@ -70,7 +70,7 @@
 		 * Constructor. Here comes code to be executed on after page load regardless on which page we are.
 		 * Eg.: - Marking required fields, Setting global Ajax Hooks etc.
 		 */
-		init : function() {
+		init : function() {			
 		},
 		bindBehavior: function(){
 		},
@@ -95,7 +95,20 @@
 	/*
 	 * DON'T ATTACH ONLOAD BEHAVIOUR, this is an ABSTRACT CLASS, extenders should bind their behaviour, constructor of Base class is AUTOMATICALLY called when the EXTENDER class is
 	 * INSTANTIATED.
-	 */
-	$('.tiptip button').tipTip();
-
+	 */		
+	/*$('.tiptip button').tipTip();
+	$('body').removeClass('ez base').addClass(sessionStorage.getItem('currentTheme'));	
+	$('#baseTheme').on('click', function(){
+		if(sessionStorage.getItem('currentTheme')!=="base"){
+			sessionStorage.setItem('currentTheme',"base");
+			$('body').removeClass('ez base').addClass('base');		
+		}
+	});
+	$('#ezTheme').on('click', function(){
+		if(sessionStorage.getItem('currentTheme')!=="ez"){
+			sessionStorage.setItem('currentTheme',"ez");
+			$('body').removeClass('ez base').addClass('ez');		
+		}
+	});
+*/
 }(jQuery, "WMC"));

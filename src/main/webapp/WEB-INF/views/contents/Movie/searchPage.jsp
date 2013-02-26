@@ -6,22 +6,7 @@
 			<div>
 				<h2 id="title">
 					<spring:message code="searchPage.title" />
-				</h2>
-		
-				<div class="btn-group">
-					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown"
-						href="#"> Choose Template <span class="caret"></span>
-					</a>
-	
-					<ul class="dropdown-menu">
-						<li><a  id="boostrap-basic" href="#"
-							onClick="<c:set var='currentTemplate' value='Basic Template'/>">Basic
-								Template</a></li>
-						<li><a  id="boostrap-ez" href="#"
-							onClick="<c:set var='currentTemplate' value='EZ Studios Template'/>">EZ
-								Studios Template</a></li>
-					</ul>
-				</div>
+				</h2>		
 			</div>
 		</header>
 			<header>

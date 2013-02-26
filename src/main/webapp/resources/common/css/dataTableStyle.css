@@ -46,15 +46,12 @@ table.dataTable th:active {
 	outline: none;
 }
 
-.row_selected
-        {
+.row_selected{
+	background: #ddddde;
+}
+.row_highlighted{
 	background: #E3E3E5;
-        }
- .row_highlighted       
-       {
-			background: #f6f6f7;
-       }
-       
+}
 .toolbar {
 	float: right;
 }

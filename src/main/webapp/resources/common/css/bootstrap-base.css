@@ -1,20 +1,20 @@
 .base a {
-  color: #3A87AD;
+/*   color: #3A87AD; */
   text-decoration: none;
 }
-.base [class^="icon-"],
-.base [class*=" icon-"] {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin-top: 1px;
-  *margin-right: .3em;
-  line-height: 14px;
-  vertical-align: text-top;
-  background-image: url("/resources/img/glyphicons-halflings.png");
-  background-position: 14px 14px;
-  background-repeat: no-repeat;
-}
+/* .base [class^="icon-"], */
+/* .base [class*=" icon-"] { */
+/*   display: inline-block; */
+/*   width: 14px; */
+/*   height: 14px; */
+/*   margin-top: 1px; */
+/*   *margin-right: .3em; */
+/*   line-height: 14px; */
+/*   vertical-align: text-top; */
+/*   background-image: url("/resources/img/glyphicons-halflings.png"); */
+/*   background-position: 14px 14px; */
+/*   background-repeat: no-repeat; */
+/* } */
 
 /* White icons with optional class, or on hover/active states of certain elements */
 
@@ -88,7 +88,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9c5d3', end
 
 .base .navbar-inner {
   min-height: 40px;
-  padding-right: 20px;
+  padding-right: 2px;
   padding-left: 20px;
   background-color: #fafafa;
   background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
@@ -128,4 +128,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9c5d3', end
 .base .label-info,
 .base .badge-info {
   background-color: #3a87ad;
+}
+.base .navbar-inverse {
+	color: #999999;
+}
+
+.base .container-fluid{
+ 	padding-right: 2px;
+ }
+ 
+ .base .tab-content {
+ overflow: none;
 }

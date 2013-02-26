@@ -1,21 +1,21 @@
 .ez a {
-  color: #0088cc;
+/*   color: #0088cc; */
   text-decoration: none;
 }
 
-.ez [class^="icon-"],
-.ez [class*=" icon-"] {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin-top: 1px;
-  *margin-right: .3em;
-  line-height: 14px;
-  vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
-  background-position: 14px 14px;
-  background-repeat: no-repeat;
-}
+/* .ez [class^="icon-"], */
+/* .ez [class*=" icon-"] { */
+/*   display: inline-block; */
+/*   width: 14px; */
+/*   height: 14px; */
+/*   margin-top: 1px; */
+/*   *margin-right: .3em; */
+/*   line-height: 14px; */
+/*   vertical-align: text-top; */
+/*   background-image: url("/resources/img/glyphicons-halflings.png"); */
+/*   background-position: 14px 14px; */
+/*   background-repeat: no-repeat; */
+/* } */
 
 /* White icons with optional class, or on hover/active states of certain elements */
 
@@ -26,23 +26,27 @@
 .ez .dropdown-menu > li > a:hover > [class*=" icon-"],
 .ez .dropdown-menu > .active > a > [class^="icon-"],
 .ez .dropdown-menu > .active > a > [class*=" icon-"] {
-  background-image: url("../img/glyphicons-halflings-white.png");
+  background-image: url("/resources/img/glyphicons-halflings-white.png");
 }
 
 .ez .btn-primary {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #D40000;
-    background-image: -moz-linear-gradient(center top , #D40000, #BF0000);
-    background-repeat: repeat-x;
-    border-color: #BD0000 #BD0000 #940000;
-    border-image: none;
+
     border-style: solid;
     border-width: 1px;
     color: #fff;
-	  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	 background-color: #da4f49;
+	 *background-color: #bd362f;
+	 background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+	 background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+	 background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+	 background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+	 background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+	 background-repeat: repeat-x;
+	 border-color: #bd362f #bd362f #802420;
+	 border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	 filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+	 filter: progid:dximagetransform.microsoft.gradient(enabled=false);	  
 }
 
 .ez .btn-primary:hover,
@@ -88,7 +92,7 @@
 .ez .navbar-inner {
   color: #ccc;	
   min-height: 40px;
-  padding-right: 20px;
+  padding-right: 2px;
   padding-left: 20px;
   background-color: #fafafa;
   background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
@@ -126,10 +130,66 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#405587', end
   color: #ccc;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
-
+.ez .navbar-inverse {
+	color: #333333;
+} 
 .ez .label-info,
 .ez .badge-info {
     background-color: #D40000;
     background-image: -moz-linear-gradient(center top , #D40000, #BF0000);
     background-repeat: repeat-x;
  }
+ .ez .btn-danger {
+ 	background: #7584a5; /* Old browsers */
+background: -moz-linear-gradient(top,  #7584a5 0%, #5a6a99 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7584a5), color-stop(100%,#5a6a99)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #7584a5 0%,#5a6a99 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #7584a5 0%,#5a6a99 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #7584a5 0%,#5a6a99 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #7584a5 0%,#5a6a99 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7584a5', endColorstr='#5a6a99',GradientType=0 ); /* IE6-9 */
+ 	
+ }
+.ez .btn-danger:hover,
+.ez .btn-danger:active,
+.ez .btn-danger.active,
+.ez .btn-danger.disabled,
+.ez .btn-danger[disabled] {
+ background: #8d9fc6; /* Old browsers */
+background: -moz-linear-gradient(top,  #8d9fc6 0%, #6886ad 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8d9fc6), color-stop(100%,#6886ad)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #8d9fc6 0%,#6886ad 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #8d9fc6 0%,#6886ad 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #8d9fc6 0%,#6886ad 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #8d9fc6 0%,#6886ad 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d9fc6', endColorstr='#6886ad',GradientType=0 ); /* IE6-9 */
+ }
+ 
+.ez .btn-success:hover,
+.ez .btn-success:active,
+.ez .btn-success.active,
+.ez .btn-success.disabled,
+.ez .btn-success[disabled] {
+	background: #8fb58f; /* Old browsers */
+	background: -moz-linear-gradient(top,  #8fb58f 0%, #80af80 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8fb58f), color-stop(100%,#80af80)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #8fb58f 0%,#80af80 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #8fb58f 0%,#80af80 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #8fb58f 0%,#80af80 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #8fb58f 0%,#80af80 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fb58f', endColorstr='#80af80',GradientType=0 ); /* IE6-9 */
+}
+
+.ez .navbar-inverse .nav li.dropdown.open > .dropdown-toggle, 
+.ez .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
+ .ez .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+ 	background-color: #132040;
+ }
+ 
+ .ez .container-fluid{
+ 	padding-right: 2px;
+ }
+ 
+ .ez .tab-content {
+ 	overflow: none;
+}
