@@ -79,11 +79,11 @@
         		trimmedMovieTitle='';			
 			
 			$.atmosphere.log('info', ['onMessageReceived']);	
-
+			console.log($.parseJSON(decodeURIComponent(response.responseBody)));
 			if(response.state === "messageReceived"){								
 					
 				MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
-				$.atmosphere.log('info', [MovieData]);								
+				//$.atmosphere.log('info', [MovieData]);								
 	        	
 				
 	        	if($.isArray(MovieData)&&(MovieData[0].title!==undefined)){//->we received Brief Movie Info for multiple movies from the selected infosources
