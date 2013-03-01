@@ -79,10 +79,8 @@
 					console.log('Null or Empty:'+MovieDataString);	
 					return false;
 				}
-				
 				this.partialJSONString+=MovieDataString;				
 				this.tryToShow();
-				
 			}// end if(response.state==="messageReceived")	    
 		},
 		
@@ -109,7 +107,6 @@
 				console.log('Header sent by atmosphere:'+this.partialJSONString);
 				this.partialJSONString='';
 			}
-			
 		},
 		
 		/**On Message Published*/

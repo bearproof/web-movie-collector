@@ -65,7 +65,7 @@ public class MovieRetriever {
 		String searchMethod = null;
 				
 		try {
-			atmosphereResource.getResponse().flushBuffer();			
+			atmosphereResource.getResponse().flushBuffer();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
