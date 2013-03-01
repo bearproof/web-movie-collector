@@ -59,12 +59,18 @@ public class MovieRetriever {
 		}
 	}
 
-	public void retrieveMovieData(final AtmosphereResource atmosphereResource, String searchTerm, InfoSourceModel infoSourceModel, final HtmlNodePathMapper htmlNodePathMapper,
+	public void retrieveMovieData(AtmosphereResource atmosphereResource, String searchTerm, InfoSourceModel infoSourceModel, final HtmlNodePathMapper htmlNodePathMapper,
 			boolean detailedMovieData) throws IOReactorException, InterruptedException {
 		HttpUriRequest uri = null;
 		String searchMethod = null;
-		// check if the request was for detailed movie data, to obtain the
-		// correct uri
+				
+		try {
+			atmosphereResource.getResponse().flushBuffer();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// check if the request was for detailed movie data, to obtain the correct uri
 		if (detailedMovieData) {
 			uri = Utils.getRequestForDetailedMovieData(infoSourceModel, searchTerm);
 			searchMethod = infoSourceModel.getSearchMethods().get("fullSearchMethod");
@@ -75,7 +81,7 @@ public class MovieRetriever {
 		if (searchMethod.equalsIgnoreCase("post")) {
 			// convert the uri to HttpPost in order to set the post Data via
 			// setEntity()
-			HttpPost httpPost = (HttpPost) uri;
+			HttpPost httpPost = (HttpPost) uri;			
 			List<BasicNameValuePair> nameValuePairs = new ArrayList<BasicNameValuePair>(1);
 
 			if (infoSourceModel.getUsesCookies().equals("true")) {
@@ -98,15 +104,19 @@ public class MovieRetriever {
 				}
 				httpPost.setHeader("User-Agent", infoSourceModel.getPresetHeaders().get("User-Agent"));
 				HttpContext httpContext = retrieveContext(infoSourceModel);
-				executePostRequest(infoSourceModel, atmosphereResource, httpPost, htmlNodePathMapper, detailedMovieData, httpContext, searchTerm);
+				final Broadcaster bc = atmosphereResource.getBroadcaster();
+				executePostRequest(infoSourceModel, bc, httpPost, htmlNodePathMapper, detailedMovieData, httpContext, searchTerm);		
+				
 			}
 		} else {// the search method is "get", so we don't need a HttpContext
-			executeGetRequest(infoSourceModel, atmosphereResource, uri, htmlNodePathMapper, detailedMovieData, searchTerm);
+			final Broadcaster bc = atmosphereResource.getBroadcaster();
+			executeGetRequest(infoSourceModel, bc, uri, htmlNodePathMapper, detailedMovieData, searchTerm);			
+			
 		}
 
 	};
 
-	private void executeGetRequest(final InfoSourceModel infoSourceModel, final AtmosphereResource atmosphereResource, final HttpUriRequest uri,
+	private void executeGetRequest(final InfoSourceModel infoSourceModel, final Broadcaster bc, final HttpUriRequest uri,
 			final HtmlNodePathMapper htmlNodePathMapper, final boolean detailedMovieData, final String searchTerm) throws InterruptedException, IOReactorException {
 		final HttpAsyncClient httpClient = new DefaultHttpAsyncClient();
 		initParams(httpClient);
@@ -134,23 +144,23 @@ public class MovieRetriever {
 						if (movieInfo != null) {
 							final ObjectMapper mapper = new ObjectMapper();
 							movieAsJson = mapper.writeValueAsString(movieInfo);
-							System.out.println(movieAsJson);
 						} else {
 							System.out.println("The parser didn't retrieve any detailed movie information");
 						}
 
-						if (atmosphereResource != null) {
-							Broadcaster broadcaster = atmosphereResource.getBroadcaster();
-							broadcaster.broadcast(EncodingUtil.encodeURIComponent(movieAsJson));
-						}
+						//if (atmosphereResource != null) {									
+							//Broadcaster broadcaster = atmosphereResource.getBroadcaster();	
+							bc.broadcast(EncodingUtil.encodeURIComponent(movieAsJson));
+							System.out.println("Message sent; "+movieAsJson);												
+						//}
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
-						try {
+						try {							
 							httpClient.shutdown();
 						} catch (InterruptedException e) {
 							e.printStackTrace();
-						}
+						} 
 					}
 				} else {// the request is for brief movie data
 					try {
@@ -162,15 +172,9 @@ public class MovieRetriever {
 						ArrayList<SimpleMovieInfo> movies = (ArrayList<SimpleMovieInfo>) parser.getMoviesByTitle(responseAsString, uriRequested, htmlNodePathMapper, searchTerm);
 
 						String moviesAsJson = "";
-						if (movies.size() > 0) {
-							for (SimpleMovieInfo item : movies) {
-								System.out.println("Title");
-								System.out.println(item.getTitle());
-							}
-
+						if (movies.size() > 0) {							
 							final ObjectMapper mapper = new ObjectMapper();
 							moviesAsJson = mapper.writeValueAsString(movies);
-							System.out.println(moviesAsJson);
 						} else {
 							System.out.println("The parser didn't retrieve any brief movie information via GET");
 							JSONObject jsonObject = new JSONObject();
@@ -181,10 +185,11 @@ public class MovieRetriever {
 							System.out.println(moviesAsJson);
 						}
 
-						if (atmosphereResource != null) {
-							Broadcaster broadcaster = atmosphereResource.getBroadcaster();
-							broadcaster.broadcast(EncodingUtil.encodeURIComponent(moviesAsJson));
-						}
+						//if (atmosphereResource != null) {
+						//	Broadcaster broadcaster = atmosphereResource.getBroadcaster();							
+							bc.broadcast(EncodingUtil.encodeURIComponent(moviesAsJson));
+							System.out.println("Message sent: " + moviesAsJson);								
+						//}
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
@@ -206,14 +211,14 @@ public class MovieRetriever {
 		});
 	}
 
-	private void executePostRequest(final InfoSourceModel infoSourceModel, final AtmosphereResource atmosphereResource, final HttpUriRequest uri,
+	private void executePostRequest(final InfoSourceModel infoSourceModel, final Broadcaster bc, final HttpUriRequest uri,
 			final HtmlNodePathMapper htmlNodePathMapper, final boolean detailedMovieData, HttpContext httpContext, final String searchTerm) throws InterruptedException,
 			IOReactorException {
 		final HttpAsyncClient httpClient = new DefaultHttpAsyncClient();
 		initParams(httpClient);
 		httpClient.getParams().setParameter(ClientPNames.COOKIE_POLICY, CookiePolicy.BROWSER_COMPATIBILITY);
 		httpClient.start();
-		if (httpContext != null) {
+		if (httpContext != null) {		
 			httpClient.execute(uri, httpContext, new FutureCallback<HttpResponse>() {
 				@Override
 				public void failed(Exception ex) {
@@ -231,10 +236,10 @@ public class MovieRetriever {
 					 */
 					if (result.getStatusLine().getStatusCode() == 302) {
 						String redirectURL = result.getFirstHeader("Location").getValue();
-						System.out.println(redirectURL);
+						System.out.println("Redirect URL:"+redirectURL);
 						HttpUriRequest uri = new HttpGet(infoSourceModel.getSearchURLs().get("fetchCookieURL") + redirectURL);
 						try {
-							executeGetRequest(infoSourceModel, atmosphereResource, uri, htmlNodePathMapper, true, searchTerm);
+							executeGetRequest(infoSourceModel, bc, uri, htmlNodePathMapper, true, searchTerm);
 						} catch (IOReactorException e) {
 							e.printStackTrace();
 						} catch (InterruptedException e) {
@@ -244,7 +249,7 @@ public class MovieRetriever {
 								httpClient.shutdown();
 							} catch (InterruptedException e) {
 								e.printStackTrace();
-							}
+							} 
 						}
 						return;
 					}
@@ -252,8 +257,6 @@ public class MovieRetriever {
 					if (detailedMovieData) {
 						try {
 							String responseAsString = EntityUtils.toString(result.getEntity());
-							System.out.println(responseAsString);
-
 							SourceParserImpl parser = new SourceParserImpl();
 							String uriRequested = uri.getURI().getHost();
 							uriRequested = uriRequested.subSequence(uriRequested.indexOf('.') + 1, uriRequested.lastIndexOf('.')).toString();
@@ -263,15 +266,15 @@ public class MovieRetriever {
 							if (movieInfo != null) {
 								final ObjectMapper mapper = new ObjectMapper();
 								movieAsJson = mapper.writeValueAsString(movieInfo);
-								System.out.println(movieAsJson);
 							} else {
 								System.out.println("The parser didn't retrieve any detailed movie information");
 							}
 
-							if (atmosphereResource != null) {
-								Broadcaster broadcaster = atmosphereResource.getBroadcaster();
-								broadcaster.broadcast(EncodingUtil.encodeURIComponent(movieAsJson));
-							}
+							//if (atmosphereResource != null) {
+							//	Broadcaster broadcaster = atmosphereResource.getBroadcaster();
+								bc.broadcast(EncodingUtil.encodeURIComponent(movieAsJson));								
+								System.out.println("Message Sent:"+movieAsJson);							
+							//}
 
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -280,7 +283,7 @@ public class MovieRetriever {
 								httpClient.shutdown();
 							} catch (InterruptedException e) {
 								e.printStackTrace();
-							}
+							} 
 						}
 					} else {// the request is for brief movie data
 						try {
@@ -293,14 +296,8 @@ public class MovieRetriever {
 									.getMoviesByTitle(responseAsString, uriRequested, htmlNodePathMapper, searchTerm);
 							String moviesAsJson = "";
 							if (movies.size() > 0) {
-								for (SimpleMovieInfo item : movies) {
-									System.out.println("Title");
-									System.out.println(item.getTitle());
-								}
-
 								final ObjectMapper mapper = new ObjectMapper();
 								moviesAsJson = mapper.writeValueAsString(movies);
-								System.out.println(moviesAsJson);
 							} else {
 								System.out.println("The parser didn't retrieve any brief movie information via POST");
 								JSONObject jsonObject = new JSONObject();
@@ -311,14 +308,15 @@ public class MovieRetriever {
 								System.out.println(moviesAsJson);
 							}
 
-							if (atmosphereResource != null) {
-								Broadcaster broadcaster = atmosphereResource.getBroadcaster();
-								broadcaster.broadcast(EncodingUtil.encodeURIComponent(moviesAsJson));
-							}
+							//if (atmosphereResource != null) {
+							// broadcaster = atmosphereResource.getBroadcaster();
+								bc.broadcast(EncodingUtil.encodeURIComponent(moviesAsJson));
+								System.out.println("Message Sent:"+moviesAsJson);								
+							//}
 						} catch (Exception e) {
 							e.printStackTrace();
 						} finally {
-							try {
+							try {								
 								httpClient.shutdown();
 							} catch (InterruptedException e) {
 								e.printStackTrace();
@@ -373,6 +371,7 @@ public class MovieRetriever {
 		if (proxy != null) {
 			httpclient.getParams().setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
 		}
+		
 	}
 
 	/**

@@ -81,7 +81,7 @@
 	<!-- Javascript-->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/inheritance/js/inheritance-1.0.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery/atmosphere/js/jquery.atmosphere-1.1.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/bootstrap.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery.tiptip.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/base.js"></script>
