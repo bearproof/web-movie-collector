@@ -15,6 +15,8 @@
 		subSocket: null,
 		selectedMovieId : '',		
 		targetLanguage : null,
+		partialJSONString : '',
+		prevRequest : null,
 				
 		/** Constructor. */
 		init : function(cfg) {
@@ -41,7 +43,8 @@
 			this.request = new $.atmosphere.AtmosphereRequest();
 			$.extend(this.request,{
 				url:that.$ctx.data('search-url'),				
-				contentType:"application/json",
+				contentType:"application/json;Charset=UTF-8",
+				dataType:"json",
 				transport:transport,
 				fallbackTransport:"long-polling",
 				onOpen:that.onChannelOpen,					
@@ -61,149 +64,48 @@
 		
 		/**On Message From server.*/
 		onMessageReceived: function(response){			
-			var contentArea = $('.search-results',this.$ctx),
-        		searchItemTmpl = $('#searchItemTmpl').val(),		        
-        		movieDataSourceTmpl = $('#movieDataSourceTmpl').val(),
-        		movieItemTmpl = $('#movieItemTmpl').val(),
-        		noMovieFoundTmpl = $('#noMovieFoundTmpl').val(),
-        		oneMovieFoundTmpl = $('#oneMovieFoundTmpl').val(),
-        		detailedMovieItemTabHeader = $('#detailedMovieItemTabHeader').val(),
-        		detailedMovieItemTabContent = $('#detailedMovieItemTabContent').val(),
-        		movieTitle = $('.movie-title',this.$ctx).val(), 
-        		MovieData = null,
-        		site = null,
-        		movieandsite = null,
-        		that=this,
-        		treeTitlesArray = [],
-        		currentNode=null,
-        		trimmedMovieTitle='';			
+			var MovieDataString = null;        		
 			
 			$.atmosphere.log('info', ['onMessageReceived']);	
-			console.log($.parseJSON(decodeURIComponent(response.responseBody)));
-			if(response.state === "messageReceived"){								
-					
-				MovieData = $.parseJSON(decodeURIComponent(response.responseBody));	 
-				//$.atmosphere.log('info', [MovieData]);								
-	        	
+
+			if((response.state === "messageReceived")&&(response.responseBody!=="")){					
+				MovieDataString = response.responseBody;
+				if(MovieDataString===null||MovieDataString==="&~$"){					
+					console.log('Null or Empty:'+MovieDataString);	
+					return false;
+				}
 				
-	        	if($.isArray(MovieData)&&(MovieData[0].title!==undefined)){//->we received Brief Movie Info for multiple movies from the selected infosources
-	        		trimmedMovieTitle = movieTitle.replace(/\s+/g, '');
-	        		movieandsite = trimmedMovieTitle+MovieData[0].site;
-	        		currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
-
-	        		//remove the loading icon
-	        		$('.'+trimmedMovieTitle).siblings('label').removeClass('loading');
-	        		  	
-	        		//open the tree node of the current search term
-	        		$('#'+trimmedMovieTitle).attr('checked',true);
-	        		
-	        		/*search if a node with the same info already exists in the tree 
-	        		  and if the node doesn't already exist, add it*/
-	        		if(currentNode.length<=0){
-	        			$(movieDataSourceTmpl.tmpl({
-							"site" : MovieData[0].site,
-							"movieandsite" : movieandsite
-						})).appendTo($('.'+trimmedMovieTitle));	
-	        			
-	        			//open the tree node of the current infosource
-		        		$('#'+movieandsite).attr('checked',true);	
-						
-						$.each(MovieData,function(index, value){
-			        		$(movieItemTmpl.tmpl({
-								"title" : value.title,
-								"year" : value.year,
-								"director" : value.director,
-								"uniqueid" : value.id.replace(new RegExp("/","g")),								
-								"site" : value.site,
-								"siteid" : value.id
-							})).appendTo($('.'+movieandsite));				    			
-		        		});		        		
-	        		}
-	        		
-	        		//bind the getDetailedData() function to the elements which have the class "movie-id" only once
-		        	$('.movie-id',this.$ctx).off('click',$.proxy(this.getDetailedData,this));
-		        	$('.movie-id', this.$ctx).on('click',$.proxy(this.getDetailedData,this));	 
-	        		
-	        	}else if((MovieData!==null)&&(MovieData.title!==undefined)){// we received an object => Detailed Movie Info	   	        		
-	        		site = MovieData.site;
-	        		
-	        		//if the result came after a server Redirect(e.g.: one result found on Filmkatalogus when searching for a movie)
-	        		if(that.selectedMovieId===''){
-	        			trimmedMovieTitle = movieTitle.replace(/\s+/g, '');
-	        			movieandsite = trimmedMovieTitle+MovieData.site;	        			
-	        			//add the node in the tree only if it doesn't exist already
-	        			if($('#'+movieandsite).length<=0){
-	        				$(oneMovieFoundTmpl.tmpl({
-								"site" : MovieData.site,
-								"movieandsite" : movieandsite
-							})).appendTo($('.'+trimmedMovieTitle));	
-	        				
-	        				//open the tree node of the current infosource
-			        		$('#'+movieandsite).attr('checked',true);	
-	        			}	        				
-	        			that.selectedMovieId = trimmedMovieTitle;
-	        		}
-	        		
-        			//remove the loading icon after the detailed movie info has been retrieved		        		
-	        		$('#'+that.selectedMovieId).siblings('label').removeClass('loading');	
-	        		
-	        		//only add a new tab with a certain id if it doesn't exist already
-	        		if($('#tab'+that.selectedMovieId).length<=0){
-	        			$(detailedMovieItemTabHeader.tmpl({	        			
-		        			"movieTitle" : MovieData.title,
-		        			/*"site" : MovieData.site.toUpperCase(),*/
-		        			"uniqueid" : '#tab'+that.selectedMovieId
-		        		})).appendTo($('#movieTabHeader'));
-		        		
-		        		$(detailedMovieItemTabContent.tmpl({
-	    					"title" : MovieData.title,
-	    					"year" : MovieData.year,
-	    					"director" : MovieData.director,
-	    					"site" : MovieData.site.toUpperCase(),
-							"description" : MovieData.description,
-							"cast" : MovieData.cast,
-							"genre" : MovieData.genre,
-							"rate" :MovieData.rate,
-							"runtime" : MovieData.runtime,
-		        			"uniqueid" : 'tab'+that.selectedMovieId
-						})).appendTo($('#movieTabContent'));
-	        		}	        			        			        		
-	        		
-	        		//open the tab corresponding to the movie received from the server
-	        		$('#movieTabHeader a[href="#tab'+that.selectedMovieId+'"]').tab('show');
-	        			        		
-	        		//bind the removeTab() function to the elements which have the class ".closeTab" only once
-	        		$('.closeTab',this.$ctx).off('click',$.proxy(this.removeTab,this));
-		        	$('.closeTab', this.$ctx).on('click',$.proxy(this.removeTab,this));	 
-		        	
-	        		//bind the saveMovieInDb() function to the elements which have the class ".addToDB" only once
-		        	$('.addToDB', this.$ctx).off('click', $.proxy(this.saveMovieInDb,this));
-		        	$('.addToDB', this.$ctx).on('click', $.proxy(this.saveMovieInDb,this));
-		        			        	
-		        	that.selectedMovieId = '';
-	        			        	
-	        	}else if((MovieData!==null)&&(MovieData.title===undefined)){//->We didn't receive any movie info from the selected infosource
-	        		trimmedMovieTitle = movieTitle.replace(/\s+/g, '');
-        			movieandsite = trimmedMovieTitle+MovieData[0].site;
-        			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
-
-	        		//remove the loading icon
-	        		$('.'+trimmedMovieTitle).siblings('label').removeClass('loading');	       
-	        		//open the tree node of the current search term
-	        		$('#'+trimmedMovieTitle).attr('checked',true);
-	        		/* search if a node with the same info already exists in the tree 
-	        		 * and if the node doesn't already exist, add it */
-	        		if(currentNode.length<=0){
-	        			$(noMovieFoundTmpl.tmpl({
-							"site" : MovieData[0].site,
-							"movieandsite" : movieandsite
-						})).appendTo($('.'+trimmedMovieTitle));	
-	        			
-	        			//open the tree node of the current infosource
-		        		$('#'+movieandsite).attr('checked',true);	
-	        		}	        		        		        	       		        	
-	        	}
+				this.partialJSONString+=MovieDataString;				
+				this.tryToShow();
+				
 			}// end if(response.state==="messageReceived")	    
+		},
+		
+		/**Build a valid JSON String, then parse it and show it*/
+		tryToShow : function(){
+			var MovieDataAsJson = null,
+				TrimmedStringArray = null,
+				e = null;			
+			
+			if(this.partialJSONString.indexOf('&~$')!==-1){
+				while(this.partialJSONString.indexOf('&~$')!==-1){		
+					TrimmedStringArray = this.partialJSONString.substring(0,this.partialJSONString.indexOf('&~$'));
+					console.log('while:' + TrimmedStringArray);
+					try{
+						MovieDataAsJson = $.parseJSON(TrimmedStringArray);
+						this.showMovieInfo(MovieDataAsJson);
+						this.partialJSONString = this.partialJSONString.replace(TrimmedStringArray+'&~$','');
+					}catch(e){
+						$.atmosphere.log('info', ['invalidJSON TrimmedStringArray']);
+						$.atmosphere.log('info', ['TrimmedStringArray:'+TrimmedStringArray]);
+						break;
+					}
+				}
+			}else if(this.partialJSONString.indexOf('<!--')!==-1){				
+				console.log('Header sent by atmosphere:'+this.partialJSONString);
+				this.partialJSONString='';
+			}
+			
 		},
 		
 		/**On Message Published*/
@@ -274,9 +176,14 @@
     											}
 		    							});						
 				return false;
-			}			
+			}		
 			
-			trimmedMovieTitle = movieTitle.replace(/\s+/g, '');
+			/*if(this.prevRequest===JSON.stringify(movieData)){        		
+        		$().message('Result already displayed',true);
+        		return false;
+        	}*/
+			
+			trimmedMovieTitle = movieTitle.replace(/[^a-zA-Z0-9_-]/g,'');
 			//add a tree node with the search term only if it doesn't exist already
 			if($('#'+trimmedMovieTitle).length<=0){
 				$(searchItemTmpl.tmpl({
@@ -295,9 +202,11 @@
         	$('.removeTreeNode',that.$ctx).off('click',$.proxy(that.removeTreeNode,that));
         	$('.removeTreeNode', that.$ctx).on('click',$.proxy(that.removeTreeNode,that));
 			
-			this.subSocket.response.request.method='POST';
-			this.subSocket.response.request.url=this.$ctx.data('search-url');
-        	this.subSocket.push(JSON.stringify(movieData));		
+        	this.partialJSONString = '';
+        	this.subSocket.response.request.method='POST';
+        	this.subSocket.response.request.url=this.$ctx.data('search-url');
+        	this.subSocket.push(JSON.stringify(movieData));        
+        	//this.prevRequest = JSON.stringify(movieData);
 		},
 		
 		/**Process request on Enter keypress*/
@@ -404,6 +313,143 @@
 		/**Reloads the page having the newly selected language*/
 		changeLanguage : function(){			
 			document.location.href = this.targetLanguage;
+		},
+		
+		/**Shows the received movie info appropriately in the SearchPage*/
+		showMovieInfo : function(MovieData){
+			var contentArea = $('.search-results',this.$ctx),
+    		searchItemTmpl = $('#searchItemTmpl').val(),		        
+    		movieDataSourceTmpl = $('#movieDataSourceTmpl').val(),
+    		movieItemTmpl = $('#movieItemTmpl').val(),
+    		noMovieFoundTmpl = $('#noMovieFoundTmpl').val(),
+    		oneMovieFoundTmpl = $('#oneMovieFoundTmpl').val(),
+    		detailedMovieItemTabHeader = $('#detailedMovieItemTabHeader').val(),
+    		detailedMovieItemTabContent = $('#detailedMovieItemTabContent').val(),
+    		movieTitle = $('.movie-title',this.$ctx).val(),     	
+    		site = null,
+    		movieandsite = null,
+    		that=this,
+    		treeTitlesArray = [],
+    		currentNode=null,
+    		trimmedMovieTitle='';			
+			
+			if($.isArray(MovieData)&&(MovieData[0].title!==undefined)){//->we received Brief Movie Info for multiple movies from the selected infosources
+        		trimmedMovieTitle = movieTitle.replace(/[^a-zA-Z0-9_-]/g,'');
+        		movieandsite = trimmedMovieTitle+MovieData[0].site;
+        		currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
+
+        		//remove the loading icon
+        		$('.'+trimmedMovieTitle).siblings('label').removeClass('loading');
+        		  	
+        		//open the tree node of the current search term
+        		$('#'+trimmedMovieTitle).attr('checked',true);
+        		
+        		// search if a node with the same info already exists in the tree 
+        		//  and if the node doesn't already exist, add it
+        		if(currentNode.length<=0){
+        			$(movieDataSourceTmpl.tmpl({
+						"site" : MovieData[0].site,
+						"movieandsite" : movieandsite
+					})).appendTo($('.'+trimmedMovieTitle));	
+        			
+        			//open the tree node of the current infosource
+	        		$('#'+movieandsite).attr('checked',true);	
+					
+					$.each(MovieData,function(index, value){
+		        		$(movieItemTmpl.tmpl({
+							"title" : value.title,
+							"year" : value.year,
+							"director" : value.director,
+							"uniqueid" : value.id.replace(/[^a-zA-Z0-9_-]/g,''),								
+							"site" : value.site,
+							"siteid" : value.id
+						})).appendTo($('.'+movieandsite));				    			
+	        		});		        		
+        		}
+        		
+        		//bind the getDetailedData() function to the elements which have the class "movie-id" only once
+	        	$('.movie-id',this.$ctx).off('click',$.proxy(this.getDetailedData,this));
+	        	$('.movie-id', this.$ctx).on('click',$.proxy(this.getDetailedData,this));	 
+        		
+        	}else if((MovieData!==null)&&(MovieData.title!==undefined)){// we received an object => Detailed Movie Info	   	        		
+        		site = MovieData.site;
+        		
+        		//if the result came after a server Redirect(e.g.: one result found on Filmkatalogus when searching for a movie)
+        		if(that.selectedMovieId===''){
+        			trimmedMovieTitle = movieTitle.replace(/[^a-zA-Z0-9_-]/g,'');
+        			movieandsite = trimmedMovieTitle+MovieData.site;	        			
+        			//add the node in the tree only if it doesn't exist already
+        			if($('#'+movieandsite).length<=0){
+        				$(oneMovieFoundTmpl.tmpl({
+							"site" : MovieData.site,
+							"movieandsite" : movieandsite
+						})).appendTo($('.'+trimmedMovieTitle));	
+        				
+        				//open the tree node of the current infosource
+		        		$('#'+movieandsite).attr('checked',true);	
+        			}	        				
+        			that.selectedMovieId = trimmedMovieTitle;
+        		}
+        		
+    			//remove the loading icon after the detailed movie info has been retrieved		        		
+        		$('#'+that.selectedMovieId).siblings('label').removeClass('loading');	
+        		
+        		//only add a new tab with a certain id if it doesn't exist already
+        		if($('#tab'+that.selectedMovieId).length<=0){
+        			$(detailedMovieItemTabHeader.tmpl({	        			
+	        			"movieTitle" : MovieData.title,
+	        			"site" : MovieData.site.toUpperCase(),
+	        			"uniqueid" : '#tab'+that.selectedMovieId
+	        		})).appendTo($('#movieTabHeader'));
+	        		
+	        		$(detailedMovieItemTabContent.tmpl({
+    					"title" : MovieData.title,
+    					"year" : MovieData.year,
+    					"director" : MovieData.director,
+    					"site" : MovieData.site.toUpperCase(),
+						"description" : MovieData.description,
+						"cast" : MovieData.cast,
+						"genre" : MovieData.genre,
+						"rate" :MovieData.rate,
+						"runtime" : MovieData.runtime,
+	        			"uniqueid" : 'tab'+that.selectedMovieId
+					})).appendTo($('#movieTabContent'));
+        		}	        			        			        		
+        		
+        		//open the tab corresponding to the movie received from the server
+        		$('#movieTabHeader a[href="#tab'+that.selectedMovieId+'"]').tab('show');
+        			        		
+        		//bind the removeTab() function to the elements which have the class ".closeTab" only once
+        		$('.closeTab',this.$ctx).off('click',$.proxy(this.removeTab,this));
+	        	$('.closeTab', this.$ctx).on('click',$.proxy(this.removeTab,this));	 
+	        	
+        		//bind the saveMovieInDb() function to the elements which have the class ".addToDB" only once
+	        	$('.addToDB', this.$ctx).off('click', $.proxy(this.saveMovieInDb,this));
+	        	$('.addToDB', this.$ctx).on('click', $.proxy(this.saveMovieInDb,this));
+	        			        	
+	        	that.selectedMovieId = '';
+        			        	
+        	}else if((MovieData!==null)&&(MovieData.title===undefined)){//->We didn't receive any movie info from the selected infosource
+        		trimmedMovieTitle = movieTitle.replace(/[^a-zA-Z0-9_-]/g,'');
+    			movieandsite = trimmedMovieTitle+MovieData[0].site;
+    			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
+
+        		//remove the loading icon
+        		$('.'+trimmedMovieTitle).siblings('label').removeClass('loading');	       
+        		//open the tree node of the current search term
+        		$('#'+trimmedMovieTitle).attr('checked',true);
+        		// search if a node with the same info already exists in the tree 
+        		// and if the node doesn't already exist, add it 
+        		if(currentNode.length<=0){
+        			$(noMovieFoundTmpl.tmpl({
+						"site" : MovieData[0].site,
+						"movieandsite" : movieandsite
+					})).appendTo($('.'+trimmedMovieTitle));	
+        			
+        			//open the tree node of the current infosource
+	        		$('#'+movieandsite).attr('checked',true);	
+        		}	        		        		        	       		        	
+        	}
 		}
 				
 	});

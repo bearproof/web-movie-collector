@@ -8,6 +8,7 @@ import org.atmosphere.cpr.AtmosphereResource;
 import org.atmosphere.cpr.AtmosphereResourceEvent;
 import org.atmosphere.cpr.AtmosphereResourceEventListenerAdapter;
 import org.atmosphere.cpr.Broadcaster;
+import org.atmosphere.cpr.BroadcasterConfig;
 import org.atmosphere.cpr.BroadcasterFactory;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -53,37 +54,23 @@ public class WMCController /* extends LocaleAwareController */{
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	@ResponseBody
 	public void openChannel(AtmosphereResource atmosphereResource, @RequestBody final String clientData) {
+		atmosphereResource.getResponse().setCharacterEncoding("UTF-8");
 		this.suspend(atmosphereResource);
 		final Broadcaster bc = atmosphereResource.getBroadcaster();
-		logger.debug("Atmo Resource Size: " + bc.getAtmosphereResources().size());
-
-		if (clientData == null || clientData.isEmpty()) {
-			bc.broadcast("");
-		} else {
-			int max = 10;
-			for (int i = 0; i < max; i++) {
-				bc.broadcast(clientData + "- Back from server " + i + "/" + max);
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		logger.debug("Atmo Resource Size: " + bc.getAtmosphereResources().size());		
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	@ResponseBody
 	public void search(AtmosphereResource atmosphereResource, @RequestBody String searchModelAsJson) throws JsonGenerationException, JsonMappingException, IOException,
 			InterruptedException {
-		// AtmosphereUtil.suspend(atmosphereResource);
-		atmosphereResource.setBroadcaster(BroadcasterFactory.getDefault().lookup(userContext.getUserId(), true));
+		atmosphereResource.setBroadcaster(BroadcasterFactory.getDefault().lookup(userContext.getUserId(), true));		
 		if (!searchModelAsJson.isEmpty()) {
 			SearchInputModel reqSearch = Utils.getJsonAsObject(searchModelAsJson, SearchInputModel.class);
 			List<InfoSourceModel> infoSourcesList = infoSourceConfig.getInfoSourcesBriefSearch(reqSearch);
 			for (String searchTerm : reqSearch.getSearchTerms()) {
 				for (InfoSourceModel infoSourceModel : infoSourcesList) {
-					movieRetriever.retrieveMovieData(atmosphereResource, searchTerm, infoSourceModel, htmlNodePathMapper, false);
+					movieRetriever.retrieveMovieData(atmosphereResource, searchTerm, infoSourceModel, htmlNodePathMapper, false);					
 				}
 			}
 		}
