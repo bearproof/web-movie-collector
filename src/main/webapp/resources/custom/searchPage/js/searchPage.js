@@ -15,6 +15,8 @@
 		subSocket: null,
 		selectedMovieId : '',		
 		targetLanguage : null,
+		partialJSONString : '',
+		prevRequest : null,
 				
 		/** Constructor. */
 		init : function(cfg) {
@@ -62,38 +64,56 @@
 		
 		/**On Message From server.*/
 		onMessageReceived: function(response){			
-			var MovieDataAsJson = null,
-        		MovieDataString = null,
-        		TrimmedMovieDataString = null;			
+			var MovieDataString = null;        		
 			
 			$.atmosphere.log('info', ['onMessageReceived']);	
 
-			if(response.state === "messageReceived"){												
-				MovieDataString = decodeURIComponent(response.responseBody);
-				console.log(MovieDataString);				
-				//if we have an array, take only that array and try to parse it
-				if((MovieDataString.indexOf('[')!==-1)&&(MovieDataString.indexOf(']')!==-1)){
-					TrimmedMovieDataString = MovieDataString.substring(MovieDataString.indexOf('['),MovieDataString.indexOf(']')+1);
-					try{
-						MovieDataAsJson = $.parseJSON(TrimmedMovieDataString);
-					}catch(e){
-						$.atmosphere.log('info', ['invalidJSON']);
-						$().message('Atmosphere Error: Unable to parse JSON data! Invalid JSON Array',true);
-						return;
-					}
-					this.showMovieInfo(MovieDataAsJson);
-				}else{//we received a JSON Object, so we need to parse it
-					TrimmedMovieDataString = MovieDataString.substring(MovieDataString.indexOf('{'),MovieDataString.lastIndexOf('}')+1);
-					try{						
-						MovieDataAsJson = $.parseJSON(MovieDataString);	 
-					}catch(e){
-						$.atmosphere.log('info', ['invalidJSON']);
-						$().message('Atmosphere Error: Unable to parse JSON data! Invalid JSON Object',true);
-						return;
-					}
-					this.showMovieInfo(MovieDataAsJson);
-				}	
+			if((response.state === "messageReceived")&&(response.responseBody!=="")){	
+				/*try{					
+					MovieDataString = decodeURIComponent(response.responseBody);
+				}catch(e){
+					console.log('decodeURIComponentError:'+e.message+' '+response.responseBody);
+					return false;
+				}*/
+				MovieDataString = response.responseBody;
+				if(MovieDataString===null||MovieDataString===""){					
+					console.log('Null or Empty:'+MovieDataString);	
+					return false;
+				}
+				
+				this.partialJSONString+=MovieDataString;
+				this.tryToShow();
+				
 			}// end if(response.state==="messageReceived")	    
+		},
+		
+		/**Build a valid JSON String, then parse it and show it*/
+		tryToShow : function(){
+			var MovieDataAsJson = null,
+				TrimmedStringArray = null,
+				e = null;			
+			
+			while((this.partialJSONString.indexOf('[')!==-1)&&(this.partialJSONString.indexOf(']')!==-1)){
+				TrimmedStringArray = this.partialJSONString.substring(this.partialJSONString.indexOf('['),this.partialJSONString.indexOf(']')+1);
+				try{
+					MovieDataAsJson = $.parseJSON(TrimmedStringArray);
+					this.showMovieInfo(MovieDataAsJson);
+					this.partialJSONString = this.partialJSONString.replace(TrimmedStringArray,'');
+				}catch(e){
+					$.atmosphere.log('info', ['invalidJSON TrimmedStringArray']);
+					$.atmosphere.log('info', ['TrimmedStringArray:'+TrimmedStringArray]);
+					return false;
+				}
+			}
+			try{
+				MovieDataAsJson = $.parseJSON(this.partialJSONString);
+				this.showMovieInfo(MovieDataAsJson);
+				this.partialJSONString = "";
+			}catch(e){
+				$.atmosphere.log('info', ['invalidJSON partialJSONString']);
+				$.atmosphere.log('info', ['partialJSONString:'+this.partialJSONString]);
+				return false;
+			}							
 		},
 		
 		/**On Message Published*/
@@ -164,7 +184,12 @@
     											}
 		    							});						
 				return false;
-			}			
+			}		
+			
+			/*if(this.prevRequest===JSON.stringify(movieData)){        		
+        		$().message('Result already displayed',true);
+        		return false;
+        	}*/
 			
 			trimmedMovieTitle = movieTitle.replace(/[^a-zA-Z0-9_-]/g,'');
 			//add a tree node with the search term only if it doesn't exist already
@@ -185,9 +210,10 @@
         	$('.removeTreeNode',that.$ctx).off('click',$.proxy(that.removeTreeNode,that));
         	$('.removeTreeNode', that.$ctx).on('click',$.proxy(that.removeTreeNode,that));
 			
-			this.subSocket.response.request.method='POST';
-			this.subSocket.response.request.url=this.$ctx.data('search-url');
-        	this.subSocket.push(JSON.stringify(movieData));		
+        	this.subSocket.response.request.method='POST';
+        	this.subSocket.response.request.url=this.$ctx.data('search-url');
+        	this.subSocket.push(JSON.stringify(movieData));        
+        	this.prevRequest = JSON.stringify(movieData);
 		},
 		
 		/**Process request on Enter keypress*/

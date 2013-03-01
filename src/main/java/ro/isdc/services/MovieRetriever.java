@@ -79,8 +79,7 @@ public class MovieRetriever {
 			searchMethod = infoSourceModel.getSearchMethods().get("briefSearchMethod");
 		}
 		if (searchMethod.equalsIgnoreCase("post")) {
-			// convert the uri to HttpPost in order to set the post Data via
-			// setEntity()
+			// convert the uri to HttpPost in order to set the post Data via setEntity()
 			HttpPost httpPost = (HttpPost) uri;			
 			List<BasicNameValuePair> nameValuePairs = new ArrayList<BasicNameValuePair>(1);
 
@@ -90,8 +89,7 @@ public class MovieRetriever {
 				while (it.hasNext()) {
 					Map.Entry<String, String> m = it.next();
 					if (m.getValue().equalsIgnoreCase("{title}")) {
-						// replace the title with the searchTerm typed by the
-						// user
+						// replace the title with the searchTerm typed by the user
 						nameValuePairs.add(new BasicNameValuePair(m.getKey(), searchTerm));
 					} else {
 						nameValuePairs.add(new BasicNameValuePair(m.getKey(), m.getValue()));
@@ -134,7 +132,6 @@ public class MovieRetriever {
 				if (detailedMovieData) {
 					try {
 						String responseAsString = EntityUtils.toString(result.getEntity());
-						// System.out.println(responseAsString);
 						SourceParserImpl parser = new SourceParserImpl();
 						String uriRequested = uri.getURI().getHost();
 						uriRequested = uriRequested.subSequence(uriRequested.indexOf('.') + 1, uriRequested.lastIndexOf('.')).toString();
@@ -148,11 +145,10 @@ public class MovieRetriever {
 							System.out.println("The parser didn't retrieve any detailed movie information");
 						}
 
-						//if (atmosphereResource != null) {									
-							//Broadcaster broadcaster = atmosphereResource.getBroadcaster();	
-							bc.broadcast(EncodingUtil.encodeURIComponent(movieAsJson));
+						if (bc != null) {									
+							bc.broadcast(movieAsJson/*EncodingUtil.encodeURIComponent(movieAsJson)*/);
 							System.out.println("Message sent; "+movieAsJson);												
-						//}
+						}
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
@@ -185,11 +181,11 @@ public class MovieRetriever {
 							System.out.println(moviesAsJson);
 						}
 
-						//if (atmosphereResource != null) {
-						//	Broadcaster broadcaster = atmosphereResource.getBroadcaster();							
-							bc.broadcast(EncodingUtil.encodeURIComponent(moviesAsJson));
+						if (bc != null) {
+						  //bc.broadcast(EncodingUtil.encodeURIComponent(moviesAsJson));
+							bc.broadcast(moviesAsJson);
 							System.out.println("Message sent: " + moviesAsJson);								
-						//}
+						}
 					} catch (Exception e) {
 						e.printStackTrace();
 					} finally {
@@ -270,11 +266,10 @@ public class MovieRetriever {
 								System.out.println("The parser didn't retrieve any detailed movie information");
 							}
 
-							//if (atmosphereResource != null) {
-							//	Broadcaster broadcaster = atmosphereResource.getBroadcaster();
-								bc.broadcast(EncodingUtil.encodeURIComponent(movieAsJson));								
+							if (bc != null) {
+								bc.broadcast(movieAsJson/*EncodingUtil.encodeURIComponent(movieAsJson)*/);								
 								System.out.println("Message Sent:"+movieAsJson);							
-							//}
+							}
 
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -308,11 +303,10 @@ public class MovieRetriever {
 								System.out.println(moviesAsJson);
 							}
 
-							//if (atmosphereResource != null) {
-							// broadcaster = atmosphereResource.getBroadcaster();
-								bc.broadcast(EncodingUtil.encodeURIComponent(moviesAsJson));
+							if (bc != null) {
+								bc.broadcast(moviesAsJson/*EncodingUtil.encodeURIComponent(moviesAsJson)*/);
 								System.out.println("Message Sent:"+moviesAsJson);								
-							//}
+							}
 						} catch (Exception e) {
 							e.printStackTrace();
 						} finally {
