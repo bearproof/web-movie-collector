@@ -65,7 +65,7 @@ public class MovieRetriever {
 		String searchMethod = null;
 				
 		try {
-			atmosphereResource.getResponse().flushBuffer();
+			atmosphereResource.getResponse().flushBuffer();			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -146,7 +146,7 @@ public class MovieRetriever {
 						}
 
 						if (bc != null) {									
-							bc.broadcast(movieAsJson/*EncodingUtil.encodeURIComponent(movieAsJson)*/);
+							bc.broadcast(movieAsJson+"&~$");
 							System.out.println("Message sent; "+movieAsJson);												
 						}
 					} catch (Exception e) {
@@ -182,8 +182,7 @@ public class MovieRetriever {
 						}
 
 						if (bc != null) {
-						  //bc.broadcast(EncodingUtil.encodeURIComponent(moviesAsJson));
-							bc.broadcast(moviesAsJson);
+							bc.broadcast(moviesAsJson+"&~$");
 							System.out.println("Message sent: " + moviesAsJson);								
 						}
 					} catch (Exception e) {
@@ -267,7 +266,7 @@ public class MovieRetriever {
 							}
 
 							if (bc != null) {
-								bc.broadcast(movieAsJson/*EncodingUtil.encodeURIComponent(movieAsJson)*/);								
+								bc.broadcast(movieAsJson+"&~$");								
 								System.out.println("Message Sent:"+movieAsJson);							
 							}
 
@@ -304,7 +303,7 @@ public class MovieRetriever {
 							}
 
 							if (bc != null) {
-								bc.broadcast(moviesAsJson/*EncodingUtil.encodeURIComponent(moviesAsJson)*/);
+								bc.broadcast(moviesAsJson+"&~$");
 								System.out.println("Message Sent:"+moviesAsJson);								
 							}
 						} catch (Exception e) {

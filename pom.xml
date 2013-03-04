@@ -29,6 +29,7 @@
 		<jsp-api.version>2.1</jsp-api.version>
 		<taglibs.version>1.1.2</taglibs.version>
 		<junit.version>4.10</junit.version>
+		<atmosphere-version>1.0.10</atmosphere-version>
 		<webapp-runner.version>7.0.27.1</webapp-runner.version>
 		<spring-social.version>1.0.2.RELEASE</spring-social.version>
 		<jetty.application.contextpath>/</jetty.application.contextpath>
@@ -86,7 +87,7 @@
 		<dependency>
 			<groupId>org.atmosphere</groupId>
 			<artifactId>atmosphere-runtime</artifactId>
-			<version>1.0.10</version>
+			<version>${atmosphere-version}</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>atmosphere-compat-tomcat7</artifactId>

@@ -54,6 +54,7 @@ public class WMCController /* extends LocaleAwareController */{
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	@ResponseBody
 	public void openChannel(AtmosphereResource atmosphereResource, @RequestBody final String clientData) {
+		atmosphereResource.getResponse().setCharacterEncoding("UTF-8");
 		this.suspend(atmosphereResource);
 		final Broadcaster bc = atmosphereResource.getBroadcaster();
 		logger.debug("Atmo Resource Size: " + bc.getAtmosphereResources().size());		
@@ -63,8 +64,7 @@ public class WMCController /* extends LocaleAwareController */{
 	@ResponseBody
 	public void search(AtmosphereResource atmosphereResource, @RequestBody String searchModelAsJson) throws JsonGenerationException, JsonMappingException, IOException,
 			InterruptedException {
-		atmosphereResource.setBroadcaster(BroadcasterFactory.getDefault().lookup(userContext.getUserId(), true));
-		BroadcasterConfig bc = atmosphereResource.getBroadcaster().getBroadcasterConfig();
+		atmosphereResource.setBroadcaster(BroadcasterFactory.getDefault().lookup(userContext.getUserId(), true));		
 		if (!searchModelAsJson.isEmpty()) {
 			SearchInputModel reqSearch = Utils.getJsonAsObject(searchModelAsJson, SearchInputModel.class);
 			List<InfoSourceModel> infoSourcesList = infoSourceConfig.getInfoSourcesBriefSearch(reqSearch);

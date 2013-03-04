@@ -68,20 +68,14 @@
 			
 			$.atmosphere.log('info', ['onMessageReceived']);	
 
-			if((response.state === "messageReceived")&&(response.responseBody!=="")){	
-				/*try{					
-					MovieDataString = decodeURIComponent(response.responseBody);
-				}catch(e){
-					console.log('decodeURIComponentError:'+e.message+' '+response.responseBody);
-					return false;
-				}*/
+			if((response.state === "messageReceived")&&(response.responseBody!=="")){					
 				MovieDataString = response.responseBody;
-				if(MovieDataString===null||MovieDataString===""){					
+				if(MovieDataString===null||MovieDataString==="&~$"){					
 					console.log('Null or Empty:'+MovieDataString);	
 					return false;
 				}
 				
-				this.partialJSONString+=MovieDataString;
+				this.partialJSONString+=MovieDataString;				
 				this.tryToShow();
 				
 			}// end if(response.state==="messageReceived")	    
@@ -93,27 +87,25 @@
 				TrimmedStringArray = null,
 				e = null;			
 			
-			while((this.partialJSONString.indexOf('[')!==-1)&&(this.partialJSONString.indexOf(']')!==-1)){
-				TrimmedStringArray = this.partialJSONString.substring(this.partialJSONString.indexOf('['),this.partialJSONString.indexOf(']')+1);
-				try{
-					MovieDataAsJson = $.parseJSON(TrimmedStringArray);
-					this.showMovieInfo(MovieDataAsJson);
-					this.partialJSONString = this.partialJSONString.replace(TrimmedStringArray,'');
-				}catch(e){
-					$.atmosphere.log('info', ['invalidJSON TrimmedStringArray']);
-					$.atmosphere.log('info', ['TrimmedStringArray:'+TrimmedStringArray]);
-					return false;
+			if(this.partialJSONString.indexOf('&~$')!==-1){
+				while(this.partialJSONString.indexOf('&~$')!==-1){		
+					TrimmedStringArray = this.partialJSONString.substring(0,this.partialJSONString.indexOf('&~$'));
+					console.log('while:' + TrimmedStringArray);
+					try{
+						MovieDataAsJson = $.parseJSON(TrimmedStringArray);
+						this.showMovieInfo(MovieDataAsJson);
+						this.partialJSONString = this.partialJSONString.replace(TrimmedStringArray+'&~$','');
+					}catch(e){
+						$.atmosphere.log('info', ['invalidJSON TrimmedStringArray']);
+						$.atmosphere.log('info', ['TrimmedStringArray:'+TrimmedStringArray]);
+						break;
+					}
 				}
+			}else if(this.partialJSONString.indexOf('<!--')!==-1){				
+				console.log('Header sent by atmosphere:'+this.partialJSONString);
+				this.partialJSONString='';
 			}
-			try{
-				MovieDataAsJson = $.parseJSON(this.partialJSONString);
-				this.showMovieInfo(MovieDataAsJson);
-				this.partialJSONString = "";
-			}catch(e){
-				$.atmosphere.log('info', ['invalidJSON partialJSONString']);
-				$.atmosphere.log('info', ['partialJSONString:'+this.partialJSONString]);
-				return false;
-			}							
+			
 		},
 		
 		/**On Message Published*/
@@ -210,10 +202,11 @@
         	$('.removeTreeNode',that.$ctx).off('click',$.proxy(that.removeTreeNode,that));
         	$('.removeTreeNode', that.$ctx).on('click',$.proxy(that.removeTreeNode,that));
 			
+        	this.partialJSONString = '';
         	this.subSocket.response.request.method='POST';
         	this.subSocket.response.request.url=this.$ctx.data('search-url');
         	this.subSocket.push(JSON.stringify(movieData));        
-        	this.prevRequest = JSON.stringify(movieData);
+        	//this.prevRequest = JSON.stringify(movieData);
 		},
 		
 		/**Process request on Enter keypress*/
