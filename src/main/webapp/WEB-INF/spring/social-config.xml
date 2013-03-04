@@ -52,7 +52,7 @@
 	</bean>
 
 	<!-- <bean id="connectionConverter" class="ro.isdc.auth.social.connect.ConnectionConverter"> 
-		</bean> -->
+		</bean> --> 
 
 	<!-- <bean class="org.springframework.social.connect.web.ConnectController"> 
 		relies on by-type autowiring for the constructor-args </bean> -->
