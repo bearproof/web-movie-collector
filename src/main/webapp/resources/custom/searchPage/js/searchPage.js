@@ -35,6 +35,11 @@
 			window.onbeforeunload = function() {
 				that.onDisconnect();
 			};
+			
+			$('.container').css({'padding-top': function () {    			
+					return ($('div.navbar-fixed-top').height());
+				}
+			});    
 		},
 		
 		/**Open a bi-directional communication channel between the browser and the specified server.*/
@@ -84,8 +89,7 @@
 		/**Build a valid JSON String, then parse it and show it*/
 		tryToShow : function(){
 			var MovieDataAsJson = null,
-				TrimmedStringArray = null,
-				e = null;			
+				TrimmedStringArray = null;			
 			
 			if(this.partialJSONString.indexOf('&~$')!==-1){
 				while(this.partialJSONString.indexOf('&~$')!==-1){		
@@ -112,9 +116,14 @@
 		onMessagePublished: function(response){
 			var responseObj = null;
 			$.atmosphere.log('info', ['onMessagePublished.', response]);
-			responseObj = $.parseJSON(response.responseBody);
-			//shows the message in a RED div if isError===true, else shows it in a BLACK div
-			$().message(responseObj.message,responseObj.error);
+			try{
+				responseObj = $.parseJSON(response.responseBody);
+				//shows the message in a RED div if isError===true, else shows it in a BLACK div
+				$().message(responseObj.message,responseObj.error);				
+			}catch(e){
+				$.atmosphere.log('info', ['invalidJSON:'+e.message]);
+				$.atmosphere.log('info', ['responseBody:'+response.responseBody]);
+			}
 		},
 		
 		/**On Channel Error*/

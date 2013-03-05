@@ -77,7 +77,7 @@
 	<!-- Search Movies page  -->
 	<definition name="searchPage" extends="generic-template">
 		<put-attribute name="pageName" value="searchPage" />
-		<put-attribute name="title-content" value="searchPage.title"/>
+		<put-attribute name="title-content" value="WMC"/>
 		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/SearchPage/searchPageSpecificCss.jsp"/>
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Movie/searchPage.jsp" />
 		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/SearchPage/searchPageSpecificJs.jsp"/>

@@ -13,6 +13,10 @@
     bindBehavior : function() {
     	this.initDataTable();
     	this.initCrudButtons();
+    	/*$('.dataTables_wrapper').css({'padding-top': function () {    			
+    			return ($('div.navbar-fixed-top').height());
+    		}
+    	});*/    	
     },
     /**
      * Creates the dataTable with the user's Movie List
@@ -33,20 +37,21 @@
 	    		},
 	    		"bProcessing" : true,
 	    		"bServerSide" : true,
+	    		"bAutoWidth": false,
 	    		"sAjaxSource" : "/domain/movies/",
 	    		"aoColumns" : [ {"mData" : "id" },
 	    		                {"mData" : "title"},
 	    		                {"mData" : "year"}, 
-	    		                {"mData" : "genre"},
 	    		                {"mData" : "director"},
+	    		                {"mData" : "genre"},
 	    		                {"mData" : "runtime"}
 	    		               ],
 	    		"aoColumnDefs": [
 	    		                 { "sName": "id",   "aTargets": [ 0 ] },
 	    		                 { "sName": "title",  "aTargets": [ 1 ] },
 	    		                 { "sName": "year", "aTargets": [ 2 ] },
-	    		                 { "sName": "genre",  "aTargets": [ 3 ] },
-	    		                 { "sName": "director",    "aTargets": [ 4 ] },
+	    		                 { "sName": "director",    "aTargets": [ 3 ] },
+	    		                 { "sName": "genre",  "aTargets": [ 4 ] },
 	    		                 { "sName": "runtime",    "aTargets": [ 5 ] },
 	    		                 { "sClass" : "hide",   "aTargets" : [ 0 ]}
 	    		               ],           

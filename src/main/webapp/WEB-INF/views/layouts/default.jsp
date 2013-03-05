@@ -17,10 +17,10 @@
 
 <!-- Le styles -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-base.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-ez.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/commons.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/tiptip.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/js/jquery/message/css/jquery.message-1.0.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/js/jquery/message/css/jquery.message-1.0.customizations.css">

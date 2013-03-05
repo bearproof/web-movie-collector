@@ -266,9 +266,6 @@
 	padding-bottom: 20px;
 }
 
-#mainContent .closeTab{
-	cursor: pointer;
-}
 
 #mainContent input[type="text"]:focus{
 	color: #000;
@@ -285,8 +282,12 @@
 /* Adding a red color to the "x" character on the tab. */
 #movieTabHeader li a .closeTab {
 		color: #FF4D4D;
-	}
+}
 	
+#mainContent .closeTab{
+	cursor: pointer;
+	font-size: 20px;
+}
 .tab-content {
 	background-color: #F1F1F1;
 	box-shadow: 0 0 3px #888888;
@@ -387,7 +388,7 @@
 
 #movieList .removeTreeNode{
 	color: #f00;
-	font-size:14px;
+	font-size:18px;
 }
 
 ul.nav li{
@@ -400,7 +401,6 @@ ul.nav li{
 }
 
 #searchPage div.container {
-	padding-top: 20px;
 	width: 100%;
 }
 

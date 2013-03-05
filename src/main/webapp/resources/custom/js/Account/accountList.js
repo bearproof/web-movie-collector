@@ -13,6 +13,10 @@
     bindBehavior : function() {
     	this.initDataTable();
     	this.initCrudButtons();
+    /*	$('.dataTables_wrapper').css({'padding-top': function () {
+    			return ($('div.navbar-fixed-top').height());
+			}
+    	});*/    	
     },
     /**
      * Creates the dataTable with the Accounts List
@@ -33,6 +37,7 @@
     		},
     		"bProcessing" : true,
     		"bServerSide" : true,
+    		"bAutoWidth": false,
     		"sAjaxSource" : "/domain/accounts/",
     		"aoColumns" : [ {"mData" : "id" },
     		                {"mData" : "firstName"},
