@@ -78,6 +78,32 @@
 	        	    }
         	    }        	    
             }        
+        },
+        "cinemagia": {
+        	"usesCookies": false,
+        	"searchURLs": {
+        		"fetchCookieURL": "notDefined",
+        	    "briefSearchURL":"http://www.cinemagia.ro/cauta/?q={title}&new=1",
+        	    "fullSearchURL":"http://www.cinemagia.ro{movieId}"
+        	},
+        	"searchMethods": {
+        		"briefSearchMethod": "get",
+        		"fullSearchMethod": "get",
+        		"fetchCookieMethod": "get"
+        	},
+        	"presetHeaders": {
+        		"User-Agent" : "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"
+        	},
+        	"post": {
+        		"briefPostData": {
+        			"postDataMap": {
+        				"gyorskeres": "0",
+        				"keres0": "1",
+        				"sbmt": "Keress!",
+        				"szo0": "{title}"
+        			}
+        		}
+        	}
         }
     }
 }

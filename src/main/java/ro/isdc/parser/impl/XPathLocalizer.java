@@ -41,22 +41,32 @@ public class XPathLocalizer implements ElementLocalizer {
 
 		try {
 			String listXpath = htmlNodePathMapper.getNodePathMap().get(websiteId + ".list");
-			htmlContent = StringEscapeUtils.unescapeHtml(htmlContent);
+			htmlContent = StringEscapeUtils.unescapeHtml(htmlContent);			
 			Object[] listOfMovies = cleanWithHtmlCleaner(htmlContent, websiteId, listXpath);
+			int i=0;
 			for (Object listItem : listOfMovies) {
 				SimpleMovieInfo movieItem = new SimpleMovieInfo();
 				String title = getXpathElement(((TagNode) listItem), htmlNodePathMapper.getNodePathMap().get(websiteId + ".title"));
 				String year = getXpathElement(((TagNode) listItem), htmlNodePathMapper.getNodePathMap().get(websiteId + ".year"));
 				String director = getXpathElement(((TagNode) listItem), htmlNodePathMapper.getNodePathMap().get(websiteId + ".director"));
-				String id = getXpathElement(((TagNode) listItem), htmlNodePathMapper.getNodePathMap().get(websiteId + ".id"));
+				String id = getXpathElement(((TagNode) listItem), htmlNodePathMapper.getNodePathMap().get(websiteId + ".id"));				
+				//Temporary fix for CINEMAGIA 
+				if(id.contains("cinemagia")){
+					id=id.substring(id.indexOf(".ro")+3,id.length()-1);
+				}
 
 				if (title != null) {
 					movieItem.setTitle(title);
 					movieItem.setYear(year == null ? "Not available" : year);
 					movieItem.setDirector(director == null ? "Not available" : director);
 					movieItem.setId(id);
-					movieItem.setSite(websiteId);
-					movieResultsMap.put(title + year, movieItem);
+					movieItem.setSite(websiteId);					
+					if(year==null){
+						movieResultsMap.put(title + String.valueOf(i), movieItem);
+						i++;
+					}else{						
+						movieResultsMap.put(title + year, movieItem);
+					}
 				}
 			}
 		} catch (Exception e) {
