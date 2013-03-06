@@ -39,7 +39,7 @@
 		<div class="content">
 			<div class="container-fluid">
 				<div class="row-fluid">
-					<div id="movieList" class="span3 css-treeview">
+					<div id="movieList" class="span4 css-treeview">
 						<ul></ul>
 					</div>
 
