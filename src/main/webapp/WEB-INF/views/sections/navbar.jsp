@@ -56,7 +56,7 @@
 					</ul>
 			</div>	
 			<%-- </security:authorize> --%>
-			<%@include file="/WEB-INF/views/contents/Movie/localeChanger.jsp"%>
+			<%@include file="/WEB-INF/views/sections/localeChanger.jsp"%>
 			
 		</div>
 	</div>
