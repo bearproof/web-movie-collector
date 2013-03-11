@@ -1,0 +1,484 @@
+#searchPage {
+  width: 100%;
+  height: 100%;
+  background-color: #E9E9EB !important;
+  color: #333333;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  line-height: 100%;
+}
+.title {
+  padding: 15px 0 10px 10px;
+  color: #5C7A99;
+  text-size: 20px;
+  vertical-align: text-bottom;
+  color: #606060;
+  font-weight: bold;
+}
+.centered {
+  display: inline-block;
+  color: #5C7A99;
+  width: 100%;
+  text-align: center;
+  font: 1.5em/100% Verdana, Arial, Helvetica, sans-serif;
+}
+.website-label-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.ui-layout-pane {
+  background: #666;
+}
+#searchPage h2 {
+  display: inline-block;
+  color: #383A3D;
+  font: bold 23px/100% "Arial", sans-serif;
+  letter-spacing: 4px;
+  overflow: hidden;
+  padding: 5px 0 20px 10px;
+  text-decoration: none;
+}
+#searchPage .user-input-zone {
+  background: #dcdcdc;
+  height: 100%;
+  overflow: hidden;
+}
+#searchPage .user-input {
+  float: left;
+  height: 94%;
+  width: 70%;
+}
+#searchPage button.user-input {
+  float: right;
+  height: 100%;
+  width: 28.5%;
+}
+#searchPage .movie-title {
+  background: #fff;
+  border: 1px solid #bbb;
+  font-size: 100%;
+  padding-left: 15px;
+  width: 300px;
+}
+#searchPage .info-sources li {
+  float: left;
+}
+.right {
+  color: #fff;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+.right a {
+  color: #fff;
+  text-decoration: none;
+}
+.right a:hover {
+  text-decoration: underline;
+}
+#main-section ul {
+  background: #ccc;
+}
+#main-section header label {
+  color: #fff;
+  font-family: Comic Sans MS;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  padding: 25px 0 0 45px;
+  text-decoration: none;
+  text-shadow: 0 2px 0 #e9e9e9;
+  text-shadow: 2px 3px 3px #292929;
+}
+#main-section aside {
+  background: #ccc;
+}
+.search-button {
+  background: -moz-linear-gradient(top, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2989d8), color-stop(41%, #207cca), color-stop(100%, #1e5799));
+  background: -webkit-linear-gradient(top, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: -o-linear-gradient(top, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: -ms-linear-gradient(top, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: linear-gradient(to bottom, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: #2989d8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2989d8', endColorstr='#1e5799', GradientType=0);
+  -moz-box-shadow: inset 0px 1px 30px -2px #ffffff;
+  -webkit-box-shadow: inset 0px 1px 30px -2px #ffffff;
+  box-shadow: inset 0px 1px 30px -2px #ffffff;
+  border: 1px solid #aaa;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  color: #FFF;
+  display: inline-block;
+  font-family: Comic Sans MS;
+  font-size: 33px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-decoration: none;
+  text-shadow: 0 2px 0 #e9e9e9;
+  text-shadow: 2px 3px 3px #292929;
+}
+.search-button:hover {
+  background: #80afd6;
+  background: -moz-linear-gradient(top, #80afd6 0%, #207cca 99%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #80afd6), color-stop(99%, #207cca));
+  background: -webkit-linear-gradient(top, #80afd6 0%, #207cca 99%);
+  background: -o-linear-gradient(top, #80afd6 0%, #207cca 99%);
+  background: -ms-linear-gradient(top, #80afd6 0%, #207cca 99%);
+  background: linear-gradient(to bottom, #80afd6 0%, #207cca 99%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80afd6', endColorstr='#207cca', GradientType=0);
+}
+.search-button:active {
+  position: relative;
+  top: 1px;
+}
+#searchPage .info-sources li {
+  float: left;
+  padding-right: 10px;
+}
+.info-sources {
+  padding: 10px 0 10px 0;
+  color: #666;
+  font-family: Comic Sans MS;
+  font-size: 20px;
+}
+.page-footer {
+  color: #000;
+  padding: 5px 0 5px 0;
+}
+.ui-helper-hidden {
+  display: none;
+}
+.layout-state {
+  display: inline-block;
+  float: right;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-family: Comic Sans MS;
+  letter-spacing: 1px;
+  text-decoration: none;
+  background: -moz-linear-gradient(top, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2989d8), color-stop(41%, #207cca), color-stop(100%, #1e5799));
+  background: -webkit-linear-gradient(top, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: -o-linear-gradient(top, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: -ms-linear-gradient(top, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: linear-gradient(to bottom, #2989d8 0%, #207cca 41%, #1e5799 100%);
+  background: #2989d8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2989d8', endColorstr='#1e5799', GradientType=0);
+  -moz-box-shadow: inset 0px 1px 30px -2px #ffffff;
+  -webkit-box-shadow: inset 0px 1px 30px -2px #ffffff;
+  box-shadow: inset 0px 1px 30px -2px #ffffff;
+  border: 1px solid #aaa;
+  height: 30px;
+}
+.layout-state a span span {
+  color: #fff;
+}
+.layout-state a:hover span span {
+  color: #444;
+}
+.display-none {
+  display: none;
+}
+#accordion,
+#accordion .panel {
+  width: 100% !important;
+}
+.panel-header,
+.panel-body .accordion-body,
+.accordion,
+.accordion-header,
+.accordion-header-selected {
+  width: 99.5% !important;
+}
+.btn-group {
+  float: right;
+}
+.header {
+  background-color: #F7F7F7;
+  border-color: #F7F7F7;
+  height: 100%;
+}
+.header-ez {
+  background: #deefff;
+  background: -moz-linear-gradient(top, #deefff 0%, #98bede 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #deefff), color-stop(100%, #98bede));
+  background: -webkit-linear-gradient(top, #deefff 0%, #98bede 100%);
+  background: -o-linear-gradient(top, #deefff 0%, #98bede 100%);
+  background: -ms-linear-gradient(top, #deefff 0%, #98bede 100%);
+  background: linear-gradient(to bottom, #deefff 0%, #98bede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#deefff', endColorstr='#98bede', GradientType=0);
+  height: 100%;
+}
+#header .dropdown-menu {
+  float: right;
+  right: 0;
+  left: inherit;
+  min-width: 120px;
+}
+#header .btn-group {
+  padding: 2px;
+}
+#WMCcontainer .userInputZone header {
+  margin-left: 35px;
+}
+#WMCcontainer .infoSourceCheckboxes {
+  margin-left: 38px;
+}
+#WMCcontainer input {
+  margin-bottom: 0;
+}
+#searchPage .container-fluid {
+  padding-left: 10px;
+  padding-right: 2px;
+}
+#mainContent .divider {
+  border-bottom: 1px solid #b4b4b4;
+  padding-bottom: 20px;
+}
+#mainContent input[type="text"]:focus {
+  color: #000;
+}
+#movieList label {
+  overflow: hidden;
+}
+#movieList {
+  padding-top: 4px;
+}
+#movieTabHeader li a .closeTab {
+  color: #FF4D4D;
+}
+#mainContent .closeTab {
+  cursor: pointer;
+  font-size: 20px;
+}
+.tab-content {
+  background-color: #F1F1F1;
+  box-shadow: 0 0 3px #888888;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+#movieTabHeader li a:hover,
+#movieTabHeader .active a,
+#movieTabHeader li .active-tab {
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+}
+#movieTabHeader li a {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 90%;
+  color: #5C7A99;
+  background: #f1f1f1;
+  background: -moz-linear-gradient(top, #f1f1f1 1%, #d6d6d6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #f1f1f1), color-stop(100%, #d6d6d6));
+  background: -webkit-linear-gradient(top, #f1f1f1 1%, #d6d6d6 100%);
+  background: -o-linear-gradient(top, #f1f1f1 1%, #d6d6d6 100%);
+  background: -ms-linear-gradient(top, #f1f1f1 1%, #d6d6d6 100%);
+  background: linear-gradient(to bottom, #f1f1f1 1%, #d6d6d6 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f1f1', endColorstr='#d6d6d6', GradientType=0);
+  background-repeat: repeat-x;
+  border: 1px solid #bbbbbb;
+}
+#movieTabHeader {
+  border-radius: 10px 10px 0 0;
+  background-color: #363636;
+  background-image: -moz-linear-gradient(center top, #444444, #222222);
+  background-repeat: repeat-x;
+}
+.movieDetailsTable tr th {
+  vertical-align: middle;
+  color: #606060;
+}
+.movieDetailsTable td {
+  background-color: white;
+  color: #5C7A99;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.movieDetailsTable {
+  border: none solid #828282;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.movieDetailsTable td,
+.movieDetailsTable th {
+  border-top: 1px solid #d9d9d9;
+  padding: 15px;
+  padding-left: 25px;
+}
+.movieDetailsTable th {
+  font-weight: bold;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 12px;
+  width: 120px;
+}
+.nav-tabs > li > a {
+  border-radius: 10px 10px 0 0;
+}
+#movieTabHeader li:active a {
+  background-color: #006DCC;
+}
+#movieList .loading {
+  background: url("/resources/img/tree_loading.gif") no-repeat scroll 18px 0 transparent !important;
+}
+#movieList .searchTermTreeIcon {
+  background: url("/resources/img/icons_searchTerm.png") no-repeat scroll 18px 0 transparent;
+}
+#movieList .infosourceTreeIcon {
+  background: url("/resources/img/icons_movieSource.png") no-repeat scroll 18px 0 transparent;
+}
+#movieList .removeTreeNode {
+  color: #f00;
+  font-size: 18px;
+}
+ul.nav li {
+  font-size: 14px;
+}
+#mainContent {
+  padding-top: 20px;
+}
+#searchPage div.container {
+  width: 100%;
+}
+#pageFooter {
+  height: 25px;
+}
+#pageFooter .navbar-inner {
+  font-size: 14px;
+  padding-top: 1px;
+  padding-left: 0px;
+}
+.submit-container {
+  display: inline-block;
+  padding: 0 15px 15px 0;
+  width: auto;
+  float: right;
+}
+.submit-container button {
+  float: right;
+}
+table tr .submit-container {
+  background: none;
+  float: right;
+  border: none;
+}
+.movieDetailsTable tr:hover td {
+  background: #f6f6f7;
+}
+.movieDetailsTable tr:hover th {
+  background: #E3E3E5;
+  width: auto;
+}
+.movieDetailsTable tr:hover .submit-container {
+  background: none;
+  border: none;
+}
+.movieDetailsTable tr:hover .submit-blank-label {
+  background: none;
+  border: none;
+}
+.movieDetailsTable tr .submit-container {
+  background: none;
+  border: none;
+}
+.movieDetailsTable tr .submit-blank-label {
+  background: none;
+  border: none;
+}
+.movieDetailsTable tr {
+  border-top: 1px solid #D9D9D9;
+}
+.title-container {
+  display: inline-block;
+}
+#movieList ul li label {
+  font-size: 102%;
+  color: #5C7A99;
+}
+.css-treeview ul,
+.css-treeview li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.css-treeview input {
+  position: absolute;
+  opacity: 0;
+}
+.css-treeview {
+  font: normal 11px "Segoe UI", Arial, Sans-serif;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.css-treeview a {
+  color: #00f;
+  text-decoration: none;
+}
+.css-treeview a:hover {
+  text-decoration: underline;
+}
+.css-treeview input + label + ul {
+  margin: 0 0 0 22px;
+}
+.css-treeview input + label + ul,
+.css-treeview input ~ ul {
+  display: none;
+}
+.css-treeview label,
+.css-treeview label::before {
+  cursor: pointer;
+}
+.css-treeview input:disabled + label {
+  cursor: default;
+  opacity: .6;
+}
+.css-treeview input:checked:not(:disabled ) + label + ul,
+.css-treeview input:checked:not(:disabled ) ~ ul {
+  display: block;
+}
+.css-treeview label,
+.css-treeview label::before {
+  background: url("/resources/img/icons.png") no-repeat;
+}
+.css-treeview label,
+.css-treeview a,
+.css-treeview label::before {
+  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+  vertical-align: middle;
+}
+.css-treeview label {
+  background-position: 18px 0;
+}
+.css-treeview label::before {
+  content: "";
+  width: 16px;
+  margin: 0 22px 0 0;
+  vertical-align: middle;
+  background-position: 0 -32px;
+}
+.css-treeview input:checked + label::before {
+  background-position: 0 -16px;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .css-treeview {
+    -webkit-animation: webkit-adjacent-element-selector-bugfix infinite 1s;
+  }
+  -webkit-keyframes webkit-adjacent-element-selector-bugfix from {
+    padding: 0;
+  }
+  -webkit-keyframes webkit-adjacent-element-selector-bugfix to {
+    padding: 0;
+  }
+}

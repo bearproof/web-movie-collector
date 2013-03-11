@@ -49,13 +49,13 @@
 }
 
 .css-treeview label,.css-treeview label::before {
-	background: url("../../img/icons.png") no-repeat;
+	background: url("/resources/img/icons.png") no-repeat;
 }
 
 .css-treeview label,.css-treeview a,.css-treeview label::before {
 	display: inline-block;
 	height: 16px;
-	line-height: 16px; ,
+	line-height: 16px;
 	vertical-align: middle;
 }
 
@@ -80,10 +80,8 @@
 	.css-treeview {
 		-webkit-animation: webkit-adjacent-element-selector-bugfix infinite 1s;
 	}
-	@
 	-webkit-keyframes webkit-adjacent-element-selector-bugfix {from {
-		padding:0;
-		
+		padding:0;		
 	}
 	to {
 		padding: 0;

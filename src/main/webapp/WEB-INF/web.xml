@@ -83,6 +83,7 @@
 		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
 	</filter>
+	
 	<filter-mapping>
 		<filter-name>hiddenHttpMethodFilter</filter-name>
 		<url-pattern>/connect/*</url-pattern>

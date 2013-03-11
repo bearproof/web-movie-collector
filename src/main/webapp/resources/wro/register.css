@@ -1,0 +1,56 @@
+.hide {
+  dispay: none;
+}
+.password-meter {
+  border: 1px solid #4F4F4F;
+  width: 200px;
+  height: 10px;
+  margin: 5px 0 0 170px;
+  border-radius: 3px;
+  background-color: white;
+}
+.meter-content {
+  margin: 0;
+  height: 100%;
+  float: left;
+  border-right: 1px solid #E8E8E8;
+}
+.state-0 {
+  width: 0px;
+}
+.state-1 {
+  background-color: red;
+  width: 25px;
+}
+.state-2 {
+  background-color: red;
+  width: 50px;
+}
+.state-3 {
+  background-color: #fcd150;
+  width: 75px;
+}
+.state-4 {
+  background-color: #fcd150;
+  width: 100px;
+}
+.state-5 {
+  background-color: green;
+  width: 125px;
+}
+.state-6 {
+  background-color: green;
+  width: 150px;
+}
+.state-7 {
+  background-color: green;
+  width: 100%;
+}
+.meter-wrapper {
+  margin: 0px auto;
+  padding: 0;
+  background-color: #D1D1D1;
+  width: 95%;
+  height: 8px;
+  margin-top: 1px;
+}

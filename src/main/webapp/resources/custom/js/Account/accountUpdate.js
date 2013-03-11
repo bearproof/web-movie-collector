@@ -12,9 +12,18 @@
      * Binds client-side behavior.
      */
     bindBehavior : function() {
-    	this.getAllRoles();
-    	this.initResetButton();
-    	this.validateAndSubmitForm();
+    	if($('body').data('role')==="admin"){    		
+    		this.getAllRoles();
+    		this.initResetButton();
+    		this.validateAndSubmitForm();
+    	}else{
+    		this.initResetButton();
+        	this.validateUserDataAndSubmitForm();
+    	}
+    	$('.container').css({'padding-top': function () {    			
+					return ($('div.navbar-fixed-top').height());
+				}
+    	});  
     },
     /**
      * Retrieves all existing roles from the server and populates a multiple-select list
@@ -72,7 +81,7 @@
     	
     },    
     /**
-     * Validates the Form before submitting it
+     * Validates the Form before submitting it for users having ROLE_ADMIN
      * */
     validateAndSubmitForm : function(){
     	var that=this;
@@ -137,6 +146,74 @@
     					  //shows a confirmation message in a RED div if error===true, else shows it in a BLACK div
     					  $().message(response.message,response.error);
     					  document.location.href='/domain/accounts/list/';
+    				  }
+    				});  
+    			return false; 
+    		},
+    		success: function(label) {
+    		}
+    	});
+    },
+    /**
+     * Validates the Form before submitting it for users having ROLE_USER
+     * */
+    validateUserDataAndSubmitForm : function(){
+    	var that=this;
+    	$("#accountEditForm").validate({
+    		rules: {
+    			firstName: "required",
+    			lastName: "required",
+    			password: {
+    				required: true,
+    				minlength: 5,
+    				maxlength: 10
+    			},
+    			password_confirm: {
+    				required: true,
+    				equalTo: "#password"
+    			}
+    		},
+    		messages: {
+    			firstName: "Enter your firstname",
+    			lastName: "Enter your lastname",
+    			password: {
+    				required: "Provide a password",
+    				minlength: jQuery.format("Enter at least {0} characters"),
+    				maxlength: jQuery.format("Enter a maximum of {0} characters")
+    			},
+    			password_confirm: {
+    				required: "Repeat your password",
+    				equalTo: "Enter the same password as above"
+    			}
+    		},
+    		errorPlacement: function(error, element) {
+    			error.appendTo( element.next() );
+    		},
+    		submitHandler: function() {
+    			var jsonData = null, index = null;
+    			
+    			for(index in that.existingRoles){
+    				if(that.existingRoles.hasOwnProperty(index)){
+    					that.rolesToUpdate.push(that.existingRoles[index]);	   					
+    				}
+    			}
+    			
+    			jsonData = {
+    				id : $("input#id").val(),
+    				firstName : $("input#firstName").val(),
+    				lastName : $("input#lastName").val(),
+    				password : $("input#password").val(),
+    				email : $("input#email").val(),
+    				isEnabled : $('input#isEnabled').is(':checked'),
+    				roles : that.rolesToUpdate
+    			};
+    			$.ajax({  
+    				  type: "PUT",  
+    				  url: "/changeDetails/updateUserAccount/",  
+    				  data: JSON.stringify(jsonData),
+    				  contentType: "application/json; charset=utf-8",
+    				  success: function(response,status,xhr) { 
+    					  document.location.href='/';
     				  }
     				});  
     			return false; 

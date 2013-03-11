@@ -109,8 +109,9 @@
 	
 	/* Attach the password meter to the appropriate input*/
 	$('#password').bind("keyup", function () {
-		var nScore = $(this).chkPass();
-		var sComplexity = "state-0";
+		var nScore = $(this).chkPass(),
+			sComplexity = "state-0",
+			$mc = null, i = null;
 		if (nScore > 100) { nScore = "state-7"; } else if (nScore <= 0) { nScore = "state-0"; }
 		if (nScore > 0 && nScore < 10) { sComplexity = "state-1"; }
 		else if (nScore >= 10 && nScore < 20) { sComplexity = "state-2"; }
@@ -120,8 +121,8 @@
 		else if (nScore >= 50 && nScore <= 60) { sComplexity = "state-6"; }
 		else if (nScore >= 60 && nScore <= 100) { sComplexity = "state-7"; }
 		
-		var $mc = $(".meter-content");
-		for(var i=0; i<=7; i++) {
+		$mc = $(".meter-content");
+		for(i=0; i<=7; i++) {
 			$mc.removeClass("state-"+i);
 		}
 		$mc.addClass(sComplexity);

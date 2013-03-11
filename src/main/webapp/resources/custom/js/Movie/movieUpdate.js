@@ -11,6 +11,10 @@
     bindBehavior : function() {
     	this.initResetButton();
     	this.validateAndSubmitForm();
+    	$('.container').css({'padding-top': function () {    			
+					return ($('div.navbar-fixed-top').height());
+				}
+    	});  
     },  
     /**
      * Validates the Form before submitting it

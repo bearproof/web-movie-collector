@@ -23,16 +23,18 @@
      * Saves the selected theme in Session Storage and retrieves it to show the pages accordingly
      * */
     initializeThemeChanger : function (){
-    	$('body').removeClass('ez base').addClass(sessionStorage.getItem('currentTheme'));	
+    	if(window.sessionStorage.getItem('currentTheme')){    		
+    		$('body').removeClass('ez base').addClass(window.sessionStorage.getItem('currentTheme'));	
+    	}
     	$('#baseTheme').on('click', function(){
-    		if(sessionStorage.getItem('currentTheme')!=="base"){
-    			sessionStorage.setItem('currentTheme',"base");
+    		if(window.sessionStorage.getItem('currentTheme')!=="base"){
+    			window.sessionStorage.setItem('currentTheme',"base");
     			$('body').removeClass('ez base').addClass('base');		
     		}
     	});
     	$('#ezTheme').on('click', function(){
-    		if(sessionStorage.getItem('currentTheme')!=="ez"){
-    			sessionStorage.setItem('currentTheme',"ez");
+    		if(window.sessionStorage.getItem('currentTheme')!=="ez"){
+    			window.sessionStorage.setItem('currentTheme',"ez");
     			$('body').removeClass('ez base').addClass('ez');		
     		}
     	});

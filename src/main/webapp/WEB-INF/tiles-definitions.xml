@@ -6,41 +6,47 @@
 
 	<!-- Default Template -->
 	<definition name="generic-template" template="/WEB-INF/views/layouts/default.jsp">		
+		<put-attribute name="pageName" value="default" />
 		<put-attribute name="taglibs" value="/WEB-INF/views/includes/taglibs.jsp" />
 		<put-attribute name="title-content" value="" />
 		<put-attribute name="navbar-content" value="/WEB-INF/views/sections/navbar.jsp" />
-		<put-attribute name="custom-css" value=""/>
 		<put-attribute name="main-content" value="" />		
 		<put-attribute name="modal-content" value="/WEB-INF/views/sections/modal.jsp" />
 		<put-attribute name="footer-content" value="/WEB-INF/views/sections/footer.jsp" />
-		<put-attribute name="custom-js" value=""/>
+		<put-attribute name="wroCtx" value="/resources/wro" />	
+		<put-attribute name="defaultTheme" value="base"/>					
 	</definition>
 
 	<!-- Login page -->
 	<definition name="loginPage" extends="generic-template">
+		<put-attribute name="pageName" value="" />
 		<put-attribute name="title-content" value="Login" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/loginContent.jsp" />
+		<put-attribute name="noCss" value=""/>						
 	</definition>
 
 	<!-- Register page -->
 	<definition name="registerPage" extends="generic-template">
+		<put-attribute name="pageName" value="register" />
 		<put-attribute name="title-content" value="Register" />
-		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/Register/registerPageSpecificCss.jsp"/>
-		<put-attribute name="main-content" value="/WEB-INF/views/contents/Register.jsp" />		
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Register/Register.jsp"/> 
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Register.jsp" />	
+		<put-attribute name="noCss" value=""/>										
 	</definition>
 
 	<!-- Home page -->
 	<definition name="homePage" extends="generic-template">
-		<put-attribute name="pageName" value="homePage" />
+		<put-attribute name="pageName" value="" />
 		<put-attribute name="title-content" value="Home" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/homeContent.jsp" />
+		<put-attribute name="noCss" value=""/>								
 	</definition>
 
 	<!-- Exception caught Page -->
 	<definition name="exception-caught" extends="generic-template">
+		<put-attribute name="pageName" value="" />
 		<put-attribute name="title-content" value="Exception" />
 		<put-attribute name="main-content" value="/WEB-INF/views/errors/exception-caught.jsp" />
+		<put-attribute name="noCss" value=""/>									
 	</definition>
 	
 	<!-- ~~~~~~~~~~~~~ -->
@@ -49,25 +55,26 @@
 
 	<!-- Accounts list page -->
 	<definition name="accountsPage" extends="generic-template">
-		<put-attribute name="pageName" value="accountListPage" />
+		<put-attribute name="pageName" value="listAccounts" />
 		<put-attribute name="title-content" value="Accounts" />
-		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/dataTablesStyles.jsp"/>
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Account/List.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Account/List.jsp"/>
+		<put-attribute name="noCss" value=""/>		
 	</definition>
 
 	<!-- New Account page -->
 	<definition name="createAccountPage" extends="generic-template">
+		<put-attribute name="pageName" value="" />
 		<put-attribute name="title-content" value="New Account" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Account/Create.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Account/Create.jsp"/>
+		<put-attribute name="noCss" value="createAccount"/>				
 	</definition>
 
 	<!-- Update Account page -->
 	<definition name="updateAccountPage" extends="generic-template">
+		<put-attribute name="pageName" value="" />	
 		<put-attribute name="title-content" value="Edit Account" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Account/Update.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Account/Update.jsp"/>
+		<put-attribute name="noCss" value="updateAccount"/>	
 	</definition>
 
 	<!-- ~~~~~~~~~~~~~ -->
@@ -78,32 +85,32 @@
 	<definition name="searchPage" extends="generic-template">
 		<put-attribute name="pageName" value="searchPage" />
 		<put-attribute name="title-content" value="WMC"/>
-		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/SearchPage/searchPageSpecificCss.jsp"/>
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Movie/searchPage.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/SearchPage/searchPageSpecificJs.jsp"/>
+		<put-attribute name="noCss" value=""/>	
 	</definition>
 	
 	<!-- Movies list page -->
 	<definition name="moviesPage" extends="generic-template">
+		<put-attribute name="pageName" value="listMovies" />
 		<put-attribute name="title-content" value="Movies" />
-		<put-attribute name="pageName" value="movieListPage" />
-		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/dataTablesStyles.jsp"/>
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Movie/List.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Movie/List.jsp"/>
+		<put-attribute name="noCss" value=""/>	
 	</definition>
 
 	<!-- New Movie page -->
 	<definition name="createMoviePage" extends="generic-template">
+		<put-attribute name="pageName" value="" />	
 		<put-attribute name="title-content" value="New Movie" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Movie/Create.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Movie/Create.jsp"/>
+		<put-attribute name="noCss" value="createMovie"/>			
 	</definition>
 
 	<!-- Update Movie page -->
 	<definition name="updateMoviePage" extends="generic-template">
+		<put-attribute name="pageName" value="" />
 		<put-attribute name="title-content" value="Edit Movie" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Movie/Update.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Movie/Update.jsp"/>
+		<put-attribute name="noCss" value="updateMovie"/>					
 	</definition>
 
 	<!-- ~~~~~~~~~~~~~ -->
@@ -112,25 +119,25 @@
 
 	<!-- Role list page -->
 	<definition name="rolesPage" extends="generic-template">
-		<put-attribute name="pageName" value="roleListPage" />
+		<put-attribute name="pageName" value="listRoles" />
 		<put-attribute name="title-content" value="Roles" />
-		<put-attribute name="custom-css" value="/WEB-INF/views/customCss/dataTablesStyles.jsp"/>
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Role/List.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Role/List.jsp"/>
+		<put-attribute name="noCss" value=""/>	
 	</definition>
 	
 	<!-- New Role page -->
 	<definition name="createRolePage" extends="generic-template">
+		<put-attribute name="pageName" value="" />
 		<put-attribute name="title-content" value="New Role" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Role/Create.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Role/Create.jsp"/>
+		<put-attribute name="noCss" value="createRole"/>								
 	</definition>
 	
 	<!-- Update Role page -->
 	<definition name="updateRolePage" extends="generic-template">
+		<put-attribute name="pageName" value="" />
 		<put-attribute name="title-content" value="Edit Role" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Role/Update.jsp" />
-		<put-attribute name="custom-js" value="/WEB-INF/views/customJs/Role/Update.jsp"/>
-	</definition>
-		
+		<put-attribute name="noCss" value="updateRole"/>								
+	</definition>		
 </tiles-definitions>

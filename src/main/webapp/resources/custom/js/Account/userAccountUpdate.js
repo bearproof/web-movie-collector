@@ -13,12 +13,12 @@
      */
     bindBehavior : function() {
     	this.initResetButton();
-    	this.validateAndSubmitForm();
+    	this.validateUserDataAndSubmitForm();
     },    
     /**
      * Validates the Form before submitting it
      * */
-    validateAndSubmitForm : function(){
+    validateUserDataAndSubmitForm : function(){
     	var that=this;
     	$("#accountEditForm").validate({
     		rules: {

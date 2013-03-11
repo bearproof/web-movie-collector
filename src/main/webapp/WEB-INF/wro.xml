@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns="http://www.isdc.ro/wro"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.isdc.ro/wro wro.xsd">
+
+  <group name="commons">
+    <!-- Common styles -->
+    <css>/resources/common/css/reset.meyer-2.0.min.css</css>    
+    <css>/resources/common/css/base.css</css>
+    <css>/resources/common/css/bootstrap.css</css>
+    <css>/resources/common/css/bootstrap-responsive.css</css>
+    <css>/resources/common/css/themes.less</css>
+   <!--  <css>/resources/common/css/bootstrap-base.css</css>
+    <css>/resources/common/css/bootstrap-ez.css</css> -->
+    <css>/resources/common/css/commons.css</css>
+    <css>/resources/common/css/tiptip.css</css>
+    <css>/resources/common/js/jquery/message/css/jquery.message-1.0.css</css>
+    <css>/resources/common/js/jquery/message/css/jquery.message-1.0.customizations.css</css>
+    <css>/resources/common/css/localeChanger.css</css>
+    
+    <!-- Common scripts -->
+    <js minimize="false">/resources/common/js/inheritance/inheritance-1.0.min.js</js>
+    <js minimize="false">/resources/common/js/jquery/jquery-1.8.3.min.js</js>      
+    <js minimize="false">/resources/common/js/jquery/atmosphere/jquery.atmosphere-1.0.min.js</js>
+    <js>/resources/common/js/bootstrap.js</js>        
+    <js>/resources/common/js/jquery.tiptip.js</js>        
+    <js>/resources/common/js/base.js</js>
+    <js>/resources/common/js/themeChanger.js</js>    
+    <js>/resources/common/js/jquery/message/js/jquery.message-1.0.min.js</js>        
+  </group>
+    
+  <group name="searchPage">
+    <css>/resources/custom/css/SearchPage/searchPage.css</css>
+    <css>/resources/common/css/css3treeview.css</css>    
+    <js>/resources/custom/js/SearchPage/searchPage.js</js>
+  </group>
+  
+  <group name="register">
+    <css>/resources/custom/css/Register/register.css</css>
+    <js>/resources/custom/js/Register/Register.js</js>
+    <js>/resources/custom/js/Register/jquery.password.meter-1.0.min.js</js>
+    <js>/resources/common/js/jquery.validate.js</js>    
+  </group>
+  
+  <group name="listAccounts">
+    <css>/resources/common/css/dataTableStyle.css</css>
+    <js>/resources/common/js/jquery.dataTables.js</js>
+    <js>/resources/common/js/dataTablesPagination.js</js>
+    <js>/resources/custom/js/Account/accountList.js</js>    
+  </group>
+  
+  <group name="createAccount">
+    <js>/resources/common/js/jquery.validate.js</js>
+    <js>/resources/common/js/bootstrap-multiselect.js</js>
+    <js>/resources/custom/js/Account/accountCreate.js</js>       
+  </group>
+  
+  <group name="updateAccount">
+    <js>/resources/common/js/jquery.validate.js</js>
+    <js>/resources/common/js/bootstrap-multiselect.js</js>
+    <js>/resources/custom/js/Account/accountUpdate.js</js>       
+  </group>
+  
+  <group name="listMovies">
+  	<css>/resources/common/css/dataTableStyle.css</css>
+    <js>/resources/common/js/jquery.dataTables.js</js>
+    <js>/resources/common/js/dataTablesPagination.js</js>
+    <js>/resources/custom/js/Movie/movieList.js</js>       
+  </group>
+  <group name="createMovie">
+    <js>/resources/common/js/jquery.validate.js</js>
+    <js>/resources/common/js/bootstrap-multiselect.js</js>
+    <js>/resources/custom/js/Movie/movieCreate.js</js>      
+  </group>
+  <group name="updateMovie">
+    <js>/resources/common/js/jquery.validate.js</js>
+    <js>/resources/common/js/bootstrap-multiselect.js</js>
+    <js>/resources/custom/js/Movie/movieUpdate.js</js>      
+  </group>
+  
+   <group name="listRoles">
+    <css>/resources/common/css/dataTableStyle.css</css>
+    <js>/resources/common/js/jquery.dataTables.js</js>
+    <js>/resources/common/js/dataTablesPagination.js</js>
+    <js>/resources/custom/js/Role/roleList.js</js>    
+  </group>
+  
+  <group name="createRole">
+    <js>/resources/common/js/jquery.validate.js</js>
+    <js>/resources/common/js/bootstrap-multiselect.js</js>
+    <js>/resources/custom/js/Role/roleCreate.js</js>       
+  </group>
+  
+  <group name="updateRole">
+    <js>/resources/common/js/jquery.validate.js</js>
+    <js>/resources/common/js/bootstrap-multiselect.js</js>
+    <js>/resources/custom/js/Role/roleUpdate.js</js>       
+  </group>
+   
+</groups>

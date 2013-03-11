@@ -281,7 +281,7 @@
 				previousTab = $($el).closest('li').prev().children('a').attr('href'),
 				nextTab = $($el).closest('li').next().children('a').attr('href');
 			$(correspondingContentDiv).remove();
-			$($el).parents('li.active').remove();
+			$($el).closest('li').remove();
 			if((previousTab!==null)&&(previousTab!==undefined)){
 				$('#movieTabHeader a[href="'+previousTab+'"]').tab('show');				
 			}else if((nextTab!==null)&&(nextTab!==undefined)){

@@ -51,7 +51,7 @@ public class XPathLocalizer implements ElementLocalizer {
 				String director = getXpathElement(((TagNode) listItem), htmlNodePathMapper.getNodePathMap().get(websiteId + ".director"));
 				String id = getXpathElement(((TagNode) listItem), htmlNodePathMapper.getNodePathMap().get(websiteId + ".id"));				
 				//Temporary fix for CINEMAGIA 
-				if(id.contains("cinemagia")){
+				if(id!=null&&id.contains("cinemagia")){
 					id=id.substring(id.indexOf(".ro")+3,id.length()-1);
 				}
 

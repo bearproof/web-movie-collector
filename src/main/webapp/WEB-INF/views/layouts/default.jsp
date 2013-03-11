@@ -4,8 +4,6 @@
 <html class="no-js" lang="en">
 <head>
 <tiles:importAttribute />
-<%-- <tiles:useAttribute id="key" name="title" scope="request"/> --%>
-<%-- <title><spring:message htmlEscape="false" code="${key}"/></title> --%>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <title><tiles:insertAttribute name="title-content" /></title>
@@ -16,18 +14,11 @@
 <link rel="shortcut icon" href="resources/img/favicon.png" type="image/png" />
 
 <!-- Le styles -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-responsive.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-base.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/bootstrap-ez.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/commons.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/tiptip.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/js/jquery/message/css/jquery.message-1.0.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/js/jquery/message/css/jquery.message-1.0.customizations.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/custom/localeChanger/css/localeChanger.css" media="all" />
-
-
-<tiles:insertAttribute name="custom-css" />
+<link rel="stylesheet" href="${wroCtx}/commons.css" media="all" />
+<c:if test="${not empty pageName}">
+	<link rel="stylesheet" type="text/css" href="${wroCtx}/${pageName}.css" media="all" />
+</c:if>
+	
 
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -68,7 +59,19 @@
 	data-rolecreate='<spring:message code="domain.role.create.legend"/>' 
 	data-roleedit='<spring:message code="domain.role.edit.legend"/>'
 	data-roledelete='<spring:message code="domain.role.delete.legend"/>'
-	data-choosetemplate='<spring:message code="navbar.menu.choosetemplate"/>'>
+	data-choosetemplate='<spring:message code="navbar.menu.choosetemplate"/>'
+	<c:choose>
+	<c:when test="${fn:contains(userContext.getRoles(), 'ROLE_ADMIN')}">
+	data-role='admin' 
+	</c:when>
+	<c:otherwise>
+	data-role='user'
+	</c:otherwise>
+	</c:choose>	
+	<c:if test="${not empty defaultTheme}">
+		 class="${defaultTheme}"
+	</c:if>
+	>
 
 	<tiles:insertAttribute name="navbar-content" />
 	<div class="container">
@@ -78,17 +81,13 @@
 		<tiles:insertAttribute name="footer-content" />
 	</footer>
 	<tiles:insertAttribute name="modal-content" />
-	<!-- Javascript-->
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/inheritance/js/inheritance-1.0.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery/atmosphere/js/jquery.atmosphere-1.0.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/bootstrap.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery.tiptip.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/base.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/themeChanger.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/jquery/message/js/jquery.message-1.0.min.js"></script>
-	<%-- <script type="text/javascript"	src="${pageContext.request.contextPath}/resources/jquery/jqueryUI-bootstrap/js/jquery-ui-1.9.2.custom.min.js"></script> --%>
-	<tiles:insertAttribute name="custom-js" />
-
+	<!-- Javascript-->	
+	<script type="text/javascript" src="${wroCtx}/commons.js"></script>	  		
+	<c:if test="${not empty pageName}">
+		<script type="text/javascript" src="${wroCtx}/${pageName}.js"></script>
+	</c:if>		
+	<c:if test="${not empty noCss}">
+		<script type="text/javascript" src="${wroCtx}/${noCss}.js"></script>
+	</c:if>		
 </body>
 </html>

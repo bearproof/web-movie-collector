@@ -15,6 +15,11 @@
     	this.getAllRoles();
     	this.initCancelButton();
     	this.validateAndSubmitForm();
+    	
+    	$('.container').css({'padding-top': function () {    			
+					return ($('div.navbar-fixed-top').height());
+				}
+    	});  
     },
     /**
      * Retrieves all existing roles from the server and populates a multiple-select list

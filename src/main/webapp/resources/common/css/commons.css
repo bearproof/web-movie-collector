@@ -9,7 +9,7 @@
 #fb_signin button,#go_signin button{
 	width:42px;
 	height:40px;
-	background: transparent url("../../img/social_sprite.png") no-repeat 0 0;	
+	background: transparent url("/resources/img/social_sprite.png") no-repeat 0 0;	
 	border:0;
 	padding:0;
 }
