@@ -60,3 +60,9 @@
 	padding-top: 0 !important;
   }
 }
+
+.icon-group{
+	background :  transparent url("/resources/img/glyphicons_group_white16.png") no-repeat 0 0;	
+	width: 16px;
+	margin-top: 3px;
+}

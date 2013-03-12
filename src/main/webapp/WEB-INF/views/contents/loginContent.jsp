@@ -70,6 +70,7 @@
 				<form id="account_register" action="<c:url value="/register"/>"
 					method="GET">
 					<button type="submit" class="btn btn-primary">
+						<i class="icon-group"></i>
 						<fmt:message key="page.register.form.signUp" />
 					</button>
 				</form>
