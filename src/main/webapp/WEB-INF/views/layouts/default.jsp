@@ -60,6 +60,8 @@
 	data-roleedit='<spring:message code="domain.role.edit.legend"/>'
 	data-roledelete='<spring:message code="domain.role.delete.legend"/>'
 	data-choosetemplate='<spring:message code="navbar.menu.choosetemplate"/>'
+	data-noinfosourceselected='<spring:message code="searchPage.no.infosource.selected"/>'
+	data-movierequired='<spring:message code="searchPage.movie.required"/>'	
 	<c:choose>
 	<c:when test="${fn:contains(userContext.getRoles(), 'ROLE_ADMIN')}">
 	data-role='admin' 

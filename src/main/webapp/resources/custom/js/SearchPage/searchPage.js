@@ -165,7 +165,7 @@
 	
 			if (movieData.infoSourceKeys.length === 0) {		
 				$('#errorModalLabel').html('Warning:');
-		    	$('#errorModalMsg').html('No infosource selected!');
+		    	$('#errorModalMsg').html($('body').data('noinfosourceselected'));
 		    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
 		    	$('#errorModal').modal().css({'margin-top': function () {
 		                        			return -($(this).height() / 2);
@@ -175,7 +175,7 @@
 			}
 			if (movieData.searchTerms.length === 0) {	
 				$('#errorModalLabel').html('Warning:');
-		    	$('#errorModalMsg').html('Please type a movie title!');
+		    	$('#errorModalMsg').html($('body').data('movierequired'));
 		    	$('#errorModalBody').attr('class', 'modal-body alert alert-warning');
 		    	$('#errorModal').modal().css({'margin-top': function () {
         										return -($(this).height() / 2);
