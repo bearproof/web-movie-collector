@@ -5876,121 +5876,6 @@ a.badge:hover {
     overflow: visible !important;
   }
 }
-.base a {
-  text-decoration: none;
-}
-.base .icon-white,
-.base .nav > .active > a > [class^="icon-"],
-.base .nav > .active > a > [class*=" icon-"],
-.base .dropdown-menu > li > a:hover > [class^="icon-"],
-.base .dropdown-menu > li > a:hover > [class*=" icon-"],
-.base .dropdown-menu > .active > a > [class^="icon-"],
-.base .dropdown-menu > .active > a > [class*=" icon-"] {
-  background-image: url("/resources/img/glyphicons-halflings-white.png");
-}
-.base .btn-primary {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background: #6895a8;
-  background: -moz-linear-gradient(top, #6895a8 1%, #3a87ad 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #6895a8), color-stop(100%, #3a87ad));
-  background: -webkit-linear-gradient(top, #6895a8 1%, #3a87ad 100%);
-  background: -o-linear-gradient(top, #6895a8 1%, #3a87ad 100%);
-  background: -ms-linear-gradient(top, #6895a8 1%, #3a87ad 100%);
-  background: linear-gradient(to bottom, #6895a8 1%, #3a87ad 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6895a8', endColorstr='#3a87ad', GradientType=0);
-  border-color: #0044cc #0044cc #002a80;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-}
-.base .btn-primary:hover,
-.base .btn-primary:active,
-.base .btn-primary.active,
-.base .btn-primary.disabled,
-.base .btn-primary[disabled] {
-  color: #ffffff;
-  background: #a9c5d3;
-  background: -moz-linear-gradient(top, #a9c5d3 0%, #4296c4 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a9c5d3), color-stop(100%, #4296c4));
-  background: -webkit-linear-gradient(top, #a9c5d3 0%, #4296c4 100%);
-  background: -o-linear-gradient(top, #a9c5d3 0%, #4296c4 100%);
-  background: -ms-linear-gradient(top, #a9c5d3 0%, #4296c4 100%);
-  background: linear-gradient(to bottom, #a9c5d3 0%, #4296c4 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9c5d3', endColorstr='#4296c4', GradientType=0);
-}
-.base .btn-inverse {
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #363636;
-  *background-color: #222222;
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
-  background-image: -webkit-linear-gradient(top, #444444, #222222);
-  background-image: -o-linear-gradient(top, #444444, #222222);
-  background-image: linear-gradient(to bottom, #444444, #222222);
-  background-image: -moz-linear-gradient(top, #444444, #222222);
-  background-repeat: repeat-x;
-  border-color: #222222 #222222 #000000;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff444444', endColorstr='#ff222222', GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
-}
-.base .btn-inverse:hover,
-.base .btn-inverse:active,
-.base .btn-inverse.active,
-.base .btn-inverse.disabled,
-.base .btn-inverse[disabled] {
-  color: #ffffff;
-  background-color: #222222;
-  *background-color: #151515;
-}
-.base .navbar-inner {
-  min-height: 40px;
-  padding-right: 2px;
-  padding-left: 20px;
-  background-color: #fafafa;
-  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
-  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
-  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
-  background-repeat: repeat-x;
-  border: 1px solid #d4d4d4;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-}
-.base .navbar-inverse .navbar-inner {
-  background-color: #1b1b1b;
-  background-image: -moz-linear-gradient(top, #222222, #111111);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
-  background-image: -webkit-linear-gradient(top, #222222, #111111);
-  background-image: -o-linear-gradient(top, #222222, #111111);
-  background-image: linear-gradient(to bottom, #222222, #111111);
-  background-repeat: repeat-x;
-  border-color: #252525;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
-}
-.base .navbar-inverse .brand,
-.base .navbar-inverse .nav > li > a {
-  color: #999999;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
-.base .label-info,
-.base .badge-info {
-  background-color: #3a87ad;
-}
-.base .navbar-inverse {
-  color: #999999;
-}
-.base .container-fluid {
-  padding-right: 2px;
-}
-.base .tab-content {
-  overflow: none;
-}
 .ez a {
   text-decoration: none;
 }
@@ -6008,18 +5893,17 @@ a.badge:hover {
   border-width: 1px;
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #da4f49;
-  *background-color: #bd362f;
+  background-color: #bd362f;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
   background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
   background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   background-repeat: repeat-x;
   border-color: #bd362f #bd362f #802420;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
-  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 .ez .btn-primary:hover,
 .ez .btn-primary:active,
@@ -6035,7 +5919,7 @@ a.badge:hover {
   background: -o-linear-gradient(top, #d36b6b 0%, #bc4d4d 100%);
   background: -ms-linear-gradient(top, #d36b6b 0%, #bc4d4d 100%);
   background: linear-gradient(to bottom, #d36b6b 0%, #bc4d4d 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#d36b6b', endColorstr='#bc4d4d', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
 }
 .ez .btn-group .btn-inverse {
   color: #ccc;
@@ -6047,7 +5931,7 @@ a.badge:hover {
   background: -o-linear-gradient(top, #405587 0%, #1e3468 100%);
   background: -ms-linear-gradient(top, #405587 0%, #1e3468 100%);
   background: linear-gradient(to bottom, #405587 0%, #1e3468 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#405587', endColorstr='#1e3468', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
   border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
@@ -6063,18 +5947,19 @@ a.badge:hover {
   min-height: 40px;
   padding-right: 2px;
   padding-left: 20px;
-  background-color: #fafafa;
-  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+  background-color: #f2f2f2;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
   background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
   background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
   background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   background-repeat: repeat-x;
   border: 1px solid #d4d4d4;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
@@ -6087,7 +5972,7 @@ a.badge:hover {
   background: -o-linear-gradient(top, #405587 0%, #1e3468 100%);
   background: -ms-linear-gradient(top, #405587 0%, #1e3468 100%);
   background: linear-gradient(to bottom, #405587 0%, #1e3468 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#405587', endColorstr='#1e3468', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
   border-color: #252525;
 }
 .ez .navbar-inverse .brand,
@@ -6098,12 +5983,6 @@ a.badge:hover {
 .ez .navbar-inverse {
   color: #333333;
 }
-.ez .label-info,
-.ez .badge-info {
-  background-color: #D40000;
-  background-image: -moz-linear-gradient(center top, #d40000, #bf0000);
-  background-repeat: repeat-x;
-}
 .ez .btn-danger {
   background: #7584a5;
   background: -moz-linear-gradient(top, #7584a5 0%, #5a6a99 100%);
@@ -6112,7 +5991,7 @@ a.badge:hover {
   background: -o-linear-gradient(top, #7584a5 0%, #5a6a99 100%);
   background: -ms-linear-gradient(top, #7584a5 0%, #5a6a99 100%);
   background: linear-gradient(to bottom, #7584a5 0%, #5a6a99 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7584a5', endColorstr='#5a6a99', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
 }
 .ez .btn-danger:hover,
 .ez .btn-danger:active,
@@ -6126,7 +6005,7 @@ a.badge:hover {
   background: -o-linear-gradient(top, #8d9fc6 0%, #6886ad 100%);
   background: -ms-linear-gradient(top, #8d9fc6 0%, #6886ad 100%);
   background: linear-gradient(to bottom, #8d9fc6 0%, #6886ad 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8d9fc6', endColorstr='#6886ad', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
 }
 .ez .btn-success:hover,
 .ez .btn-success:active,
@@ -6140,7 +6019,7 @@ a.badge:hover {
   background: -o-linear-gradient(top, #8fb58f 0%, #80af80 100%);
   background: -ms-linear-gradient(top, #8fb58f 0%, #80af80 100%);
   background: linear-gradient(to bottom, #8fb58f 0%, #80af80 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8fb58f', endColorstr='#80af80', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
 }
 .ez .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .ez .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
@@ -6151,6 +6030,129 @@ a.badge:hover {
   padding-right: 2px;
 }
 .ez .tab-content {
+  overflow: none;
+}
+.ez .label-info,
+.ez .badge-info {
+  background-color: #d40000;
+  background-image: -moz-linear-gradient(center top, #d40000, #bf0000);
+  background-repeat: repeat-x;
+}
+.base a {
+  text-decoration: none;
+}
+.base .icon-white,
+.base .nav > .active > a > [class^="icon-"],
+.base .nav > .active > a > [class*=" icon-"],
+.base .dropdown-menu > li > a:hover > [class^="icon-"],
+.base .dropdown-menu > li > a:hover > [class*=" icon-"],
+.base .dropdown-menu > .active > a > [class^="icon-"],
+.base .dropdown-menu > .active > a > [class*=" icon-"] {
+  background-image: url("/resources/img/glyphicons-halflings-white.png");
+}
+.base .btn-primary {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background: #6895a8;
+  background: -moz-linear-gradient(top, #6895a8 0%, #3a87ad 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6895a8), color-stop(100%, #3a87ad));
+  background: -webkit-linear-gradient(top, #6895a8 0%, #3a87ad 100%);
+  background: -o-linear-gradient(top, #6895a8 0%, #3a87ad 100%);
+  background: -ms-linear-gradient(top, #6895a8 0%, #3a87ad 100%);
+  background: linear-gradient(to bottom, #6895a8 0%, #3a87ad 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.base .btn-primary:hover,
+.base .btn-primary:active,
+.base .btn-primary.active,
+.base .btn-primary.disabled,
+.base .btn-primary[disabled] {
+  color: #ffffff;
+  background: #a9c5d3;
+  background: -moz-linear-gradient(top, #a9c5d3 0%, #4296c4 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a9c5d3), color-stop(100%, #4296c4));
+  background: -webkit-linear-gradient(top, #a9c5d3 0%, #4296c4 100%);
+  background: -o-linear-gradient(top, #a9c5d3 0%, #4296c4 100%);
+  background: -ms-linear-gradient(top, #a9c5d3 0%, #4296c4 100%);
+  background: linear-gradient(to bottom, #a9c5d3 0%, #4296c4 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+}
+.base .btn-inverse {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #363636;
+  background-color: #222222;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#444444), to(#222222));
+  background-image: -webkit-linear-gradient(top, #444444, #222222);
+  background-image: -o-linear-gradient(top, #444444, #222222);
+  background-image: linear-gradient(to bottom, #444444, #222222);
+  background-image: -moz-linear-gradient(top, #444444, #222222);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  background-repeat: repeat-x;
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.base .btn-inverse:hover,
+.base .btn-inverse:active,
+.base .btn-inverse.active,
+.base .btn-inverse.disabled,
+.base .btn-inverse[disabled] {
+  color: #ffffff;
+  background-color: #222222;
+  *background-color: #151515;
+}
+.base .navbar-inner {
+  min-height: 40px;
+  padding-right: 2px;
+  padding-left: 20px;
+  background-color: #f2f2f2;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
+  background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+  background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  background-repeat: repeat-x;
+  border: 1px solid #d4d4d4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+.base .navbar-inverse .navbar-inner {
+  background-color: #111111;
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#222222), to(#111111));
+  background-image: -webkit-linear-gradient(top, #222222, #111111);
+  background-image: -o-linear-gradient(top, #222222, #111111);
+  background-image: linear-gradient(to bottom, #222222, #111111);
+  background-image: -moz-linear-gradient(top, #222222, #111111);
+  filter: progid:dximagetransform.microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+  background-repeat: repeat-x;
+  border-color: #252525;
+}
+.base .navbar-inverse .brand,
+.base .navbar-inverse .nav > li > a {
+  color: #999999;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.base .label-info,
+.base .badge-info {
+  background-color: #3a87ad;
+}
+.base .navbar-inverse {
+  color: #999999;
+}
+.base .container-fluid {
+  padding-right: 2px;
+}
+.base .tab-content {
   overflow: none;
 }
 .error {

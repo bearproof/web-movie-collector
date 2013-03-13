@@ -29,8 +29,7 @@
   background-image: url("/resources/img/glyphicons-halflings-white.png");
 }
 
-.ez .btn-primary {
-
+ .ez .btn-primary {
     border-style: solid;
     border-width: 1px;
     color: #fff;
@@ -56,14 +55,15 @@
 .ez .btn-primary[disabled] {
     color: #ffffff;
   	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-	background: #d36b6b; /* Old browsers */
+	background: #d36b6b;/*  Old browsers */
 	background: -moz-linear-gradient(top,  #d36b6b 0%, #bc4d4d 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d36b6b), color-stop(100%,#bc4d4d)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top,  #d36b6b 0%,#bc4d4d 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top,  #d36b6b 0%,#bc4d4d 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top,  #d36b6b 0%,#bc4d4d 100%); /* IE10+ */
-	background: linear-gradient(to bottom,  #d36b6b 0%,#bc4d4d 100%); /* W3C */
+	background: linear-gradient(to bottom,  #d36b6b 0%,#bc4d4d 100%);/*  W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d36b6b', endColorstr='#bc4d4d',GradientType=0 ); /* IE6-9 */
+	filter: progid:dximagetransform.microsoft.gradient(enabled=false);	 
 }
 
 .ez .btn-group .btn-inverse {
@@ -141,29 +141,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#405587', end
  }
  .ez .btn-danger {
  	background: #7584a5; /* Old browsers */
-background: -moz-linear-gradient(top,  #7584a5 0%, #5a6a99 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7584a5), color-stop(100%,#5a6a99)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #7584a5 0%,#5a6a99 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #7584a5 0%,#5a6a99 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #7584a5 0%,#5a6a99 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #7584a5 0%,#5a6a99 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7584a5', endColorstr='#5a6a99',GradientType=0 ); /* IE6-9 */
- 	
- }
+	background: -moz-linear-gradient(top,  #7584a5 0%, #5a6a99 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7584a5), color-stop(100%,#5a6a99)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #7584a5 0%,#5a6a99 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #7584a5 0%,#5a6a99 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #7584a5 0%,#5a6a99 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #7584a5 0%,#5a6a99 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7584a5', endColorstr='#5a6a99',GradientType=0 ); /* IE6-9 */
+	filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
 .ez .btn-danger:hover,
 .ez .btn-danger:active,
 .ez .btn-danger.active,
 .ez .btn-danger.disabled,
 .ez .btn-danger[disabled] {
- background: #8d9fc6; /* Old browsers */
-background: -moz-linear-gradient(top,  #8d9fc6 0%, #6886ad 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8d9fc6), color-stop(100%,#6886ad)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #8d9fc6 0%,#6886ad 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #8d9fc6 0%,#6886ad 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #8d9fc6 0%,#6886ad 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #8d9fc6 0%,#6886ad 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d9fc6', endColorstr='#6886ad',GradientType=0 ); /* IE6-9 */
- }
+	background: #8d9fc6; /* Old browsers */
+	background: -moz-linear-gradient(top,  #8d9fc6 0%, #6886ad 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8d9fc6), color-stop(100%,#6886ad)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #8d9fc6 0%,#6886ad 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #8d9fc6 0%,#6886ad 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #8d9fc6 0%,#6886ad 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #8d9fc6 0%,#6886ad 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8d9fc6', endColorstr='#6886ad',GradientType=0 ); /* IE6-9 */
+	filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}
  
 .ez .btn-success:hover,
 .ez .btn-success:active,

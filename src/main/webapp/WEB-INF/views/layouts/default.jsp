@@ -1,5 +1,4 @@
 <%@include file="/WEB-INF/views/includes/taglibs.jsp"%>
-
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>

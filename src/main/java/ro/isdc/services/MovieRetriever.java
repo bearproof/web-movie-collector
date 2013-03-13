@@ -64,11 +64,11 @@ public class MovieRetriever {
 		HttpUriRequest uri = null;
 		String searchMethod = null;
 				
-		try {
+		/*try {
 			atmosphereResource.getResponse().flushBuffer();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		// check if the request was for detailed movie data, to obtain the correct uri
 		if (detailedMovieData) {

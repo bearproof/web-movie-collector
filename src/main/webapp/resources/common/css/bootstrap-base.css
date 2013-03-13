@@ -27,7 +27,7 @@
 .base .dropdown-menu > .active > a > [class*=" icon-"] {
   background-image: url("/resources/img/glyphicons-halflings-white.png");
 }
-.base .btn-primary {
+ .base .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 	background: #6895a8; /* Old browsers */
@@ -38,8 +38,9 @@
 	background: -ms-linear-gradient(top,  #6895a8 1%,#3a87ad 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #6895a8 1%,#3a87ad 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6895a8', endColorstr='#3a87ad',GradientType=0 ); /* IE6-9 */
-  border-color: #0044cc #0044cc #002a80;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:dximagetransform.microsoft.gradient(enabled=false);	  
+    border-color: #0044cc #0044cc #002a80;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 
 .base .btn-primary:hover,
@@ -47,17 +48,17 @@
 .base .btn-primary.active,
 .base .btn-primary.disabled,
 .base .btn-primary[disabled] {
-  color: #ffffff;
-background: #a9c5d3; /* Old browsers */
-background: -moz-linear-gradient(top,  #a9c5d3 0%, #4296c4 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a9c5d3), color-stop(100%,#4296c4)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #a9c5d3 0%,#4296c4 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #a9c5d3 0%,#4296c4 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #a9c5d3 0%,#4296c4 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #a9c5d3 0%,#4296c4 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9c5d3', endColorstr='#4296c4',GradientType=0 ); /* IE6-9 */
-
-}
+	color: #ffffff;
+	background: #a9c5d3; /* Old browsers */
+	background: -moz-linear-gradient(top,  #a9c5d3 0%, #4296c4 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a9c5d3), color-stop(100%,#4296c4)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #a9c5d3 0%,#4296c4 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #a9c5d3 0%,#4296c4 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #a9c5d3 0%,#4296c4 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #a9c5d3 0%,#4296c4 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9c5d3', endColorstr='#4296c4',GradientType=0 ); /* IE6-9 */
+	filter: progid:dximagetransform.microsoft.gradient(enabled=false);	 
+} 
 
 .base .btn-inverse {
   color: #ffffff;

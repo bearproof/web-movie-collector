@@ -64,7 +64,7 @@
 		<init-param>
 			<param-name>filterMappingUrlPattern</param-name>
 			<param-value>/*</param-value>
-		</init-param>		
+		</init-param>			
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
 	</servlet>
@@ -102,6 +102,11 @@
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/WEB-INF/views/errors/uncaught-error.jsp</location>
 	</error-page>
-
-
+	
+	<jsp-config>
+   		<jsp-property-group>
+        	<url-pattern>*.jsp</url-pattern>
+        	<trim-directive-whitespaces>true</trim-directive-whitespaces>
+    	</jsp-property-group>
+	</jsp-config>
 </web-app>

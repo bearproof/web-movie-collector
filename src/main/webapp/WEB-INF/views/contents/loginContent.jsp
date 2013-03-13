@@ -1,8 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@include file="/WEB-INF/views/includes/taglibs.jsp"%>
 <c:if test="${not empty param.login_error}">
 	<div class="alert alert-error">
 		<fmt:message key="page.login.error" />
