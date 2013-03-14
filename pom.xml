@@ -379,7 +379,7 @@
 			<version>${webapp-runner.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- Web Resouce Optimizer -->
+		<!--WRO4J-->
 		<dependency>
 			<groupId>ro.isdc.wro4j</groupId>
 			<artifactId>wro4j-core</artifactId>
@@ -401,6 +401,12 @@
   			<artifactId>js</artifactId>
   			<version>1.7R2</version>
 		</dependency>
+		<!-- LESS4J -->
+		<!-- <dependency>
+		  <groupId>com.github.sommeri</groupId>
+		  <artifactId>less4j</artifactId>
+		  <version>1.0.0</version>
+		</dependency> -->
 	</dependencies>
 	<!-- BUILD -->
 	<build>

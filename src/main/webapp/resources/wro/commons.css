@@ -5920,6 +5920,7 @@ a.badge:hover {
   background: -ms-linear-gradient(top, #d36b6b 0%, #bc4d4d 100%);
   background: linear-gradient(to bottom, #d36b6b 0%, #bc4d4d 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 .ez .btn-group .btn-inverse {
   color: #ccc;
@@ -5932,6 +5933,7 @@ a.badge:hover {
   background: -ms-linear-gradient(top, #405587 0%, #1e3468 100%);
   background: linear-gradient(to bottom, #405587 0%, #1e3468 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   border-color: #222222 #222222 #000000;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
@@ -5973,6 +5975,7 @@ a.badge:hover {
   background: -ms-linear-gradient(top, #405587 0%, #1e3468 100%);
   background: linear-gradient(to bottom, #405587 0%, #1e3468 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   border-color: #252525;
 }
 .ez .navbar-inverse .brand,
@@ -5992,6 +5995,7 @@ a.badge:hover {
   background: -ms-linear-gradient(top, #7584a5 0%, #5a6a99 100%);
   background: linear-gradient(to bottom, #7584a5 0%, #5a6a99 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 .ez .btn-danger:hover,
 .ez .btn-danger:active,
@@ -6006,6 +6010,7 @@ a.badge:hover {
   background: -ms-linear-gradient(top, #8d9fc6 0%, #6886ad 100%);
   background: linear-gradient(to bottom, #8d9fc6 0%, #6886ad 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 .ez .btn-success:hover,
 .ez .btn-success:active,
@@ -6020,6 +6025,7 @@ a.badge:hover {
   background: -ms-linear-gradient(top, #8fb58f 0%, #80af80 100%);
   background: linear-gradient(to bottom, #8fb58f 0%, #80af80 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 .ez .navbar-inverse .nav li.dropdown.open > .dropdown-toggle,
 .ez .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
@@ -6061,6 +6067,7 @@ a.badge:hover {
   background: -ms-linear-gradient(top, #6895a8 0%, #3a87ad 100%);
   background: linear-gradient(to bottom, #6895a8 0%, #3a87ad 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
   border-color: #0044cc #0044cc #002a80;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
@@ -6078,6 +6085,7 @@ a.badge:hover {
   background: -ms-linear-gradient(top, #a9c5d3 0%, #4296c4 100%);
   background: linear-gradient(to bottom, #a9c5d3 0%, #4296c4 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+  filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
 .base .btn-inverse {
   color: #ffffff;

@@ -9,9 +9,9 @@
     <css>/resources/common/css/base.css</css>
     <css>/resources/common/css/bootstrap.css</css>
     <css>/resources/common/css/bootstrap-responsive.css</css>
-    <!-- <css>/resources/common/css/themes.less</css> -->
-    <css>/resources/common/css/bootstrap-base.css</css>
-    <css>/resources/common/css/bootstrap-ez.css</css>
+    <css>/resources/common/css/themes.less</css>
+   <!--  <css>/resources/common/css/bootstrap-base.css</css>
+    <css>/resources/common/css/bootstrap-ez.css</css> -->
     <css>/resources/common/css/commons.css</css>
     <css>/resources/common/css/tiptip.css</css>
     <css>/resources/common/js/jquery/message/css/jquery.message-1.0.css</css>
