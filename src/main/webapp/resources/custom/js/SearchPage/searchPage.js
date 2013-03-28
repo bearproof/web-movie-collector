@@ -189,7 +189,7 @@
         		return false;
         	}*/
 			
-			trimmedMovieTitle = movieTitle.replace(/[^a-zA-Z0-9_-]/g,'');
+			trimmedMovieTitle = movieTitle.replace(/[^\-a-zA-Z0-9_]/g,'');
 			//add a tree node with the search term only if it doesn't exist already
 			if($('#'+trimmedMovieTitle).length<=0){
 				$(searchItemTmpl.tmpl({
@@ -340,7 +340,7 @@
     		trimmedMovieTitle='';			
 			
 			if($.isArray(MovieData)&&(MovieData[0].title!==undefined)){//->we received Brief Movie Info for multiple movies from the selected infosources
-        		trimmedMovieTitle = movieTitle.replace(/[^a-zA-Z0-9_-]/g,'');
+        		trimmedMovieTitle = movieTitle.replace(/[^\-a-zA-Z0-9_]/g,'');
         		movieandsite = trimmedMovieTitle+MovieData[0].site;
         		currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
 
@@ -366,7 +366,7 @@
 							"title" : value.title,
 							"year" : value.year,
 							"director" : value.director,
-							"uniqueid" : value.id.replace(/[^a-zA-Z0-9_-]/g,''),								
+							"uniqueid" : value.id.replace(/[^\-a-zA-Z0-9_]/g,''),								
 							"site" : value.site,
 							"siteid" : value.id
 						})).appendTo($('.'+movieandsite));				    			
@@ -382,7 +382,7 @@
         		
         		//if the result came after a server Redirect(e.g.: one result found on Filmkatalogus when searching for a movie)
         		if(that.selectedMovieId===''){
-        			trimmedMovieTitle = movieTitle.replace(/[^a-zA-Z0-9_-]/g,'');
+        			trimmedMovieTitle = movieTitle.replace(/[^\-a-zA-Z0-9_]/g,'');
         			movieandsite = trimmedMovieTitle+MovieData.site;	        			
         			//add the node in the tree only if it doesn't exist already
         			if($('#'+movieandsite).length<=0){
@@ -436,7 +436,7 @@
 	        	that.selectedMovieId = '';
         			        	
         	}else if((MovieData!==null)&&(MovieData.title===undefined)){//->We didn't receive any movie info from the selected infosource
-        		trimmedMovieTitle = movieTitle.replace(/[^a-zA-Z0-9_-]/g,'');
+        		trimmedMovieTitle = movieTitle.replace(/[^\-a-zA-Z0-9_]/g,'');
     			movieandsite = trimmedMovieTitle+MovieData[0].site;
     			currentNode = $("#"+trimmedMovieTitle).siblings('.'+trimmedMovieTitle).find('.'+movieandsite);	        		
 

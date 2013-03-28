@@ -3,7 +3,7 @@
 	toString:function(){return NS + '.' + SubClass;},
 	/** Constructor. */
     init : function(cfg) {
-      this.bindBehavior(this);
+      this.bindBehavior();
     },
     /**
      * Binds client-side behavior.
@@ -16,7 +16,6 @@
      * Initializes the tooltip on the login page
      * */
     initializeTooltip : function(){
-    	var that=this;
     	$('.tiptip button').tipTip();
     },
     /**
