@@ -42,6 +42,10 @@
     <js>/resources/common/js/jquery.validate.js</js>    
   </group>
   
+  <group name="login">
+  	<js>/resources/custom/js/Login/showInactive.js</js>
+  </group>
+  
   <group name="listAccounts">
     <css>/resources/common/css/dataTableStyle.css</css>
     <js>/resources/common/js/jquery.dataTables.js</js>

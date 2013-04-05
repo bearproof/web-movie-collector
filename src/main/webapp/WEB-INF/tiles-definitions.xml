@@ -22,7 +22,7 @@
 		<put-attribute name="pageName" value="" />
 		<put-attribute name="title-content" value="Login" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/loginContent.jsp" />
-		<put-attribute name="noCss" value=""/>						
+		<put-attribute name="noCss" value="login"/>						
 	</definition>
 
 	<!-- Register page -->
@@ -30,6 +30,14 @@
 		<put-attribute name="pageName" value="register" />
 		<put-attribute name="title-content" value="Register" />
 		<put-attribute name="main-content" value="/WEB-INF/views/contents/Register.jsp" />	
+		<put-attribute name="noCss" value=""/>										
+	</definition>
+	
+	<!-- Account Activation page -->
+	<definition name="activationPage" extends="generic-template">
+		<put-attribute name="pageName" value="activationPage" />
+		<put-attribute name="title-content" value="Activate Account" />
+		<put-attribute name="main-content" value="/WEB-INF/views/contents/Activate.jsp" />	
 		<put-attribute name="noCss" value=""/>										
 	</definition>
 

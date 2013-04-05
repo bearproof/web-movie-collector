@@ -2566,7 +2566,7 @@
      */
     bindBehavior : function() {
     	this.initializeTooltip();
-    	this.initializeThemeChanger();
+    	this.initializeThemeChanger();    	
     },   
     /**
      * Initializes the tooltip on the login page

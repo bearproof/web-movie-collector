@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ro.isdc.auth.domain.Account;
 import ro.isdc.auth.helper.AccountHelper;
 import ro.isdc.auth.repository.AccountRepository;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 /**
  * 
@@ -32,7 +34,7 @@ import ro.isdc.auth.repository.AccountRepository;
 public class AuthentificationService implements UserDetailsService {
 
 	private static final Logger logger = Logger.getLogger(AuthentificationService.class);
-
+	
 	private AccountRepository userRepository;
 
 	private AccountHelper accountHelper;

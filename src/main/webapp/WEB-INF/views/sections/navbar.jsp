@@ -7,11 +7,10 @@
 				class="icon-bar"></span> <span class="icon-bar"></span>
 			</a> <a class="brand" href="${pageContext.request.contextPath}/"><fmt:message key="header.webapp.name"/>&nbsp;<span class="label label-info"><fmt:message key="header.webapp.version"/></span></a>
 						
-			<security:authorize access="isAuthenticated()">
+			<security:authorize access="isFullyAuthenticated()">
 				<div class="btn-group pull-right">
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i> ${userContext.username} <span
-						class="caret"></span>
+						<i class="icon-user"></i> ${userContext.username} <span	class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="${pageContext.request.contextPath}/changeDetails/updateUserAccount/"><fmt:message key="domain.account.edit.legend"/></a></li>
@@ -19,7 +18,7 @@
 					</ul>
 				</div>
 			</security:authorize>
-			<security:authorize access="isAuthenticated()">
+			<security:authorize access="isFullyAuthenticated()">
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li id="homePageLink">
@@ -43,7 +42,6 @@
 				</div>
 			</security:authorize>
 			
-			<%-- <security:authorize access="isAuthenticated()"> --%>
 			<div class="nav-collapse">
 					<ul id="themeChanger" style="float:right;" class="nav">
 						<li id="themeChangerLink" class="dropdown">
@@ -55,7 +53,6 @@
 						</li>
 					</ul>
 			</div>	
-			<%-- </security:authorize> --%>
 			<%@include file="/WEB-INF/views/sections/localeChanger.jsp"%>
 			
 		</div>

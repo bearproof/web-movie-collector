@@ -1,9 +1,24 @@
 <%@include file="/WEB-INF/views/includes/taglibs.jsp"%>
-<c:if test="${not empty param.login_error}">
-	<div class="alert alert-error">
-		<fmt:message key="page.login.error" />
-	</div>
+<c:if test="${not empty param}">
+	<c:choose>
+		<c:when test="${param.badCredentials eq true}">
+			<div class="alert alert-error">
+				<fmt:message key="page.login.error.badCredentials" />
+			</div>		
+		</c:when>
+		<c:when test="${param.accountDisabled eq true}">
+			<div class="alert alert-error">
+				<fmt:message key="page.login.error.accountDisabled" />
+			</div>		
+		</c:when>							
+	</c:choose>
 </c:if>
+
+<!-- DIV shown only after a redirect from the Register page, to tell user to confirm account via e-mail -->
+<div id="inactive" class="alert alert-success hidden">
+	<fmt:message key="page.login.message.activateAccountByMail" />
+</div>
+			
 <spring:url value="/resources/j_spring_security_check" var="form_url" />
 <div class="content">
 	<div class="row">

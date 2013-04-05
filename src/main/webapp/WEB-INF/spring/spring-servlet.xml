@@ -68,7 +68,7 @@
 			<beans:ref bean="localeChangeInterceptor" />
 		</beans:property>
 	</beans:bean>
-
+		
 </beans:beans>
 
 

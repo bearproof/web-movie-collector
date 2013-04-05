@@ -29,10 +29,10 @@
 		path="entityManagerFactory.sessionFactory" />
 
 
-<!-- initializing data to realize some test -->
 	<beans>
-		<bean id="initDataService" class="ro.isdc.auth.service.InitDataService"
-			init-method="init" />
+		<!-- initializing data to realize some test -->
+		<bean id="initDataService" class="ro.isdc.auth.service.InitDataService"	init-method="init" />
+		<!-- Custom Authentication Failure Handler -->
+		<bean id="authenticationFailureHandler" class="ro.isdc.auth.security.CustomAuthenticationFailureHandler" />		
 	</beans>
-
 </beans>

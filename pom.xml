@@ -407,6 +407,12 @@
 		  <artifactId>less4j</artifactId>
 		  <version>1.0.0</version>
 		</dependency> -->
+		<!-- JAVAX Mail -->
+		<dependency>
+		    <groupId>javax.mail</groupId>
+		    <artifactId>mail</artifactId>
+		    <version>1.4.7</version>
+		</dependency>
 	</dependencies>
 	<!-- BUILD -->
 	<build>

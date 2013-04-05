@@ -75,7 +75,9 @@
     				  data: JSON.stringify(jsonData),
     				  contentType: "application/json; charset=utf-8",
     				  success: function(response,status,xhr) {
-    					  document.location.href='/';
+    						$().message(response.message,response.error);				 
+    						window.sessionStorage.setItem('inactive',"true");
+    						document.location.href='/resources/j_spring_security_logout';
     				  }
     				});  
     			return false; 
