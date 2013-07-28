@@ -1,0 +1,243 @@
+@color-ez-btn-gradient-first: #ee5f5b;
+@color-ez-btn-gradient-second: #bd362f;
+@color-ez-btn-hover-gradient-first: #d36b6b;
+@color-ez-btn-hover-gradient-second: #bc4d4d;
+@color-ez-btn-inverse-gradient-first: #405587;
+@color-ez-btn-inverse-gradient-second: #1e3468;
+@color-ez-navbar-gradient-first: #ffffff;
+@color-ez-navbar-gradient-second: #f2f2f2;
+@color-ez-btn-danger-gradient-first: #7584a5;
+@color-ez-btn-danger-gradient-second: #5a6a99;
+@color-ez-btn-danger-hover-gradient-first: #8d9fc6;
+@color-ez-btn-danger-hover-gradient-second: #6886ad;
+@color-ez-btn-success-gradient-first: #8fb58f;
+@color-ez-btn-success-gradient-second: #80af80;
+@color-ez-navbar-dropdown-bck: #132040;
+@color-ez-label-info-gradient-first: #D40000;
+@color-ez-label-info-gradient-second: #BF0000;
+
+@color-base-btn-gradient-first: #6895a8;
+@color-base-btn-gradient-second: #3a87ad;
+@color-base-btn-hover-gradient-first: #a9c5d3;
+@color-base-btn-hover-gradient-second: #4296c4;
+@color-base-btn-inverse-gradient-first: #444444;
+@color-base-btn-inverse-gradient-second: #222222;
+@color-base-navbar-gradient-first: #ffffff;
+@color-base-navbar-gradient-second: #f2f2f2;
+@color-base-btn-navbar-inverse-gradient-first: #222;
+@color-base-btn-navbar-inverse-gradient-second: #111;
+
+
+.template-gradient (@first-color: #d36b6b, @second-color: #bc4d4d) {
+    background: @first-color; /* Old browsers */
+    background: -moz-linear-gradient(top,  @first-color 0%, @second-color 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@first-color), color-stop(100%,@second-color)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  @first-color 0%,@second-color 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  @first-color 0%,@second-color 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  @first-color 0%,@second-color 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  @first-color 0%,@second-color 100%); /* W3C */    
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@first-color', endColorstr='@second-color',GradientType=0 ); /* IE6-9 */
+    filter: progid:dximagetransform.microsoft.gradient(enabled=false);     
+}
+.template-gradient-image (@first-color: #ee5f5b, @second-color: #bd362f) {
+     background-color: @second-color;
+	 background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@first-color), to(@second-color));
+	 background-image: -webkit-linear-gradient(top, @first-color, @second-color);
+	 background-image: -o-linear-gradient(top, @first-color, @second-color);
+	 background-image: linear-gradient(to bottom, @first-color, @second-color);
+	 background-image: -moz-linear-gradient(top, @first-color, @second-color);
+     filter: progid:dximagetransform.microsoft.gradient(startColorstr='@first-color', endColorstr='@second-color', GradientType=0);
+	 filter: progid:dximagetransform.microsoft.gradient(enabled=false);	       
+}
+.ez a {
+/*   color: #0088cc; */
+  text-decoration: none;
+}
+/* White icons with optional class, or on hover/active states of certain elements */
+.ez .icon-white,
+.ez .nav > .active > a > [class^="icon-"],
+.ez .nav > .active > a > [class*=" icon-"],
+.ez .dropdown-menu > li > a:hover > [class^="icon-"],
+.ez .dropdown-menu > li > a:hover > [class*=" icon-"],
+.ez .dropdown-menu > .active > a > [class^="icon-"],
+.ez .dropdown-menu > .active > a > [class*=" icon-"] {
+  background-image: url("/resources/img/glyphicons-halflings-white.png");
+}
+.ez .btn-primary {
+    border-style: solid;
+    border-width: 1px;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    .template-gradient-image (@color-ez-btn-gradient-first, @color-ez-btn-gradient-second);
+	 background-repeat: repeat-x;
+	 border-color: @color-ez-btn-gradient-second @color-ez-btn-gradient-second #802420;
+	 border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.ez .btn-primary:hover,
+.ez .btn-primary:active,
+.ez .btn-primary.active,
+.ez .btn-primary.disabled,
+.ez .btn-primary[disabled] {
+    color: #ffffff;
+  	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    .template-gradient (@color-ez-btn-hover-gradient-first, @color-ez-btn-hover-gradient-second);
+}
+.ez .btn-group .btn-inverse {
+  color: #ccc;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  .template-gradient (@color-ez-btn-inverse-gradient-first, @color-ez-btn-inverse-gradient-second);
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.ez .btn-inverse:hover,
+.ez .btn-inverse:active,
+.ez .btn-inverse.active,
+.ez .btn-inverse.disabled,
+.ez .btn-inverse[disabled] {
+  color: #ffffff;
+}
+.ez .navbar-inner {
+      color: #ccc;	
+      min-height: 40px;
+      padding-right: 2px;
+      padding-left: 20px;
+      .template-gradient-image (@color-ez-navbar-gradient-first, @color-ez-navbar-gradient-second);
+      background-repeat: repeat-x;
+      border: 1px solid #d4d4d4;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+         -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+              box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+.ez .navbar-inverse .navbar-inner {
+    .template-gradient (@color-ez-btn-inverse-gradient-first, @color-ez-btn-inverse-gradient-second);
+	border-color: #252525;
+}
+.ez .navbar-inverse .brand,
+.ez .navbar-inverse .nav > li > a {
+  color: #ccc;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.ez .navbar-inverse {
+	color: #333333;
+} 
+.ez .btn-danger {
+    .template-gradient (@color-ez-btn-danger-gradient-first, @color-ez-btn-danger-gradient-second);
+ }
+.ez .btn-danger:hover,
+.ez .btn-danger:active,
+.ez .btn-danger.active,
+.ez .btn-danger.disabled,
+.ez .btn-danger[disabled] {
+    .template-gradient (@color-ez-btn-danger-hover-gradient-first, @color-ez-btn-danger-hover-gradient-second);
+ }
+.ez .btn-success:hover,
+.ez .btn-success:active,
+.ez .btn-success.active,
+.ez .btn-success.disabled,
+.ez .btn-success[disabled] {
+    .template-gradient (@color-ez-btn-success-gradient-first, @color-ez-btn-success-gradient-second);
+}
+.ez .navbar-inverse .nav li.dropdown.open > .dropdown-toggle, 
+.ez .navbar-inverse .nav li.dropdown.active > .dropdown-toggle,
+ .ez .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+ 	background-color: @color-ez-navbar-dropdown-bck;
+ }
+ .ez .container-fluid{
+ 	padding-right: 2px;
+ }
+ .ez .tab-content {
+ 	overflow: none;
+}
+.ez .label-info,
+.ez .badge-info {
+    background-color: @color-ez-label-info-gradient-first;
+    background-image: -moz-linear-gradient(center top , @color-ez-label-info-gradient-first, @color-ez-label-info-gradient-second);
+    background-repeat: repeat-x;
+ }
+.base a {
+/*   color: #3A87AD; */
+  text-decoration: none;
+}
+/* White icons with optional class, or on hover/active states of certain elements */
+.base .icon-white,
+.base .nav > .active > a > [class^="icon-"],
+.base .nav > .active > a > [class*=" icon-"],
+.base .dropdown-menu > li > a:hover > [class^="icon-"],
+.base .dropdown-menu > li > a:hover > [class*=" icon-"],
+.base .dropdown-menu > .active > a > [class^="icon-"],
+.base .dropdown-menu > .active > a > [class*=" icon-"] {
+  background-image: url("/resources/img/glyphicons-halflings-white.png");
+}
+.base .btn-primary {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  .template-gradient (@color-base-btn-gradient-first, @color-base-btn-gradient-second);
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.base .btn-primary:hover,
+.base .btn-primary:active,
+.base .btn-primary.active,
+.base .btn-primary.disabled,
+.base .btn-primary[disabled] {
+  color: #ffffff;
+  .template-gradient (@color-base-btn-hover-gradient-first, @color-base-btn-hover-gradient-second);
+}
+.base .btn-inverse {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #363636;
+  .template-gradient-image (@color-base-btn-inverse-gradient-first, @color-base-btn-inverse-gradient-second);
+  background-repeat: repeat-x;
+  border-color: #222222 #222222 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.base .btn-inverse:hover,
+.base .btn-inverse:active,
+.base .btn-inverse.active,
+.base .btn-inverse.disabled,
+.base .btn-inverse[disabled] {
+  color: #ffffff;
+  background-color: #222222;
+  *background-color: #151515;
+}
+.base .navbar-inner {
+  min-height: 40px;
+  padding-right: 2px;
+  padding-left: 20px;
+ .template-gradient-image (@color-base-navbar-gradient-first, @color-base-navbar-gradient-second);
+  background-repeat: repeat-x;
+  border: 1px solid #d4d4d4;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+}
+.base .navbar-inverse .navbar-inner {
+ .template-gradient-image (@color-base-btn-navbar-inverse-gradient-first, @color-base-btn-navbar-inverse-gradient-second);
+  background-repeat: repeat-x;
+  border-color: #252525;
+}
+.base .navbar-inverse .brand,
+.base .navbar-inverse .nav > li > a {
+  color: #999999;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.base .label-info,
+.base .badge-info {
+  background-color: @color-base-btn-gradient-second;
+}
+.base .navbar-inverse {
+	color: #999999;
+}
+.base .container-fluid{
+ 	padding-right: 2px;
+ }
+ .base .tab-content {
+ overflow: none;
+}
